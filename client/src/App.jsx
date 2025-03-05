@@ -1,35 +1,48 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from "react";
+import './App.css';
 
-function App() {
-  const [count, setCount] = useState(0)
 
+const HomePage = () => {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div className="bg-gray-100 min-h-screen">
+      {/* Navbar */}
+      <nav className="bg-white shadow-md p-4 flex justify-between items-center">
+        <h1 className="text-xl font-bold">Sethsiri Pharmacy</h1>
+        <input type="text" placeholder="Search" className="border p-1" />
+        <button className="bg-blue-500 text-white px-4 py-2 rounded">Sign In</button>
+      </nav>
 
-export default App
+      {/* Banner */}
+      <div className="relative text-center p-8 bg-gray-200">
+        <h2 className="text-2xl font-bold">Health and Wellness for <span className="text-green-500">Everyone</span></h2>
+        <p>✔ 20+ licensed pharmacists available 24/7</p>
+        <p>✔ Every order double-checked for accuracy and safety</p>
+        <p>✔ Refills and auto refills online or in our Web app</p>
+      </div>
+
+      {/* Categories */}
+      <div className="flex justify-center gap-6 my-6">
+        {['Skin Care', 'Vitamins', 'Drugs', 'Baby Care', 'Medical Equipment'].map((category) => (
+          <div key={category} className="text-center">
+            <div className="w-20 h-20 bg-gray-300 rounded-full"></div>
+            <p>{category}</p>
+          </div>
+        ))}
+      </div>
+
+      {/* Products */}
+      <div className="grid grid-cols-4 gap-4 p-6">
+        {[...Array(8)].map((_, i) => (
+          <div key={i} className="bg-white p-4 shadow-md text-center">
+            <div className="w-full h-40 bg-gray-200"></div>
+            <h3 className="font-bold">Medicine {i + 1}</h3>
+            <p>Rs. {100 + i * 50}</p>
+            <button className="bg-blue-500 text-white px-4 py-1 mt-2 rounded">Add to Cart</button>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default HomePage;
