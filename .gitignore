@@ -1,1 +1,29 @@
 #gitigonore file is initiated
+
+# Node.js dependencies
+node_modules/
+package-lock.json
+
+# Vite and build output
+.vite/
+dist/
+build/
+
+# Logs and debug files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+debug.log*
+*.log
+
+# Editor and system files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
