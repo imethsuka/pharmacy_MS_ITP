@@ -1,0 +1,14 @@
+src/
+  components/
+    common/
+      .gitkeep
+    customer/
+      .gitkeep
+    delivery/
+      .gitkeep
+    inventory/
+      .gitkeep
+    pharmacist/
+      .gitkeep
+    search/
+      .gitkeep

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getPrescriptionById, verifyPrescription } from "../../services/prescriptionService";
+// import { getPrescriptionById, verifyPrescription } from "../../services/prescriptionService";
 
 const PrescriptionDetails = () => {
   const { id } = useParams();
