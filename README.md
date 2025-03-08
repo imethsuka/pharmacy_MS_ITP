@@ -42,7 +42,6 @@ To ensure fair workload distribution and a balanced GUI implementation, we will 
    
 3. **Prescription Status Page for customers** just create the UI (This frontend fetches Orders status from the DB and shows it to the customer backend is managed by Imeth)
 4. **Delivery Status Page for customers** (This frontend fetches Delivery status from the DB and shows it to the customer backend and status managed by Vonara)
-   
 5. **Account Settings Page** (GUI - Change Password)
 6. **Order History Page** (GUI - Display Previous Orders, View Details -> when click this customer can see more details about their each order, such as what medicines they ordered etc.)
 
