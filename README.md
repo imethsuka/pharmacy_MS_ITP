@@ -40,7 +40,7 @@ To ensure fair workload distribution and a balanced GUI implementation, we will 
 1. **Login & Registration Page** (GUI - Forms, Validation, Authentication UI)
 2. **User Dashboard** (GUI - Profile Details, Edit Profile Option, Order History)
    
-3. **Prescription Status Page for customers ** just create the UI (This frontend fetches Orders status from the DB and shows it to the customer backend is managed by josh)
+3. **Prescription Status Page for customers** just create the UI (This frontend fetches Orders status from the DB and shows it to the customer backend is managed by josh)
 4. **Delivery Status Page for customers** (This frontend fetches Delivery status from the DB and shows it to the customer backend and status managed by sam)
    
 5. **Account Settings Page** (GUI - Change Password)
