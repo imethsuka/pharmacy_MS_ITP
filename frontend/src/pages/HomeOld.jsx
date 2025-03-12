@@ -7,7 +7,7 @@ import { BsInfoCircle } from 'react-icons/bs';
 import { MdOutlineAddBox, MdOutlineDelete } from 'react-icons/md';
 import BooksTable from '../components/home/BooksTable';
 import BooksCard from '../components/home/BooksCard';
-import NavBar from '../components/home/navBar';
+import '../styles/HomeOld.css'; // Import the CSS file
 
 const Home = () => {
   const [books, setBooks] = useState([]);
@@ -29,27 +29,26 @@ const Home = () => {
   }, []);
 
   return (
-    <div>
-      {/* <NavBar /> */}
-      <div className='p-4'>
-        <div className='flex justify-center items-center gap-x-4'>
+    <div className="home-container">
+      <div className="home-content">
+        <div className="view-toggle">
           <button
-            className='bg-sky-300 hover:bg-sky-600 px-4 py-1 rounded-lg'
+            className={`view-button ${showType === 'table' ? 'active' : ''}`}
             onClick={() => setShowType('table')}
           >
-            Table
+            Table View
           </button>
           <button
-            className='bg-sky-300 hover:bg-sky-600 px-4 py-1 rounded-lg'
+            className={`view-button ${showType === 'card' ? 'active' : ''}`}
             onClick={() => setShowType('card')}
           >
-            Card
+            Card View
           </button>
         </div>
-        <div className='flex justify-between items-center'>
-          <h1 className='text-3xl my-8'>Medicine List</h1>
-          <Link to='/books/create'>
-            <MdOutlineAddBox className='text-sky-800 text-4xl' />
+        <div className="header">
+          <h1 className="page-title">Medicine List</h1>
+          <Link to="/books/create" className="add-button">
+            <MdOutlineAddBox className="add-icon" />
           </Link>
         </div>
         {loading ? (
