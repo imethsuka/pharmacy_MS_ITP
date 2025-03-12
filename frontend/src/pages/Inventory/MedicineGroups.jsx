@@ -1,8 +1,8 @@
 import React from "react";
 import { FaSearch, FaSignOutAlt } from "react-icons/fa";
-import "../Dashboard.css"; // Import the external CSS file
-import Sidebar from "../Components/Sidebar";
-import logo from '/src/assets/SethsiriLogo.png';
+import "../../styles/Inventory/MedicineGroups.css"; // Import the external CSS file
+import Sidebar from "../../components/Inventory/Sidebar";
+import logo from '../../assets/Sethsiri_Favicon.svg';
 
 const MedicineGroups = () => {
   return (

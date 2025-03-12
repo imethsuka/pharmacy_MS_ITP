@@ -1,7 +1,7 @@
 import React from "react";
 import { FaUserCircle } from "react-icons/fa";
 import { Link, useLocation } from "react-router-dom"; // Import useLocation
-import "./Sidebar.css";
+import "../../styles/Inventory/Sidebar.css";
 
 const Sidebar = () => {
   const location = useLocation(); // Get the current location
@@ -25,32 +25,32 @@ const Sidebar = () => {
         </div>
         <nav className="sidebar-nav">
           <Link
-            to="/"
-            className={isActive("/") ? "active" : ""}
+            to="/inventory/dashboard"
+            className={isActive("/inventory/dashboard") ? "active" : ""}
           >
             Dashboard
           </Link>
           <Link
-            to="/Pages/MedicineLists"
-            className={isActive("/Pages/MedicineLists") ? "active" : ""}
+            to="/inventory/MedicineLists"
+            className={isActive("/inventory/MedicineLists") ? "active" : ""}
           >
             Medicines List
           </Link>
           <Link
-            to="/Pages/MedicineGroups"
-            className={isActive("/Pages/MedicineGroups") ? "active" : ""}
+            to="/inventory/MedicineGroups"
+            className={isActive("/inventory/MedicineGroups") ? "active" : ""}
           >
             Medicines Group
           </Link>
           <Link
-            to="/Pages/reports"
-            className={isActive("/Pages/reports") ? "active" : ""}
+            to="/inventory/reports"
+            className={isActive("/inventory/reports") ? "active" : ""}
           >
             Reports
           </Link>
           <Link
-            to="/Pages/notifications"
-            className={isActive("/Pages/notifications") ? "active" : ""}
+            to="/inventory/notifications"
+            className={isActive("/inventory/notifications") ? "active" : ""}
           >
             Notifications <span className="notification-badge">1</span>
           </Link>
