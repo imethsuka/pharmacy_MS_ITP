@@ -1,5 +1,5 @@
 import React from 'react';
-import './CircleCard.css'; // Import the CSS file for styling
+import '../../styles/CircleCard.css';
 
 const CircleCard = ({ imageUrl, title }) => {
     return (
