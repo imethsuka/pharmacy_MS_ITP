@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import BackButton from '../components/BackButton';
 import Spinner from '../components/Spinner';
+import '../styles/ShowBook.css'; // Import the CSS file
 
 const ShowBook = () => {
   const [book, setBook] = useState({});
@@ -21,39 +22,39 @@ const ShowBook = () => {
         console.log(error);
         setLoading(false);
       });
-  }, []);
+  }, [id]);
 
   return (
-    <div className='p-4'>
+    <div className="show-book-container">
       <BackButton />
-      <h1 className='text-3xl my-4'>Show Book</h1>
+      <h1 className="show-book-title">Show Book</h1>
       {loading ? (
         <Spinner />
       ) : (
-        <div className='flex flex-col border-2 border-sky-400 rounded-xl w-fit p-4'>
-          <div className='my-4'>
-            <span className='text-xl mr-4 text-gray-500'>Id</span>
-            <span>{book._id}</span>
+        <div className="book-details">
+          <div className="detail-item">
+            <span className="detail-label">Id</span>
+            <span className="detail-value">{book._id}</span>
           </div>
-          <div className='my-4'>
-            <span className='text-xl mr-4 text-gray-500'>Name</span>
-            <span>{book.title}</span>
+          <div className="detail-item">
+            <span className="detail-label">Name</span>
+            <span className="detail-value">{book.title}</span>
           </div>
-          <div className='my-4'>
-            <span className='text-xl mr-4 text-gray-500'>Pharmasist</span>
-            <span>{book.author}</span>
+          <div className="detail-item">
+            <span className="detail-label">Pharmasist</span>
+            <span className="detail-value">{book.author}</span>
           </div>
-          <div className='my-4'>
-            <span className='text-xl mr-4 text-gray-500'>MFD</span>
-            <span>{book.publishYear}</span>
+          <div className="detail-item">
+            <span className="detail-label">MFD</span>
+            <span className="detail-value">{book.publishYear}</span>
           </div>
-          <div className='my-4'>
-            <span className='text-xl mr-4 text-gray-500'>Create Time</span>
-            <span>{new Date(book.createdAt).toString()}</span>
+          <div className="detail-item">
+            <span className="detail-label">Create Time</span>
+            <span className="detail-value">{new Date(book.createdAt).toString()}</span>
           </div>
-          <div className='my-4'>
-            <span className='text-xl mr-4 text-gray-500'>Last Update Time</span>
-            <span>{new Date(book.updatedAt).toString()}</span>
+          <div className="detail-item">
+            <span className="detail-label">Last Update Time</span>
+            <span className="detail-value">{new Date(book.updatedAt).toString()}</span>
           </div>
         </div>
       )}
