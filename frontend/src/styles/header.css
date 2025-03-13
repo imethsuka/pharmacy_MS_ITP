@@ -1,0 +1,130 @@
+/* Header Container */
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2px 24px; /* Reduced padding for a thinner header */
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Softer shadow */
+  /* position: sticky; */
+  top: 0;
+  z-index: 1000;
+}
+
+/* Logo Section */
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* Modern spacing between logo and site name */
+}
+
+.logo {
+  height: 36px; /* Slightly smaller logo */
+  width: auto; /* Maintain aspect ratio */
+}
+
+.site-name {
+  font-size: 18px; /* Slightly smaller font size */
+  font-weight: 600; /* Semi-bold for modern look */
+  color: #333;
+  letter-spacing: -0.5px; /* Tighter letter spacing */
+}
+
+/* Search Section */
+.search-section {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* Modern spacing between search bar and category dropdown */
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  background-color: #f5f5f5; /* Lighter background */
+  padding: 8px 16px; /* Slightly smaller padding */
+  border-radius: 24px; /* Fully rounded corners */
+  width: 500px; /* Slightly narrower search bar */
+  transition: box-shadow 0.3s ease;
+}
+
+.search-bar:focus-within {
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2); /* Focus effect */
+}
+
+.search-input {
+  border: none;
+  outline: none;
+  background: transparent;
+  flex: 1;
+  font-size: 14px; /* Smaller font size */
+  padding-left: 8px;
+  color: #333;
+}
+
+.search-input::placeholder {
+  color: #999; /* Lighter placeholder text */
+}
+
+.search-icon {
+  color: #666; /* Neutral icon color */
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.search-icon:hover {
+  color: #007bff; /* Highlight on hover */
+}
+
+/* Category Dropdown */
+.category-dropdown {
+  padding: 8px 12px; /* Slightly smaller padding */
+  border: 1px solid #ddd; /* Lighter border */
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px; /* Smaller font size */
+  color: #333;
+  background-color: #f5f5f5; /* Match search bar background */
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.category-dropdown:hover {
+  border-color: #007bff; /* Highlight on hover */
+  background-color: #e9f3ff; /* Light blue background on hover */
+}
+
+/* Actions (Cart + Sign-in) */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 16px; /* Modern spacing between icons and button */
+}
+
+/* Cart Icon */
+.cart-icon {
+  cursor: pointer;
+  color: #666; /* Neutral icon color */
+  font-size: 20px; /* Slightly smaller icon */
+  transition: color 0.3s ease;
+}
+
+.cart-icon:hover {
+  color: #007bff; /* Highlight on hover */
+}
+
+/* Sign-in Button */
+.sign-in-button {
+  background-color: #007bff; /* Modern blue */
+  color: white;
+  border: none;
+  padding: 8px 16px; /* Slightly smaller padding */
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px; /* Smaller font size */
+  font-weight: 500; /* Medium font weight */
+  transition: background-color 0.3s ease;
+  /* align-items: center; */
+}
+
+.sign-in-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
