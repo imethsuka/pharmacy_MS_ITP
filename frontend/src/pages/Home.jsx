@@ -4,6 +4,7 @@ import NavBar from '../components/home/NavBar';
 import CircleCard from "../components/home/CircleCard";
 import HeroSection from "../components/HeroSection";
 import ProductCard from "../components/ProductCard"; // Import ProductCard component
+import Footer from "../components/Footer"; // Import Footer component
 import '../styles/Home.css'; // Import the CSS file for styling
 import medicineImage from '../assets/medicineImage.png'; // Import the medicineImage
 
@@ -104,6 +105,9 @@ const Home = () => {
           onMoreInfo={() => alert("More Info clicked!")}
         />
       </div>
+
+      {/* Footer component */}
+      <Footer />
     </div>
   );
 };
