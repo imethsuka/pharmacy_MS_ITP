@@ -1,0 +1,37 @@
+.circle-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 10px;
+}
+
+h3 {
+    font-family: sans-serif;
+}
+
+.circle-image-container {
+    width: 180px; /* Adjust size as needed */
+    height: 180px; /* Adjust size as needed */
+    border-radius: 50%; 
+    overflow: hidden; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0; /* Optional: background color for the circle */
+    border-color: #616060;
+    border-style: solid;
+}
+
+.circle-image {
+    width: 100%; 
+    height: 100%;
+    object-fit: cover;
+}
+
+.circle-title {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #333;
+    font-weight: bold;
+}

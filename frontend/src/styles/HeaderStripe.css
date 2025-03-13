@@ -1,0 +1,65 @@
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 30px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  /* position: sticky; */
+  top: 0;
+  z-index: 1000;
+}
+
+span {
+  color: black;
+  font-family: sans-serif;
+}
+
+/* Logo Section */
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.logo {
+  height: 40px;
+  width: auto;
+}
+
+.site-name {
+  font-size: 20px;
+  font-weight: 700;
+  color: #333;
+  letter-spacing: -0.5px;
+}
+
+/* Search Section */
+.search-section {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.category-dropdown {
+  padding: 8px 14px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #333;
+  background-color: #f8f8f8;
+  transition: 0.3s;
+}
+
+.category-dropdown:hover {
+  border-color: #007bff;
+  background-color: #e9f3ff;
+}
+
+/* Actions */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}

@@ -1,0 +1,43 @@
+/* Floating NavBar */
+.floating-navbar {
+    position: sticky;
+    top: 0; /* Stick to the top of the page */
+    z-index: 1000; /* Ensure it stays above other content */
+    margin-top: 6px; /* Adjust this value to create a small gap below HeaderStripe */
+    background-color: white; /* Add a background color to make it stand out */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for the floating effect */
+  }
+  
+  /* Optional: Add smooth scrolling behavior */
+  html {
+    scroll-behavior: smooth;
+  }
+
+.circle-card-container {
+  display: flex;
+  justify-content: center; /* Center the cards */
+  gap: 50px; /* Reduce space between cards */
+  flex-wrap: wrap;
+  padding: 10px 0; /* Optional: Reduce vertical spacing */
+}
+
+
+
+.circle-card-container > .CircleCard {
+  flex: 1 1 calc(18% - 10px); /* Make cards fit closer */
+  margin: 5px; /* Reduce margin for tighter spacing */
+  max-width: 150px; /* Adjust the size if needed */
+}
+
+
+.ProductCard {
+  flex: 1 1 calc(25% - 20px); /* 4 cards per row with some margin */
+  margin: 10px; /* Adjust margin as needed */
+}
+.product-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Center products */
+  gap: 60px 30px; /* Space between cards */
+  padding: 20px;
+}
