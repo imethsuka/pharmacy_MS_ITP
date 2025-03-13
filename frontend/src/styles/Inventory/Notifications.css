@@ -1,0 +1,89 @@
+/* General Styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden; /* Prevent scrolling */
+}
+
+.Notifications-container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    background-color: #f3f4f6;
+    overflow: hidden; /* Prevent scrolling */
+}
+  
+/* Main Content */
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+}
+  
+/* Top Bar */
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Ensure vertical alignment */
+    background: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative; /* Add relative positioning */
+}
+  
+/* Centered Search Box */
+.centered-search-box {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+  
+/* Right Side Container */
+.right-side {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Add some space between elements */
+}
+  
+.search-box {
+    display: flex;
+    align-items: center;
+    background: #e5e7eb;
+    padding: 10px;
+    border-radius: 5px;
+    width: 500px; /* Change the width to medium size */
+}
+  
+.search-box input {
+    border: none;
+    background: transparent;
+    margin-left: 5px;
+    outline: none;
+}
+  
+.signout-btn {
+    background: red; /* Change the background color to red */
+    color: white; /* Ensure the text color is white */
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 1px solid red; /* Add a red border */
+    outline: none; /* Remove default outline */
+}
+  
+.signout-btn:focus {
+    outline: 2px solid red; /* Add a red outline on focus */
+}
+  
+/* Dashboard Summary */
+.Notifications-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-top: 20px;
+}
+  
+.Notifications-subtitle {
+    color: gray;
+}
+  
