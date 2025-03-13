@@ -2,12 +2,3 @@ body, html {
     overflow-x: hidden;
     width: 100%;
 }
-
-span {
-    color: black;
-    font-family: sans-serif
-}
-
-ul {
-    font-family: sans-serif;
-}
