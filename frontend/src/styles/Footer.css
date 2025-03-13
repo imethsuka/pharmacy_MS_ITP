@@ -1,0 +1,94 @@
+.App {
+    text-align: center;
+  }
+  .Footer {
+      padding-top: 2px;
+      padding-bottom: 1px;
+      background-color: #333;
+      color: #fff;
+      position: center;
+      padding-left: 100px;
+      padding-right: 100px;
+  }
+  .F-list td p {
+      
+      text-align: center;
+  }
+  table a {
+      text-decoration: none;
+  }
+  .s-btn {
+      font-size: 18px;
+      color: black;
+      background-color: white;
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      border-color: black;
+      border-style: line;
+      cursor: pointer;
+      border-radius: 10px;
+      position: center;
+      width: 400px;
+      height: 40px;
+  }
+  .List{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: lightblue;
+  
+  }
+  .SubList{
+    float: left;
+  }
+  .SubList a {
+    display: flex;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  
+  }
+  .SubList a:hover{
+    background-color: aqua;
+  }
+  .todo-list{
+  
+    background-color: white;
+    margin: auto;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #efefef;
+    box-shadow: 
+      0 1px 1px rgba(0, 0, 0, 0.15),
+      0 10px 0 -5px #eee,
+      0 10px 1px -4px rgba(0, 0, 0, 0.15),
+      0 10px 0 -10px #eee,
+      0 20px 1px -9px rgba(0, 0, 0, 0.15);
+    padding: 30px ;
+    padding-top: -10px;
+  }
+  
+  .todo-item{
+  
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 30px 20px 0;
+    width: 70%;
+    border-bottom: 1px solid #cecece;
+    font-family: roboto;
+    font-weight: 100;
+    font-size: 15px;
+    color: #333333;
+  }
+  input[type=checkbox]{
+    margin-right: 10px;
+  }
+  .img1{
+    height: 200px;
+    width: 240px;
+    padding: 20px 20px 20px 20px;
+  }

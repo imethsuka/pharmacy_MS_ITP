@@ -3,10 +3,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 24px; /* Reduced padding for a thinner header */
+  padding: 2px 24px; /* Reduced padding for a thinner header */
   background-color: #ffffff;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Softer shadow */
-  position: sticky;
+  /* position: sticky; */
   top: 0;
   z-index: 1000;
 }
@@ -122,6 +122,7 @@
   font-size: 14px; /* Smaller font size */
   font-weight: 500; /* Medium font weight */
   transition: background-color 0.3s ease;
+  /* align-items: center; */
 }
 
 .sign-in-button:hover {
