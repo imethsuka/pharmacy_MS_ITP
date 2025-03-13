@@ -2,7 +2,9 @@ import React from "react";
 import { FaSearch, FaSignOutAlt } from "react-icons/fa";
 import "../../styles/Inventory/Notifications.css"; // Import the external CSS file
 import Sidebar from "../../components/Inventory/Sidebar";
+
 import logo from '../../../public/Sethsiri_Favicon.svg';
+
 
 const Notifications = () => {
   return (

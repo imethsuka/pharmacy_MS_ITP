@@ -31,6 +31,7 @@ const App = () => {
       <Route path='/inventory/reports' element={<Reports />} />
       <Route path='/inventory/notifications' element={<Notifications />} />
 
+
     </Routes>
   );
 };
