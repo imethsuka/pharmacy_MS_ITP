@@ -1,10 +1,17 @@
 import React from "react";
 import { FaSearch, FaSignOutAlt } from "react-icons/fa";
+import { useHistory } from "react-router-dom"; // Import useHistory for navigation
 import "../../styles/Inventory/MedicineLists.css"; // Import the external CSS file
 import Sidebar from "../../components/Inventory/Sidebar";
 import logo from '../../assets/Sethsiri_Favicon.svg';
 
 const MedicineLists = () => {
+  const history = useHistory(); // Initialize useHistory
+
+  const handleAddMedicine = () => {
+    history.push('/addMedicines'); // Navigate to addMedicines page
+  };
+
   return (
     <>
       {/* Top Bar */}
@@ -32,6 +39,11 @@ const MedicineLists = () => {
 
         {/* Main Content */}
         <main className="main-content">
+          <div className="top-left">
+            <button className="add-medicine-btn" onClick={handleAddMedicine}>
+              Add Medicine
+            </button>
+          </div>
           <h2 className="dashboard-title">Medicine Lists</h2>
           <p className="dashboard-subtitle">A detailed list of all medicines.</p>
         </main>

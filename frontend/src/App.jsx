@@ -6,6 +6,9 @@ import CreateBook from './pages/CreateBooks';
 import ShowBook from './pages/ShowBook';
 import EditBook from './pages/EditBook';
 import DeleteBook from './pages/DeleteBook';
+//medicines
+
+import addMedicines from './pages/Inventory/addMedicines';
 
 // Import Inventory Pages
 import Dashboard from './pages/Inventory/Dashboard';
@@ -23,9 +26,14 @@ const App = () => {
       <Route path='/books/edit/:id' element={<EditBook />} />
       <Route path='/books/delete/:id' element={<DeleteBook />} />
 
+    
+
       {/* Inventory Pages */}
       <Route path='/inventory/dashboard' element={<Dashboard />} />
       <Route path='/inventory/medicinelists' element={<MedicineLists />} />
+      
+      <Route path='/inventory/addMedicines' element={<addMedicines />} />
+
       <Route path='/inventory/medicinegroups' element={<MedicineGroups />} />
       <Route path='/inventory/reports' element={<Reports />} />
       <Route path='/inventory/notifications' element={<Notifications />} />

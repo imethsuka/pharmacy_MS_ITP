@@ -86,4 +86,14 @@ body, html {
 .MedicineLists-subtitle {
     color: gray;
 }
-  
+
+.add-medicine-btn {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
