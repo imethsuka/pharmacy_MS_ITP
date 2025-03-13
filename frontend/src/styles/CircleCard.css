@@ -6,15 +6,21 @@
     margin: 10px;
 }
 
+h3 {
+    font-family: sans-serif;
+}
+
 .circle-image-container {
-    width: 150px; /* Adjust size as needed */
-    height: 150px; /* Adjust size as needed */
+    width: 180px; /* Adjust size as needed */
+    height: 180px; /* Adjust size as needed */
     border-radius: 50%; 
     overflow: hidden; 
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #f0f0f0; /* Optional: background color for the circle */
+    border-color: #616060;
+    border-style: solid;
 }
 
 .circle-image {

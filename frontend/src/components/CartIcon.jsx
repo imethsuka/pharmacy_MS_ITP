@@ -1,6 +1,6 @@
 import React from "react";
 import { FiShoppingCart } from "react-icons/fi";
-import "../styles/header.css";
+import "../styles/CartIcon.css";
 
 const CartIcon = () => {
   return (
