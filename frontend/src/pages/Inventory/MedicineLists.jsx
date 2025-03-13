@@ -1,15 +1,15 @@
 import React from "react";
 import { FaSearch, FaSignOutAlt } from "react-icons/fa";
-import { useHistory } from "react-router-dom"; // Import useHistory for navigation
+import { useNavigate } from "react-router-dom"; // Import useNavigate for navigation
 import "../../styles/Inventory/MedicineLists.css"; // Import the external CSS file
 import Sidebar from "../../components/Inventory/Sidebar";
 import logo from '../../assets/Sethsiri_Favicon.svg';
 
 const MedicineLists = () => {
-  const history = useHistory(); // Initialize useHistory
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const handleAddMedicine = () => {
-    history.push('/addMedicines'); // Navigate to addMedicines page
+    navigate('/inventory/addMedicines'); // Navigate to addMedicines page
   };
 
   return (

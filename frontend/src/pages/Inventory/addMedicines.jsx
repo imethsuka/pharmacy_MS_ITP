@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
 import '../../styles/Inventory/addMedicines.css' // Import the CSS file
 
-const CreateMedicine = () => {
+const addMedicines = () => {
   const [name, setName] = useState('');
   const [categoryId, setCategoryId] = useState('');
   const [description, setDescription] = useState('');
@@ -113,4 +113,4 @@ const CreateMedicine = () => {
   );
 };
 
-export default CreateMedicine;
+export default addMedicines;
