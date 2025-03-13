@@ -1,5 +1,5 @@
 import React from "react";
-import "./styles/DeliveryStatus.css";
+import  from "../../components/Inventory/Sidebar";
 
 const DeliveryStatus = () => {
   const deliveries = [
