@@ -14,6 +14,7 @@ import MedicineGroups from './pages/Inventory/MedicineGroups';
 import Reports from './pages/Inventory/Reports';
 import Notifications from './pages/Inventory/Notifications';
 
+
 const App = () => {
   return (
     <Routes>
@@ -29,6 +30,8 @@ const App = () => {
       <Route path='/inventory/medicinegroups' element={<MedicineGroups />} />
       <Route path='/inventory/reports' element={<Reports />} />
       <Route path='/inventory/notifications' element={<Notifications />} />
+
+
     </Routes>
   );
 };
