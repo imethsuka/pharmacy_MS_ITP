@@ -6,9 +6,8 @@ import CreateBook from './pages/CreateBooks';
 import ShowBook from './pages/ShowBook';
 import EditBook from './pages/EditBook';
 import DeleteBook from './pages/DeleteBook';
-import DeliveryStatus from './pages/DeliveryStatus';
-import SideBar from './pages/SideBar';
-import BarsV from './pages/BarsV';
+import DeliveryStatus from './pages/Delivery/DeliveryStatus';
+import FeedbackForm from './pages/Delivery/FeedbackForm'; 
 
 // Import Inventory Pages
 import Dashboard from './pages/Inventory/Dashboard';
@@ -23,8 +22,7 @@ const App = () => {
 
     <>
     <DeliveryStatus/>
-    <SideBar/>
-    <BarsV/>
+    <FeedbackForm/>
 
     <Routes>
       <Route path='/' element={<Home />} />

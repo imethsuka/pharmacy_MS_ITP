@@ -1,5 +1,5 @@
 import React from "react";
-import "./DeliveryStatus.css";
+import "./styles/DeliveryStatus.css";
 
 const DeliveryStatus = () => {
   const deliveries = [

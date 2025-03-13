@@ -1,5 +1,5 @@
 import React from "react";
-import "./FeedbackForm.css"; 
+import "./styles/FeedbackForm.css"; 
 import BarsV from "./BarsV"
 import SideBar from "./SideBar"
 
