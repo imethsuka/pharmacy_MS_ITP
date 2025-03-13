@@ -18,7 +18,7 @@ import Notifications from './pages/Inventory/Notifications';
 const App = () => {
   return (
     <Routes>
-      <Route path='/' element={<HomeOld />} />
+      <Route path='/' element={<Home />} />
       <Route path='/books/create' element={<CreateBook />} />
       <Route path='/books/details/:id' element={<ShowBook />} />
       <Route path='/books/edit/:id' element={<EditBook />} />
