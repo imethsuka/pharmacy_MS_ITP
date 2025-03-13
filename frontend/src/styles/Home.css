@@ -15,16 +15,25 @@
 
 .circle-card-container {
   display: flex;
-  justify-content: space-between; /* Adjust spacing between cards */
+  justify-content: center; /* Center the cards */
+  gap: 50px; /* Reduce space between cards */
   flex-wrap: wrap;
-  gap: 20px; /* Space between cards */
+  padding: 10px 0; /* Optional: Reduce vertical spacing */
 }
 
-.circle-card-container > .ProductCard {
+
+
+.circle-card-container > .CircleCard {
+  flex: 1 1 calc(18% - 10px); /* Make cards fit closer */
+  margin: 5px; /* Reduce margin for tighter spacing */
+  max-width: 150px; /* Adjust the size if needed */
+}
+
+
+.ProductCard {
   flex: 1 1 calc(25% - 20px); /* 4 cards per row with some margin */
   margin: 10px; /* Adjust margin as needed */
 }
-
 .product-card-container {
   display: flex;
   flex-wrap: wrap;

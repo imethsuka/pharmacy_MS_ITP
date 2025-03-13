@@ -24,23 +24,23 @@ const Home = () => {
       {/* Other content (e.g., CircleCard) */}
       <div className="circle-card-container">
         <CircleCard
-          imageUrl="https://www.viamodasalon.com/wp-content/uploads/2018/07/4clean-up7-1.jpg"
+          imageUrl="./src/assets/HomePage_assets/Women-Face-Care.webp"
           title="Circle Title"
         />
         <CircleCard
-          imageUrl="https://www.viamodasalon.com/wp-content/uploads/2018/07/4clean-up7-1.jpg"
+          imageUrl="./src/assets/HomePage_assets/vitamins-pills-190716.jpg"
           title="Circle Title 2"
         />
         <CircleCard
-          imageUrl="https://www.viamodasalon.com/wp-content/uploads/2018/07/4clean-up7-1.jpg"
+          imageUrl="./src/assets/HomePage_assets/medicine-pills.jpg"
           title="Circle Title 3"
         />
         <CircleCard
-          imageUrl="https://www.viamodasalon.com/wp-content/uploads/2018/07/4clean-up7-1.jpg"
+          imageUrl="./src/assets/HomePage_assets/Mother-Baby-Care.webp"
           title="Circle Title 4"
         />
         <CircleCard
-          imageUrl="https://www.viamodasalon.com/wp-content/uploads/2018/07/4clean-up7-1.jpg"
+          imageUrl="./src/assets/HomePage_assets/Medical-equipment.jpg"
           title="Circle Title 5"
         />
       </div>
