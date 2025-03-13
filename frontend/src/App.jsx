@@ -6,9 +6,6 @@ import CreateBook from './pages/CreateBooks';
 import ShowBook from './pages/ShowBook';
 import EditBook from './pages/EditBook';
 import DeleteBook from './pages/DeleteBook';
-//medicines
-
-import addMedicines from './pages/Inventory/addMedicines';
 
 // Import Inventory Pages
 import Dashboard from './pages/Inventory/Dashboard';
@@ -17,10 +14,13 @@ import MedicineGroups from './pages/Inventory/MedicineGroups';
 import Reports from './pages/Inventory/Reports';
 import Notifications from './pages/Inventory/Notifications';
 
+//medicines
+import addMedicines from './pages/Inventory/addMedicines';
+
 const App = () => {
   return (
     <Routes>
-      <Route path='/' element={<Home />} />
+      <Route path='/' element={<HomeOld />} />
       <Route path='/books/create' element={<CreateBook />} />
       <Route path='/books/details/:id' element={<ShowBook />} />
       <Route path='/books/edit/:id' element={<EditBook />} />
