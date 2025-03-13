@@ -35,6 +35,7 @@
     font-size: 3rem;
     font-weight: bold;
     line-height: 1.2;
+    margin-left: auto;
   }
   
   .hero .highlight {
