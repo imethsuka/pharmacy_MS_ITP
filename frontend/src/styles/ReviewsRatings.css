@@ -1,0 +1,47 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.reviews-ratings-container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.reviews-ratings-container h2, .reviews-ratings-container h3 {
+    text-align: center;
+    color: #333;
+}
+
+.review {
+    padding: 15px;
+    margin-bottom: 15px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.review .rating {
+    color: #ffcc00; /* Gold color for stars */
+}
+
+.review .title {
+    font-weight: bold;
+    color: #333;
+}
+
+.review .content {
+    margin: 10px 0;
+    color: #666;
+}
+
+.review .helpful {
+    color: #28a745; /* Green color */
+}
+
+.review .helpful:hover {
+    color: #218838; /* Darker green on hover */
+}

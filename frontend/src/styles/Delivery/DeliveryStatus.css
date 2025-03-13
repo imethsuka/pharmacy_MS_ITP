@@ -1,0 +1,45 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-left: 300px;
+  margin-top: -00px;
+  background-color: #bcd6ef;  /* Light blue background color */
+  border-radius: 8px; /* Rounded corners */
+  overflow: hidden; /* Ensures rounded corners apply properly */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for better appearance */
+}
+
+th, td {
+  border: 1px solid #9cbfd5; /* Light green border */
+  padding: 9px;
+  text-align: left;
+}
+
+th {
+  background-color: #9bb4d1; /* Slightly darker green for headers */
+  color: black;
+  font-weight: bold;
+}
+
+tr:hover {
+  background-color: #c8cfe6; /* Highlight row on hover */
+  
+}
+
+/* Text color styles */
+.color {
+  color: red;
+}
+
+.colorn {
+  color: rgb(95, 180, 130);
+}
+
+.colora {
+  color: blue;
+}
+
+/* Alternating row colors for better readability */
+tr:nth-child(even) {
+  background-color: #e9f2f8;
+}
