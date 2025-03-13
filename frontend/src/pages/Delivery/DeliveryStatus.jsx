@@ -1,108 +1,58 @@
-import './DeliveryStatus.css'
-import './BarsV.css'
+import React from "react";
+import "./DeliveryStatus.css";
 
-function DeliveryStatus() {
-  
+const DeliveryStatus = () => {
+  const deliveries = [
+    { name: "Name", id: "D06ID232435454", date: "01.01.2025", status: "Not Yet Collected" },
+    { name: "Name 1", id: "D06ID232435451", date: "01.01.2025", status: "Delivery in Progress" },
+    { name: "Name 2", id: "D06ID232435452", date: "01.01.2025", status: "Delivery Completed" },
+    { name: "Name 3", id: "D06ID232435450", date: "01.01.2025", status: "Not Yet Collected" },
+    { name: "Name 4", id: "D06ID232435455", date: "01.01.2025", status: "Not Yet Collected" },
+    { name: "Name 5", id: "D06ID232435456", date: "01.01.2025", status: "Delivery in Progress" },
+    { name: "Name 6", id: "D06ID232435457", date: "01.01.2025", status: "Delivery Completed" },
+    { name: "Name 7", id: "D06ID232435458", date: "01.01.2025", status: "Delivery Completed" },
+  ];
 
   return (
-    <>
-     <div>  
-     <div className="right-side">
-        {/* <button className="signout-btn">
-             Sign Out
-          </button> */}
+    <div className="dashboard-container">
+      <header className="topbar">
+        <h2>Sethsiri Pharmacy - Deliveries</h2><br/>        <div className="user-profile">
+          <span className="user-name">Hello, User</span>
+          {/* <button className="logout-btn">Sign Out</button> */}
         </div>
-      <table>
-        <tr>
-            <th>Customer Name</th>
-            <th>Prescription ID</th>
-            <th>Order Date</th>
-            <th>Status</th>
-            <th>Action</th>
-        </tr>
-        <tr>
-            <td>Name1</td>
-            <td>S1234</td>
-            <td>01.01.2025</td>
-            <td class="color">Not yet collected</td>
-            <td>View Full Detail</td>
-            
-        </tr>
-        <tr>
-            <td>Name2</td>
-            <td>S2341</td>
-            <td>01.01.2025</td>
-            <td class="colora">Delivery in progress</td>
-            <td>View Full Detail</td>
-        </tr>
-        <tr>
-            <td>Name3</td>
-            <td>S5436</td>
-            <td>01.01.2025</td>
-            <td class="colorn">Delivery Completed</td>
-            <td>View Full Detail</td>
-        </tr>
-        <tr>
-            <td>Name4</td>
-            <td>S2389</td>
-            <td>01.01.2025</td>
-            <td class="color">Not yet collected</td>
-            <td>View Full Detail</td>
-        </tr>
-        <tr>
-            <td>Name5</td>
-            <td>S2351</td>
-            <td>01.01.2025</td>
-            <td class="colorn">Delivery Completed</td>
-            <td>View Full Detail</td>
-        </tr>
-        <tr>
-            <td>Name6</td>
-            <td>S5678</td>
-            <td>01.01.2025</td>
-            <td class="color">Not yet collected</td>
-            <td>View Full Detail</td>
-        </tr>
-        <tr>
-            <td>Name7</td>
-            <td>S3452</td>
-            <td>01.01.2025</td>
-            <td class="colora">Delivery in progress</td>
-            <td>View Full Detail</td>
-        </tr>
-        <tr>
-            <td>Name8</td>
-            <td>S3451</td>
-            <td>01.01.2025</td>
-            <td class="colorn">Delivery Completed</td>
-            <td>View Full Detail</td>
-        </tr>
-        <tr>
-            <td>Name9</td>
-            <td>S6784</td>
-            <td>01.01.2025</td>
-            <td class="colorn">Delivery Completed</td>
-            <td>View Full Detail</td>
-        </tr>
-        <tr>
-            <td>Name10</td>
-            <td>S5678</td>
-            <td>01.01.2025</td>
-            <td class="colora">Delivery in progress</td>
-            <td>View Full Detail</td>
-        </tr>
-        <tr>
-            <td>Name11</td>
-            <td>S2446</td>
-            <td>01.01.2025</td>
-            <td class="colorn">Delivery Completed</td>
-            <td>View Full Detail</td>
-        </tr>
-    </table>
-       
-      </div>
-    </>
-  )
-}
+      </header>
+      <aside className="sidebar">
+        <h2>Sethsiri Pharmacy</h2>
+        <p>FedEx Delivery (Pvt) Ltd</p>
+        <button className="dashboard-btn">Dashboard</button>
+        <button className="history-btn">Delivery History</button>
+      </aside>
+      <main className="content">
+        <table className="delivery-table">
+          <thead>
+            <tr>
+              <th>Customer Name</th>
+              <th>Prescription ID</th>
+              <th>Order Date</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {deliveries.map((delivery, index) => (
+              <tr key={index}>
+                <td>{delivery.name}</td>
+                <td>{delivery.id}</td>
+                <td>{delivery.date}</td>
+                <td className={`status ${delivery.status.replace(/ /g, "-").toLowerCase()}`}>{delivery.status}</td>
+                <td><button className="detail-btn">View Full Detail</button></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </main>
+    </div>
+  );
+};
 
-export default DeliveryStatus
+export default DeliveryStatus;
