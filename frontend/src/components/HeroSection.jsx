@@ -6,8 +6,8 @@ const HeroSection = () => {
     <section className="hero">
       <div className="hero-overlay">
         <h1>
-          Health and Wellness <br />
-          <span className="highlight">for Everyone</span>
+          Health and Wellness <br/>for
+          <span className="highlight"> Everyone</span>
         </h1>
         <ul>
           <li>✔️ 20+ licensed pharmacists available 24/7</li>

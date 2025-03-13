@@ -2,11 +2,11 @@ import React from "react";
 import SearchBar from "./SearchBar";
 import CartIcon from "./CartIcon";
 import SignInButton from "./SignInButton";
-import "../styles/header.css";
+import "../styles/HeaderStripe.css";
 
 const HeaderStripe = () => {
   return (
-    <div className="header-container">
+    <header className="header-container">
       {/* Logo and Site Name */}
       <div className="logo-container">
         <img src="../public/Sethsiri_Favicon.svg" alt="Logo" className="logo" />
@@ -28,7 +28,7 @@ const HeaderStripe = () => {
         <CartIcon />
         <SignInButton />
       </div>
-    </div>
+    </header>
   );
 };
 
