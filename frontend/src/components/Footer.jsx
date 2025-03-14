@@ -1,100 +1,28 @@
 import React from "react";
+import { Link } from 'react-router-dom';
+import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa';
 import "../styles/Footer.css";
 import "../index.css";
-// import "@fortawesome/fontawesome-free/css/all.css";
-
 
 function Footer() {
   return (
     <footer className="Footer">
-      <center>
-        <table style={{ width: "100%", height: "20px" }}>
-          <tbody>
-            <tr className="F-list" style={{ height: "20px" }}>
-              <td>
-                <p style={{ fontSize: "15px" }}>LOCATION</p>
-              </td>
-              <td>
-                <p style={{ fontSize: "15px" }}>CONTACT US</p>
-              </td>
-              <td>
-                <p style={{ fontSize: "15px" }}>TERMS AND CONDITION</p>
-              </td>
-              <td>
-                <p style={{ fontSize: "15px" }}>STAY CONNECTED</p>
-              </td>
-            </tr>
-
-            <tr className="F-list" style={{ height: "20px" }}>
-              <td className="data1">
-                <a href="https://www.google.com/maps/dir//Malabe+sliit+location+google+map/@6.9119446,79.957354,13.75z/data=!4m9!4m8!1m1!4e2!1m5!1m1!1s0x3ae256db1a6771c5:0x2c63e344ab9a7536!2m2!1d79.9729445!2d6.9146775?entry=ttu">
-                  <p>
-                    <i className="fa-solid fa-location-dot" style={{ color: "white" }}></i>
-                  </p>
-                </a>
-              </td>
-              <td className="data">
-                <p style={{ fontSize: "12px" }}>0117544910</p>
-              </td>
-              <td className="data">
-                <a href="#" style={{ color: "white" }}>
-                  <p style={{ color: "white", fontSize: "12px" }}>Term of use</p>
-                </a>
-              </td>
-              <td>
-                <a href="https://www.facebook.com/sliit.lk">
-                  <p>
-                    <i className="fa-brands fa-facebook" style={{ color: "white" }}></i>
-                  </p>
-                </a>
-              </td>
-            </tr>
-
-            <tr className="F-list" style={{ height: "20px" }}>
-              <td></td>
-              <td className="data">
-                <a href="mailto:studentitservices@sliit.lk" style={{ color: "white" }}>
-                  <p style={{ color: "white", fontSize: "12px" }}>wellnesswise@gmail.com</p>
-                </a>
-              </td>
-              <td className="data">
-                <a href="#" style={{ color: "white" }}>
-                  <p style={{ color: "white", fontSize: "12px" }}>Privacy Policy</p>
-                </a>
-              </td>
-              <td>
-                <a href="https://www.instagram.com/sliit.life/">
-                  <p>
-                    <i className="fa-brands fa-instagram" style={{ color: "white" }}></i>
-                  </p>
-                </a>
-              </td>
-            </tr>
-
-            <tr className="F-list" style={{ height: "20px" }}>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td>
-                <a href="https://www.linkedin.com/school/sliit/">
-                  <p>
-                    <i className="fa-brands fa-linkedin" style={{ color: "white" }}></i>
-                  </p>
-                </a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-
-        <a href="#">
-          <p>
-            <input type="button" value="PROVIDE FEEDBACK" className="s-btn" />
-          </p>
-        </a>
-
-        <hr />
-        <h4>@2025 ALL RIGHTS RESERVED</h4>
-      </center>
+      <h4>Staff</h4>
+      <div className="footer-links">
+        <Link to="/customer-manager">Customer Manager</Link>
+        <Link to="/Inventory/Dashboard">Inventory Manager</Link>
+        <Link to="/pharmacist">Pharmacist</Link>
+        <Link to="/sd-manager">SD Manager</Link>
+        <Link to="/delivery-manager">Delivery Manager</Link>
+      </div>
+      <div className="footer-icons">
+        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer"><FaFacebook style={{ color: 'white' }} /></a>
+        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"><FaTwitter style={{ color: 'white' }} /></a>
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"><FaInstagram style={{ color: 'white' }} /></a>
+        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"><FaLinkedin style={{ color: 'white' }} /></a>
+      </div>
+      <button className="feedback-btn">PROVIDE FEEDBACK</button>
+      <h4 className="rights">@2025 ALL RIGHTS RESERVED</h4>
     </footer>
   );
 }
