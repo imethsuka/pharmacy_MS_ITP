@@ -1,5 +1,5 @@
 import React from "react";
-import '../../Styles/Delivery/NavBar.css'
+import '../../Styles/Delivery/NavBarV.css'
 import logo from '../../../public/Sethsiri_Favicon.svg';
 
 

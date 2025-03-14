@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../../styles/Delivery/DriverForm.css";
-import NavBar from "../../components/Delivery/NavBar";
+import NavBar from "../../components/Delivery/NavBarV";
 import SideBarV from "../../components/Delivery/SideBarV";
 
 const DriverForm = () => {
