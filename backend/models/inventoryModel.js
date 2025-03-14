@@ -11,7 +11,7 @@ const medicineSchema = mongoose.Schema(
       // ref: 'MedicineCategory',
       type: String,
       required: true,
-      unique: true
+      unique: true,
     },
     catergory: {
       type: String,
