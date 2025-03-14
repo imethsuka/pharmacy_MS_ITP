@@ -1,6 +1,6 @@
 /* Floating NavBar */
 .floating-navbar {
-    position: sticky;
+    position:sticky;
     top: 0; /* Stick to the top of the page */
     z-index: 1000; /* Ensure it stays above other content */
     margin-top: 6px; /* Adjust this value to create a small gap below HeaderStripe */

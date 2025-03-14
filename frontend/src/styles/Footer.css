@@ -1,15 +1,89 @@
 .App {
     text-align: center;
   }
+
+p {
+    font-size: 20px;
+    font-family: sans-serif;
+  }
+
+  h4 {
+    font-size: 10px;
+    font-family: sans-serif;
+  }
+
   .Footer {
-      padding-top: 2px;
-      padding-bottom: 1px;
+      padding: 20px;
       background-color: #333;
       color: #fff;
-      position: center;
-      padding-left: 100px;
-      padding-right: 100px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
   }
+
+  .Footer h4 {
+      font-size: 16px;
+      font-family: sans-serif;
+      margin-bottom: 5px;
+  }
+
+  .Footer .footer-links {
+      display: flex;
+      gap: 20px;
+  }
+
+  .Footer .footer-links a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 14px;
+      font-family: sans-serif;
+      transition: color 0.3s;
+  }
+
+  .Footer .footer-links a:hover {
+      color: #1e90ff;
+  }
+
+  .Footer .footer-icons {
+      display: flex;
+      gap: 15px;
+      margin-top: 10px;
+  }
+
+  .Footer .footer-icons i {
+      font-size: 20px;
+      color: #fff; /* Ensure icons are white */
+      transition: color 0.3s;
+  }
+
+  .Footer .footer-icons i:hover {
+      color: #1e90ff;
+  }
+
+  .Footer .rights {
+      font-size: 12px;
+      margin-top: 10px;
+  }
+
+  .Footer .feedback-btn {
+      font-size: 14px;
+      color: black;
+      background-color: white;
+      font-family: sans-serif;
+      border: 1px solid black;
+      cursor: pointer;
+      border-radius: 10px;
+      padding: 10px 20px;
+      margin-top: 10px;
+      transition: background-color 0.3s, color 0.3s;
+  }
+
+  .Footer .feedback-btn:hover {
+      background-color: #1e90ff;
+      color: white;
+  }
+
   .F-list td p {
       
       text-align: center;
@@ -21,7 +95,7 @@
       font-size: 18px;
       color: black;
       background-color: white;
-      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      font-family: sans-serif;
       border-color: black;
       border-style: line;
       cursor: pointer;

@@ -1,5 +1,6 @@
 .navbar {
-    position: absolute; /* Instead of sticky, so it can float over the hero */
+    position: absolute;
+     /* Instead of sticky, so it can float over the hero */
     top: 5px; /* Adjust as needed */
     left: 50%;
     transform: translateX(-50%);

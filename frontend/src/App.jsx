@@ -17,6 +17,7 @@ import Notifications from './pages/Inventory/Notifications';
 //medicines
 import AddMedicines from './pages/Inventory/addMedicines';
 
+
 const App = () => {
   return (
     <Routes>
@@ -37,6 +38,8 @@ const App = () => {
       <Route path='/inventory/medicinegroups' element={<MedicineGroups />} />
       <Route path='/inventory/reports' element={<Reports />} />
       <Route path='/inventory/notifications' element={<Notifications />} />
+
+
     </Routes>
   );
 };
