@@ -1,5 +1,6 @@
 import React from "react";
 import { FaSearch, FaSignOutAlt } from "react-icons/fa";
+import { useNavigate } from "react-router-dom"; // Import useNavigate for navigation
 import "../../styles/Inventory/MedicineLists.css"; // Import the external CSS file
 import Sidebar from "../../components/Inventory/Sidebar";
 
@@ -7,6 +8,12 @@ import logo from '../../../public/Sethsiri_Favicon.svg';
 
 
 const MedicineLists = () => {
+  const navigate = useNavigate(); // Initialize useNavigate
+
+  const handleAddMedicine = () => {
+    navigate('/inventory/addMedicines'); // Navigate to addMedicines page
+  };
+
   return (
     <>
       {/* Top Bar */}
@@ -34,6 +41,11 @@ const MedicineLists = () => {
 
         {/* Main Content */}
         <main className="main-content">
+          <div className="top-left">
+            <button className="add-medicine-btn" onClick={handleAddMedicine}>
+              Add Medicine
+            </button>
+          </div>
           <h2 className="dashboard-title">Medicine Lists</h2>
           <p className="dashboard-subtitle">A detailed list of all medicines.</p>
         </main>
