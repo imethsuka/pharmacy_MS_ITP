@@ -7,9 +7,11 @@ const medicineSchema = mongoose.Schema(
       required: true,
     },
     categoryId: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'MedicineCategory',
+      // type: mongoose.Schema.Types.ObjectId,
+      // ref: 'MedicineCategory',
+      type: String,
       required: true,
+      unique: true,
     },
     description: {
       type: String,
@@ -41,6 +43,12 @@ const medicineSchema = mongoose.Schema(
     },
     supplierEmail: {
       type: String,
+      validate: {
+        validator: function(v) {
+          return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+        },
+        message: props => `${props.value} is not a valid email!`
+      },
     },
     imageUrl: {
       type: String,
