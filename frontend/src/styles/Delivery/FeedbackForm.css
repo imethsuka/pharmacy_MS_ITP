@@ -1,62 +1,178 @@
+/* General Styles */
+body {
+  background: linear-gradient(to right, #a1c4fd, #c2e9fb);
+  font-family: "Arial", sans-serif;
+}
+
+/* Form Container */
 .form-container {
-    max-width: 500px;
-    margin-left: 550px;
-    padding: 20px;
-    background: #a4eff3;
-    border-radius: 8px;
-    box-shadow: 0 60px 120px rgba(0, 0, 0, 0.1);
-    margin-top: 90px;
-  }
-  
-  
-    .header {
-        display: flex;
-        flex-direction: column; /* Ensures items stack vertically */
-        align-items: center; /* Centers text */
-      }
-     
-  
-  
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  .form-group label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-  }
-  
-  .name-fields {
-    display: flex;
-    gap: 10px;
-  }
-  
-  .name-fields input {
-    flex: 1;
-  }
-  
-  input, button {
-    width: 100%;
-    padding: 8px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .rating {
-    display: flex;
-    gap: 10px;
-  }
-  
-  button {
-    background-color: rgb(29, 62, 193);
-    color: white;
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: rgb(29, 74, 91);
-  }
+  width: 40%;
+  margin: 40px auto;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  height: 60%;
+}
+
+.form-container:hover {
+  transform: scale(1.02);
+}
+
+/* Header Section */
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header h2 {
+  color: #333;
+  font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.header p {
+  color: #666;
+  font-size: 16px;
+  font-weight: normal;
+  margin-bottom: 20px;
+}
+
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Form Group */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #444;
+}
+
+/* Input Fields */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea {
+  width: 80%;
+  padding: 15px;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+textarea:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.4);
+}
+
+/* Name Fields */
+.name-fields {
+  display: flex;
+  gap: 12px;
+}
+
+.name-fields input {
+  flex: 1;
+}
+
+/* Rating Section */
+.rating {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+  align-items: center;
+}
+
+/* Hide default radio buttons */
+.rating input {
+  display: none;
+}
+
+/* Custom Styled Circular Rating Buttons */
+.rating label {
+  font-size: 20px;
+  font-weight: bold;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  border-radius: 50%;
+  background: #e0e0e0;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Arial", sans-serif;
+}
+
+/* Hover Effect */
+.rating label:hover {
+  background: #007bff;
+  color: white;
+}
+
+/* Checked Effect */
+.rating input:checked + label {
+  background: #007bff;
+  color: white;
+  box-shadow: 0 0 12px rgba(0, 123, 255, 0.6);
+  transform: scale(1.15);
+}
+
+/* Smoothly Space Ratings */
+.rating label:not(:last-child) {
+  margin-right: 10px;
+}
+/* Message Typing Column */
+textarea {
+  height: 50px;
+  resize: none;
+  border: 2px solid #ccc;
+  transition: all 0.3s ease;
+}
+
+/* Submit Button */
+button {
+  width: 100%;
+  padding: 14px;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  background: linear-gradient(to right, #007bff, #0056b3);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+  background: linear-gradient(to right, #0056b3, #003f7f);
+  transform: scale(1.05);
+}
+
+button:active {
+  transform: scale(0.98);
+}
+

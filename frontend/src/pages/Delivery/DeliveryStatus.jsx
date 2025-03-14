@@ -1,5 +1,7 @@
 import React from "react";
-import  from "../../components/Inventory/Sidebar";
+import "../../styles/Delivery/DeliveryStatus.css";
+import NavBar from "../../components/Delivery/NavBar";
+import SideBarV from "../../components/Delivery/SideBarV";
 
 const DeliveryStatus = () => {
   const deliveries = [
@@ -14,38 +16,40 @@ const DeliveryStatus = () => {
   ];
 
   return (
-    <div className="dashboard-container">
-      <header className="topbar">
-        <h2>Sethsiri Pharmacy - Deliveries</h2><br/>        <div className="user-profile">
-          <span className="user-name">Hello, User</span>
-          {/* <button className="logout-btn">Sign Out</button> */}
+    <div className="delivery-dashboard">
+      <header className="delivery-header">
+        <div className="delivery-user-profile">
+          <h2 className="delivery-title">Sethsiri Pharmacy - Deliveries</h2>
         </div>
-      </header>
-      <aside className="sidebar">
-        <h2>Sethsiri Pharmacy</h2>
-        <p>FedEx Delivery (Pvt) Ltd</p>
-        <button className="dashboard-btn">Dashboard</button>
-        <button className="history-btn">Delivery History</button>
-      </aside>
-      <main className="content">
+      </header> 
+
+      <NavBar />
+      <SideBarV />
+
+      <main className="delivery-content">
         <table className="delivery-table">
           <thead>
             <tr>
-              <th>Customer Name</th>
-              <th>Prescription ID</th>
-              <th>Order Date</th>
-              <th>Status</th>
-              <th>Action</th>
+              <th className="delivery-table-header">Customer Name</th>
+              <th className="delivery-table-header">Prescription ID</th>
+              <th className="delivery-table-header">Order Date</th>
+              <th className="delivery-table-header">Status</th>
+              <th className="delivery-table-header">Action</th>
             </tr>
           </thead>
           <tbody>
             {deliveries.map((delivery, index) => (
               <tr key={index}>
-                <td>{delivery.name}</td>
-                <td>{delivery.id}</td>
-                <td>{delivery.date}</td>
-                <td className={`status ${delivery.status.replace(/ /g, "-").toLowerCase()}`}>{delivery.status}</td>
-                <td><button className="detail-btn">View Full Detail</button></td>
+                <td className="delivery-table-data">{delivery.name}</td>
+                <td className="delivery-table-data">{delivery.id}</td>
+                <td className="delivery-table-data">{delivery.date}</td>
+                <td className={`delivery-status status-${delivery.status.replace(/ /g, "-").toLowerCase()}`}>
+
+                  {delivery.status}
+                </td>
+                <td className="delivery-table-data">
+                  <button className="delivery-detail-btn">View Full Detail</button>
+                </td>
               </tr>
             ))}
           </tbody>

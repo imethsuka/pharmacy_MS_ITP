@@ -1,0 +1,120 @@
+/* Page Layout */
+.page-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background: linear-gradient(to right, #cce5ff, #f0f8ff);
+}
+
+.content-wrapper {
+    display: flex;
+    flex: 1;
+}
+
+/* Main Drivers Container */
+.drivers-container {
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Page Title */
+h2 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Form Styling */
+.driver-form {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.driver-form input,
+.driver-form select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 200px;
+}
+
+.driver-form button {
+    padding: 10px 15px;
+    background-color: #43ce63;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.driver-form button:hover {
+    background-color: #218838;
+}
+
+/* Table Styling */
+.table-container {
+    width: 80%;
+    margin: auto;
+    overflow-x: auto;
+}
+
+.drivers-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.Driver-headerV.Driver-header {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+}
+
+.Driver-header {
+    background-color: #007bff;
+    color: white;
+}
+
+/* Status Colors */
+.status-active {
+    color: #28a745;
+    font-weight: bold;
+}
+
+.status-inactive {
+    color: red;
+    font-weight: bold;
+}
+
+/* Buttons */
+button {
+    padding: 8px 12px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    color: white;
+}
+
+.deactivate-btn {
+    background-color: red;
+}
+
+.deactivate-btn:hover {
+    background-color: darkred;
+}
+
+.activate-btn {
+    background-color: green;
+}
+
+.activate-btn:hover {
+    background-color: darkgreen;
+}

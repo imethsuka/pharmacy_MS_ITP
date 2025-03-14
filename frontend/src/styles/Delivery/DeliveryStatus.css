@@ -1,45 +1,156 @@
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-left: 300px;
-  margin-top: -00px;
-  background-color: #bcd6ef;  /* Light blue background color */
-  border-radius: 8px; /* Rounded corners */
-  overflow: hidden; /* Ensures rounded corners apply properly */
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for better appearance */
+/* General Styles */
+.delivery-body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #d9e8d6;
 }
 
-th, td {
-  border: 1px solid #9cbfd5; /* Light green border */
-  padding: 9px;
-  text-align: left;
+/* Dashboard Layout */
+.delivery-dashboard {
+  display: flex;
+  height: 100vh;
 }
 
-th {
-  background-color: #9bb4d1; /* Slightly darker green for headers */
-  color: black;
+/* Sidebar */
+.delivery-sidebar {
+  width: 300px;
+  background: #364b61;
+  color: #8adbd0;
+  padding: 50px;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.delivery-logo {
+  font-size: 22px;
   font-weight: bold;
 }
 
-tr:hover {
-  background-color: #c8cfe6; /* Highlight row on hover */
-  
+.delivery-subtext {
+  font-size: 14px;
+  color: lightgray;
 }
 
-/* Text color styles */
-.color {
-  color: red;
+.delivery-menu-button {
+  background: #16a085;
+  color: white;
+  border: none;
+  padding: 12px;
+  width: 100%;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-.colorn {
-  color: rgb(95, 180, 130);
+.delivery-menu-button:hover {
+  background: #138a72;
 }
 
-.colora {
-  color: blue;
+/* Content */
+.delivery-content {
+  flex: 1;
+  padding: 50px;
+  margin-right: 50px;
 }
 
-/* Alternating row colors for better readability */
-tr:nth-child(even) {
-  background-color: #e9f2f8;
+/* Header */
+.delivery-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 100px;
+  border-radius: 8px;
+}
+
+.delivery-search-filter {
+  display: flex;
+  gap: 10px;
+}
+
+.delivery-search-input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 200px;
+}
+
+.delivery-filter-button {
+  background: #3498db;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Table */
+.delivery-table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 8px;
+  overflow-x: auto;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.delivery-table-header, .delivery-table-data {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+}
+
+.delivery-table-header {
+  padding: 10px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.delivery-status {
+  font-weight: bold;
+  padding: 5px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+/* Status Colors */
+.status-not-yet-collected {
+  background: #f39c12;
+  color: white;
+}
+
+.status-delivery-in-progress {
+  background: #3498db;
+  color: white;
+}
+
+.status-delivery-completed {
+  background: #2ecc71;
+  color: white;
+}
+
+/* Detail Button */
+.delivery-detail-btn {
+  background: #2980b9;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.delivery-detail-btn:hover {
+  background: #1f6690;
+}
+
+.delivery-title {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.delivery-buttons {
+  gap: 20px;
 }
