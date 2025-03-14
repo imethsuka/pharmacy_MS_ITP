@@ -11,7 +11,8 @@ const medicineSchema = mongoose.Schema(
       // ref: 'MedicineCategory',
       type: String,
       required: true,
-      unique: true
+      unique: true,
+      default: () => `MED-${Date.now()}`
     },
     catergory: {
       type: String,
