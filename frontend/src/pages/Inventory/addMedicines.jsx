@@ -41,8 +41,7 @@ const addMedicines = () => {
       imageUrl,
     };
     setLoading(true);
-    axios
-      .post('http://localhost:5555/medicines', data)
+    axios.post('http://localhost:5555/medicines', data)
       .then(() => {
         setLoading(false);
         enqueueSnackbar('Medicine added successfully', { variant: 'success' });

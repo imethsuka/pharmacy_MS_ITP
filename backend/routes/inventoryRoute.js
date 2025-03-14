@@ -23,7 +23,7 @@ router.post('/', async (request, response) => {
 
     ) {
       return response.status(400).send({
-        message: 'Send all required fields: name, productId, catergory, description, howToUse, sideEffects, price, stock, reorderLevel, batchExpiry, requiresPrescription, supplierEmail, imageUrl',
+        message: 'Send all required fields: name, productId, catergory, description, howToUse, sideEffects, price, stock, reorderLevel, batchExpiry, requiresPrescription, supplierEmail, imageUrl'
       });
     }
     const newMedicine = {
