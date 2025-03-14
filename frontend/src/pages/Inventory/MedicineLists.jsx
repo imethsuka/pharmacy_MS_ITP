@@ -3,7 +3,9 @@ import { FaSearch, FaSignOutAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom"; // Import useNavigate for navigation
 import "../../styles/Inventory/MedicineLists.css"; // Import the external CSS file
 import Sidebar from "../../components/Inventory/Sidebar";
-import logo from '../../assets/Sethsiri_Favicon.svg';
+
+import logo from '../../../public/Sethsiri_Favicon.svg';
+
 
 const MedicineLists = () => {
   const navigate = useNavigate(); // Initialize useNavigate
