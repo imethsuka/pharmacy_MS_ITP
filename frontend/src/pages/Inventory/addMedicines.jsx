@@ -8,7 +8,8 @@ import '../../styles/Inventory/addMedicines.css' // Import the CSS file
 
 const addMedicines = () => {
   const [name, setName] = useState('');
-  const [categoryId, setCategoryId] = useState('');
+  const [productId, setProductId] = useState('');
+  const [catergory, setCatergory] = useState('');
   const [description, setDescription] = useState('');
   const [howToUse, setHowToUse] = useState('');
   const [sideEffects, setSideEffects] = useState('');
@@ -26,7 +27,8 @@ const addMedicines = () => {
   const handleSaveMedicine = () => {
     const data = {
       name,
-      categoryId,
+      productId,
+      catergory,
       description,
       howToUse,
       sideEffects,
@@ -64,8 +66,12 @@ const addMedicines = () => {
           <input type="text" value={name} onChange={(e) => setName(e.target.value)} className="form-input" />
         </div>
         <div className="form-group">
-          <label className="form-label">Category ID</label>
-          <input type="text" value={categoryId} onChange={(e) => setCategoryId(e.target.value)} className="form-input" />
+          <label className="form-label">Product ID</label>
+          <input type="text" value={productId} onChange={(e) => setProductId(e.target.value)} className="form-input" />
+        </div>
+        <div className="form-group">
+          <label className="form-label">Catergory</label>
+          <input type="text" value={catergory} onChange={(e) => setCatergory(e.target.value)} className="form-input" />
         </div>
         <div className="form-group">
           <label className="form-label">Description</label>

@@ -6,12 +6,16 @@ const medicineSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    categoryId: {
+    productId: {
       // type: mongoose.Schema.Types.ObjectId,
       // ref: 'MedicineCategory',
       type: String,
       required: true,
-      unique: true,
+      unique: true
+    },
+    catergory: {
+      type: String,
+      required: true,
     },
     description: {
       type: String,
@@ -40,6 +44,7 @@ const medicineSchema = mongoose.Schema(
     requiresPrescription: {
       type: Boolean,
       default: false,
+      //required: false,
     },
     supplierEmail: {
       type: String,

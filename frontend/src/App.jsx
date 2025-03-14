@@ -15,7 +15,7 @@ import Reports from './pages/Inventory/Reports';
 import Notifications from './pages/Inventory/Notifications';
 
 //medicines
-import AddMedicines from './pages/Inventory/AddMedicines';
+import AddMedicines from './pages/Inventory/addMedicines';
 
 const App = () => {
   return (

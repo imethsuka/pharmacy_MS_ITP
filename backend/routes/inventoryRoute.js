@@ -8,7 +8,8 @@ router.post('/', async (request, response) => {
   try {
     if (
       !request.body.name ||
-      !request.body.categoryId ||
+      !request.body.productId ||
+      !request.body.catergory ||
       !request.body.description ||
       !request.body.howToUse ||
       !request.body.sideEffects ||
@@ -22,12 +23,13 @@ router.post('/', async (request, response) => {
 
     ) {
       return response.status(400).send({
-        message: 'Send all required fields: name, categoryId, description, howToUse, sideEffects, price, stock, reorderLevel, batchExpiry, requiresPrescription, supplierEmail, imageUrl',
+        message: 'Send all required fields: name, productId, catergory, description, howToUse, sideEffects, price, stock, reorderLevel, batchExpiry, requiresPrescription, supplierEmail, imageUrl',
       });
     }
     const newMedicine = {
       name: request.body.name,
-      categoryId: request.body.categoryId,
+      productId: request.body.productId,
+      catergory: request.body.catergory,
       description: request.body.description,
       howToUse: request.body.howToUse,
       sideEffects: request.body.sideEffects,
@@ -83,7 +85,8 @@ router.put('/:id', async (request, response) => {
   try {
     if (
       !request.body.name ||
-      !request.body.categoryId ||
+      !request.body.productId ||
+      !request.body.catergory ||
       !request.body.description ||
       !request.body.howToUse ||
       !request.body.sideEffects ||
@@ -97,7 +100,7 @@ router.put('/:id', async (request, response) => {
 
     ) {
       return response.status(400).send({
-        message: 'Send all required fields: name, categoryId, description, howToUse, sideEffects, price, stock, reorderLevel, batchExpiry, requiresPrescription, supplierEmail, imageUrl',
+        message: 'Send all required fields: name, productId, catergory, description, howToUse, sideEffects, price, stock, reorderLevel, batchExpiry, requiresPrescription, supplierEmail, imageUrl',
       });
     }
 
