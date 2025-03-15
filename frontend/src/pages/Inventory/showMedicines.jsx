@@ -3,9 +3,9 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import BackButton from '../../components/BackButton';
 import Spinner from '../../components/Spinner';
-import '../styles/Inventory/showMedicines.css'; // Import the CSS file
+import '../../styles/Inventory/showMedicines.css'; // Import the CSS file
 
-const showMedicines = () => {
+const ShowMedicines = () => {
   const [medicine, setMedicine] = useState({});
   const [loading, setLoading] = useState(false);
   const { id } = useParams();
@@ -15,7 +15,7 @@ const showMedicines = () => {
     axios
       .get(`http://localhost:5555/medicines/${id}`)
       .then((response) => {
-        setBook(response.data);
+        setMedicine(response.data);
         setLoading(false);
       })
       .catch((error) => {
@@ -27,7 +27,7 @@ const showMedicines = () => {
   return (
     <div className="show-medicine-container">
       <BackButton />
-      <h1 className="show-medicine-title">Show Book</h1>
+      <h1 className="show-medicine-title">Show Medicine</h1>
       {loading ? (
         <Spinner />
       ) : (
@@ -78,7 +78,7 @@ const showMedicines = () => {
           </div>
           <div className="detail-item">
             <span className="detail-label">Required Prescription</span>
-            <span className="detail-value">{medicine.requiresPrescription}</span>
+            <span className="detail-value">{medicine.requiresPrescription ? 'Yes' : 'No'}</span>
           </div>
           <div className="detail-item">
             <span className="detail-label">Supplier Email</span>
@@ -102,4 +102,4 @@ const showMedicines = () => {
   );
 };
 
-export default showMedicines;
+export default ShowMedicines;
