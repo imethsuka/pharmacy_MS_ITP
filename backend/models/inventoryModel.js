@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-import { required } from 'yargs';
 
 const medicineSchema = mongoose.Schema(
   {
@@ -49,7 +48,7 @@ const medicineSchema = mongoose.Schema(
     requiresPrescription: {
       type: Boolean,
       default: false,
-      required: false,
+      //required: false,
     },
     supplierEmail: {
       type: String,
