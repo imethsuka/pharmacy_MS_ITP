@@ -1,9 +1,9 @@
 import React from "react";
 import { FiShoppingCart } from "react-icons/fi";
 import { HiOutlineChevronRight } from "react-icons/hi";
-import "../styles/ProductCard.css";
+import "./ProductCard.css";
 
-const ProductCard = ({ image, name, price, onAddToCart, onMoreInfo }) => {
+const ProductCard = ({ image, name, price, requiresPrescription, onAddToCart, onMoreInfo }) => {
   return (
     <div className="product-card">
       {/* Product Image */}
