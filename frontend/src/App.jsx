@@ -17,6 +17,13 @@ import Notifications from './pages/Inventory/Notifications';
 //medicines
 import AddMedicines from './pages/Inventory/addMedicines';
 
+//Pharmasist
+import PDashboard from './pages/Prescription/PDashboard.jsx';
+import Prescriptions from './pages/Prescription/Prescriptions.jsx';
+import Verified from './pages/Prescription/Verified.jsx';
+import Rejected from './pages/Prescription/Rejected.jsx';
+import Pending from './pages/Prescription/Pending.jsx';
+
 
 const App = () => {
   return (
@@ -38,6 +45,13 @@ const App = () => {
       <Route path='/inventory/medicinegroups' element={<MedicineGroups />} />
       <Route path='/inventory/reports' element={<Reports />} />
       <Route path='/inventory/notifications' element={<Notifications />} />
+
+      <Route path='/Prescription/pdashboard' element={<PDashboard />} />
+      <Route path='/Prescription/prescriptions' element={<Prescriptions />} />
+      <Route path='/Prescription/pending' element={<Pending />} />
+      <Route path='/Prescription/verified' element={<Verified />} />
+      <Route path='/Prescription/rejected' element={<Rejected />} />
+
 
 
     </Routes>

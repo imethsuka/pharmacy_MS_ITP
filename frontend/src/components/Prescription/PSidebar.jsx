@@ -1,58 +1,77 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { FaUserCircle } from "react-icons/fa";
-import { Link, useLocation } from "react-router-dom"; // Import useLocation
-import "../../styles/Inventory/Sidebar.css";
+import { Link, useLocation } from "react-router-dom";
+import "../../styles/Prescription/PSidebar.css";
 
 const Sidebar = () => {
-  const location = useLocation(); // Get the current location
+  const location = useLocation();
+  const [profile, setProfile] = useState({ name: "Imeth", role: "Pharmasist" });
 
   // Function to check if a link is active
   const isActive = (path) => {
     return location.pathname === path;
   };
 
+  // Fetch profile data from the backend
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const response = await fetch("/api/profile/your-user-id"); // Replace with the actual user ID
+        if (!response.ok) {
+          throw new Error("Failed to fetch profile data");
+        }
+        const data = await response.json();
+        setProfile({ name: data.name, role: data.role });
+      } catch (error) {
+        console.error("Error fetching profile data:", error);
+      }
+    };
+
+    fetchProfile();
+  }, []); // Empty dependency array ensures this runs only once on mount
+
   return (
     <aside className="sidebar">
-      <div>
+      <div className="sidebar-content">
         <div className="profile-section">
           <div className="profile-pic">
             <FaUserCircle size={50} color="#374151" />
           </div>
-          <div>
-            <p className="profile-name">Dehemi</p>
-            <p className="profile-role">Inventory Manager</p>
+          <div className="profile-info">
+            <p className="profile-name">{profile.name}</p>
+            <p className="profile-role">{profile.role}</p>
           </div>
         </div>
         <nav className="sidebar-nav">
           <Link
-            to="/inventory/dashboard"
-            className={isActive("/inventory/dashboard") ? "active" : ""}
+            to="/Prescription/PDashboard"
+            className={isActive("/Prescription/PDashboard") ? "active" : ""}
           >
             Dashboard
           </Link>
           <Link
-            to="/inventory/MedicineLists"
-            className={isActive("/inventory/MedicineLists") ? "active" : ""}
+            to="/Prescription/Prescriptions"
+            className={isActive("/Prescription/Prescriptions") ? "active" : ""}
           >
-            Medicines List
+            Prescriptions
           </Link>
           <Link
-            to="/inventory/MedicineGroups"
-            className={isActive("/inventory/MedicineGroups") ? "active" : ""}
+            to="/Prescription/Pending"
+            className={isActive("/Prescription/Pending") ? "active" : ""}
           >
-            Medicines Group
+            Pending
           </Link>
           <Link
-            to="/inventory/reports"
-            className={isActive("/inventory/reports") ? "active" : ""}
+            to="/Prescription/Verified"
+            className={isActive("/Prescription/Verified") ? "active" : ""}
           >
-            Reports
+            Verified Prescriptions
           </Link>
           <Link
-            to="/inventory/notifications"
-            className={isActive("/inventory/notifications") ? "active" : ""}
+            to="/Prescription/Rejected"
+            className={isActive("/Prescription/Rejected") ? "active" : ""}
           >
-            Notifications <span className="notification-badge">1</span>
+            Rejected Prescriptions
           </Link>
         </nav>
         <p className="footer-text">Powered by ITP 2025</p>
@@ -61,4 +80,4 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;
+export default Sidebar; 
