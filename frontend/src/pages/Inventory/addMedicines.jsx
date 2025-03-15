@@ -9,7 +9,7 @@ import '../../styles/Inventory/addMedicines.css' // Import the CSS file
 const addMedicines = () => {
   const [name, setName] = useState('');
   const [productId, setProductId] = useState('');
-  const [catergory, setCatergory] = useState('');
+  const [category, setCategory] = useState('');
   const [description, setDescription] = useState('');
   const [howToUse, setHowToUse] = useState('');
   const [sideEffects, setSideEffects] = useState('');
@@ -28,7 +28,7 @@ const addMedicines = () => {
     const data = {
       name,
       productId,
-      catergory,
+      category,
       description,
       howToUse,
       sideEffects,
@@ -41,8 +41,7 @@ const addMedicines = () => {
       imageUrl,
     };
     setLoading(true);
-    axios
-      .post('http://localhost:5555/medicines', data)
+    axios.post('http://localhost:5555/medicines', data)
       .then(() => {
         setLoading(false);
         enqueueSnackbar('Medicine added successfully', { variant: 'success' });
@@ -70,8 +69,8 @@ const addMedicines = () => {
           <input type="text" value={productId} onChange={(e) => setProductId(e.target.value)} className="form-input" />
         </div>
         <div className="form-group">
-          <label className="form-label">Catergory</label>
-          <input type="text" value={catergory} onChange={(e) => setCatergory(e.target.value)} className="form-input" />
+          <label className="form-label">Category</label>
+          <input type="text" value={category} onChange={(e) => setCategory(e.target.value)} className="form-input" />
         </div>
         <div className="form-group">
           <label className="form-label">Description</label>

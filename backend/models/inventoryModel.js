@@ -11,20 +11,23 @@ const medicineSchema = mongoose.Schema(
       // ref: 'MedicineCategory',
       type: String,
       required: true,
-      unique: true
+      unique: true,
     },
-    catergory: {
+    category: {
       type: String,
       required: true,
     },
     description: {
       type: String,
+      required: true,
     },
     howToUse: {
       type: String,
+      required: true,
     },
     sideEffects: {
       type: String,
+      required: true,
     },
     price: {
       type: Number,
@@ -36,6 +39,7 @@ const medicineSchema = mongoose.Schema(
     },
     reorderLevel: {
       type: Number,
+      required: true,
     },
     batchExpiry: {
       type: Date,
@@ -48,6 +52,7 @@ const medicineSchema = mongoose.Schema(
     },
     supplierEmail: {
       type: String,
+      required: true,
       validate: {
         validator: function(v) {
           return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
@@ -57,6 +62,7 @@ const medicineSchema = mongoose.Schema(
     },
     imageUrl: {
       type: String,
+      required: true,
     },
   },
   {

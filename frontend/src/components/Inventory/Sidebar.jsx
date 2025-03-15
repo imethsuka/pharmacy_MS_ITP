@@ -25,8 +25,8 @@ const Sidebar = () => {
         </div>
         <nav className="sidebar-nav">
           <Link
-            to="/inventory/dashboard"
-            className={isActive("/inventory/dashboard") ? "active" : ""}
+            to="/Inventory/Dashboard"
+            className={isActive("/Inventory/Dashboard") ? "active" : ""}
           >
             Dashboard
           </Link>
