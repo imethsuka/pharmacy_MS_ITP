@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import HeaderStripe from "../../components/HeaderStripe";
-import AddPSidebar from "../../components/Prescription/PSidebar";
+import PSidebar from "../../components/Prescription/PSidebar";
 import {
   Table,
   TableBody,
@@ -61,7 +61,7 @@ const PendingPrescriptionsPage = () => {
     <div className="pdashboard-container">
       <HeaderStripe />
       <div className="pdashboard-content">
-        <AddPSidebar />
+        <PSidebar />
         <div className="pdashboard-main">
           <h1 style={{ marginBottom: "20px", color: "#1f2937" }}>Pending Prescriptions</h1>
           <TableContainer component={Paper} sx={{ boxShadow: 3 }}>
