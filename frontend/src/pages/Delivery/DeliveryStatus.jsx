@@ -31,35 +31,7 @@ const DeliveryStatus = () => {
       {/* <NavBarV /> */}
       <SideBarV />
 
-      <main className="delivery-content">
-        <table className="delivery-table">
-          <thead>
-            <tr>
-              <th className="delivery-table-header">Customer Name</th>
-              <th className="delivery-table-header">Prescription ID</th>
-              <th className="delivery-table-header">Order Date</th>
-              <th className="delivery-table-header">Status</th>
-              <th className="delivery-table-header">Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {deliveries.map((delivery, index) => (
-              <tr key={index}>
-                <td className="delivery-table-data">{delivery.name}</td>
-                <td className="delivery-table-data">{delivery.id}</td>
-                <td className="delivery-table-data">{delivery.date}</td>
-                <td className={`delivery-status status-${delivery.status.replace(/ /g, "-").toLowerCase()}`}>
-
-                  {delivery.status}
-                </td>
-                <td className="delivery-table-data">
-                  <button className="delivery-detail-btn">View Full Detail</button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </main> 
+      
     </div>
     
   );

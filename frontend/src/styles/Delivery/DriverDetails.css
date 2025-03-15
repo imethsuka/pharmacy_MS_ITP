@@ -81,7 +81,7 @@
   /* top: 400px; */
   right: 10px;
   padding:10px 20px;
-  background-color: red;
+  background-color: rgb(153, 38, 39);
   color: white;
   border: none;
   border-radius: 5px;
@@ -89,7 +89,7 @@
 }
 
 .add-driver-button:hover {
-  background-color: darkred;
+  background-color: rgb(5, 59, 124);
 }
 
 /* Responsive Styling */

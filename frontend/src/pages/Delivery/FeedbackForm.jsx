@@ -4,15 +4,23 @@ import NavBarV from "../../components/Delivery/NavBarV";
 import SideBarV from "../../components/Delivery/SideBarV";
 
 const FeedbackForm = () => {
+ 
+
   return (
-    <div className="feedback-page">
-      {/* <NavBarV /> */}
-      <div className="content">
-        <SideBarV />
-        <div>
-        <div className="feedback-container">
+    
+    <div className="Feedback-delivery-dashboard">
+       <div className="navV">
+         <NavBarV />
+        </div>
+  
+      <div className="delivery-user-profile">
+      
+          
+        </div>
+   
+      <div className="feedback-container">
           <h2>Feedback Form</h2>
-          <form>
+          <form method="POST" action="/feedback">
             <label htmlFor="name">Name:</label>
             <input type="text" id="name" name="name" required />
 
@@ -25,11 +33,10 @@ const FeedbackForm = () => {
             <button type="submit">Submit</button>
           </form>
         </div>
-        </div>
-      </div>
+        
     </div>
+    
   );
 };
 
 export default FeedbackForm;
-
