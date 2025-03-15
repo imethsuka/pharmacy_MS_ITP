@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const prescriptionSchema = new mongoose.Schema({
   filePath: {
@@ -7,4 +7,4 @@ const prescriptionSchema = new mongoose.Schema({
   },
 });
 
-export default mongoose.model("Prescription", prescriptionSchema);
+export default mongoose.model('Prescription', prescriptionSchema);
