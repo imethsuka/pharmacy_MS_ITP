@@ -1,6 +1,6 @@
 import React from "react";
 import "../../styles/Delivery/DeliveryStatus.css";
-import NavBar from "../../components/Delivery/NavBarV";
+import NavBarV from "../../components/Delivery/NavBarV";
 import SideBarV from "../../components/Delivery/SideBarV";
 
 const DeliveryStatus = () => {
@@ -17,13 +17,18 @@ const DeliveryStatus = () => {
 
   return (
     <div className="delivery-dashboard">
-      <header className="delivery-header">
-        <div className="delivery-user-profile">
+       <NavBarV />
+  
+       <div>
+         <SideBarV />
+       
+       </div>
+      <div className="delivery-user-profile">
           <h2 className="delivery-title">Sethsiri Pharmacy - Deliveries</h2>
         </div>
-      </header> 
+      
 
-      <NavBar />
+      {/* <NavBarV /> */}
       <SideBarV />
 
       <main className="delivery-content">
@@ -54,8 +59,9 @@ const DeliveryStatus = () => {
             ))}
           </tbody>
         </table>
-      </main>
+      </main> 
     </div>
+    
   );
 };
 

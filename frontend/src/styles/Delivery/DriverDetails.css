@@ -10,6 +10,7 @@
   padding: 165px;
   font-family: Arial, sans-serif;
   overflow: hidden;
+  /* position: ; */
   /* position:relative; */
 }
 
@@ -73,6 +74,22 @@
 .busy {
   color: red;
   font-weight: bold;
+}
+
+.add-driver-button {
+  position: absolute;
+  /* top: 400px; */
+  right: 10px;
+  padding:10px 20px;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-driver-button:hover {
+  background-color: darkred;
 }
 
 /* Responsive Styling */

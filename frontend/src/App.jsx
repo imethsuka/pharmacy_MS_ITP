@@ -1,7 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
-// import HomeOld from './pages/HomeOld';
+ import Home from './pages/Home';
+import HomeOld from './pages/HomeOld';
 import CreateBook from './pages/CreateBooks';
 import ShowBook from './pages/ShowBook';
 import EditBook from './pages/EditBook';
@@ -10,6 +10,7 @@ import DeliveryStatus from './pages/Delivery/DeliveryStatus';
 import FeedbackForm from './pages/Delivery/FeedbackForm'; 
 import DeliveryHistory from './pages/Delivery/DeliveryHistory';
 import DriverForm from './pages/Delivery/DriverForm';
+import DriverDetails from './pages/Delivery/DriverDetails';
 
 // Import Inventory Pages
 import Dashboard from './pages/Inventory/Dashboard';
@@ -26,7 +27,7 @@ const App = () => {
   
 
     <Routes>
-      <Route path='/' element={<Home/>} />
+      <Route path='/' element={<HomeOld/>} />
       <Route path='/books/create' element={<CreateBook />} />
       <Route path='/books/details/:id' element={<ShowBook />} />
       <Route path='/books/edit/:id' element={<EditBook />} />
@@ -43,7 +44,8 @@ const App = () => {
       <Route path='/delivery/deliverystatus' element={<DeliveryStatus />} />
       <Route path='/delivery/feedbackform' element={<FeedbackForm />} />
       <Route path='/delivery/deliveryhistory' element={<DeliveryHistory />} />
-      <Route path='/delivery/driverform' element={<DriverForm />} />
+      <Route path='/delivery/driverform' element={<DriverForm />} /> 
+      <Route path='/delivery/driverdetails' element={<DriverDetails />} />
 
       
     </Routes>

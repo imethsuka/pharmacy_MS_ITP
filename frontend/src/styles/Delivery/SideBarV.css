@@ -1,75 +1,82 @@
-.sidebar {
-    width: 250px;
-    height: 100vh;
-    background-color: #1e2d3b;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 20px 10px;
-    color: white;
-  }
-  
-  .profile-section {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-  }
-  
-  .avatar {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin-right: 10px;
-  }
-  
-  .profile-info {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .company-name {
-    font-size: 14px;
-    font-weight: bold;
-    color: #b4a26b;
-    margin-right: 5px;
-  }
-  
-  .role {
-    font-size: 12px;
-    color: #ffc107;
-  }
-  
-  .nav-items {
-    flex-grow: 1;
-    margin-top: 20px;
-  }
-  
-  .nav-item {
-    display: flex;
-    align-items: center;
-    padding: 12px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background 0.3s;
-    border-radius: 5px;
-  }
-  
-  .nav-item .icon {
-    margin-right: 10px;
-    font-size: 18px;
-  }
-  
-  .nav-item.active {
-    background-color: #008080;
-  }
-  
-  .nav-item:hover {
-    background-color: #005f5f;
-  }
-  
-  .footer {
-    text-align: center;
-    font-size: 12px;
-    color: #aaa;
-    padding: 10px 0;
-  }
+.Delivery-sidebar {
+  width: 320px;
+  height: 100vh;
+  background-color: #1f2937;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  position: fixed;
+  left: 0;
+  top: 110px;
+  z-index: 1000; /* Ensures it stays above other content */
+}
+
+.Delivery-profile-section {
+  display: flex;
+  align-items: center;
+  padding-bottom: 15px;
+  width: 100%;
+  justify-content: center;
+  border-bottom: 1px solid gray;
+}
+
+.Delivery-profile-pic {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #374151;
+  margin-right: 10px;
+}
+
+.Delivery-profile-name {
+  font-weight: bold;
+}
+
+.Delivery-profile-role {
+  font-size: 0.9rem;
+  color: #facc15;
+}
+
+/* .Delivery-sidebar-nav {
+  list-style: none;
+  width: 10%;
+  padding: 0;
+  margin-top: 15px;
+} */
+
+.Delivery-nav-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  width: 100%;
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  transition: 0.3s;
+  background-color: #1f2937;
+}
+
+.Delivery-nav-item:hover,
+.Delivery-nav-item.active {
+  background-color: #0891b2;
+}
+
+.Delivery-icon {
+  margin-right: 10px;
+}
+
+.Delivery-footer-text {
+  position: absolute;
+  bottom: 20px;
+  font-size: 12px;
+  color: gray;
+}
+
+.Delivery-version-text {
+  position: absolute;
+  bottom: 5px;
+  font-size: 12px;
+  color: gray;
+}

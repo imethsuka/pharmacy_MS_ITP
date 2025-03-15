@@ -1,6 +1,6 @@
 import React from "react";
 import "../../styles/Delivery/DeliveryHistory.css"; // External CSS
-import NavBar from "../../components/Delivery/NavBarV";
+import NavBarV from "../../components/Delivery/NavBarV";
 import SideBarV from "../../components/Delivery/SideBarV";
 
 const DeliveryHistory = () => {
@@ -13,10 +13,10 @@ const DeliveryHistory = () => {
   return (
     <div className="delivery-history-wrapper">
       <SideBarV />
-      <div className="content-container">
-        <NavBar />
+      <div className="delivery-content-container">
+        <NavBarV/>
         <div className="delivery-history-container">
-          <h2 className="title">Delivery History</h2>
+          <h2 className="delivery-title-header">Delivery History</h2>
           <table className="delivery-history-table">
             <thead>
               <tr className="History-table-content">

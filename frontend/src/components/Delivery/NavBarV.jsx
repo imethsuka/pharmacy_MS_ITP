@@ -3,24 +3,24 @@ import '../../Styles/Delivery/NavBarV.css'
 import logo from '../../../public/Sethsiri_Favicon.svg';
 
 
-const Navbar = () => {
+const NavBarV = () => {
   return (
-    <nav className="navbar">
-      <div className="logo">
+    <nav className="Delivery-navbar">
+      <div className="Delivery-logo">
         <img src="/Sethsiri_Favicon.svg" alt="Sethsiri Pharmacy" />
-        <span className="title">Sethsiri Pharmacy</span>
+        <span className="Delivery-title">Sethsiri Pharmacy</span>
       </div>
-      <div className="user-info">
-        <div className="user-details">
+      <div className="Delivery-user-info">
+        <div className="Delivery-user-details">
           
           <div>
             
           </div>
         </div>
-        <button className="signout-btn">Sign out</button>
+        <button className="Delivery-signout-btn">Sign out</button>
       </div>
     </nav>
   );
 };
 
-export default Navbar;
+export default NavBarV;

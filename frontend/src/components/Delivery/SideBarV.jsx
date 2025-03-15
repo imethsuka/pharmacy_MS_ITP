@@ -1,38 +1,53 @@
 import React from "react";
-import "../../Styles/Delivery/SideBarV.css"; 
-import { FaRegClipboard } from "react-icons/fa"; // Importing an icon for Dashboard
+import { FaUserCircle } from "react-icons/fa";
+import { Link, useLocation } from "react-router-dom";
+import "../../styles/Delivery/SideBarV.css";
 
-const Sidebar = () => {
+const SideBarV = () => {
+  const location = useLocation();
+
+  const isActive = (path) => location.pathname === path;
+
   return (
-    <div className="sidebarV">
-      <div className="profile-section">
-        <img src="user-avatar.png" alt="User" className="avatar" />
-        <div className="profile-info"><br /><br /><br /><br /><br />
-          <p className="company-name">FedEx Delivery (Pvt) Ltd</p>
-          <p className="role">Delivery Company</p>
+    <aside className="Delivery-sidebar"><br/><br/><br/><br/>
+      <div className="Delivery-profile-section">
+        <FaUserCircle size={50} className="Delivery-profile-pic" />
+        <div>
+          <p className="Delivery-profile-name">Vonara</p>
+          <p className="Delivery-profile-role">Delivery Manager</p>
         </div>
       </div>
 
-      <div className="nav-items">
-        <div className="nav-item active">
-          <FaRegClipboard className="icon" />
-          <span>Dashboard</span>
-        </div><br/>
-        <div className="nav-item active">
-          <FaRegClipboard className="icon" />
-          <span>History</span>
-        </div><br/>
-        <div className="nav-item active">
-          <FaRegClipboard className="icon" />
-          <span>Driver Form</span>
-        </div>
-      </div>
+      <nav className="Delivery-sidebar-nav">
+        <Link
+          to="/Delivery/DeliveryStatus"
+          className={`Delivery-nav-item ${isActive("/Delivery/DeliveryStatus") ? "active" : ""}`}
+        >
+          <span className="Delivery-icon">📦</span> Delivery Status
+        </Link>
+        <Link
+          to="/Delivery/DeliveryHistory"
+          className={`Delivery-nav-item ${isActive("/Delivery/DeliveryHistory") ? "active" : ""}`}
+        >
+          <span className="Delivery-icon">🕒</span> Delivery History
+        </Link>
+        <Link
+          to="/Delivery/DriverForm"
+          className={`Delivery-nav-item ${isActive("/Delivery/DriverForm") ? "active" : ""}`}
+        >
+          <span className="Delivery-icon">📝</span> Driver Form
+        </Link>
+        <Link
+          to="/Delivery/DriverDetails"
+          className={`Delivery-nav-item ${isActive("/Delivery/DriverDetails") ? "active" : ""}`}
+        >
+          <span className="Delivery-icon">📦</span> Driver Details
+        </Link>
+      </nav>
 
-      <div className="footer">
-        <p>Powered by ITP 2025</p>
-        <p>v 1.1.2</p>
-      </div>
-    </div>
+      <p className="Delivery-footer-text">Powered by ITP 2025</p>
+      <p className="Delivery-version-text">v 1.12</p>
+    </aside>
   );
 };
 
