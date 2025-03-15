@@ -15,7 +15,7 @@ const MedicinesTable = ({ medicines }) => {
           <th>No</th>
           <th>Name</th>
           <th className="hide-on-mobile">Product ID</th>
-          <th className="hide-on-mobile">Catergory</th>
+          <th className="hide-on-mobile">Category</th>
           <th className="hide-on-mobile">Descriptionn</th>
           <th className="hide-on-mobile">How To Use</th>
           <th className="hide-on-mobile">Side Effects</th>
@@ -35,7 +35,7 @@ const MedicinesTable = ({ medicines }) => {
             <td>{index + 1}</td>
             <td>{medicine.name}</td>
             <td className="hide-on-mobile">{medicine.productId}</td>
-            <td className="hide-on-mobile">{medicine.catergory}</td>
+            <td className="hide-on-mobile">{medicine.category}</td>
             <td className="hide-on-mobile">{medicine.description}</td>
             <td className="hide-on-mobile">{medicine.howToUse}</td>
             <td className="hide-on-mobile">{medicine.sideEffects}</td>

@@ -45,8 +45,8 @@ const ShowMedicines = () => {
             <span className="detail-value">{medicine.productId}</span>
           </div>
           <div className="detail-item">
-            <span className="detail-label">Catergory</span>
-            <span className="detail-value">{medicine.catergory}</span>
+            <span className="detail-label">Category</span>
+            <span className="detail-value">{medicine.category}</span>
           </div>
           <div className="detail-item">
             <span className="detail-label">Description</span>
