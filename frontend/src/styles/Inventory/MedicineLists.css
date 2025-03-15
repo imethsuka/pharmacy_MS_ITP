@@ -96,3 +96,74 @@ body, html {
   margin-bottom: 20px;
 }
 
+/* Medicine Lists */
+
+.medicineShow-container {
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+    background-color: #f9fafb;
+  }
+  
+  .medicineShow-content {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .view-toggle {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  
+  .view-button {
+    padding: 10px 20px;
+    background-color: #e0f2fe;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .view-button.active {
+    background-color: #38bdf8;
+    color: white;
+  }
+  
+  .view-button:hover {
+    background-color: #7dd3fc;
+  }
+/*   
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+  
+  .page-title {
+    font-size: 28px;
+    color: #1e293b;
+    margin: 0;
+  }
+  
+  .add-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #38bdf8;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .add-button:hover {
+    background-color: #7dd3fc;
+  }
+  
+  .add-icon {
+    color: white;
+    font-size: 24px;
+  } */
