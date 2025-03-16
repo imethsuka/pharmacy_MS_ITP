@@ -138,3 +138,19 @@ The Online Pharmacy Management System allows customers to order medicines online
 3. **Delivery History Page** (GUI - Past Deliveries with delivered date and delivered items to which customer )
 4. AI chat bot for customers to get information
 
+# Pharmacy Management System
+
+## Setup Instructions
+
+### Mail Configuration
+
+- Configure your mail settings in the `.env` file. If you were using Mailtrap, you can remove the following lines:
+  ```
+  MAIL_MAILER=smtp
+  MAIL_HOST=smtp.mailtrap.io
+  MAIL_PORT=2525
+  MAIL_USERNAME=null
+  MAIL_PASSWORD=null
+  MAIL_ENCRYPTION=null
+  ```
+

@@ -2,11 +2,6 @@ import bcrypt from "bcryptjs";
 import crypto from "crypto";
 
 import { generateTokenAndSetCookie } from "../utils/generateTokenAndSetCookie.js";
-import {
-	sendPasswordResetEmail,
-	sendResetSuccessEmail,
-	sendWelcomeEmail,
-} from "../mailtrap/emails.js";
 import User from "../models/user.model.js";
 
 export const signup = async (req, res) => {
@@ -36,8 +31,6 @@ export const signup = async (req, res) => {
 
         // jwt
         generateTokenAndSetCookie(res, user._id);
-
-        await sendWelcomeEmail(user.email);
 
         res.status(201).json({
             success: true,
@@ -105,9 +98,6 @@ export const forgotPassword = async (req, res) => {
 
 		await user.save();
 
-		// send email
-		await sendPasswordResetEmail(user.email, `${process.env.CLIENT_URL}/reset-password/${resetToken}`);
-
 		res.status(200).json({ success: true, message: "Password reset link sent to your email" });
 	} catch (error) {
 		console.log("Error in forgotPassword ", error);
@@ -136,8 +126,6 @@ export const resetPassword = async (req, res) => {
 		user.resetPasswordToken = undefined;
 		user.resetPasswordExpiresAt = undefined;
 		await user.save();
-
-		await sendResetSuccessEmail(user.email);
 
 		res.status(200).json({ success: true, message: "Password reset successful" });
 	} catch (error) {

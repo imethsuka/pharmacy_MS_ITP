@@ -31,8 +31,8 @@ const Sidebar = () => {
             Dashboard
           </Link>
           <Link
-            to="/customerdashboard"
-            className={isActive("/") ? "active" : ""}
+            to="/users"
+            className={isActive("/users") ? "active" : ""}
           >
             Manage Customers
           </Link>

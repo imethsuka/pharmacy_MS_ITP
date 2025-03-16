@@ -26,10 +26,15 @@ import ForgotPasswordPage from "./pages/Customer/ForgotPasswordPage";
 import ResetPasswordPage from "./pages/Customer/ResetPasswordPage";
 import CusDashboard from './pages/Customer/DashboardCustomer';
 
+import CreateUser from './pages/Customer/CreateUser';
+import UpdateUser from './pages/Customer/UpdateUser';
 import LoadingSpinner from "./components/Customer/LoadingSpinner";
 import { Toaster } from "react-hot-toast";
 import { useAuthStore } from "./store/authStore";
 import { useEffect } from "react";
+
+// Import Users component
+import Users from './pages/Customer/Users';
 
 //cutomer authentication
 // protect routes that require authentication
@@ -88,6 +93,9 @@ const App = () => {
       <Route path='/forgot-password' element={<RedirectAuthenticatedUser><ForgotPasswordPage /></RedirectAuthenticatedUser>} />
       <Route path='/reset-password' element={<ResetPasswordPage />} />
       <Route path='*' element={<Navigate to='/' />} />
+      <Route path="/users" element={<Users />} />
+      <Route path="/create" element={<CreateUser />} />
+      <Route path="/update/:id" element={<UpdateUser />} />
     </Routes>
   );
 };
