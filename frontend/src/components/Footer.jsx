@@ -9,7 +9,7 @@ function Footer() {
     <footer className="Footer">
       <h4>Staff</h4>
       <div className="footer-links">
-        <Link to="/customer-manager">Customer Manager</Link>
+        <Link to="/customerdashboard">Customer Manager</Link>
         <Link to="/Inventory/Dashboard">Inventory Manager</Link>
         <Link to="/pharmacist">Pharmacist</Link>
         <Link to="/sd-manager">SD Manager</Link>
