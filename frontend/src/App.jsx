@@ -11,6 +11,7 @@ import FeedbackForm from './pages/Delivery/FeedbackForm';
 import DeliveryHistory from './pages/Delivery/DeliveryHistory';
 import DriverForm from './pages/Delivery/DriverForm';
 import DriverDetails from './pages/Delivery/DriverDetails';
+import AddDriver from './pages/Delivery/AddDriver';
 
 // Import Inventory Pages
 import Dashboard from './pages/Inventory/Dashboard';
@@ -46,6 +47,7 @@ const App = () => {
       <Route path='/delivery/deliveryhistory' element={<DeliveryHistory />} />
       <Route path='/delivery/driverform' element={<DriverForm />} /> 
       <Route path='/delivery/driverdetails' element={<DriverDetails />} />
+      <Route path='/delivery/adddriver' element={<AddDriver />} />
 
       
     </Routes>

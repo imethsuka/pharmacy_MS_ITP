@@ -1,62 +1,50 @@
 import express from 'express';
-import { Medicine } from '../models/driverModel.js';
+import { driver } from '../models/driverModel.js';
 
 const router = express.Router();
 
-// Route to add a new Medicine
+// Route to add a new driver
 router.post('/', async (request, response) => {
   try {
     if (
       !request.body.DName ||
-      !request.body.vehicleType ||
-      !request.body.phone ||
-      !request.body.email ||
+      !request.body.VehicleType ||
+      !request.body.Phone ||
+      !request.body.Email ||
       !request.body.LicenseNumber ||
-      !request.body.Availability ||
-      !request.body.stock ||
-      !request.body.reorderLevel ||
-      !request.body.batchExpiry ||
-      !request.body.requiresPrescription ||
-      !request.body.supplierEmail ||
-      !request.body.imageUrl
-
+      !request.body.Availability
     ) {
       return response.status(400).send({
-        message: 'Send all required fields: name, categoryId, description, howToUse, sideEffects, price, stock, reorderLevel, batchExpiry, requiresPrescription, supplierEmail, imageUrl',
+        message: 'Send all required fields: DName, VehicleType, Phone, Email, LicenseNumber, Availability',
       });
     }
-    const newMedicine = {
-      name: request.body.name,
-      categoryId: request.body.categoryId,
-      description: request.body.description,
-      howToUse: request.body.howToUse,
-      sideEffects: request.body.sideEffects,
-      price: request.body.price,
-      stock: request.body.stock,
-      reorderLevel: request.body.reorderLevel,
-      batchExpiry: request.body.batchExpiry,
-      requiresPrescription: request.body.requiresPrescription,
-      supplierEmail: request.body.supplierEmail,
-      imageUrl: request.body.imageUrl,
+    const newdriver = {
+      DName: request.body.DName,
+      VehicleType: request.body.VehicleType,
+      Phone: request.body.Phone,
+      Email: request.body.Email,
+      LicenseNumber: request.body.LicenseNumber,
+      Availability: request.body.Availability,
+      
     };
 
-    const medicine = await Medicine.create(newMedicine);
+    const driver = await driver.create(newdriver);
 
-    return response.status(201).send(medicine);
+    return response.status(201).send(driver);
   } catch (error) {
     console.log(error.message);
     response.status(500).send({ message: error.message });
   }
 });
 
-// Route to get all Medicines
+// Route to get all drivers
 router.get('/', async (request, response) => {
   try {
-    const medicines = await Medicine.find({});
+    const driver = await driver.find({});
 
     return response.status(200).json({
-      count: medicines.length,
-      data: medicines,
+      count: driver.length,
+      data: driver,
     });
   } catch (error) {
     console.log(error.message);
@@ -69,7 +57,7 @@ router.get('/:id', async (request, response) => {
   try {
     const { id } = request.params;
 
-    const medicine = await Medicine.findById(id);
+    const driver = await driver.findById(id);
 
     return response.status(200).json(medicine);
   } catch (error) {
@@ -82,34 +70,30 @@ router.get('/:id', async (request, response) => {
 router.put('/:id', async (request, response) => {
   try {
     if (
-      !request.body.name ||
-      !request.body.categoryId ||
-      !request.body.description ||
-      !request.body.howToUse ||
-      !request.body.sideEffects ||
-      !request.body.price ||
-      !request.body.stock ||
-      !request.body.reorderLevel ||
-      !request.body.batchExpiry ||
-      !request.body.requiresPrescription ||
-      !request.body.supplierEmail ||
-      !request.body.imageUrl
+      !request.body.Dname ||
+      !request.body.VehicleType ||
+      !request.body.Phone ||
+      !request.body.Email ||
+      !request.body.LicenseNumber ||
+      !request.body.Availability 
+    
 
     ) {
       return response.status(400).send({
-        message: 'Send all required fields: name, categoryId, description, howToUse, sideEffects, price, stock, reorderLevel, batchExpiry, requiresPrescription, supplierEmail, imageUrl',
-      });
+        message: 'Send all required fields: DName, VehicleType, Phone, Email, LicenseNumber, Availability',
+    });
+    
     }
 
     const { id } = request.params;
 
-    const result = await Medicine.findByIdAndUpdate(id, request.body);
+    const result = await driver.findByIdAndUpdate(id, request.body);
 
     if (!result) {
-      return response.status(404).json({ message: 'Medicine not found' });
+      return response.status(404).json({ message: 'Driver not found' });
     }
 
-    return response.status(200).send({ message: 'Medicine updated successfully' });
+    return response.status(200).send({ message: 'Driver updated successfully' });
   } catch (error) {
     console.log(error.message);
     response.status(500).send({ message: error.message });
@@ -121,13 +105,13 @@ router.delete('/:id', async (request, response) => {
   try {
     const { id } = request.params;
 
-    const result = await Medicine.findByIdAndDelete(id);
+    const result = await driver.findByIdAndDelete(id);
 
     if (!result) {
-      return response.status(404).json({ message: 'Medicine not found' });
+      return response.status(404).json({ message: 'Driver not found' });
     }
 
-    return response.status(200).send({ message: 'Medicine deleted successfully' });
+    return response.status(200).send({ message: 'Driver deleted successfully' });
   } catch (error) {
     console.log(error.message);
     response.status(500).send({ message: error.message });
