@@ -28,7 +28,7 @@ app.use(express.static('public')); // Add this line to serve static files
 
 app.get('/', (request, response) => {
   console.log(request);
-  return response.status(234).send('Welcome To MERN Stack Tutorial');
+  return response.status(234).send('Welcome To Sethsiri Pharmacy');
 });
 
 app.use('/books', booksRoute);
