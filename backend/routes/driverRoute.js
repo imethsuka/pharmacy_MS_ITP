@@ -40,11 +40,11 @@ router.post('/', async (request, response) => {
 // Route to get all drivers
 router.get('/', async (request, response) => {
   try {
-    const driver = await driver.find({});
+    const drivers = await driver.find({});
 
     return response.status(200).json({
-      count: driver.length,
-      data: driver,
+      count: drivers.length,
+      data: drivers,
     });
   } catch (error) {
     console.log(error.message);

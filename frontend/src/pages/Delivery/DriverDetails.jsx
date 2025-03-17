@@ -2,14 +2,20 @@ import React from "react";
 import "../../styles/Delivery/DriverDetails.css";
 import NavBarV from "../../components/Delivery/NavBarV";
 import SideBarV from "../../components/Delivery/SideBarV";
+import { useNavigate } from "react-router-dom";
+
 
 const DriverDetails = () => {
+
+
+  
   const drivers = [
     { id: 1, name: "John Doe", phone: "+1234567890", vehicle: "Bike", license: "AB123456", availability: "Available" },
     { id: 2, name: "Jane Smith", phone: "+9876543210", vehicle: "Car", license: "XY987654", availability: "Busy" },
     { id: 3, name: "Michael Brown", phone: "+1122334455", vehicle: "Scooter", license: "LM456789", availability: "Available" },
   ];
 
+    const navigate = navigate();
   return (
     <div className="DriverDetails-container">
       <div> <NavBarV /></div>
@@ -25,7 +31,9 @@ const DriverDetails = () => {
 
         </div>
         
-        <button className="add-driver-button">Add Driver</button>
+        <button onClick={() => navigate("/add-driver")}>
+                Add  Driver
+            </button>
 
         <table className="driverDetails-table">
           
