@@ -119,7 +119,7 @@ const AddDriver = () => {
         Phone: "",
         Email: "",
         LicenseNumber: "",
-        Availability: "Available",
+        Availability: "Available"
       });
     } catch (error) {
       console.error("Error submitting driver details:", error);

@@ -59,7 +59,7 @@ router.get('/:id', async (request, response) => {
 
     const driver = await driver.findById(id);
 
-    return response.status(200).json(medicine);
+    return response.status(200).json(driver);
   } catch (error) {
     console.log(error.message);
     response.status(500).send({ message: error.message });
