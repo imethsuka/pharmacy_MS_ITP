@@ -100,7 +100,7 @@ router.put('/:id', async (request, response) => {
   }
 });
 
-// Route to delete a Medicine
+// Route to delete a driver
 router.delete('/:id', async (request, response) => {
   try {
     const { id } = request.params;
