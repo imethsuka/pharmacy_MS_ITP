@@ -1,5 +1,5 @@
 import express from 'express';
-// import { driver } from '../models/driverModel.js';
+import { Driver } from '../models/driverModel.js';
 
 const router = express.Router();
 
@@ -18,7 +18,7 @@ router.post('/', async (request, response) => {
         message: 'Send all required fields: DName, VehicleType, Phone, Email, LicenseNumber, Availability',
       });
     }
-    const newdriver = {
+    const newDriver = {
       DName: request.body.DName,
       VehicleType: request.body.VehicleType,
       Phone: request.body.Phone,
@@ -28,7 +28,7 @@ router.post('/', async (request, response) => {
       
     };
 
-    const newDriver = await Driver.create(newdriver);
+    const driver = await Driver.create(newDriver);
 
     return response.status(201).send(newDriver);
   } catch (error) {
@@ -40,7 +40,7 @@ router.post('/', async (request, response) => {
 // Route to get all drivers
 router.get('/', async (request, response) => {
   try {
-    const drivers = await drivers.find({});
+    const drivers = await Driver.find({});
 
     return response.status(200).json({
       count: drivers.length,
@@ -57,7 +57,7 @@ router.get('/:id', async (request, response) => {
   try {
     const { id } = request.params;
 
-    const driver = await driver.findById(id);
+    const driver = await Driver.findById(id);
 
     return response.status(200).json(driver);
   } catch (error) {
@@ -87,7 +87,7 @@ router.put('/:id', async (request, response) => {
 
     const { id } = request.params;
 
-    const result = await driver.findByIdAndUpdate(id, request.body);
+    const result = await Driver.findByIdAndUpdate(id, request.body);
 
     if (!result) {
       return response.status(404).json({ message: 'Driver not found' });
@@ -105,7 +105,7 @@ router.delete('/:id', async (request, response) => {
   try {
     const { id } = request.params;
 
-    const result = await driver.findByIdAndDelete(id);
+    const result = await Driver.findByIdAndDelete(id);
 
     if (!result) {
       return response.status(404).json({ message: 'Driver not found' });
