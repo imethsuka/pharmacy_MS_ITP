@@ -1,8 +1,8 @@
 import mongoose from 'mongoose';
-import { driver } from '../models/driverModel.js';
+// import { driver } from '../models/driverModel.js';
 
 
-const driverSchema = new mongoose.Schema(
+const driverSchema =  mongoose.Schema(
   {
     DName: {
       type: String,
@@ -34,4 +34,4 @@ const driverSchema = new mongoose.Schema(
   }
 );
 
-export const driver = mongoose.model('driver', driverSchema);
+export const Driver = mongoose.model('Driver', driverSchema);
