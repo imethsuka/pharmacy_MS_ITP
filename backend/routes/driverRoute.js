@@ -1,5 +1,5 @@
 import express from 'express';
-import { driver } from '../models/driverModel.js';
+// import { driver } from '../models/driverModel.js';
 
 const router = express.Router();
 
@@ -28,9 +28,9 @@ router.post('/', async (request, response) => {
       
     };
 
-    const driver = await driver.create(newdriver);
+    const newDriver = await Driver.create(newdriver);
 
-    return response.status(201).send(driver);
+    return response.status(201).send(newDriver);
   } catch (error) {
     console.log(error.message);
     response.status(500).send({ message: error.message });
@@ -40,7 +40,7 @@ router.post('/', async (request, response) => {
 // Route to get all drivers
 router.get('/', async (request, response) => {
   try {
-    const drivers = await driver.find({});
+    const drivers = await drivers.find({});
 
     return response.status(200).json({
       count: drivers.length,
@@ -70,7 +70,7 @@ router.get('/:id', async (request, response) => {
 router.put('/:id', async (request, response) => {
   try {
     if (
-      !request.body.Dname ||
+      !request.body.DName ||
       !request.body.VehicleType ||
       !request.body.Phone ||
       !request.body.Email ||

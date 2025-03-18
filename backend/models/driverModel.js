@@ -1,4 +1,6 @@
 import mongoose from 'mongoose';
+import { driver } from '../models/driverModel.js';
+
 
 const driverSchema = new mongoose.Schema(
   {
@@ -11,7 +13,7 @@ const driverSchema = new mongoose.Schema(
       required: true,
     },
     Phone: {
-      type: Number,
+      type: String,
       required: true,
     },
     Email: {
