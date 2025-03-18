@@ -1,6 +1,4 @@
 import mongoose from 'mongoose';
-// import { driver } from '../models/driverModel.js';
-
 
 const driverSchema =  mongoose.Schema(
   {

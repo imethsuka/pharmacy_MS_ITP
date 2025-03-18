@@ -2,6 +2,7 @@ import express from 'express';
 import { PORT, mongoDBURL } from './config.js';
 import mongoose from 'mongoose';
 import booksRoute from './routes/booksRoute.js';
+import driverRoute from './routes/driverRoute.js' 
 import cors from 'cors';
 
 const app = express();
@@ -27,7 +28,7 @@ app.get('/', (request, response) => {
 });
 
 app.use('/books', booksRoute);
-app.use('/driver',driverRoute)
+app.use('/drivers',driverRoute)
 
 mongoose
   .connect(mongoDBURL)
