@@ -11,7 +11,7 @@ function Footer() {
       <div className="footer-links">
         <Link to="/customer-manager">Customer Manager</Link>
         <Link to="/Inventory/Dashboard">Inventory Manager</Link>
-        <Link to="/pharmacist">Pharmacist</Link>
+        <Link to="/Prescription/PDashboard">Pharmacist</Link>
         <Link to="/sd-manager">SD Manager</Link>
         <Link to="/delivery-manager">Delivery Manager</Link>
       </div>

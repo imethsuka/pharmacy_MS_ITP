@@ -22,7 +22,9 @@ router.post('/', async (request, response) => {
 
     ) {
       return response.status(400).send({
+
         message: 'Send all required fields: name, productId, category, description, howToUse, sideEffects, price, stock, reorderLevel, batchExpiry, supplierEmail, imageUrl'
+
       });
     }
     const newMedicine = {
@@ -102,7 +104,9 @@ router.put('/:id', async (request, response) => {
 
     ) {
       return response.status(400).send({
+
         message: 'Send all required fields: name, productId, category, description, howToUse, sideEffects, price, stock, reorderLevel, batchExpiry, supplierEmail, imageUrl',
+
       });
     }
 

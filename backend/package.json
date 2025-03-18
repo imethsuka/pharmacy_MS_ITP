@@ -9,14 +9,15 @@
     "dev": "nodemon index.js"
   },
   "keywords": [],
-  "author": "MamadTaheri68",
+  "author": "Imeth Methsuka",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.18.2",
     "mongoose": "^7.3.1",
-    "nodemon": "^2.0.22",
-    "uuid": "^11.1.0"
+      
+    "uuid": "^11.1.0",
+    "multer": "^1.4.5-lts.1"
   }
 }
