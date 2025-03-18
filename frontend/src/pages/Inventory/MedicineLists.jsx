@@ -35,7 +35,7 @@ const MedicineLists = () => {
   return (
     <>
       {/* Top Bar */}
-      <div className="top-bar">
+      {/* <div className="top-bar">
         <div className="brand-section">
           <img src={logo} alt="Sethsiri Logo" width="80" />
           <h2 className="brand-title">Sethsiri Pharmacy</h2>
@@ -51,11 +51,11 @@ const MedicineLists = () => {
             <FaSignOutAlt /> Sign Out
           </button>
         </div>
-      </div>
+      </div> */}
 
       <div className="dashboard-container">
         {/* Sidebar */}
-        <Sidebar />
+        {/* <Sidebar /> */}
 
         {/* Main Content */}
         <main className="main-content">
@@ -71,18 +71,7 @@ const MedicineLists = () => {
             <div className="medicineShow-content">
               {/* View Toggle Buttons */}
               <div className="view-toggle">
-                <button
-                  className={`view-button ${showType === 'table' ? 'active' : ''}`}
-                  onClick={() => setShowType('table')}
-                >
-                  Table View
-                </button>
-                <button
-                  className={`view-button ${showType === 'card' ? 'active' : ''}`}
-                  onClick={() => setShowType('card')}
-                >
-                  Card View
-                </button>
+                
               </div>
 
               {/* Content Section */}
