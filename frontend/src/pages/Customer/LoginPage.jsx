@@ -25,8 +25,8 @@ const LoginPage = () => {
 
         await login(email, password);
 
-        if (email === "admin@gmail.com" && password === "admin") {
-            navigate("/dashboard");
+        if (email === "admin1@gmail.com" && password === "admin") {
+            navigate("/customerdashboard");
         } else {
             navigate("/home");
         }
