@@ -1,6 +1,7 @@
 import express from 'express';
-import UserModel from './models/Users.cjs';
+import UserModel from './models/user.model.js';
 import dotenv from "dotenv";
+dotenv.config();
 
 import { PORT, mongoDBURL } from './config.js';
 import mongoose from 'mongoose';
@@ -11,7 +12,6 @@ import cors from 'cors';
 import cookieParser from "cookie-parser";
 import path from "path";
 import { connectDB } from "./db/connectDB.js";
-dotenv.config();
 
 const app = express();
 
@@ -48,7 +48,37 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
+// For customer management
+app.post("/createUser", (req, res) => {
+  UserModel.create(req.body)
+    .then(users => res.json(users))
+    .catch(err => res.json(err));
+});
 
+app.get("/getUser/:id", (req, res) => {
+  const id = req.params.id;
+  UserModel.findById({ _id: id })
+    .then(users => res.json(users))
+    .catch(err => res.json(err));
+});
+
+app.put("/updateUser/:id", (req, res) => {
+  const id = req.params.id;
+  UserModel.findByIdAndUpdate({ _id: id }, 
+    {
+      name: req.body.name,
+      email: req.body.email
+    })
+    .then(users => res.json(users))
+    .catch(err => res.json(err));
+});
+
+app.delete("/deleteUser/:id", (req, res) => {
+  const id = req.params.id;
+  UserModel.findByIdAndDelete({ _id: id })
+    .then(users => res.json(users))
+    .catch(err => res.json(err));
+});
 
 mongoose
   .connect(mongoDBURL)
