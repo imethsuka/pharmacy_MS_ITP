@@ -20,21 +20,23 @@ import AddMedicines from './pages/Inventory/addMedicines';
 //import Customer pages
 import SignUpPage from "./pages/Customer/SignUpPage";
 import LoginPage from "./pages/Customer/LoginPage";
-import EmailVerificationPage from "./pages/Customer/EmailVerificationPage";
+
 import DashboardPage from "./pages/Customer/DashboardPage";
 import ForgotPasswordPage from "./pages/Customer/ForgotPasswordPage";
 import ResetPasswordPage from "./pages/Customer/ResetPasswordPage";
 import CusDashboard from './pages/Customer/DashboardCustomer';
 
-import CreateUser from './pages/Customer/CreateUser';
-import UpdateUser from './pages/Customer/UpdateUser';
-import LoadingSpinner from "./components/Customer/LoadingSpinner";
+
 import { Toaster } from "react-hot-toast";
 import { useAuthStore } from "./store/authStore";
 import { useEffect } from "react";
 
-// Import Users component
-import Users from './pages/Customer/Users';
+import './App.css';
+import {RouterProvider, createBrowserRouter} from "react-router-dom";
+import Users from './pages/Customer/getuser/User';
+import Add from './pages/Customer/adduser/Add';
+import Edit from './pages/Customer/updateuser/Edit';
+
 
 //cutomer authentication
 // protect routes that require authentication
@@ -63,6 +65,8 @@ const RedirectAuthenticatedUser = ({ children }) => {
   return children;
 };
 
+
+
 const App = () => {
   return (
     <Routes>
@@ -88,14 +92,14 @@ const App = () => {
       <Route path='/customerdashboard' element={<CusDashboard />} />
       <Route path='/login' element={<RedirectAuthenticatedUser><LoginPage /></RedirectAuthenticatedUser>} />
       <Route path='/signup' element={<RedirectAuthenticatedUser><SignUpPage /></RedirectAuthenticatedUser>} />
-      <Route path='/verify-email' element={<EmailVerificationPage />} />  
+        
       <Route path='/dashboard' element={<ProtectedRoute><DashboardPage /></ProtectedRoute>} />
       <Route path='/forgot-password' element={<RedirectAuthenticatedUser><ForgotPasswordPage /></RedirectAuthenticatedUser>} />
       <Route path='/reset-password' element={<ResetPasswordPage />} />
       <Route path='*' element={<Navigate to='/' />} />
       <Route path="/users" element={<Users />} />
-      <Route path="/create" element={<CreateUser />} />
-      <Route path="/update/:id" element={<UpdateUser />} />
+      <Route path="/add" element={<Add/>} />
+      <Route path="/edit/:id" element={<Edit/>} />
     </Routes>
   );
 };

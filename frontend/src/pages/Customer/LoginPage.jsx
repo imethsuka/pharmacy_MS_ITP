@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Lock, Loader } from "lucide-react";
+import { Mail, Lock, Loader, Eye, EyeOff } from "lucide-react"; // Import Eye and EyeOff icons
 import { Link, useNavigate } from "react-router-dom"; // Import useNavigate
 import Input from "../../components/Customer/Input";
 import { useAuthStore } from "../../store/authStore";
@@ -8,12 +8,21 @@ import { useAuthStore } from "../../store/authStore";
 const LoginPage = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [showPassword, setShowPassword] = useState(false); // State to toggle password visibility
     const navigate = useNavigate(); // Initialize useNavigate
 
     const { login, isLoading, error } = useAuthStore();
 
     const handleLogin = async (e) => {
         e.preventDefault();
+
+        // Email validation
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+            alert("Please enter a valid email address.");
+            return;
+        }
+
         await login(email, password);
 
         if (email === "admin@gmail.com" && password === "admin") {
@@ -59,14 +68,22 @@ const LoginPage = () => {
                             <label htmlFor='password' className='block text-sm font-medium text-gray-700'>
                                 Password
                             </label>
-                            <Input
-                                id='password'
-                                icon={Lock}
-                                type='password'
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                                className='w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent'
-                            />
+                            <div className='relative'>
+                                <Input
+                                    id='password'
+                                    icon={Lock}
+                                    type={showPassword ? 'text' : 'password'}
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    className='w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent'
+                                />
+                                <div
+                                    className='absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer'
+                                    onClick={() => setShowPassword(!showPassword)}
+                                >
+                                    {showPassword ? <EyeOff className='w-5 h-5 text-gray-500' /> : <Eye className='w-5 h-5 text-gray-500' />}
+                                </div>
+                            </div>
                         </div>
 
                         <div className='flex items-center mb-6'>

@@ -1,14 +1,16 @@
-const Input = ({ icon: Icon, ...props }) => {
+import React from "react";
+
+const Input = ({ id, icon: Icon, ...props }) => {
     return (
-        <div className='relative mb-6'>
-            <div className='absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none'>
-                <Icon className='size-5 text-blue-500' />
-            </div>
+        <div className="relative">
+            {Icon && <Icon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />}
             <input
+                id={id}
                 {...props}
-                className='w-full pl-10 pr-3 py-2 bg-white bg-opacity-50 rounded-lg border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-500 text-gray-800 placeholder-gray-400 transition duration-200'
+                className={`pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent ${props.className}`}
             />
         </div>
     );
 };
+
 export default Input;

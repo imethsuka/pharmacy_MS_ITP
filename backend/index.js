@@ -2,7 +2,7 @@ import express from 'express';
 import UserModel from './models/user.model.js';
 import dotenv from "dotenv";
 dotenv.config();
-
+import bodyParser from "body-parser"
 import { PORT, mongoDBURL } from './config.js';
 import mongoose from 'mongoose';
 import booksRoute from './routes/booksRoute.js';
@@ -12,7 +12,7 @@ import cors from 'cors';
 import cookieParser from "cookie-parser";
 import path from "path";
 import { connectDB } from "./db/connectDB.js";
-
+import route from "./routes/userRoute.js";
 const app = express();
 
 const __dirname = path.resolve();
@@ -30,7 +30,7 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-
+app.use("/api", route);
 app.get('/', (request, response) => {
   console.log(request);
   return response.status(200).send('Welcome To MERN Stack Tutorial');
@@ -49,6 +49,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // For customer management
+app.use(bodyParser.json());
 app.post("/createUser", (req, res) => {
   UserModel.create(req.body)
     .then(users => res.json(users))

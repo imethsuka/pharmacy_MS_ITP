@@ -1,7 +1,7 @@
 import bcryptjs from "bcryptjs";
 import crypto from "crypto";
 
-import { generateTokenAndSetCookie } from "../utils/generateTokenAndSetCookie.js";
+import generateTokenAndSetCookie from "../utils/generateTokenAndSetCookie.js";
 import User from "../models/user.model.js";
 
 export const signup = async (req, res) => {
@@ -30,7 +30,7 @@ export const signup = async (req, res) => {
         await user.save();
 
         // jwt
-        generateTokenAndSetCookie(res, user._id);
+        generateTokenAndSetCookie(user, res);
 
         res.status(201).json({
             success: true,
