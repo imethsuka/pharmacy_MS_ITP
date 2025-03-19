@@ -1,0 +1,136 @@
+/* Background Overlay */
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Popup Container */
+.popup-content {
+  background: white;
+  width: 90%;
+  max-width: 700px;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+  position: relative;
+  animation: slideIn 0.3s ease-in-out;
+}
+
+/* Close Button */
+.close-button {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #555;
+  transition: color 0.2s;
+}
+
+.close-button:hover {
+  color: #222;
+}
+
+/* Popup Body Layout */
+.popup-body {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+@media (min-width: 768px) {
+  .popup-body {
+    flex-direction: row;
+    gap: 20px;
+  }
+}
+
+/* Product Image */
+.popup-image img {
+  width: 100%;
+  max-width: 200px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Product Details */
+.popup-details {
+  flex: 1;
+}
+
+.product-name {
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.product-description {
+  font-size: 14px;
+  color: #666;
+}
+
+/* Detail Sections */
+.detail-section {
+  margin-top: 8px;
+}
+
+.detail-section h3 {
+  font-size: 16px;
+  color: #444;
+  margin-bottom: 3px;
+}
+
+.detail-section p {
+  font-size: 14px;
+  color: #666;
+}
+
+.price {
+  font-size: 18px;
+  font-weight: bold;
+  color: #5a4fcf;
+}
+
+/* Quantity Selector */
+.quantity-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.quantity-button {
+  background-color: #ddd;
+  border: none;
+  padding: 6px 12px;
+  font-size: 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.quantity-button:hover {
+  background-color: #ccc;
+}
+
+.quantity {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* Add to Cart Button */
+.add-to-cart-button {
+  background-color: #6c5ce7;
+  color: white;
+  border: none;
+  width: ;
+}
