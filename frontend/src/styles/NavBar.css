@@ -1,45 +1,71 @@
+/* NavBar Container */
 .navbar {
-    position: absolute;
-     /* Instead of sticky, so it can float over the hero */
-    top: 5px; /* Adjust as needed */
+    position: absolute; /* Or 'fixed' if you want it to stay at the top */
+    top: 10px; /* Adjust as needed */
     left: 50%;
     transform: translateX(-50%);
-    background-color: rgba(51, 51, 51, 0.8); /* Darker for floating effect */
+    background-color: rgba(245, 245, 245, 0.95); /* Light gray with slight transparency */
     padding: 10px 20px;
     display: flex;
     justify-content: center;
     border-radius: 50px;
     z-index: 1000;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    backdrop-filter: blur(10px); /* Adds a glassmorphism effect */
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Subtle border for definition */
 }
 
-
+/* Nav List */
 .nav-list {
     list-style: none;
     display: flex;
-    gap: 15px;
+    gap: 20px; /* Space between items */
     margin: 0;
     padding: 0;
-    font-family: sans-serif;
+    font-family: 'Segoe UI', sans-serif; /* Modern font */
 }
 
+/* Nav Item */
 .nav-item {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
+/* Nav Link (Inactive State) */
 .nav-link {
     text-decoration: none;
-    color: white;
+    color: #333333; /* Dark gray for readability */
     padding: 10px 20px;
     border-radius: 30px;
     transition: all 0.3s ease;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: transparent; /* No background by default */
+    font-weight: 500; /* Medium weight for modern look */
 }
 
+/* Nav Link Hover State */
 .nav-link:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.05); /* Light gray on hover */
+    color: #000000; /* Slightly darker text on hover */
+}
+
+/* Nav Link Active State */
+.nav-link.active {
+    background-color: #007bff; /* Vibrant purple for active state */
+    color: #ffffff; /* White text for contrast */
+    box-shadow: 0px 5px 15px rgba(108, 92, 231, 0.3); /* Subtle shadow for depth */
+}
+
+/* Optional: Add a smooth underline effect for inactive links */
+.nav-link:not(.active)::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #000000; /* Matching the active state color */
+    transition: width 0.3s ease;
+}
+
+.nav-link:not(.active):hover::after {
+    width: 100%;
 }

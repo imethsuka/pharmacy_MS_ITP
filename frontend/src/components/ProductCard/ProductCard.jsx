@@ -18,7 +18,7 @@ const ProductCard = ({ image, name, price, requiresPrescription, onAddToCart, on
           <FiShoppingCart size={18} /> Add
         </button>
         <div className="product-bottom">
-          <span className="product-price">${price}</span>
+          <span className="product-price">Rs. {price}</span>
           <button className="more-info" onClick={onMoreInfo}>
             More Info <HiOutlineChevronRight size={18} />
           </button>
