@@ -6,12 +6,10 @@ import "./ProductCard.css";
 const ProductCard = ({ image, name, price, requiresPrescription, onAddToCart, onMoreInfo }) => {
   return (
     <div className="product-card">
-      {/* Product Image */}
       <div className="product-image">
         <img src={image} alt={name} />
       </div>
 
-      {/* Product Details */}
       <div className="product-details">
         <span className="product-name">{name}</span>
         <button className="add-to-cart" onClick={onAddToCart}>

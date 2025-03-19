@@ -3,23 +3,23 @@ import HeaderStripe from "../components/HeaderStripe";
 import NavBar from "../components/home/NavBar";
 import CircleCard from "../components/home/CircleCard";
 import HeroSection from "../components/HeroSection";
-import ProductCard from "../components/ProductCard/ProductCard"; // Import ProductCard component
-import Footer from "../components/Footer"; // Import Footer component
-import Popup from "../components/Popup/Popup"; // Import Popup component
-import "../styles/Home.css"; // Import the CSS file for styling
+import ProductCard from "../components/ProductCard/ProductCard";
+import Footer from "../components/Footer";
+import Popup from "../components/Popup/MoreInfo";
+import "../styles/Home.css";
 
 const Home = () => {
   const [showPopup, setShowPopup] = useState(false);
-  const [popupMessage, setPopupMessage] = useState("");
-  const [medicines, setMedicines] = useState([]); // State to store medicines data
+  const [selectedMedicine, setSelectedMedicine] = useState(null);
+  const [medicines, setMedicines] = useState([]);
 
   // Fetch medicines data from MongoDB
   useEffect(() => {
     const fetchMedicines = async () => {
       try {
-        const response = await fetch("http://localhost:5555/medicines"); // Update with correct API endpoint
+        const response = await fetch("http://localhost:5555/medicines");
         const data = await response.json();
-        setMedicines(data.data); // Set only the required data
+        setMedicines(data.data);
       } catch (error) {
         console.error("Error fetching medicines:", error);
       }
@@ -28,21 +28,16 @@ const Home = () => {
     fetchMedicines();
   }, []);
 
-  // Handle "Add to Cart" button click
-  const handleAddToCart = (product) => {
-    if (product.requiresPrescription) {
-      setPopupMessage(
-        "This medicine requires a prescription. Please upload your prescription to proceed."
-      );
-      setShowPopup(true); // Show popup if prescription is required
-    } else {
-      console.log(`Added ${product.name} to cart`); // Call the onAddToCart function directly
-    }
+  // Handle "More Info" button click
+  const handleMoreInfo = (medicine) => {
+    setSelectedMedicine(medicine);
+    setShowPopup(true);
   };
 
   // Close the popup
   const handleClosePopup = () => {
     setShowPopup(false);
+    setSelectedMedicine(null);
   };
 
   return (
@@ -80,18 +75,15 @@ const Home = () => {
         </div>
 
         <div className="product-card-container">
-          {/* Map over fetched medicines data to render ProductCard components */}
           {medicines.map((medicine) => (
             <ProductCard
               key={medicine._id}
-              image={medicine.imageUrl} // Use imageUrl from database
-              name={medicine.name} // Use name from database
-              price={medicine.price} // Use price from database
-              requiresPrescription={medicine.requiresPrescription} // Use prescription requirement
+              image={medicine.imageUrl}
+              name={medicine.name}
+              price={medicine.price}
+              requiresPrescription={medicine.requiresPrescription}
               onAddToCart={() => handleAddToCart(medicine)}
-              onMoreInfo={() =>
-                console.log(`More info clicked for ${medicine.name}`)
-              }
+              onMoreInfo={() => handleMoreInfo(medicine)}
             />
           ))}
         </div>
@@ -99,8 +91,10 @@ const Home = () => {
         <Footer />
       </div>
 
-      {/* Render the Popup outside the ProductCard container */}
-      {showPopup && <Popup message={popupMessage} onClose={handleClosePopup} />}
+      {/* Render the Popup if showPopup is true */}
+      {showPopup && (
+        <Popup medicine={selectedMedicine} onClose={handleClosePopup} />
+      )}
     </div>
   );
 };
