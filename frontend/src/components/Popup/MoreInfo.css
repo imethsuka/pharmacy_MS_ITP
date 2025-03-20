@@ -14,22 +14,23 @@
 .popup-content {
   background: white;
   width: 90%;
-  max-width: 700px;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+  max-width: 800px;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
   position: relative;
+  font-family: 'Poppins', sans-serif;
   animation: slideIn 0.3s ease-in-out;
 }
 
 /* Close Button */
 .close-button {
   position: absolute;
-  top: 12px;
-  right: 12px;
+  top: 16px;
+  right: 16px;
   background: none;
   border: none;
-  font-size: 24px;
+  font-size: 28px;
   cursor: pointer;
   color: #555;
   transition: color 0.2s;
@@ -42,60 +43,54 @@
 /* Popup Body Layout */
 .popup-body {
   display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-@media (min-width: 768px) {
-  .popup-body {
-    flex-direction: row;
-    gap: 20px;
-  }
+  flex-direction: row;
+  gap: 30px;
+  align-items: center;
 }
 
 /* Product Image */
 .popup-image img {
-  width: 100%;
-  max-width: 200px;
-  border-radius: 10px;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.15);
+  width: 240px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 /* Product Details */
 .popup-details {
   flex: 1;
+  color: #333;
 }
 
 .product-name {
-  font-size: 22px;
-  font-weight: bold;
-  color: #333;
-  margin-bottom: 5px;
+  font-size: 24px;
+  font-weight: 600;
+  color: #222;
 }
 
 .product-description {
-  font-size: 14px;
+  font-size: 16px;
   color: #666;
+  margin-bottom: 10px;
 }
 
-/* Detail Sections */
 .detail-section {
-  margin-top: 8px;
+  margin-top: 12px;
 }
 
 .detail-section h3 {
-  font-size: 16px;
+  font-size: 18px;
   color: #444;
-  margin-bottom: 3px;
+  margin-bottom: 5px;
 }
 
 .detail-section p {
-  font-size: 14px;
+  font-size: 16px;
   color: #666;
 }
 
 .price {
-  font-size: 18px;
+  font-size: 22px;
   font-weight: bold;
   color: #5a4fcf;
 }
@@ -104,33 +99,48 @@
 .quantity-section {
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-top: 10px;
+  gap: 15px;
+  margin-top: 15px;
 }
 
 .quantity-button {
-  background-color: #ddd;
-  border: none;
-  padding: 6px 12px;
-  font-size: 18px;
-  border-radius: 6px;
+  background-color: #ffffff;
+  border:#222;
+  border-style: solid;
+  color: rgb(0, 0, 0);
+  padding: 8px 16px;
+  font-size: 20px;
+  border-radius: 8px;
   cursor: pointer;
   transition: background 0.2s;
 }
 
 .quantity-button:hover {
-  background-color: #ccc;
+  background-color: #007bff;
+  color: #ffffff;
 }
 
 .quantity {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
 }
 
 /* Add to Cart Button */
 .add-to-cart-button {
-  background-color: #6c5ce7;
+  background:#007bff;
   color: white;
   border: none;
-  width: ;
+  padding: 12px 20px;
+  font-size: 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: block;
+  width: 80%;
+  margin-top: 20px;
+  text-align: center;
+  transition: background 0.3s ease-in-out;
+}
+
+.add-to-cart-button:hover {
+  background: #005dc1;
 }
