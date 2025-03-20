@@ -46,6 +46,7 @@ const AddDriver = () => {
   };
 
   return (
+    <div classname="driver-body">
     <div className="Driver-form-container">
       <h2>Delivery Driver Details</h2>
       <form onSubmit={handleSubmit}>
@@ -74,6 +75,7 @@ const AddDriver = () => {
           {loading ? "Submitting..." : "Submit"}
         </button>
       </form>
+    </div>
     </div>
   );
 };

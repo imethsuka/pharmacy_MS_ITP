@@ -1,9 +1,11 @@
-/* Container Styles */
+.driver-body{
+background: linear-gradient(to bottom, #bfdbfe, #ffffff);
+}
 .Driver-form-container {
     width: 400px;
     margin: 40px auto;
     padding: 20px;
-    background: #f4f4f4;
+    
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     font-family: Arial, sans-serif;

@@ -1,108 +1,90 @@
-/* .DriverDetails-container{
-  position:fixed;
-} */
-.Details-container {
+.Driver-large-container {
+  padding: 2rem;
+  background: linear-gradient(to bottom, #bfdbfe, #ffffff);
+  min-height: 100vh;
+}
+
+.Driver-Title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 200px;
+  color: #1e3a8a;
+  margin-left: 100px;
+}
+
+.Add-driver-button {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #f0f8ff;
-  min-height: max-content;
-  padding: 165px;
-  font-family: Arial, sans-serif;
-  overflow: hidden;
-  /* position: ; */
-  /* position:relative; */
+  justify-content: center;
+  margin-bottom: 1.5rem;
 }
 
-/* Navigation and Sidebar */
-/* .Details-container > div {
-  width: 50%;
-  display: flex;
-  justify-content: space-between;
-} */
-
-/* Title Styling */
-.Delivery-Driver {
-  margin: 20px 0;
-  font-size: 24px;
-  font-weight: bold;
-  color: #2c3e50;
-  text-align: center;
-}
-
-/* Table Styling */
-.driverDetails-table {
-  width: 50%;
-  max-width: 1000px;
-  border-collapse: collapse;
-  background-color: #d6eaf8;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
-  overflow: hidden;
-  margin-top: 10px;
-  margin-bottom: 0px;
-
-}
-
-/* Table Header */
-.driverDetails-table th {
-  background-color: #3498db;
-  color: white;
-  padding: 12px;
-  border: 1px solid #2980b9;
-  text-align: center;
-}
-
-/* Table Cells */
-.driverDetails-table td {
-  padding: 12px;
-  border: 1px solid #3498db;
-  text-align: center;
-}
-
-/* Alternate Row Color */
-.driverDetails-table tr:nth-child(even) {
-  background-color: #ebf5fb;
-}
-
-/* Availability Styling */
-.available {
-  color: green;
-  font-weight: bold;
-}
-
-.busy {
-  color: red;
-  font-weight: bold;
-}
-
-.add-driver-button {
-  position: absolute;
-  /* top: 400px; */
-  right: 10px;
-  padding:10px 20px;
-  background-color: rgb(153, 38, 39);
+.Add-driver-button button {
+  padding: 0.6rem 1.2rem;
+  background-color: #2563eb;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 0.5rem;
   cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
 }
 
-.add-driver-button:hover {
-  background-color: rgb(5, 59, 124);
+.Add-driver-button button:hover {
+  background-color: #1e40af;
 }
 
-/* Responsive Styling */
-@media (max-width: 768px) {
-  .driverDetails-table {
-    width: 100%;
-  }
+.Driver-table {
+  display: flex;
+  justify-content: center;
+  overflow-x: auto;
+}
 
-  .Details-container {
-    padding: 10px;
-  }
+.Driver-table-start {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 1000px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  border-radius: 1rem;
+  overflow: hidden;
+}
 
-  .Delivery-Driver {
-    font-size: 20px;
-  }
+.Driver-table-header {
+  background-color: #3b82f6;
+  color: white;
+  
+}
+
+.Driver-header {
+  padding: 0.8rem 1rem;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.Driver-data {
+  padding: 0.8rem 1rem;
+  text-align: center;
+  border-bottom: 1px solid #e5e7eb;
+  transition: background-color 0.2s ease;
+}
+
+.Driver-data:hover {
+  background-color: #dbeafe;
+}
+
+.Driver-availability {
+  font-weight: 600;
+  padding: 0.8rem 1rem;
+}
+
+.text-green-600 {
+  color: #16a34a;
+}
+
+.text-red-600 {
+  color: #dc2626;
+}
+.driver-nav{
+  margin-right: 70px;
 }

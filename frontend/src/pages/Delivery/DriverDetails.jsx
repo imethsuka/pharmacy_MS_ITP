@@ -1,74 +1,89 @@
-import React from "react";
+import React, { useEffect, useState } from 'react';
 import "../../styles/Delivery/DriverDetails.css";
+// import { useParams } from 'react-router-dom';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import NavBarV from "../../components/Delivery/NavBarV";
 import SideBarV from "../../components/Delivery/SideBarV";
-import { useNavigate } from "react-router-dom";
+
+
+
 
 const DriverDetails = () => {
-  const drivers = [
-    { id: 1, name: "John Doe", phone: "+1234567890", vehicle: "Bike", license: "AB123456", availability: "Available" },
-    { id: 2, name: "Jane Smith", phone: "+9876543210", vehicle: "Car", license: "XY987654", availability: "Busy" },
-    { id: 3, name: "Michael Brown", phone: "+1122334455", vehicle: "Scooter", license: "LM456789", availability: "Available" },
-  ];
-
+  const [drivers, setDrivers] = useState([]);
+  const [loading, setLoading] = useState(false);
+  
   const navigate = useNavigate();
 
-  return (
-    <div className="DriverDetails-container">
-      <div> <NavBarV /></div>
-      <div className="Details-container">
-        <div>
-          <SideBarV />
-        </div>
-        <div className="Delivery-Driver">
-          <h2>Delivery Driver Details</h2>
-        </div>
-        
-        <button onClick={() => navigate("/Delivery/addDriver")}>
-          Add Driver
-        </button>
+  useEffect(() => {
+    setLoading(true);
+    axios
+    .get(`http://localhost:5555/drivers`)
+    .then((response) => {
+        setDrivers(response.data.data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+        setLoading(false);
+      });
+    
 
-        <table className="driverDetails-table">
-          <thead>
-            <tr>
-              <th>Driver ID</th>
-              <th>Name</th>
-              <th>Phone Number</th>
-              <th>Vehicle Type</th>
-              <th>License Number</th>
-              <th>Availability</th>
-            </tr>
-          </thead>
-          <tbody>
-            {drivers.map((driver) => (
-              <tr key={driver.id}>
-                <td>{driver.id}</td>
-                <td>{driver.name}</td>
-                <td>{driver.phone}</td>
-                <td>{driver.vehicle}</td>
-                <td>{driver.license}</td>
-                <td className={driver.availability === "Available" ? "available" : "busy"}>
-                  {driver.availability}
-                </td>
+  
+  }, []);
+
+  return (
+    <><div className="driver-nav">
+      <NavBarV />
+    </div><div className="driver-side">
+        <SideBarV />
+      </div><div className="Driver-large-container">
+
+        <h1 className="Driver-Title">Delivery Driver Details</h1>
+        <div className="Add-driver-button">
+          <button onClick={() => navigate("/Delivery/AddDriver")}>
+            Add Driver
+          </button>
+        </div>
+        <div className="Driver-table">
+        {loading ? (
+           <p>Loading drivers...</p>
+         ) : (
+          <table className="Driver-table-start">
+            <thead>
+              <tr className="Driver-table-header">
+                <th className="Driver-header">Driver ID</th>
+                <th className="Driver-header">Name</th>
+                <th className="Driver-header">Phone Number</th>
+                <th className="Driver-header">Vehicle Type</th>
+                <th className="Driver-header">License Number</th>
+                <th className="Driver-header">Availability</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </div>
+            </thead>
+            <tbody>
+              {drivers.map((driver, index) => (
+                <tr
+                  key={index}
+                  className="text-center border-b hover:bg-blue-100 transition duration-200"
+                >
+                  <td className="Driver-data">{index + 1}</td>
+                  <td className="Driver-data">{driver.DName}</td>
+                  <td className="Driver-data">{driver.Phone}</td>
+                  <td className="Driver-data">{driver.Email}</td>
+                  <td className="Driver-data">{driver.LicenseNumber}</td>
+                  <td
+                    className={`Driver-availability ${driver.Availability === 'Available' ? 'text-green-600' : 'text-red-600'}`}
+                  >
+                    {driver.Availability}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+         )}
+        </div>
+      </div></>
   );
 };
 
 export default DriverDetails;
-
-
-
-
-
-
-
-
-
-
-
-
