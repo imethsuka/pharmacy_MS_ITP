@@ -17,6 +17,12 @@ import Notifications from './pages/Inventory/Notifications';
 //medicines
 import AddMedicines from './pages/Inventory/addMedicines';
 
+//order
+
+import Product from './pages/Order/Product';
+import ProductList from './pages/Order/ProductList';
+import Cart from './pages/Order/Cart';
+
 
 const App = () => {
   return (
@@ -38,6 +44,11 @@ const App = () => {
       <Route path='/inventory/medicinegroups' element={<MedicineGroups />} />
       <Route path='/inventory/reports' element={<Reports />} />
       <Route path='/inventory/notifications' element={<Notifications />} />
+
+      {/* Order */}
+      <Route path='/order/product/:id' element={<Product />} />
+      <Route path='/order/products' element={<ProductList />} />
+      <Route path='/order/cart' element={<Cart />} />
 
 
     </Routes>

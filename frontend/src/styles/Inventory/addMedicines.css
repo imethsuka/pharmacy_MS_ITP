@@ -71,4 +71,21 @@
       width: 90%;
     }
   }
+
+  .checkbox-container {
+    display: flex;
+    align-items: center;
+    margin-top: 8px;
+  }
   
+  .form-checkbox {
+    margin-right: 10px;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+  }
+  
+  .checkbox-label {
+    font-size: 14px;
+    color: #666;
+  }

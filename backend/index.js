@@ -3,6 +3,7 @@ import { PORT, mongoDBURL } from './config.js';
 import mongoose from 'mongoose';
 import booksRoute from './routes/booksRoute.js';
 import inventoryRoute from './routes/inventoryRoute.js';
+import prescriptionRoute from './routes/prescriptionRoute.js';
 import cors from 'cors';
 
 const app = express();
@@ -27,8 +28,12 @@ app.get('/', (request, response) => {
   return response.status(234).send('Welcome To MERN Stack Tutorial');
 });
 
+// Add static file serving for uploads
+app.use('/uploads', express.static('uploads'));
+
 app.use('/books', booksRoute);
 app.use('/medicines',inventoryRoute);
+app.use('/api/prescriptions', prescriptionRoute);
 
 mongoose
   .connect(mongoDBURL)
