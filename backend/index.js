@@ -8,6 +8,7 @@ import mongoose from 'mongoose';
 import booksRoute from './routes/booksRoute.js';
 import authRoutes from "./routes/auth.routes.js";
 import inventoryRoute from './routes/inventoryRoute.js';
+import prescriptionRoutes from './routes/prescriptionRoutes.js'; // Import prescriptionRoutes
 import cors from 'cors';
 import cookieParser from "cookie-parser";
 import path from "path";
@@ -29,15 +30,29 @@ const corsOptions = {
   allowedHeaders: ['Content-Type', 'Authorization'],
 };
 
+
+// Serve static files from the public folder
+app.use(express.static('public')); // Add this line to serve static files
+
 app.use(cors(corsOptions));
 app.use("/api", route);
 app.get('/', (request, response) => {
   console.log(request);
-  return response.status(200).send('Welcome To MERN Stack Tutorial');
+  return response.status(234).send('Welcome To Sethsiri Pharmacy');
+// =======
+// app.use(cors(corsOptions));
+// app.use("/api", route);
+// app.get('/', (request, response) => {
+//   console.log(request);
+//   return response.status(200).send('Welcome To MERN Stack Tutorial');
+// >>>>>>> G_Branch_Beta
 });
 
 app.use('/books', booksRoute);
 app.use('/medicines', inventoryRoute);
+// <<<<<<< main
+app.use('/prescriptions', prescriptionRoutes); // Use prescriptionRoutes
+// =======
 app.use("/api/auth", authRoutes);
 
 if (process.env.NODE_ENV === "production") {
@@ -80,6 +95,7 @@ app.delete("/deleteUser/:id", (req, res) => {
     .then(users => res.json(users))
     .catch(err => res.json(err));
 });
+// >>>>>>> G_Branch_Beta
 
 mongoose
   .connect(mongoDBURL)
@@ -91,4 +107,6 @@ mongoose
   })
   .catch((error) => {
     console.log(error);
+
   });
+

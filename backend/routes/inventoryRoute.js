@@ -9,7 +9,7 @@ router.post('/', async (request, response) => {
     if (
       !request.body.name ||
       !request.body.productId ||
-      !request.body.catergory ||
+      !request.body.category ||
       !request.body.description ||
       !request.body.howToUse ||
       !request.body.sideEffects ||
@@ -17,19 +17,20 @@ router.post('/', async (request, response) => {
       !request.body.stock ||
       !request.body.reorderLevel ||
       !request.body.batchExpiry ||
-      !request.body.requiresPrescription ||
       !request.body.supplierEmail ||
       !request.body.imageUrl
 
     ) {
       return response.status(400).send({
-        message: 'Send all required fields: name, productId, catergory, description, howToUse, sideEffects, price, stock, reorderLevel, batchExpiry, requiresPrescription, supplierEmail, imageUrl'
+
+        message: 'Send all required fields: name, productId, category, description, howToUse, sideEffects, price, stock, reorderLevel, batchExpiry, supplierEmail, imageUrl'
+
       });
     }
     const newMedicine = {
       name: request.body.name,
       productId: request.body.productId,
-      catergory: request.body.catergory,
+      category: request.body.category,
       description: request.body.description,
       howToUse: request.body.howToUse,
       sideEffects: request.body.sideEffects,
@@ -37,7 +38,7 @@ router.post('/', async (request, response) => {
       stock: request.body.stock,
       reorderLevel: request.body.reorderLevel,
       batchExpiry: request.body.batchExpiry,
-      requiresPrescription: request.body.requiresPrescription,
+      requiresPrescription: request.body.requiresPrescription || false, // Default to false if not provided
       supplierEmail: request.body.supplierEmail,
       imageUrl: request.body.imageUrl,
     };
@@ -73,6 +74,10 @@ router.get('/:id', async (request, response) => {
 
     const medicine = await Medicine.findById(id);
 
+    if (!medicine) {
+      return response.status(404).json({ message: 'Medicine not found' });
+    }
+
     return response.status(200).json(medicine);
   } catch (error) {
     console.log(error.message);
@@ -86,7 +91,7 @@ router.put('/:id', async (request, response) => {
     if (
       !request.body.name ||
       !request.body.productId ||
-      !request.body.catergory ||
+      !request.body.category ||
       !request.body.description ||
       !request.body.howToUse ||
       !request.body.sideEffects ||
@@ -94,14 +99,20 @@ router.put('/:id', async (request, response) => {
       !request.body.stock ||
       !request.body.reorderLevel ||
       !request.body.batchExpiry ||
-      !request.body.requiresPrescription ||
       !request.body.supplierEmail ||
       !request.body.imageUrl
 
     ) {
       return response.status(400).send({
-        message: 'Send all required fields: name, productId, catergory, description, howToUse, sideEffects, price, stock, reorderLevel, batchExpiry, requiresPrescription, supplierEmail, imageUrl',
+
+        message: 'Send all required fields: name, productId, category, description, howToUse, sideEffects, price, stock, reorderLevel, batchExpiry, supplierEmail, imageUrl',
+
       });
+    }
+
+    // If requiresPrescription isn't provided, set it to false
+    if (request.body.requiresPrescription === undefined) {
+      request.body.requiresPrescription = false;
     }
 
     const { id } = request.params;

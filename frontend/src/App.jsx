@@ -16,6 +16,14 @@ import Notifications from './pages/Inventory/Notifications';
 
 //medicines
 import AddMedicines from './pages/Inventory/addMedicines';
+import ShowMedicines from './pages/Inventory/showMedicines';
+
+//Pharmasist
+import PDashboard from './pages/Prescription/PDashboard.jsx';
+import Prescriptions from './pages/Prescription/Prescriptions.jsx';
+import Verified from './pages/Prescription/Verified.jsx';
+import Rejected from './pages/Prescription/Rejected.jsx';
+import Pending from './pages/Prescription/Pending.jsx';
 
 //import Customer pages
 import SignUpPage from "./pages/Customer/SignUpPage";
@@ -83,10 +91,20 @@ const App = () => {
       <Route path='/inventory/medicinelists' element={<MedicineLists />} />
       
       <Route path='/inventory/addMedicines' element={<AddMedicines />} />
+      <Route path='/inventory/showMedicines/:id' element={<ShowMedicines />} />
 
       <Route path='/inventory/medicinegroups' element={<MedicineGroups />} />
       <Route path='/inventory/reports' element={<Reports />} />
       <Route path='/inventory/notifications' element={<Notifications />} />
+
+      <Route path='/Prescription/pdashboard' element={<PDashboard />} />
+      <Route path='/Prescription/prescriptions' element={<Prescriptions />} />
+      <Route path='/Prescription/pending' element={<Pending />} />
+      <Route path='/Prescription/verified' element={<Verified />} />
+      <Route path='/Prescription/rejected' element={<Rejected />} />
+
+
+
 
       {/* Customer Pages */}  
       <Route path='/customerdashboard' element={<CusDashboard />} />
@@ -100,6 +118,7 @@ const App = () => {
       <Route path="/users" element={<Users />} />
       <Route path="/add" element={<Add/>} />
       <Route path="/edit/:id" element={<Edit/>} />
+>
     </Routes>
   );
 };
