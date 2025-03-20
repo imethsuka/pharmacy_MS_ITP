@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import {Navigate, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import HomeOld from './pages/HomeOld';
 import CreateBook from './pages/CreateBooks';
@@ -24,6 +24,55 @@ import Prescriptions from './pages/Prescription/Prescriptions.jsx';
 import Verified from './pages/Prescription/Verified.jsx';
 import Rejected from './pages/Prescription/Rejected.jsx';
 import Pending from './pages/Prescription/Pending.jsx';
+
+//import Customer pages
+import SignUpPage from "./pages/Customer/SignUpPage";
+import LoginPage from "./pages/Customer/LoginPage";
+
+import DashboardPage from "./pages/Customer/DashboardPage";
+import ForgotPasswordPage from "./pages/Customer/ForgotPasswordPage";
+import ResetPasswordPage from "./pages/Customer/ResetPasswordPage";
+import CusDashboard from './pages/Customer/DashboardCustomer';
+
+
+import { Toaster } from "react-hot-toast";
+import { useAuthStore } from "./store/authStore";
+import { useEffect } from "react";
+
+import './App.css';
+import {RouterProvider, createBrowserRouter} from "react-router-dom";
+import Users from './pages/Customer/getuser/User';
+import Add from './pages/Customer/adduser/Add';
+import Edit from './pages/Customer/updateuser/Edit';
+
+
+//cutomer authentication
+// protect routes that require authentication
+const ProtectedRoute = ({ children }) => {
+  const { isAuthenticated, user } = useAuthStore();
+
+  if (!isAuthenticated) {
+      return <Navigate to='/login' replace />;
+  }
+
+  if (!user.isVerified) {
+      return <Navigate to='/verify-email' replace />;
+  }
+
+  return children;
+};
+
+// redirect authenticated users to the home page
+const RedirectAuthenticatedUser = ({ children }) => {
+  const { isAuthenticated, user } = useAuthStore();
+
+  if (isAuthenticated && user.isVerified) {
+      return <Navigate to='/' replace />;
+  }
+
+  return children;
+};
+
 
 
 const App = () => {
@@ -56,6 +105,20 @@ const App = () => {
 
 
 
+
+      {/* Customer Pages */}  
+      <Route path='/customerdashboard' element={<CusDashboard />} />
+      <Route path='/login' element={<RedirectAuthenticatedUser><LoginPage /></RedirectAuthenticatedUser>} />
+      <Route path='/signup' element={<RedirectAuthenticatedUser><SignUpPage /></RedirectAuthenticatedUser>} />
+        
+      <Route path='/dashboard' element={<ProtectedRoute><DashboardPage /></ProtectedRoute>} />
+      <Route path='/forgot-password' element={<RedirectAuthenticatedUser><ForgotPasswordPage /></RedirectAuthenticatedUser>} />
+      <Route path='/reset-password' element={<ResetPasswordPage />} />
+      <Route path='*' element={<Navigate to='/' />} />
+      <Route path="/users" element={<Users />} />
+      <Route path="/add" element={<Add/>} />
+      <Route path="/edit/:id" element={<Edit/>} />
+>
     </Routes>
   );
 };
