@@ -1,5 +1,7 @@
 {
   "name": "frontend",
+  "author": "Imeth Methsuka",
+  "description": "Sethsiri Pharmacy Management System",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,6 +12,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/icons-material": "^6.4.7",
+    "@mui/material": "^6.4.7",
     "autoprefixer": "^10.4.21",
     "axios": "^1.8.3",
     "fontawesome-free": "^1.0.4",
@@ -20,7 +26,8 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.12.0",
     "react-router-dom": "^6.14.1",
-    "uuid": "^11.1.0"
+    "uuid": "^11.1.0",
+    "react-table": "^7.8.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.14",
