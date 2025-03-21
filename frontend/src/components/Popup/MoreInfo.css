@@ -1,0 +1,146 @@
+/* Background Overlay */
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Popup Container */
+.popup-content {
+  background: white;
+  width: 90%;
+  max-width: 800px;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+  position: relative;
+  font-family: 'Poppins', sans-serif;
+  animation: slideIn 0.3s ease-in-out;
+}
+
+/* Close Button */
+.close-button {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #555;
+  transition: color 0.2s;
+}
+
+.close-button:hover {
+  color: #222;
+}
+
+/* Popup Body Layout */
+.popup-body {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  align-items: center;
+}
+
+/* Product Image */
+.popup-image img {
+  width: 240px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Product Details */
+.popup-details {
+  flex: 1;
+  color: #333;
+}
+
+.product-name {
+  font-size: 24px;
+  font-weight: 600;
+  color: #222;
+}
+
+.product-description {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.detail-section {
+  margin-top: 12px;
+}
+
+.detail-section h3 {
+  font-size: 18px;
+  color: #444;
+  margin-bottom: 5px;
+}
+
+.detail-section p {
+  font-size: 16px;
+  color: #666;
+}
+
+.price {
+  font-size: 22px;
+  font-weight: bold;
+  color: #5a4fcf;
+}
+
+/* Quantity Selector */
+.quantity-section {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.quantity-button {
+  background-color: #ffffff;
+  border:#222;
+  border-style: solid;
+  color: rgb(0, 0, 0);
+  padding: 8px 16px;
+  font-size: 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.quantity-button:hover {
+  background-color: #007bff;
+  color: #ffffff;
+}
+
+.quantity {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* Add to Cart Button */
+.add-to-cart-button {
+  background:#007bff;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: block;
+  width: 80%;
+  margin-top: 20px;
+  text-align: center;
+  transition: background 0.3s ease-in-out;
+}
+
+.add-to-cart-button:hover {
+  background: #005dc1;
+}
