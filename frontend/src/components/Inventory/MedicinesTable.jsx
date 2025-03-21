@@ -16,16 +16,16 @@ const MedicinesTable = ({ medicines }) => {
           <th>Name</th>
           <th className="hide-on-mobile">Product ID</th>
           <th className="hide-on-mobile">Category</th>
-          <th className="hide-on-mobile">Descriptionn</th>
+          {/* <th className="hide-on-mobile">Descriptionn</th>
           <th className="hide-on-mobile">How To Use</th>
-          <th className="hide-on-mobile">Side Effects</th>
+          <th className="hide-on-mobile">Side Effects</th> */}
           <th className="hide-on-mobile">Price</th>
           <th className="hide-on-mobile">Stock</th>
           <th className="hide-on-mobile">Reorder Level</th>
           <th className="hide-on-mobile">Batch Expiry</th>
           <th className="hide-on-mobile">Requires Prescription</th>
           <th className="hide-on-mobile">Supplier Email</th>
-          <th className="hide-on-mobile">Image</th>
+          {/* <th className="hide-on-mobile">Image</th> */}
           <th>Operations</th>
         </tr>
       </thead>
@@ -36,16 +36,16 @@ const MedicinesTable = ({ medicines }) => {
             <td>{medicine.name}</td>
             <td className="hide-on-mobile">{medicine.productId}</td>
             <td className="hide-on-mobile">{medicine.category}</td>
-            <td className="hide-on-mobile">{medicine.description}</td>
+            {/* <td className="hide-on-mobile">{medicine.description}</td>
             <td className="hide-on-mobile">{medicine.howToUse}</td>
-            <td className="hide-on-mobile">{medicine.sideEffects}</td>
+            <td className="hide-on-mobile">{medicine.sideEffects}</td> */}
             <td className="hide-on-mobile">{medicine.price}</td>
             <td className="hide-on-mobile">{medicine.stock}</td>
             <td className="hide-on-mobile">{medicine.reorderLevel}</td>
             <td className="hide-on-mobile">{medicine.batchExpiry}</td>
             <td className="hide-on-mobile">{medicine.requiresPrescription}</td>
             <td className="hide-on-mobile">{medicine.supplierEmail}</td>
-            <td className="hide-on-mobile">{medicine.imageUrl}</td>
+            {/* <td className="hide-on-mobile">{medicine.imageUrl}</td> */}
             <td>
               <div className="operations">
                 <Link to={`/medicines/details/${medicine._id}`}>
