@@ -1,135 +1,115 @@
-/* Background Overlay */
+/* Popup Overlay */
 .popup-overlay {
-    position: fixed;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(0, 0, 0, 0.6);
-    z-index: 1000;
-    animation: fadeIn 0.3s ease-in-out;
-  }
-  
-  /* Popup Container */
-  .popup-content {
-    background: white;
-    width: 90%;
-    max-width: 800px;
-    padding: 30px;
-    border-radius: 16px;
-    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
-    position: relative;
-    font-family: 'Poppins', sans-serif;
-    animation: slideIn 0.3s ease-in-out;
-  }
-  
-  /* Close Button */
-  .close-button {
-    position: absolute;
-    top: 16px;
-    right: 16px;
-    background: none;
-    border: none;
-    font-size: 28px;
-    cursor: pointer;
-    color: #555;
-    transition: color 0.2s;
-  }
-  
-  .close-button:hover {
-    color: #222;
-  }
-  
-  /* Popup Body Layout */
-  .popup-body {
-    display: flex;
-    flex-direction: row;
-    gap: 30px;
-    align-items: center;
-  }
-  
-  /* Product Image */
-  .popup-image img {
-    width: 240px;
-    height: auto;
-    border-radius: 12px;
-    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.2);
-  }
-  
-  /* Product Details */
-  .popup-details {
-    flex: 1;
-    color: #333;
-  }
-  
-  .product-name {
-    font-size: 24px;
-    font-weight: 600;
-    color: #222;
-  }
-  
-  .product-description {
-    font-size: 16px;
-    color: #666;
-    margin-bottom: 10px;
-  }
-  
-  .detail-section {
-    margin-top: 12px;
-  }
-  
-  .detail-section h3 {
-    font-size: 18px;
-    color: #444;
-    margin-bottom: 5px;
-  }
-  
-  .detail-section p {
-    font-size: 16px;
-    color: #666;
-  }
-  
-  .price {
-    font-size: 22px;
-    font-weight: bold;
-    color: #5a4fcf;
-  }
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-in-out;
+}
 
-  .operations {
-    display: flex;
-    justify-content: center;
-    gap: 16px;
-  }
-  
-  .info-icon,
-  .edit-icon,
-  .delete-icon {
-    font-size: 20px;
-    cursor: pointer;
-    transition: color 0.3s ease;
-  }
-  
-  .info-icon {
-    color: #3b82f6; /* Modern blue for info */
-  }
-  
-  .info-icon:hover {
-    color: #2563eb; /* Darker blue on hover */
-  }
-  
-  .edit-icon {
-    color: #f59e0b; /* Modern orange for edit */
-  }
-  
-  .edit-icon:hover {
-    color: #d97706; /* Darker orange on hover */
-  }
-  
-  .delete-icon {
-    color: #ef4444; /* Modern red for delete */
-  }
-  
-  .delete-icon:hover {
-    color: #dc2626; /* Darker red on hover */
-  }
-  
+/* Popup Container */
+.popup-content {
+  background: rgba(255, 255, 255, 0.15); /* Glassmorphism effect */
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 20px;
+  width: 85%;
+  max-width: 650px;
+  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.2);
+  animation: slideIn 0.3s ease-in-out;
+  color: white;
+  position: relative;
+}
+
+/* Close Button */
+.close-button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 24px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.close-button:hover {
+  transform: rotate(90deg);
+}
+
+/* Popup Layout */
+.popup-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  text-align: center;
+}
+
+/* Medicine Image */
+.popup-image img {
+  width: 120px;
+  height: 120px;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 2px 4px 15px rgba(255, 255, 255, 0.3);
+}
+
+/* Product Name */
+.product-name {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+/* Product Description */
+.product-description {
+  font-size: 14px;
+  color: #ddd;
+  margin-bottom: 10px;
+}
+
+/* Details Grid */
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  width: 100%;
+  font-size: 14px;
+}
+
+/* Detail Items */
+.detail-item {
+  padding: 8px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+}
+
+/* Stock & Price */
+.detail-item.stock {
+  color: #ff4d4d;
+  font-weight: bold;
+}
+
+.detail-item.price {
+  color: #28a745;
+  font-weight: bold;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { transform: translateY(-20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
