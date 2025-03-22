@@ -29,8 +29,8 @@ router.post('/', async (request, response) => {
     };
 
     const driver = await Driver.create(newDriver);
+      return response.status(201).send(driver);
 
-    return response.status(201).send(newDriver);
   } catch (error) {
     console.log(error.message);
     response.status(500).send({ message: error.message });

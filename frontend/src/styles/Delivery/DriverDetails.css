@@ -1,33 +1,36 @@
 .Driver-large-container {
   padding: 2rem;
-  background: linear-gradient(to bottom, #bfdbfe, #ffffff);
+  background: linear-gradient(to bottom, #e0f2fe, #ffffff);
   min-height: 100vh;
+  margin-top: 110px;
+  margin-left: 280px;
 }
 
 .Driver-Title {
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   font-weight: bold;
   text-align: center;
-  margin-bottom: 200px;
-  color: #1e3a8a;
-  margin-left: 100px;
+  margin-bottom: 2.5rem;
+  color: #1d4ed8;
 }
 
 .Add-driver-button {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   margin-bottom: 1.5rem;
+  padding-right: 50px;
 }
 
 .Add-driver-button button {
-  padding: 0.6rem 1.2rem;
+  padding: 0.7rem 1.5rem;
   background-color: #2563eb;
   color: white;
   border: none;
-  border-radius: 0.5rem;
+  border-radius: 8px;
   cursor: pointer;
   font-weight: 600;
-  transition: background-color 0.3s ease;
+  font-size: 1rem;
+  transition: all 0.3s;
 }
 
 .Add-driver-button button:hover {
@@ -38,44 +41,44 @@
   display: flex;
   justify-content: center;
   overflow-x: auto;
+  padding: 0 40px;
 }
 
 .Driver-table-start {
   border-collapse: collapse;
   width: 100%;
-  max-width: 1000px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-  border-radius: 1rem;
+  max-width: 1200px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
   overflow: hidden;
+  background-color: white;
 }
 
 .Driver-table-header {
   background-color: #3b82f6;
   color: white;
-  
 }
 
 .Driver-header {
-  padding: 0.8rem 1rem;
+  padding: 1rem;
   text-align: center;
   font-size: 1rem;
   font-weight: bold;
 }
 
 .Driver-data {
-  padding: 0.8rem 1rem;
+  padding: 0.9rem 1rem;
   text-align: center;
   border-bottom: 1px solid #e5e7eb;
   transition: background-color 0.2s ease;
 }
 
 .Driver-data:hover {
-  background-color: #dbeafe;
+  background-color: #eff6ff;
 }
 
 .Driver-availability {
   font-weight: 600;
-  padding: 0.8rem 1rem;
 }
 
 .text-green-600 {
@@ -85,6 +88,50 @@
 .text-red-600 {
   color: #dc2626;
 }
-.driver-nav{
-  margin-right: 70px;
+
+/* Action buttons in each row */
+.Driver-data button {
+  margin: 0 4px;
+  padding: 0.4rem 0.8rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  color: white;
+  transition: all 0.3s;
+}
+
+.Driver-data button:first-child {
+  background-color: #10b981;
+}
+
+.Driver-data button:first-child:hover {
+  background-color: #047857;
+}
+
+.Driver-data button:last-child {
+  background-color: #ef4444;
+}
+
+.Driver-data button:last-child:hover {
+  background-color: #b91c1c;
+}
+
+/* Sidebar and Navbar spacing adjustment */
+.driver-nav {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 10;
+}
+
+.driver-side {
+  position: fixed;
+  left: 0;
+  top: 60px;
+  width: 250px;
+  height: calc(100% - 60px);
+  background-color: #111827;
+  color: white;
+  padding-top: 20px;
 }

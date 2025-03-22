@@ -1,14 +1,22 @@
 .driver-body{
-background: linear-gradient(to bottom, #bfdbfe, #ffffff);
+/* position: fixed; */
+/* margin-top: 40px; */
+
 }
 .Driver-form-container {
     width: 400px;
     margin: 40px auto;
-    padding: 20px;
-    
+    padding: 50px;
+    /* margin-left: 60px; */
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     font-family: Arial, sans-serif;
+    /* margin-left: ; */
+    background: linear-gradient(to bottom, #bfdbfe, #ffffff);
+    position: fixed;
+    margin-left: 600px;
+
+
   }
   
   /* Heading */
@@ -22,6 +30,7 @@ background: linear-gradient(to bottom, #bfdbfe, #ffffff);
   form {
     display: flex;
     flex-direction: column;
+    /* background-color: white; */
   }
   
   /* Labels */

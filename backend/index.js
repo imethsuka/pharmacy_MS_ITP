@@ -28,7 +28,7 @@ app.get('/', (request, response) => {
 });
 
 app.use('/books', booksRoute);
-app.use('/drivers',driverRoute)
+app.use('/drivers',driverRoute);
 
 mongoose
   .connect(mongoDBURL)

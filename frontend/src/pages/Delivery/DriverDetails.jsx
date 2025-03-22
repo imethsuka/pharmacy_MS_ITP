@@ -56,8 +56,10 @@ const DriverDetails = () => {
                 <th className="Driver-header">Name</th>
                 <th className="Driver-header">Phone Number</th>
                 <th className="Driver-header">Vehicle Type</th>
+                <th className="Driver-header">Email</th>
                 <th className="Driver-header">License Number</th>
                 <th className="Driver-header">Availability</th>
+                <th className="Driver-header">Action</th>
               </tr>
             </thead>
             <tbody>
@@ -69,6 +71,8 @@ const DriverDetails = () => {
                   <td className="Driver-data">{index + 1}</td>
                   <td className="Driver-data">{driver.DName}</td>
                   <td className="Driver-data">{driver.Phone}</td>
+                  <td className="Driver-data">{driver.VehicleType}</td>
+
                   <td className="Driver-data">{driver.Email}</td>
                   <td className="Driver-data">{driver.LicenseNumber}</td>
                   <td
@@ -76,6 +80,17 @@ const DriverDetails = () => {
                   >
                     {driver.Availability}
                   </td>
+                  <td className="Driver-data">
+                  <button onClick={() => navigate(`/delivery/editdriver/${driver._id}`)}>Edit</button>
+                  <button 
+                          onClick={() => navigate(`/delivery/deletedriver/${driver._id}`)} 
+                      // className="delete-button"
+                             >
+                        Delete
+                     </button>
+
+                   </td>
+
                 </tr>
               ))}
             </tbody>

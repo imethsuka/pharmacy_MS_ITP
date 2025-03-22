@@ -31,12 +31,12 @@ const SideBarV = () => {
         >
           <span className="Delivery-icon">🕒</span> Delivery History
         </Link>
-        <Link
+        {/* <Link
           to="/Delivery/DriverForm"
           className={`Delivery-nav-item ${isActive("/Delivery/DriverForm") ? "active" : ""}`}
         >
           <span className="Delivery-icon">📝</span> Driver Form
-        </Link>
+        </Link> */}
         <Link
           to="/Delivery/DriverDetails"
           className={`Delivery-nav-item ${isActive("/Delivery/DriverDetails") ? "active" : ""}`}

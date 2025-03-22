@@ -15,6 +15,8 @@ import DeliveryHistory from './pages/Delivery/DeliveryHistory';
 import DriverForm from './pages/Delivery/DriverForm';
 import DriverDetails from './pages/Delivery/DriverDetails';
 import AddDriver from './pages/Delivery/AddDriver';
+import EditDriver from './pages/Delivery/EditDriver';
+import DeleteDriver from './pages/Delivery/DeleteDriver';
 
 // Import Inventory Pages
 import Dashboard from './pages/Inventory/Dashboard';
@@ -51,7 +53,8 @@ const App = () => {
       <Route path='/delivery/driverform' element={<DriverForm />} /> 
       <Route path='/delivery/driverdetails' element={<DriverDetails />} />
       <Route path='/delivery/adddriver' element={<AddDriver />} />
-
+      <Route path='/delivery/editdriver/:id' element={<EditDriver />} />
+      <Route path='/delivery/deletedriver/:id' element={<DeleteDriver />} />
       
     </Routes>
     </>
