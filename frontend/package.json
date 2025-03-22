@@ -19,6 +19,7 @@
     "axios": "^1.4.0",
     "fontawesome-free": "^1.0.4",
     "framer-motion": "^12.5.0",
+    "jsbarcode": "^3.11.6",
     "jspdf": "^3.0.1",
     "jspdf-autotable": "^5.0.2",
     "lucide-react": "^0.479.0",
