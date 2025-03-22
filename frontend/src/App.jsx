@@ -8,6 +8,20 @@ import ShowBook from './pages/ShowBook';
 import EditBook from './pages/EditBook';
 import DeleteBook from './pages/DeleteBook';
 
+
+
+
+// Import Delivery Pages
+import DeliveryStatus from './pages/Delivery/DeliveryStatus';
+import FeedbackForm from './pages/Delivery/FeedbackForm'; 
+import DeliveryHistory from './pages/Delivery/DeliveryHistory';
+import DriverForm from './pages/Delivery/DriverForm';
+import DriverDetails from './pages/Delivery/DriverDetails';
+import AddDriver from './pages/Delivery/AddDriver';
+import EditDriver from './pages/Delivery/EditDriver';
+import DeleteDriver from './pages/Delivery/DeleteDriver';
+
+
 // Import Inventory Pages
 import Dashboard from './pages/Inventory/Dashboard';
 import MedicineLists from './pages/Inventory/MedicineLists';
@@ -78,18 +92,28 @@ const RedirectAuthenticatedUser = ({ children }) => {
 
 const App = () => {
   return (
+
+    <>
+  
+
     <Routes>
+
       <Route path='/' element={<Home />} />
       <Route path='/categories' element={<Categories />} />
       <Route path='/books/create' element={<CreateBook />} />
+
+
+      {/* <Route path='/books/create' element={<CreateBook />} />
+
       <Route path='/books/details/:id' element={<ShowBook />} />
       <Route path='/books/edit/:id' element={<EditBook />} />
-      <Route path='/books/delete/:id' element={<DeleteBook />} />
+      <Route path='/books/delete/:id' element={<DeleteBook />} /> */}
 
     
 
       {/* Inventory Pages */}
       <Route path='/inventory/dashboard' element={<Dashboard />} />
+
       <Route path='/inventory/medicinelists' element={<MedicineLists />} />
       
       <Route path='/inventory/addMedicines' element={<AddMedicines />} />
@@ -121,7 +145,23 @@ const App = () => {
       <Route path="/add" element={<Add/>} />
       <Route path="/edit/:id" element={<Edit/>} />
 
+
+
+
+      {/* Delivery Pages */}
+      <Route path='/delivery/deliverystatus' element={<DeliveryStatus />} />
+      <Route path='/delivery/feedbackform' element={<FeedbackForm />} />
+      <Route path='/delivery/deliveryhistory' element={<DeliveryHistory />} />
+      <Route path='/delivery/driverform' element={<DriverForm />} /> 
+      <Route path='/delivery/driverdetails' element={<DriverDetails />} />
+      <Route path='/delivery/adddriver' element={<AddDriver />} />
+      <Route path='/delivery/editdriver/:id' element={<EditDriver />} />
+      <Route path='/delivery/deletedriver/:id' element={<DeleteDriver />} />
+      
+
     </Routes>
+    </>
+
   );
 };
 

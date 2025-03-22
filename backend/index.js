@@ -6,9 +6,13 @@ import bodyParser from "body-parser"
 import { PORT, mongoDBURL } from './config.js';
 import mongoose from 'mongoose';
 import booksRoute from './routes/booksRoute.js';
+
 import authRoutes from "./routes/auth.routes.js";
 import inventoryRoute from './routes/inventoryRoute.js';
 import prescriptionRoutes from './routes/prescriptionRoutes.js'; // Import prescriptionRoutes
+
+import driverRoute from './routes/driverRoute.js' 
+
 import cors from 'cors';
 import cookieParser from "cookie-parser";
 import path from "path";
@@ -49,6 +53,7 @@ app.get('/', (request, response) => {
 });
 
 app.use('/books', booksRoute);
+
 app.use('/medicines', inventoryRoute);
 // <<<<<<< main
 app.use('/prescriptions', prescriptionRoutes); // Use prescriptionRoutes
@@ -96,6 +101,9 @@ app.delete("/deleteUser/:id", (req, res) => {
     .catch(err => res.json(err));
 });
 // >>>>>>> G_Branch_Beta
+
+app.use('/drivers',driverRoute);
+
 
 mongoose
   .connect(mongoDBURL)
