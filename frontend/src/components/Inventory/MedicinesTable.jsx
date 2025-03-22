@@ -28,6 +28,7 @@ const MedicinesTable = ({ medicines, onMoreInfoClick }) => {
     });
   }, [medicines]);
   
+  
 
   const downloadPDF = async () => {
     if (!medicines || medicines.length === 0) {
@@ -36,20 +37,20 @@ const MedicinesTable = ({ medicines, onMoreInfoClick }) => {
     }
   
     const doc = new jsPDF({
-      orientation: "landscape", // Landscape mode for better table fit
+      orientation: "landscape",
       unit: "mm",
-      format: "a3", // Larger format for clarity
+      format: "a3",
     });
   
     doc.setFontSize(14);
     doc.text("Medicines Table", 14, 15);
   
-    // Define table columns (ensure "Barcode" is just a title)
+    // Define table columns
     const columns = [
       "No",
       "Name",
       "Product ID",
-      "Barcode", // Title only, no barcode here!
+      "Barcode",
       "Category",
       "Price",
       "Stock",
@@ -59,7 +60,7 @@ const MedicinesTable = ({ medicines, onMoreInfoClick }) => {
       "Supplier",
     ];
   
-    // Generate barcodes for each productId
+    // Generate barcode images
     const barcodeImages = await Promise.all(
       medicines.map((medicine) => {
         return new Promise((resolve) => {
@@ -67,64 +68,75 @@ const MedicinesTable = ({ medicines, onMoreInfoClick }) => {
             resolve(null);
             return;
           }
-  
-          const canvas = document.createElement("canvas"); // Temporary canvas for barcode
+    
+          const canvas = document.createElement("canvas");
           JsBarcode(canvas, medicine.productId, {
             format: "CODE128",
-            displayValue: false, // No text under barcode
+            displayValue: false,
             width: 2,
-            height: 50, // Bigger barcode for clarity
+            height: 50,
           });
-  
-          const barcodeImage = canvas.toDataURL("image/png"); // Convert to base64
+    
+          const barcodeImage = canvas.toDataURL("image/png");
+          console.log("Generated Barcode for:", medicine.productId, barcodeImage); // Debugging Line
           resolve(barcodeImage);
         });
       })
     );
+    
   
-    // Map medicines data to rows, keeping "Barcode" column empty (it will be drawn later)
+    // Create table data, leaving barcode column empty
     const rows = medicines.map((medicine, index) => [
       index + 1,
       medicine.name || "N/A",
       medicine.productId || "N/A",
-      "", // This will hold the barcode image
+      "", // Placeholder for barcode image
       medicine.category || "N/A",
       `Rs. ${medicine.price || "0.00"}`,
       medicine.stock || "0",
       medicine.reorderLevel || "N/A",
-      medicine.batchExpiry ? medicine.batchExpiry : "N/A",
+      medicine.batchExpiry || "N/A",
       medicine.requiresPrescription ? "Yes" : "No",
       medicine.supplierEmail || "N/A",
     ]);
   
-    // Add table to PDF (without barcode images)
+    // Add table to PDF
     autoTable(doc, {
       head: [columns],
       body: rows,
       startY: 25,
       theme: "grid",
       styles: {
-        fontSize: 10, // Set readable font size
+        fontSize: 10,
         cellPadding: 4,
       },
       columnStyles: {
-        3: { cellWidth: 50 }, // Increase barcode column width
+        3: { cellWidth: 60 }, // Wider column for barcode
       },
+      
       didDrawCell: (data) => {
-        if (data.column.index === 3 && barcodeImages[data.row.index]) {
-          doc.addImage(
-            barcodeImages[data.row.index], // Insert barcode
-            "PNG",
-            data.cell.x + 5,
-            data.cell.y + 2,
-            50, // Width
-            20  // Height
-          );
+        if (data.column.index === 3) {
+          const barcodeImage = barcodeImages[data.row.index];
+      
+          if (barcodeImage) {
+            console.log(`Adding barcode for row ${data.row.index + 1}`); // Debugging Line
+            doc.addImage(
+              barcodeImage, 
+              "PNG",
+              data.cell.x + 10, // Adjusted position
+              data.cell.y + 3, 
+              40, // Width
+              15  // Height
+            );
+          } else {
+            console.log(`No barcode available for row ${data.row.index + 1}`); // Debugging Line
+          }
         }
-      },
+      }
+      
     });
   
-    // Save the PDF
+    // Save PDF
     doc.save("MedicinesTable.pdf");
   };
   
