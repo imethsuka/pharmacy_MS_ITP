@@ -18,6 +18,7 @@ import Notifications from './pages/Inventory/Notifications';
 //medicines
 import AddMedicines from './pages/Inventory/addMedicines';
 import ShowMedicines from './pages/Inventory/showMedicines';
+import EditMedicine from './pages/Inventory/EditMedicine';
 
 //Pharmasist
 import PDashboard from './pages/Prescription/PDashboard.jsx';
@@ -45,6 +46,7 @@ const App = () => {
       
       <Route path='/inventory/addMedicines' element={<AddMedicines />} />
       <Route path='/inventory/showMedicines/:id' element={<ShowMedicines />} />
+      <Route path='/inventory/EditMedicine/:id'element={<EditMedicine />} />
 
       <Route path='/inventory/medicinegroups' element={<MedicineGroups />} />
       <Route path='/inventory/reports' element={<Reports />} />

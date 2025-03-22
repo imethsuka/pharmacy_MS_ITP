@@ -10,7 +10,7 @@ const MedicinesTable = ({ medicines, onMoreInfoClick }) => {
       <table className="medicines-table">
         <thead>
           <tr>
-            <th>#</th>
+            <th>No</th>
             <th>Name</th>
             <th className="hide-on-mobile">Product ID</th>
             <th className="hide-on-mobile">Category</th>
@@ -43,7 +43,7 @@ const MedicinesTable = ({ medicines, onMoreInfoClick }) => {
                   <button onClick={() => onMoreInfoClick(medicine)}>
                     <FiInfo className="info-icon" />
                   </button>
-                  <Link to={`/medicines/edit/${medicine._id}`}>
+                  <Link to={`/inventory/EditMedicine/${medicine._id}`}>
                     <RiEdit2Line className="edit-icon" />
                   </Link>
                   <Link to={`/medicines/delete/${medicine._id}`}>
