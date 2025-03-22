@@ -1,0 +1,72 @@
+.Edit-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(to bottom, #bfdbfe, #ffffff);    padding: 20px;
+  }
+  
+  .Edit-form-container {
+    background-color: #ffffff;
+    padding: 40px 50px;
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 500px;
+  }
+  
+  .Edit-form-container h2 {
+    text-align: center;
+    color: #0d6efd;
+    margin-bottom: 30px;
+    font-weight: 600;
+  }
+  
+  .Edit-form-container form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .Edit-form-container label {
+    margin-bottom: 6px;
+    color: #333;
+    font-weight: 500;
+  }
+  
+  .Edit-form-container input,
+  .Edit-form-container select {
+    padding: 12px 14px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 14px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  
+  .Edit-form-container input:focus,
+  .Edit-form-container select:focus {
+    outline: none;
+    border-color: #0d6efd;
+    box-shadow: 0 0 5px rgba(13, 110, 253, 0.2);
+  }
+  
+  .Edit-form-container button {
+    padding: 14px;
+    background-color: #0d6efd;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .Edit-form-container button:hover {
+    background-color: #0b5ed7;
+  }
+  
+  .Edit-form-container button:disabled {
+    background-color: #a3c4f3;
+    cursor: not-allowed;
+  }
+  
