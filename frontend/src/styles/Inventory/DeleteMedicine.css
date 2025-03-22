@@ -1,0 +1,40 @@
+.delete-medicine-container {
+    padding: 20px;
+  }
+  
+  .delete-medicine-title {
+    font-size: 24px;
+    margin: 20px 0;
+    text-align: center;
+    color: #333;
+  }
+  
+  .delete-medicine-confirmation {
+    border: 2px solid #38bdf8;
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .confirmation-medicine-message {
+    font-size: 20px;
+    color: #666;
+    margin-bottom: 20px;
+  }
+  
+  .delete-medicine-button {
+    background-color: #9a0d0d;
+    padding: 15px 10px;
+    border: none;
+    border-radius: 20px;
+    font-size: 18px;
+    color: white;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  .delete-medicine-button:hover {
+    background-color: #ed2121;
+  }

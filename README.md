@@ -138,3 +138,11 @@ The Online Pharmacy Management System allows customers to order medicines online
 3. **Delivery History Page** (GUI - Past Deliveries with delivered date and delivered items to which customer )
 4. AI chat bot for customers to get information
 
+# Pharmacy Management System
+
+## Setup Instructions
+
+### Mail Configuration
+
+- Configure your mail settings in the `.env` file.
+

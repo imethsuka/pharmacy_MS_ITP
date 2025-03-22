@@ -1,0 +1,107 @@
+.delivery-dashboard {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: linear-gradient(to bottom, #bfdbfe, #ffffff);
+  font-family: "Poppins", sans-serif;
+
+}
+
+.delivery-header {
+  background-color: #4a90e2;
+  color: white;
+  padding: 15px 20px;
+  text-align: center;
+}
+
+.delivery-title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.delivery-content {
+  margin: 20px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+} 
+
+/* Table Styling */
+.delivery-table {
+  width: 50%;
+  border-collapse: collapse;
+  margin-left: 550px;
+  margin-top: -600px;
+
+}
+
+.delivery-table-header {
+  background-color: #4a90e2;
+  color: rgb(255, 255, 255);
+  padding: 12px;
+  text-align: left;
+  font-weight: bold;
+}
+
+.delivery-table-data {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+  color: #333;
+}
+
+/* Status Styling */
+.status-not-yet-collected {
+  background-color: #fff3e0;
+  color: #ff9800;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.status-delivery-in-progress {
+  background-color: #e3f2fd;
+  color: #1976d2;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.status-delivery-completed {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+/* Button Styling */
+.delivery-detail-btn {
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.delivery-detail-btn:hover {
+  background-color: #357ab8;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .delivery-content {
+    padding: 15px;
+  }
+  .delivery-table-header,
+  .delivery-table-data {
+    font-size: 14px;
+    padding: 10px;
+  }
+}

@@ -1,81 +1,105 @@
+/* Table Container */
+.table-container {
+  overflow-x: auto;
+  padding: 10px;
+}
+
+/* Medicine Table */
 .medicines-table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0 8px;
-    font-family: Arial, sans-serif;
-  }
-  
-  .medicines-table th,
-  .medicines-table td {
-    padding: 12px;
-    text-align: center;
-    border: 1px solid #e0e0e0;
-  }
-  
-  .medicines-table th {
-    background-color: #f8f9fa;
-    font-weight: bold;
-    color: #333;
-    border-radius: 8px;
-  }
-  
-  .medicines-table tbody tr {
-    background-color: #fff;
-    transition: background-color 0.3s ease;
-  }
-  
-  .medicines-table tbody tr:hover {
-    background-color: #f1f1f1;
-  }
-  
-  .medicines-table td {
-    border-radius: 8px;
-  }
-  
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 8px;
+  background: #fff;
+  color: #222;
+  font-size: 12px; /* Smaller font size */
+  border: 1px solid #ddd;
+}
+
+/* Table Header */
+.medicines-table thead {
+  background: #f5f5f5;
+  color: #000;
+  font-weight: bold;
+}
+
+/* Table Head & Body Cells */
+.medicines-table th,
+.medicines-table td {
+  padding: 6px 10px; /* Smaller padding */
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Hover Effect */
+.medicines-table tbody tr:hover {
+  background: #f9f9f9;
+  transition: 0.2s ease-in-out;
+}
+
+/* Actions */
+.actions {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+}
+
+.actions button,
+.actions a {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.info-icon {
+  color: #3498db;
+}
+
+.edit-icon {
+  color: #f1c40f;
+}
+
+.delete-icon {
+  color: #e74c3c;
+}
+
+/* Stock & Price Styling */
+.price {
+  font-weight: bold;
+}
+
+.stock {
+  font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
   .hide-on-mobile {
-    display: table-cell;
+    display: none;
   }
+}
+
+.download-button {
+  background-color: #0369a1;
+  color: white; 
+  padding: 0.5rem 1rem; 
+  border: none; 
+  border-radius: 0.5rem; 
+  font-size: 1rem;
+  font-weight: bold; 
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease; 
+  margin-left: 88%; 
   
-  @media (max-width: 768px) {
-    .hide-on-mobile {
-      display: none;
-    }
-  }
-  
-  .operations {
-    display: flex;
-    justify-content: center;
-    gap: 16px;
-  }
-  
-  .info-icon,
-  .edit-icon,
-  .delete-icon {
-    font-size: 20px;
-    cursor: pointer;
-    transition: color 0.3s ease;
-  }
-  
-  .info-icon {
-    color: #3b82f6; /* Modern blue for info */
-  }
-  
-  .info-icon:hover {
-    color: #2563eb; /* Darker blue on hover */
-  }
-  
-  .edit-icon {
-    color: #f59e0b; /* Modern orange for edit */
-  }
-  
-  .edit-icon:hover {
-    color: #d97706; /* Darker orange on hover */
-  }
-  
-  .delete-icon {
-    color: #ef4444; /* Modern red for delete */
-  }
-  
-  .delete-icon:hover {
-    color: #dc2626; /* Darker red on hover */
-  }
+}
+
+.download-button:hover {
+  background-color: #0284c7;
+  transform: scale(1.05); 
+}
+
+.download-button:active {
+  background-color: #025e8c;
+  transform: scale(0.95);
+}

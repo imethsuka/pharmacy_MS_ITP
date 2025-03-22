@@ -1,7 +1,7 @@
 import React from "react";
 import SearchBar from "./SearchBar";
 import CartIcon from "./CartIcon";
-import SignInButton from "./SignInButton";
+import { Link } from "react-router-dom"; // Import Link from react-router-dom
 import "../styles/HeaderStripe.css";
 
 const HeaderStripe = () => {
@@ -26,7 +26,7 @@ const HeaderStripe = () => {
       {/* Cart and Sign-in */}
       <div className="actions">
         <CartIcon />
-        <SignInButton />
+        <Link to="/signup" className="sign-in-button">Sign Up</Link> {/* Use Link component */}
       </div>
     </header>
   );

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import BackButton from '../../components/BackButton';
 import Spinner from '../../components/Spinner';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
 import '../../styles/Inventory/addMedicines.css' // Import the CSS file
+import InventoryBackButton from '../../components/Inventory/InventoryBackButton';
 
 const addMedicines = () => {
   const [name, setName] = useState('');
@@ -45,7 +45,7 @@ const addMedicines = () => {
       .then(() => {
         setLoading(false);
         enqueueSnackbar('Medicine added successfully', { variant: 'success' });
-        navigate('/');
+        navigate('/inventory/MedicineLists');
       })
       .catch((error) => {
         setLoading(false);
@@ -56,7 +56,7 @@ const addMedicines = () => {
 
   return (
     <div className="create-medicine-container">
-      <BackButton />
+      <InventoryBackButton />
       <h1 className="create-medicine-title">Add Medicine</h1>
       {loading ? <Spinner /> : ''}
       <div className="create-medicine-form">
