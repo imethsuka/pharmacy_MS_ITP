@@ -5,10 +5,10 @@ import generateTokenAndSetCookie from "../utils/generateTokenAndSetCookie.js";
 import User from "../models/user.model.js";
 
 export const signup = async (req, res) => {
-    const { email, password, name } = req.body;
+    const { email, password, name,gender,dob,address } = req.body;
 
     try {
-        if (!email || !password || !name) {
+        if (!email || !password || !name || !gender || !dob || !address) {
             throw new Error("All fields are required");
         }
 
@@ -25,6 +25,9 @@ export const signup = async (req, res) => {
             email,
             password: hashedPassword,
             name,
+            gender,
+            dob: new Date(dob),  // Convert string to Date
+            address,
         });
 
         await user.save();

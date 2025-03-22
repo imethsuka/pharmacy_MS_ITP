@@ -1,15 +1,16 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Lock, Loader, Eye, EyeOff } from "lucide-react"; // Import Eye and EyeOff icons
-import { Link, useNavigate } from "react-router-dom"; // Import useNavigate
+import { Mail, Lock, Loader, Eye, EyeOff } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
 import Input from "../../components/Customer/Input";
 import { useAuthStore } from "../../store/authStore";
+import "../../styles/Customer/LoginPage.css";
 
 const LoginPage = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [showPassword, setShowPassword] = useState(false); // State to toggle password visibility
-    const navigate = useNavigate(); // Initialize useNavigate
+    const [showPassword, setShowPassword] = useState(false);
+    const navigate = useNavigate();
 
     const { login, isLoading, error } = useAuthStore();
 
@@ -32,27 +33,23 @@ const LoginPage = () => {
         }
     };
 
-    const handleAdminDashboard = () => {
-        navigate('/dashboard'); // Navigate to DashboardPage
-    };
-
     return (
-        <div className="flex items-center justify-center min-h-screen bg-gray-100">
+        <div className="login-container">
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className='max-w-md w-full bg-white bg-opacity-95 border border-blue-500 rounded-2xl shadow-xl overflow-hidden'
+                className='login-box'
             >
-                <div className='p-8'>
-                    <div className='flex justify-between items-center mb-6'>
-                        <h2 className='text-3xl font-bold text-center bg-gradient-to-r from-blue-400 to-blue-500 text-transparent bg-clip-text'>
+                <div className='login-content'>
+                    <div className='login-header'>
+                        <h2 className='login-title'>
                             Welcome Back
                         </h2>
                     </div>
                     <form onSubmit={handleLogin}>
-                        <div className='mb-4'>
-                            <label htmlFor='email' className='block text-sm font-medium text-gray-700'>
+                        <div className='form-group'>
+                            <label htmlFor='email' className='form-label'>
                                 Email Address
                             </label>
                             <Input
@@ -61,53 +58,53 @@ const LoginPage = () => {
                                 type='email'
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
-                                className='w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent'
+                                className='input-field'
                             />
                         </div>
-                        <div className='mb-4'>
-                            <label htmlFor='password' className='block text-sm font-medium text-gray-700'>
+                        <div className='form-group'>
+                            <label htmlFor='password' className='form-label'>
                                 Password
                             </label>
-                            <div className='relative'>
+                            <div className='password-container'>
                                 <Input
                                     id='password'
                                     icon={Lock}
                                     type={showPassword ? 'text' : 'password'}
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
-                                    className='w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent'
+                                    className='input-field'
                                 />
                                 <div
-                                    className='absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer'
+                                    className='password-toggle'
                                     onClick={() => setShowPassword(!showPassword)}
                                 >
-                                    {showPassword ? <EyeOff className='w-5 h-5 text-gray-500' /> : <Eye className='w-5 h-5 text-gray-500' />}
+                                    {showPassword ? <EyeOff className='icon' /> : <Eye className='icon' />}
                                 </div>
                             </div>
                         </div>
 
-                        <div className='flex items-center mb-6'>
-                            <Link to='/forgot-password' className='text-sm text-blue-400 hover:underline'>
+                        <div className='forgot-password'>
+                            <Link to='/forgot-password' className='forgot-password-link'>
                                 Forgot password?
                             </Link>
                         </div>
-                        {error && <p className='text-red-500 font-semibold mb-2'>{error}</p>}
+                        {error && <p className='error-message'>{error}</p>}
 
                         <motion.button
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
-                            className='w-full py-3 px-4 bg-gradient-to-r from-blue-500 to-blue-600 text-white font-bold rounded-lg shadow-lg hover:from-blue-600 hover:to-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900 transition duration-200'
+                            className='submit-button'
                             type='submit'
                             disabled={isLoading}
                         >
-                            {isLoading ? <Loader className='w-6 h-6 animate-spin mx-auto' /> : "Login"}
+                            {isLoading ? <Loader className='loading-icon' /> : "Login"}
                         </motion.button>
                     </form>
                 </div>
-                <div className='px-8 py-4 bg-white bg-opacity-95 flex justify-center'>
-                    <p className='text-sm text-gray-400'>
+                <div className='signup-link-container'>
+                    <p className='signup-text'>
                         Don't have an account?{" "}
-                        <Link to='/signup' className='text-blue-400 hover:underline'>
+                        <Link to='/signup' className='signup-link'>
                             Sign up
                         </Link>
                     </p>

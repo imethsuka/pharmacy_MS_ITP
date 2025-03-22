@@ -1,13 +1,14 @@
 import React from "react";
+import "../../styles/Customer/Input.css";  // Assuming you create a new CSS file for styles
 
 const Input = ({ id, icon: Icon, ...props }) => {
     return (
-        <div className="relative">
-            {Icon && <Icon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />}
+        <div className="input-container">
+            {Icon && <Icon className="input-icon" />}
             <input
                 id={id}
                 {...props}
-                className={`pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent ${props.className}`}
+                className={`input-field ${props.className}`}
             />
         </div>
     );
