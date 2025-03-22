@@ -46,7 +46,7 @@ const MedicinesTable = ({ medicines, onMoreInfoClick }) => {
                   <Link to={`/inventory/EditMedicine/${medicine._id}`}>
                     <RiEdit2Line className="edit-icon" />
                   </Link>
-                  <Link to={`/medicines/delete/${medicine._id}`}>
+                  <Link to={`/inventory/DeleteMedicine/${medicine._id}`}>
                     <HiOutlineTrash className="delete-icon" />
                   </Link>
                 </div>
