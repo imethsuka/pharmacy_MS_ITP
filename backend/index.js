@@ -10,9 +10,9 @@ import booksRoute from './routes/booksRoute.js';
 import authRoutes from "./routes/auth.routes.js";
 import inventoryRoute from './routes/inventoryRoute.js';
 
-import prescriptionRoutes from './routes/prescriptionRoutes.js'; // Import prescriptionRoutes
+import prescriptionRoute from './routes/prescriptionRoute.js'; // Import prescriptionRoutes
 
-import cors from 'cors';
+// import cors from 'cors';
 
 
 import driverRoute from './routes/driverRoute.js' 
@@ -64,7 +64,7 @@ app.use('/books', booksRoute);
 
 app.use('/medicines', inventoryRoute);
 // <<<<<<< main
-app.use('/prescriptions', prescriptionRoutes); // Use prescriptionRoutes
+app.use('/prescriptions', prescriptionRoute); // Use prescriptionRoutes
 // =======
 app.use("/api/auth", authRoutes);
 
