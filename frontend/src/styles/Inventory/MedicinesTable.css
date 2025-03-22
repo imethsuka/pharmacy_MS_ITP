@@ -79,3 +79,27 @@
     display: none;
   }
 }
+
+.download-button {
+  background-color: #0369a1;
+  color: white; 
+  padding: 0.5rem 1rem; 
+  border: none; 
+  border-radius: 0.5rem; 
+  font-size: 1rem;
+  font-weight: bold; 
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease; 
+  margin-left: 88%; 
+  
+}
+
+.download-button:hover {
+  background-color: #0284c7;
+  transform: scale(1.05); 
+}
+
+.download-button:active {
+  background-color: #025e8c;
+  transform: scale(0.95);
+}

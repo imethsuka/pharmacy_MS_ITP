@@ -33,6 +33,7 @@ import Notifications from './pages/Inventory/Notifications';
 import AddMedicines from './pages/Inventory/addMedicines';
 import ShowMedicines from './pages/Inventory/showMedicines';
 import EditMedicine from './pages/Inventory/EditMedicine';
+import DeleteMedicine from './pages/Inventory/DeleteMedicine';
 
 //Pharmasist
 import PDashboard from './pages/Prescription/PDashboard.jsx';
@@ -120,6 +121,7 @@ const App = () => {
       <Route path='/inventory/addMedicines' element={<AddMedicines />} />
       <Route path='/inventory/showMedicines/:id' element={<ShowMedicines />} />
       <Route path='/inventory/EditMedicine/:id'element={<EditMedicine />} />
+      <Route path='/inventory/DeleteMedicine/:id' element={<DeleteMedicine />} />
 
       <Route path='/inventory/medicinegroups' element={<MedicineGroups />} />
       <Route path='/inventory/reports' element={<Reports />} />

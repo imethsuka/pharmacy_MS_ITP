@@ -2,11 +2,72 @@ import { Link } from "react-router-dom";
 import { FiInfo } from "react-icons/fi";
 import { RiEdit2Line } from "react-icons/ri";
 import { HiOutlineTrash } from "react-icons/hi";
+import jsPDF from "jspdf";
+import autoTable from "jspdf-autotable"; // Correct import
 import "../../styles/Inventory/MedicinesTable.css";
 
 const MedicinesTable = ({ medicines, onMoreInfoClick }) => {
+  const downloadPDF = () => {
+    if (!medicines || medicines.length === 0) {
+      alert("No medicines available to generate the PDF.");
+      return;
+    }
+  
+    const doc = new jsPDF();
+  
+    // Add title
+    doc.text("Medicines Table", 14, 10);
+  
+    // Define table columns
+    const columns = [
+      "No",
+      "Name",
+      "Product ID",
+      "Category",
+      "Price",
+      "Stock",
+      "Reorder Level",
+      "Batch Expiry",
+      "Prescription",
+      "Supplier",
+    ];
+  
+    // Map medicines data to rows with safe default values
+    const rows = medicines.map((medicine, index) => [
+      index + 1,
+      medicine.name || "N/A",
+      medicine.productId || "N/A",
+      medicine.category || "N/A",
+      `Rs. ${medicine.price || "0.00"}`,
+      medicine.stock || "0",
+      medicine.reorderLevel || "N/A",
+      medicine.batchExpiry ? medicine.batchExpiry : "N/A",
+      medicine.requiresPrescription ? "Yes" : "No",
+      medicine.supplierEmail || "N/A",
+    ]);
+
+    if (rows.length === 0) {
+      console.error("No valid data to generate the PDF.");
+      return;
+    }
+  
+    // Add table to PDF
+    autoTable(doc, {
+      head: [columns],
+      body: rows,
+      startY: 20,
+    });
+  
+    // Save the PDF
+    doc.save("MedicinesTable.pdf");
+  };
+  
+
   return (
     <div className="table-container">
+      <button onClick={downloadPDF} className="download-button">
+        Download as PDF
+      </button>
       <table className="medicines-table">
         <thead>
           <tr>
@@ -46,7 +107,7 @@ const MedicinesTable = ({ medicines, onMoreInfoClick }) => {
                   <Link to={`/inventory/EditMedicine/${medicine._id}`}>
                     <RiEdit2Line className="edit-icon" />
                   </Link>
-                  <Link to={`/medicines/delete/${medicine._id}`}>
+                  <Link to={`/inventory/DeleteMedicine/${medicine._id}`}>
                     <HiOutlineTrash className="delete-icon" />
                   </Link>
                 </div>
