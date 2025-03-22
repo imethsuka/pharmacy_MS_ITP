@@ -9,7 +9,11 @@ import booksRoute from './routes/booksRoute.js';
 
 import authRoutes from "./routes/auth.routes.js";
 import inventoryRoute from './routes/inventoryRoute.js';
+
 import prescriptionRoutes from './routes/prescriptionRoutes.js'; // Import prescriptionRoutes
+
+import cors from 'cors';
+
 
 import driverRoute from './routes/driverRoute.js' 
 
@@ -52,7 +56,11 @@ app.get('/', (request, response) => {
 // >>>>>>> G_Branch_Beta
 });
 
+// Add static file serving for uploads
+app.use('/uploads', express.static('uploads'));
+
 app.use('/books', booksRoute);
+
 
 app.use('/medicines', inventoryRoute);
 // <<<<<<< main
@@ -100,9 +108,12 @@ app.delete("/deleteUser/:id", (req, res) => {
     .then(users => res.json(users))
     .catch(err => res.json(err));
 });
-// >>>>>>> G_Branch_Beta
+
 
 app.use('/drivers',driverRoute);
+
+
+app.use('/medicines',inventoryRoute);
 
 
 mongoose

@@ -42,6 +42,7 @@ import Verified from './pages/Prescription/Verified.jsx';
 import Rejected from './pages/Prescription/Rejected.jsx';
 import Pending from './pages/Prescription/Pending.jsx';
 
+
 //import Customer pages
 import SignUpPage from "./pages/Customer/SignUpPage";
 import LoginPage from "./pages/Customer/LoginPage";
@@ -91,6 +92,13 @@ const RedirectAuthenticatedUser = ({ children }) => {
 };
 
 
+//order
+
+import Product from './pages/Order/Product';
+import ProductList from './pages/Order/ProductList';
+import Cart from './pages/Order/Cart';
+
+
 
 const App = () => {
   return (
@@ -127,11 +135,18 @@ const App = () => {
       <Route path='/inventory/reports' element={<Reports />} />
       <Route path='/inventory/notifications' element={<Notifications />} />
 
+
+      {/* Order */}
+      <Route path='/order/product/:id' element={<Product />} />
+      <Route path='/order/products' element={<ProductList />} />
+      <Route path='/order/cart' element={<Cart />} />
+
       <Route path='/Prescription/pdashboard' element={<PDashboard />} />
       <Route path='/Prescription/prescriptions' element={<Prescriptions />} />
       <Route path='/Prescription/pending' element={<Pending />} />
       <Route path='/Prescription/verified' element={<Verified />} />
       <Route path='/Prescription/rejected' element={<Rejected />} />
+
 
 
 
@@ -162,6 +177,7 @@ const App = () => {
       <Route path='/delivery/editdriver/:id' element={<EditDriver />} />
       <Route path='/delivery/deletedriver/:id' element={<DeleteDriver />} />
       
+
 
     </Routes>
     </>
