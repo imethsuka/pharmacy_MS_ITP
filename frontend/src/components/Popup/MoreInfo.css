@@ -1,3 +1,4 @@
+
 /* Background Overlay */
 .popup-overlay {
   position: fixed;
@@ -11,7 +12,7 @@
 }
 
 /* Popup Container */
-.popup-content {
+/* .popup-content {
   background: white;
   width: 90%;
   max-width: 800px;
@@ -21,23 +22,37 @@
   position: relative;
   font-family: 'Poppins', sans-serif;
   animation: slideIn 0.3s ease-in-out;
+} */
+
+.popup-content {
+  background: rgba(255, 255, 255, 0.40); /* Glassmorphism effect */
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 20px;
+  width: 85%;
+  max-width: 750px;
+  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.2);
+  animation: slideIn 0.3s ease-in-out;
+  color: rgb(0, 0, 0);
+  position: relative;
+  font-family: sans-serif;
 }
 
 /* Close Button */
 .close-button {
   position: absolute;
-  top: 16px;
-  right: 16px;
+  top: 15px;
+  right: 15px;
+  font-size: 24px;
   background: none;
   border: none;
-  font-size: 28px;
+  color: rgb(0, 0, 0);
   cursor: pointer;
-  color: #555;
-  transition: color 0.2s;
+  transition: 0.3s;
 }
 
 .close-button:hover {
-  color: #222;
+  transform: rotate(90deg);
 }
 
 /* Popup Body Layout */
@@ -59,18 +74,18 @@
 /* Product Details */
 .popup-details {
   flex: 1;
-  color: #333;
+  color: #000000;
 }
 
 .product-name {
   font-size: 24px;
   font-weight: 600;
-  color: #222;
+  color: #000000;
 }
 
 .product-description {
   font-size: 16px;
-  color: #666;
+  color: #ffffff;
   margin-bottom: 10px;
 }
 
@@ -80,13 +95,13 @@
 
 .detail-section h3 {
   font-size: 18px;
-  color: #444;
+  color: #000000;
   margin-bottom: 5px;
 }
 
 .detail-section p {
   font-size: 16px;
-  color: #666;
+  color: #000000;
 }
 
 .price {
@@ -96,11 +111,12 @@
 }
 
 /* Quantity Selector */
-.quantity-section {
+.quantity-section{
   display: flex;
   align-items: center;
   gap: 15px;
   margin-top: 15px;
+  margin-left: 160px;
 }
 
 .quantity-button {
@@ -135,12 +151,26 @@
   border-radius: 8px;
   cursor: pointer;
   display: block;
-  width: 80%;
+  width: 60%;
   margin-top: 20px;
   text-align: center;
   transition: background 0.3s ease-in-out;
+  position: center;
+  margin-left: 85px;
+  /* allign-items: center; */
+  
+
 }
 
 .add-to-cart-button:hover {
   background: #005dc1;
+}
+.info-section {
+  padding-left: 20px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  width: 90%;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
 }

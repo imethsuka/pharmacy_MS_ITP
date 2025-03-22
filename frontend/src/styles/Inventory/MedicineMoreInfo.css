@@ -1,5 +1,5 @@
-/* Popup Overlay */
-.popup-overlay {
+/* med Overlay */
+.med-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -13,39 +13,40 @@
   animation: fadeIn 0.3s ease-in-out;
 }
 
-/* Popup Container */
-.popup-content {
-  background: rgba(255, 255, 255, 0.15); /* Glassmorphism effect */
+/* med Container */
+.med-content {
+  background: rgba(255, 255, 255, 0.40); /* Glassmorphism effect */
   backdrop-filter: blur(10px);
   border-radius: 16px;
   padding: 20px;
   width: 85%;
-  max-width: 650px;
+  max-width: 750px;
   box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.2);
   animation: slideIn 0.3s ease-in-out;
-  color: white;
+  color: rgb(0, 0, 0);
   position: relative;
+  font-family: sans-serif;
 }
 
 /* Close Button */
-.close-button {
+.cls-button {
   position: absolute;
   top: 15px;
   right: 15px;
   font-size: 24px;
   background: none;
   border: none;
-  color: white;
+  color: rgb(0, 0, 0);
   cursor: pointer;
   transition: 0.3s;
 }
 
-.close-button:hover {
+.cls-button:hover {
   transform: rotate(90deg);
 }
 
-/* Popup Layout */
-.popup-body {
+/* med Layout */
+.med-body {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -54,9 +55,9 @@
 }
 
 /* Medicine Image */
-.popup-image img {
-  width: 120px;
-  height: 120px;
+.med-image img {
+  width: 180px;
+  height: 180px;
   border-radius: 12px;
   object-fit: cover;
   box-shadow: 2px 4px 15px rgba(255, 255, 255, 0.3);
@@ -70,16 +71,18 @@
 
 /* Product Description */
 .product-description {
-  font-size: 14px;
-  color: #ddd;
+  font-size: 18px;
+  color: #000000;
   margin-bottom: 10px;
+  font-family: sans-serif;
 }
 
 /* Details Grid */
 .details-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+  /* gap: 10px; */
+  column-gap: 50px;
   width: 100%;
   font-size: 14px;
 }
@@ -87,6 +90,7 @@
 /* Detail Items */
 .detail-item {
   padding: 8px;
+  width: 100%;
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(8px);
@@ -101,6 +105,7 @@
 .detail-item.price {
   color: #28a745;
   font-weight: bold;
+  font-size: 14px;
 }
 
 /* Animations */

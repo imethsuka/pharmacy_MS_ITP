@@ -5,18 +5,18 @@ const MedicineMoreInfo = ({ medicine, onClose }) => {
   if (!medicine) return null;
 
   return (
-    <div className="popup-overlay">
-      <div className="popup-content">
-        <button className="close-button" onClick={onClose}>&times;</button>
+    <div className="med-overlay">
+      <div className="med-content">
+        <button className="cls-button" onClick={onClose}>&times;</button>
 
-        <div className="popup-body">
+        <div className="med-body">
           {/* Image Section */}
-          <div className="popup-image">
+          <div className="med-image">
             <img src={medicine.imageUrl} alt={medicine.name} />
           </div>
 
           {/* Details Section */}
-          <div className="popup-details">
+          <div className="med-details">
             <h2 className="product-name">{medicine.name}</h2>
             <p className="product-description">{medicine.description}</p>
 
