@@ -9,11 +9,11 @@ function Footer() {
     <footer className="Footer">
       <h4>Staff</h4>
       <div className="footer-links">
-        <Link to="/customer-manager">Customer Manager</Link>
+        <Link to="/customerdashboard">Customer Manager</Link>
         <Link to="/Inventory/Dashboard">Inventory Manager</Link>
         <Link to="/Prescription/PDashboard">Pharmacist</Link>
         <Link to="/sd-manager">SD Manager</Link>
-        <Link to="/delivery-manager">Delivery Manager</Link>
+        <Link to="/Delivery/DeliveryStatus">Delivery Manager</Link>
       </div>
       <div className="footer-icons">
         <a href="https://facebook.com" target="_blank" rel="noopener noreferrer"><FaFacebook style={{ color: 'white' }} /></a>

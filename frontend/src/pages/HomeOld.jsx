@@ -6,6 +6,7 @@ import { MdOutlineAddBox } from 'react-icons/md';
 import BooksTable from '../components/home/BooksTable';
 import BooksCard from '../components/home/BooksCard';
 import '../styles/HomeOld.css'; // Import the CSS file
+import NavBar from '../components/home/NavBar';
 
 const Home = () => {
   const [books, setBooks] = useState([]);
@@ -28,8 +29,11 @@ const Home = () => {
   }, []);
 
   return (
+    
     <div className="home-container">
       <div className="home-content">
+       <NavBar />
+
         {/* View Toggle Buttons */}
         <div className="view-toggle">
           <button
@@ -49,6 +53,12 @@ const Home = () => {
             onClick={() => navigate('/Inventory/Dashboard')}
           >
             Inventory Dashboard
+          </button>
+          <button
+            className="view-button delivery-button" // Added class for styling
+            onClick={() => navigate('/Delivery/DeliveryStatus')}
+          >
+            Delivery Status 
           </button>
         </div>
 

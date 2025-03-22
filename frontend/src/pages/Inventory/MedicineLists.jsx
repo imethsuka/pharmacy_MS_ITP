@@ -5,6 +5,7 @@ import axios from "axios";
 import "../../styles/Inventory/MedicineLists.css"; // Import the external CSS file
 import Sidebar from "../../components/Inventory/Sidebar";
 import MedicinesTable from "../../components/Inventory/MedicinesTable";
+import MedicineMoreInfo from "../../components/Inventory/MedicineMoreInfo"; // Import the popup component
 import Spinner from "../../components/Spinner";
 import logo from '../../../public/Sethsiri_Favicon.svg';
 
@@ -12,6 +13,8 @@ const MedicineLists = () => {
   const [medicines, setMedicines] = useState([]);
   const [loading, setLoading] = useState(false);
   const [showType, setShowType] = useState('table');
+  const [selectedMedicine, setSelectedMedicine] = useState(null); // State for selected medicine
+  const [showMoreInfo, setShowMoreInfo] = useState(false); // State to control popup visibility
   const navigate = useNavigate(); // Initialize useNavigate
 
   useEffect(() => {
@@ -30,6 +33,18 @@ const MedicineLists = () => {
 
   const handleAddMedicine = () => {
     navigate('/inventory/addMedicines'); // Navigate to addMedicines page
+  };
+
+  // Handle "info" icon click in MedicinesTable
+  const handleMoreInfoClick = (medicine) => {
+    setSelectedMedicine(medicine); // Set the selected medicine
+    setShowMoreInfo(true); // Show the popup
+  };
+
+  // Close the popup
+  const handleCloseMoreInfo = () => {
+    setSelectedMedicine(null); // Clear the selected medicine
+    setShowMoreInfo(false); // Hide the popup
   };
 
   return (
@@ -71,14 +86,14 @@ const MedicineLists = () => {
             <div className="medicineShow-content">
               {/* View Toggle Buttons */}
               <div className="view-toggle">
-                
+                {/* Add your view toggle buttons here if needed */}
               </div>
 
               {/* Content Section */}
               {loading ? (
                 <Spinner />
               ) : showType === 'table' ? (
-                <MedicinesTable medicines={medicines} />
+                <MedicinesTable medicines={medicines} onMoreInfoClick={handleMoreInfoClick} />
               ) : (
                 <div>Card View Content</div> // Placeholder for card view content
               )}
@@ -86,6 +101,11 @@ const MedicineLists = () => {
           </div>
         </main>
       </div>
+
+      {/* Render the MedicineMoreInfo popup if showMoreInfo is true */}
+      {showMoreInfo && (
+        <MedicineMoreInfo medicine={selectedMedicine} onClose={handleCloseMoreInfo} />
+      )}
     </>
   );
 };
