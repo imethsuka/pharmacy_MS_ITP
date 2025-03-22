@@ -1,59 +1,108 @@
-import React from "react";
-import { FaSearch, FaSignOutAlt, FaCapsules, FaExclamationTriangle } from "react-icons/fa";
-import "../../styles/Inventory/Dashboard.css"; // Import the external CSS file
-import SidebarCustomer from "../../components/Customer/SidebarCustomer"; // Import SidebarCustomer
+import React, { useState, useEffect } from "react";
+import HeaderStripe from "../../components/HeaderStripe";
+import AddCSidebar from "../../components/Customer/CustomerSidebar";
+import './CustomerDashboard.css'; // Custom CSS for the dashboard
+import {
+  Card,
+  CardContent,
+  Typography,
+  Grid,
+  Box,
+} from "@mui/material";
+import {
+  PendingActions, // Icon for Pending
+  Cancel, // Icon for Rejected
+  Verified, // Icon for Verified
+} from "@mui/icons-material";
+import "./CustomerDashboard.css"; // Custom CSS for the dashboard
 
-import logo from '../../../public/Sethsiri_Favicon.svg';
+const DashboardPage = () => {
+  const [counts, setCounts] = useState({
+    pending: 0,
+    rejected: 0,
+    verified: 0,
+  });
 
+  // Simulate fetching counts (replace with actual API call)
+  useEffect(() => {
+    const fetchCounts = async () => {
+      // Simulate API call with a delay
+      await new Promise((resolve) => setTimeout(resolve, 1000));
 
+      // Sample data
+      setCounts({
+        pending: 4,
+        rejected: 2,
+        verified: 25,
+      });
+    };
 
-const Dashboard = () => {
+    fetchCounts();
+  }, []);
+
   return (
-    <>
-      {/* Top Bar */}
-      <div className="top-bar">
-        <div className="brand-section">
-          <img src={logo} alt="Sethsiri Logo" width="80" />
-          <h2 className="brand-title">Sethsiri Pharmacy</h2>
-        </div>
-        <div className="centered-search-box">
-          <div className="search-box">
-            <FaSearch className="search-icon" />
-            <input type="text" placeholder="Search" />
-          </div>
-        </div>
-        <div className="right-side">
-          <button className="signout-btn">
-            <FaSignOutAlt /> Sign Out
-          </button>
+    <div className="dashboard-container">
+      <HeaderStripe />
+      <div className="dashboard-content">
+        <AddCSidebar />
+        <div className="dashboard-main">
+          <h1 style={{ marginBottom: "20px", color: "#1f2937" }}>Dashboard</h1>
+          <Grid container spacing={3}>
+            {/* Pending Card */}
+            <Grid item xs={12} sm={6} md={4}>
+              <Card sx={{ backgroundColor: "#f59e0b", color: "white" }}>
+                <CardContent>
+                  <Box display="flex" alignItems="center" justifyContent="space-between">
+                    <Typography variant="h5" component="div">
+                      Pending Users
+                    </Typography>
+                    <PendingActions sx={{ fontSize: 40 }} />
+                  </Box>
+                  <Typography variant="h3" component="div" sx={{ marginTop: 2 }}>
+                    {counts.pending}
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+
+            {/* Rejected Card */}
+            <Grid item xs={12} sm={6} md={4}>
+              <Card sx={{ backgroundColor: "#ef4444", color: "white" }}>
+                <CardContent>
+                  <Box display="flex" alignItems="center" justifyContent="space-between">
+                    <Typography variant="h5" component="div">
+                      Rejected Users
+                    </Typography>
+                    <Cancel sx={{ fontSize: 40 }} />
+                  </Box>
+                  <Typography variant="h3" component="div" sx={{ marginTop: 2 }}>
+                    {counts.rejected}
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+
+            {/* Verified Card */}
+            <Grid item xs={12} sm={6} md={4}>
+              <Card sx={{ backgroundColor: "#10b981", color: "white" }}>
+                <CardContent>
+                  <Box display="flex" alignItems="center" justifyContent="space-between">
+                    <Typography variant="h5" component="div">
+                      Verified Users
+                    </Typography>
+                    <Verified sx={{ fontSize: 40 }} />
+                  </Box>
+                  <Typography variant="h3" component="div" sx={{ marginTop: 2 }}>
+                    {counts.verified}
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
         </div>
       </div>
-
-      <div className="dashboard-container">
-        {/* Sidebar */}
-        <SidebarCustomer/>
-
-        {/* Main Content */}
-        <main className="main-content">
-          {/* Dashboard Summary */}
-          <h2 className="dashboard-title">Customer Manager Dashboard</h2>
-          <p className="dashboard-subtitle">A quick data overview of the customers.</p>
-
-          <div className="summary-cards">
-            <div className="card blue">
-              <FaCapsules className="icon" />
-              <div>
-                <p className="card-value">Total no of Customers</p>
-                
-              </div>
-            </div>
- 
-          </div>
-          
-        </main>
-      </div>
-    </>
+    </div>
   );
 };
 
-export default Dashboard;
+export default DashboardPage;

@@ -28,11 +28,12 @@ import Pending from './pages/Prescription/Pending.jsx';
 //import Customer pages
 import SignUpPage from "./pages/Customer/SignUpPage";
 import LoginPage from "./pages/Customer/LoginPage";
+import UsersLists from './pages/Customer/UserLists.jsx';
 
-import DashboardPage from "./pages/Customer/DashboardPage";
 import ForgotPasswordPage from "./pages/Customer/ForgotPasswordPage";
 import ResetPasswordPage from "./pages/Customer/ResetPasswordPage";
 import CusDashboard from './pages/Customer/DashboardCustomer';
+import CDashboard from './pages/Customer/CDashboard.jsx'
 
 
 import { Toaster } from "react-hot-toast";
@@ -41,9 +42,7 @@ import { useEffect } from "react";
 
 import './App.css';
 import {RouterProvider, createBrowserRouter} from "react-router-dom";
-import Users from './pages/Customer/getuser/User';
-import Add from './pages/Customer/adduser/Add';
-import Edit from './pages/Customer/updateuser/Edit';
+
 
 
 //cutomer authentication
@@ -110,14 +109,13 @@ const App = () => {
       <Route path='/customerdashboard' element={<CusDashboard />} />
       <Route path='/login' element={<RedirectAuthenticatedUser><LoginPage /></RedirectAuthenticatedUser>} />
       <Route path='/signup' element={<RedirectAuthenticatedUser><SignUpPage /></RedirectAuthenticatedUser>} />
-        
-      <Route path='/dashboard' element={<ProtectedRoute><DashboardPage /></ProtectedRoute>} />
+       <Route path='/Customer/userslists' element={<UsersLists />} /> 
+    
       <Route path='/forgot-password' element={<RedirectAuthenticatedUser><ForgotPasswordPage /></RedirectAuthenticatedUser>} />
       <Route path='/reset-password' element={<ResetPasswordPage />} />
       <Route path='*' element={<Navigate to='/' />} />
-      <Route path="/users" element={<Users />} />
-      <Route path="/add" element={<Add/>} />
-      <Route path="/edit/:id" element={<Edit/>} />
+      <Route path='/CDashboard' element={<CDashboard />} />
+     
 
     </Routes>
   );

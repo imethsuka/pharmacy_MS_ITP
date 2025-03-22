@@ -7,6 +7,7 @@ import { PORT, mongoDBURL } from './config.js';
 import mongoose from 'mongoose';
 import booksRoute from './routes/booksRoute.js';
 import authRoutes from "./routes/auth.routes.js";
+import userRoute from "./routes/userRoute.js";
 import inventoryRoute from './routes/inventoryRoute.js';
 import prescriptionRoutes from './routes/prescriptionRoutes.js'; // Import prescriptionRoutes
 import cors from 'cors';
@@ -54,6 +55,7 @@ app.use('/medicines', inventoryRoute);
 app.use('/prescriptions', prescriptionRoutes); // Use prescriptionRoutes
 // =======
 app.use("/api/auth", authRoutes);
+app.use("/users", userRoute);
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "/frontend/dist")));

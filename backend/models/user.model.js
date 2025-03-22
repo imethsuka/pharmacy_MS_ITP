@@ -17,16 +17,16 @@ const userSchema = new mongoose.Schema(
         },
         gender: {
             type: String,
-            required: true,
+            required: false,
             enum: ["male", "female", "other"],
         },
         dob: {
             type: Date,
-            required: true,
+            required: false,
         },
         address: {
             type: String,
-            required: true,
+            required: false,
         },
         
         lastLogin: {
