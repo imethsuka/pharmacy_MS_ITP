@@ -2,11 +2,11 @@ import React from 'react';
 
 const Spinner = () => {
   const spinnerStyle = {
-    width: '4rem', // Equivalent to w-16
-    height: '4rem', // Equivalent to h-16
-    margin: '2rem', // Equivalent to m-8
-    borderRadius: '50%', // Equivalent to rounded-full
-    backgroundColor: '#0284c7', // Equivalent to bg-sky-600
+    width: '4rem', 
+    height: '4rem', 
+    margin: '2rem', 
+    borderRadius: '50%', 
+    backgroundColor: '#4CE4D9', 
     animation: 'ping 1s infinite', // Equivalent to animate-ping
   };
 
