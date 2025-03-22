@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import PasswordStrengthMeter from "../../components/Customer/PasswordStrengthMeter";
 import { useAuthStore } from "../../store/authStore";
 import { addUser } from "../../store/userStore"; // Import addUser function
+import "../../styles/Customer/SignUpPage.css";
 
 const SignUpPage = () => {
 	const [name, setName] = useState("");
@@ -47,7 +48,7 @@ const SignUpPage = () => {
 		try {
 			await signup(email, password, name, gender, dob, address);
 			addUser({ name, email, gender, dob, address }); // Store user data
-			navigate("/verify-email");
+			navigate("/login");
 		} catch (error) {
 			console.log(error);
 		}
@@ -71,160 +72,142 @@ const SignUpPage = () => {
 	return (
 		<React.Fragment>
 			{error && (
-				<div className='mb-4 p-4 bg-red-100 text-red-700 border border-red-400 rounded'>
+				<div className="error-message">
 					{error}
 				</div>
 			)}
-			<div className="flex items-center justify-center min-h-screen bg-gray-100">
+			<div className="signup-container">
 				<motion.div
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.5 }}
-					className='max-w-md w-full bg-white bg-opacity-50 backdrop-filter backdrop-blur-xl rounded-2xl shadow-xl overflow-hidden'
+					className="signup-form"
 				>
-					<div className='p-8'>
-						<h2 className='text-3xl font-bold mb-6 text-center bg-gradient-to-r from-blue-400 to-blue-500 text-transparent bg-clip-text'>
+					<div className="form-content">
+						<h2 className="form-title">
 							Create Account
 						</h2>
 
 						<form onSubmit={handleSignUp}>
-							<div className='mb-4'>
-								<label htmlFor='name' className='block text-sm font-medium text-gray-700'>
-									Full Name
-								</label>
+							<div className="form-group">
+								<label htmlFor="name">Full Name</label>
 								<Input
-									id='name'
+									id="name"
 									icon={User}
-									type='text'
+									type="text"
 									value={name}
 									onChange={(e) => setName(e.target.value)}
-									className='w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent'
+									className="form-input"
 								/>
 							</div>
-							<div className='mb-4'>
-								<label htmlFor='email' className='block text-sm font-medium text-gray-700'>
-									Email Address
-								</label>
+							<div className="form-group">
+								<label htmlFor="email">Email Address</label>
 								<Input
-									id='email'
+									id="email"
 									icon={Mail}
-									type='email'
+									type="email"
 									value={email}
 									onChange={(e) => setEmail(e.target.value)}
-									className='w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent'
+									className="form-input"
 								/>
 							</div>
-							<div className='mb-4'>
-								<label htmlFor='password' className='block text-sm font-medium text-gray-700'>
-									Password
-								</label>
-								<div className='relative'>
+							<div className="form-group">
+								<label htmlFor="password">Password</label>
+								<div className="password-input-wrapper">
 									<Input
-										id='password'
-										icon={Lock}
-										type={showPassword ? 'text' : 'password'}
+										id="password"
+										
+										type={showPassword ? "text" : "password"}
 										value={password}
 										onChange={(e) => setPassword(e.target.value)}
-										className='w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent'
+										className="form-input"
 									/>
 									<div
-										className='absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer'
+										className="password-toggle"
 										onClick={() => setShowPassword(!showPassword)}
 									>
-										{showPassword ? <EyeOff className='w-5 h-5 text-gray-500' /> : <Eye className='w-5 h-5 text-gray-500' />}
+										{showPassword ? <EyeOff /> : <Eye />}
 									</div>
 								</div>
 							</div>
-							<div className='mb-4'>
-								<label htmlFor='confirmPassword' className='block text-sm font-medium text-gray-700'>
-									Confirm Password
-								</label>
-								<div className='relative'>
+							<div className="form-group">
+								<label htmlFor="confirmPassword">Confirm Password</label>
+								<div className="password-input-wrapper">
 									<Input
-										id='confirmPassword'
-										icon={Lock}
-										type={showConfirmPassword ? 'text' : 'password'}
+										id="confirmPassword"
+										
+										type={showConfirmPassword ? "text" : "password"}
 										value={confirmPassword}
 										onChange={(e) => setConfirmPassword(e.target.value)}
-										className='w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent'
+										className="form-input"
 									/>
 									<div
-										className='absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer'
+										className="password-toggle"
 										onClick={() => setShowConfirmPassword(!showConfirmPassword)}
 									>
-										{showConfirmPassword ? <EyeOff className='w-5 h-5 text-gray-500' /> : <Eye className='w-5 h-5 text-gray-500' />}
+										{showConfirmPassword ? <EyeOff /> : <Eye />}
 									</div>
 								</div>
 							</div>
-							<div className='mb-4'>
-								<label htmlFor='gender' className='block text-sm font-medium text-gray-700'>
-									Gender
-								</label>
+							<div className="form-group">
+								<label htmlFor="gender">Gender</label>
 								<select
-									id='gender'
+									id="gender"
 									value={gender}
 									onChange={(e) => setGender(e.target.value)}
-									className='w-full pl-3 pr-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent'
+									className="form-input"
 								>
-									<option value=''>Select Gender</option>
-									<option value='male'>Male</option>
-									<option value='female'>Female</option>
-									<option value='other'>Other</option>
+									<option value="">Select Gender</option>
+									<option value="male">Male</option>
+									<option value="female">Female</option>
+									<option value="other">Other</option>
 								</select>
 							</div>
-							<div className='mb-4'>
-								<label htmlFor='dob' className='block text-sm font-medium text-gray-700'>
-									Date of Birth
-								</label>
+							<div className="form-group">
+								<label htmlFor="dob">Date of Birth</label>
 								<Input
-									id='dob'
-									type='date'
+									id="dob"
+									type="date"
 									value={dob}
 									onChange={handleDobChange}
-									className='w-full pl-3 pr-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent'
+									className="form-input"
 								/>
-								{dobError && (
-									<div className='mt-2 text-sm text-red-600'>
-										{dobError}
-									</div>
-								)}
+								{dobError && <div className="error-text">{dobError}</div>}
 							</div>
-							<div className='mb-4'>
-								<label htmlFor='address' className='block text-sm font-medium text-gray-700'>
-									Address
-								</label>
+							<div className="form-group">
+								<label htmlFor="address">Address</label>
 								<Input
-									id='address'
-									type='text'
+									id="address"
+									type="text"
 									value={address}
 									onChange={(e) => setAddress(e.target.value)}
-									className='w-full pl-3 pr-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent'
+									className="form-input"
 								/>
 							</div>
 							{passwordError && (
-								<div className='mb-4 p-4 bg-red-100 text-red-700 border border-red-400 rounded'>
+								<div className="error-message">
 									{passwordError}
 								</div>
 							)}
 							<PasswordStrengthMeter password={password} />
 							<motion.button
-								className='mt-5 w-full py-3 px-4 bg-gradient-to-r from-blue-500 to-blue-600 text-white font-bold rounded-lg shadow-lg hover:from-blue-600 hover:to-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900 transition duration-200'
+								className="submit-button"
 								whileHover={{ scale: 1.02 }}
 								whileTap={{ scale: 0.98 }}
-								type='submit'
+								type="submit"
 							>
 								Sign Up
 							</motion.button>
 						</form>
 					</div>
-					<div className='px-8 py-4 bg-white bg-opacity-50 flex justify-center'>
-						<p className='text-sm text-gray-400'>
-							Already have an account?{" "}
-							<Link to={"/login"} className='text-blue-400 hover:underline'>
-								Login
-							</Link>
-						</p>
-					</div>
+					<div className='signup-link-container'>
+                    <p className='signup-text'>
+                        Already have an account?{" "}
+                        <Link to='/login' className='signup-link'>
+                            Login
+                        </Link>
+                    </p>
+                </div>
 				</motion.div>
 			</div>
 		</React.Fragment>

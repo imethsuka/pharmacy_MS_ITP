@@ -120,7 +120,7 @@ const App = () => {
       <Route path="/users" element={<Users />} />
       <Route path="/add" element={<Add/>} />
       <Route path="/edit/:id" element={<Edit/>} />
->
+
     </Routes>
   );
 };
