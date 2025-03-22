@@ -47,8 +47,6 @@ const medicineSchema = mongoose.Schema(
     },
     requiresPrescription: {
       type: Boolean,
-      default: false,
-      //required: false,
     },
     supplierEmail: {
       type: String,

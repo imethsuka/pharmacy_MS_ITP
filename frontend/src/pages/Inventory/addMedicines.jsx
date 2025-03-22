@@ -102,7 +102,18 @@ const addMedicines = () => {
         </div>
         <div className="form-group">
           <label className="form-label">Requires Prescription</label>
-          <input type="checkbox" checked={requiresPrescription} onChange={(e) => setRequiresPrescription(e.target.checked)} />
+          <div className="checkbox-container">
+            <input 
+              type="checkbox" 
+              id="requiresPrescription"
+              checked={requiresPrescription} 
+              onChange={(e) => setRequiresPrescription(e.target.checked)} 
+              className="form-checkbox" 
+            />
+            <label htmlFor="requiresPrescription" className="checkbox-label">
+              Check this if a prescription is required to purchase this medicine
+            </label>
+          </div>
         </div>
         <div className="form-group">
           <label className="form-label">Supplier Email</label>
