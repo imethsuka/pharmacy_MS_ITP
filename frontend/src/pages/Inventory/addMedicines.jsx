@@ -45,7 +45,7 @@ const addMedicines = () => {
       .then(() => {
         setLoading(false);
         enqueueSnackbar('Medicine added successfully', { variant: 'success' });
-        navigate('/inventory/MedicineList');
+        navigate('/inventory/MedicineLists');
       })
       .catch((error) => {
         setLoading(false);
