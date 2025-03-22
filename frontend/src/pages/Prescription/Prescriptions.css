@@ -1,0 +1,30 @@
+/* Prescriptions.css */
+.pdashboard-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Full viewport height */
+}
+
+.pdashboard-content {
+  display: flex;
+  flex: 1; /* Take remaining space */
+}
+
+.pdashboard-main {
+  flex: 1; /* Take remaining space */
+  padding: 20px;
+  margin-left: 20px; /* Adjust based on sidebar width */
+  margin-right: 20px;
+  overflow-y: auto; /* Enable scrolling if content overflows */
+}
+
+/* Adjust header stripe if needed */
+.header-stripe {
+  width: 100%;
+  height: 60px; /* Adjust based on your header height */
+  background-color: #1f2937; /* Match your header color */
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+}

@@ -1,0 +1,81 @@
+.medicines-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 8px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .medicines-table th,
+  .medicines-table td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #e0e0e0;
+  }
+  
+  .medicines-table th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+    color: #333;
+    border-radius: 8px;
+  }
+  
+  .medicines-table tbody tr {
+    background-color: #fff;
+    transition: background-color 0.3s ease;
+  }
+  
+  .medicines-table tbody tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .medicines-table td {
+    border-radius: 8px;
+  }
+  
+  .hide-on-mobile {
+    display: table-cell;
+  }
+  
+  @media (max-width: 768px) {
+    .hide-on-mobile {
+      display: none;
+    }
+  }
+  
+  .operations {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+  }
+  
+  .info-icon,
+  .edit-icon,
+  .delete-icon {
+    font-size: 20px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  .info-icon {
+    color: #3b82f6; /* Modern blue for info */
+  }
+  
+  .info-icon:hover {
+    color: #2563eb; /* Darker blue on hover */
+  }
+  
+  .edit-icon {
+    color: #f59e0b; /* Modern orange for edit */
+  }
+  
+  .edit-icon:hover {
+    color: #d97706; /* Darker orange on hover */
+  }
+  
+  .delete-icon {
+    color: #ef4444; /* Modern red for delete */
+  }
+  
+  .delete-icon:hover {
+    color: #dc2626; /* Darker red on hover */
+  }

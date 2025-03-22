@@ -1,0 +1,17 @@
+.pdashboard-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  .pdashboard-content {
+    display: flex;
+    flex: 1;
+  }
+  
+  .pdashboard-main {
+    flex: 1;
+    /* padding: 20px; */
+    /* Add more styles as needed */
+  }
+  
