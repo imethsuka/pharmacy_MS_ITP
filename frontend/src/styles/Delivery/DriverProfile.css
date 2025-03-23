@@ -1,59 +1,66 @@
 .DriverProfile-container {
-    /* margin: 2rem; */
-    padding: 120px;
-    /* width:100%; */
-    margin-left:400px;
-    margin-bottom: 500px;
-    margin: 0;
-    height: 67vh;
+  padding: 120px 0;
+  margin: 0 auto;
+  height: auto;
+  /* min-height: 60vh; */
+  background: linear-gradient(to bottom, #bfdbfe, #ffffff);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
+  
+}
 
-    background: linear-gradient(to bottom, #bfdbfe, #ffffff);
-    
-  }
-  
-  .DriverProfile-title {
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-    text-align: center;
-    margin-top: -20px;
-    
+.DriverProfile-title {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: rgb(70, 43, 226);
+}
 
-  }
+.DriverProfile-card {
+  background-color: #9bc2ea;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 500px;
   
-  .DriverProfile-card {
-    background-color: #f9fafb;
-    padding: 1.5rem;
-    border-radius: 1rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width:500px;
-    height:50vh;
-    margin-left:350px;
-  }
+}
+
+.DriverProfile-card p {
+  font-size: 1.2rem;
+  margin: 0.75rem 0;
+  line-height: 1.5;
   
-  .DriverProfile-card p {
-    font-size: 1.2rem;
-    margin: 0.5rem 0;
-  }
-  
-  .text-green {
-    color: green;
-  }
-  
-  .text-red {
-    color: red;
-  }
-  
-  .back-btn {
-    margin-top: 1.5rem;
-    padding: 0.5rem 1rem;
-    border: none;
-    background-color: #007bff;
-    color: white;
-    border-radius: 0.5rem;
-    cursor: pointer;
-  }
-  
-  .back-btn:hover {
-    background-color: #0056b3;
-  }
-  
+}
+
+.text-green {
+  color: green;
+  font-weight: bold;
+}
+
+.text-red {
+  color: red;
+  font-weight: bold;
+}
+
+.back-btn {
+  margin-top: 2rem;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.back-btn:hover {
+  background-color: #0056b3;
+}
+
+.driver-nav {
+  width: 100%;
+}

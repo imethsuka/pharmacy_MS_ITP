@@ -5,7 +5,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import NavBarV from "../../components/Delivery/NavBarV";
 import SideBarV from "../../components/Delivery/SideBarV";
-import DriverTable from "../../components/Delivery/DriverTable";
+// import DriverTable from "../../components/Delivery/DriverTable";
 
 
 
@@ -89,7 +89,7 @@ const DriverDetails = () => {
                              >
                         Delete
                      </button>
-                     {/* <button onClick={() => navigate(`/delivery/driverprofile/${driver._id}`)}>View</button> */}
+                     <button onClick={() => navigate(`/delivery/driverprofile/${driver._id}`)}>View</button>
 
                    </td>
 
