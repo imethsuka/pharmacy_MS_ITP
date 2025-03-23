@@ -2,6 +2,7 @@ import express from 'express';
 import { PORT, mongoDBURL } from './config.js';
 import mongoose from 'mongoose';
 import booksRoute from './routes/booksRoute.js';
+import orderRoute from './routes/orderRoute.js';
 import inventoryRoute from './routes/inventoryRoute.js';
 import orderRoute from './routes/orderRoute.js'
 import cors from 'cors';
@@ -32,7 +33,7 @@ app.get('/', (request, response) => {
 
 // Add static file serving for uploads
 app.use('/uploads', express.static('uploads'));
-
+app.use('/orders', orderRoute);
 app.use('/books', booksRoute);
 app.use('/medicines',inventoryRoute);
 app.use('/api/orders', orderRoute)
