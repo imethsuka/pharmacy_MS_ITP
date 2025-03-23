@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import jsPDF from "jspdf";
+import autoTable from "jspdf-autotable"; // Correct import
 import AddPSidebar from "../../components/Prescription/PSidebar";
 import HeaderStripe from "../../components/HeaderStripe";
 import {
@@ -41,6 +43,54 @@ const PDashboard = () => {
     navigate(`/Prescription/Details/${prescriptionId}`);
   };
 
+  // PDF download logic
+  const downloadPDF = () => {
+    if (!orders || orders.length === 0) {
+      alert("No orders available to generate the PDF.");
+      return;
+    }
+
+    const doc = new jsPDF();
+
+    // Add title
+    doc.text("Prescriptions Report", 14, 10);
+
+    // Define table columns
+    const columns = [
+      "No",
+      "Customer ID",
+      "Prescription ID",
+      "Total Amount",
+      "Status",
+      "Created At",
+    ];
+
+    // Map orders data to rows with safe default values
+    const rows = orders.map((order, index) => [
+      index + 1,
+      order.customerId || "N/A",
+      order.prescriptionId || "N/A",
+      `$${order.totalAmount.toFixed(2)}`,
+      order.status || "Pending",
+      new Date(order.createdAt).toLocaleDateString(),
+    ]);
+
+    if (rows.length === 0) {
+      console.error("No valid data to generate the PDF.");
+      return;
+    }
+
+    // Add table to PDF
+    autoTable(doc, {
+      head: [columns],
+      body: rows,
+      startY: 20,
+    });
+
+    // Save the PDF
+    doc.save("PrescriptionsReport.pdf");
+  };
+
   return (
     <div className="pdashboard-container">
       <HeaderStripe />
@@ -48,6 +98,13 @@ const PDashboard = () => {
         <AddPSidebar />
         <div className="pdashboard-main">
           <h1 style={{ marginBottom: "20px", color: "#1f2937" }}>Prescriptions</h1>
+          <Button
+            variant="contained"
+            onClick={downloadPDF}
+            style={{ marginBottom: "20px", backgroundColor: "#1f2937", color: "white" }}
+          >
+            Download Report
+          </Button>
           <TableContainer component={Paper} sx={{ boxShadow: 3 }}>
             <Table>
               <TableHead>
