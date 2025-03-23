@@ -11,6 +11,7 @@ import authRoutes from "./routes/auth.routes.js";
 import inventoryRoute from './routes/inventoryRoute.js';
 
 import prescriptionRoute from './routes/prescriptionRoute.js'; // Import prescriptionRoutes
+import testRoute from './routes/testRoute.js';
 
 // import cors from 'cors';
 
@@ -64,8 +65,9 @@ app.use('/books', booksRoute);
 
 app.use('/medicines', inventoryRoute);
 // <<<<<<< main
-app.use('/prescriptions', prescriptionRoute); // Use prescriptionRoutes
+app.use('/prescriptionuploadform', prescriptionRoute); // Use prescriptionRoutes
 // =======
+app.use('/test', testRoute);
 app.use("/api/auth", authRoutes);
 
 if (process.env.NODE_ENV === "production") {

@@ -1,3 +1,8 @@
+import express from 'express';
+import { Test } from '../models/testModel.js';
+
+const router = express.Router();
+
 // Route to create a new order
 export const createOrder = async (req, res) => {
     try {
@@ -62,3 +67,4 @@ export const createOrder = async (req, res) => {
     }
   };
   
+  export default router;
