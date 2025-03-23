@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import AddPSidebar from "../../components/Prescription/PSidebar";
 import HeaderStripe from "../../components/HeaderStripe";
@@ -17,42 +18,22 @@ import "./Prescriptions.css";
 
 const PDashboard = () => {
   const navigate = useNavigate();
-  const [prescriptions, setPrescriptions] = useState([]);
+  const [orders, setOrders] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-  // Simulate fetching prescription data (replace with actual API call)
+  // Fetch orders from backend
   useEffect(() => {
-    const fetchPrescriptions = async () => {
-      // Simulate API call with a delay
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-
-      // Sample data
-      const data = [
-        {
-          id: 1,
-          customerName: "John Doe",
-          prescriptionId: "RX123456",
-          uploadDate: "2023-10-01",
-          status: "Pending",
-        },
-        {
-          id: 2,
-          customerName: "Jane Smith",
-          prescriptionId: "RX654321",
-          uploadDate: "2023-10-02",
-          status: "Verified",
-        },
-        {
-          id: 3,
-          customerName: "Alice Johnson",
-          prescriptionId: "RX987654",
-          uploadDate: "2023-10-03",
-          status: "Rejected",
-        },
-      ];
-      setPrescriptions(data);
-    };
-
-    fetchPrescriptions();
+    setLoading(true);
+    axios
+      .get(`http://localhost:5555/orders`) // Ensure your backend is running on port 5555
+      .then((response) => {
+        setOrders(response.data); // Assuming API response is an array
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching orders:", error);
+        setLoading(false);
+      });
   }, []);
 
   // Handle "View Full Details" button click
@@ -71,39 +52,43 @@ const PDashboard = () => {
             <Table>
               <TableHead>
                 <TableRow sx={{ backgroundColor: "#1f2937" }}>
-                  <TableCell sx={{ color: "white", fontWeight: "bold" }}>Customer Name</TableCell>
+                  <TableCell sx={{ color: "white", fontWeight: "bold" }}>No</TableCell>
+                  <TableCell sx={{ color: "white", fontWeight: "bold" }}>Customer ID</TableCell>
                   <TableCell sx={{ color: "white", fontWeight: "bold" }}>Prescription ID</TableCell>
-                  <TableCell sx={{ color: "white", fontWeight: "bold" }}>Upload Date</TableCell>
+                  <TableCell sx={{ color: "white", fontWeight: "bold" }}>Total Amount</TableCell>
                   <TableCell sx={{ color: "white", fontWeight: "bold" }}>Status</TableCell>
+                  <TableCell sx={{ color: "white", fontWeight: "bold" }}>Created At</TableCell>
                   <TableCell sx={{ color: "white", fontWeight: "bold" }}>Action</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
-                {prescriptions.map((prescription) => (
-                  <TableRow key={prescription.id}>
-                    <TableCell>{prescription.customerName}</TableCell>
-                    <TableCell>{prescription.prescriptionId}</TableCell>
-                    <TableCell>{prescription.uploadDate}</TableCell>
+                {orders.map((order, index) => (
+                  <TableRow key={order._id}>
+                    <TableCell>{index + 1}</TableCell>
+                    <TableCell>{order.customerId || "N/A"}</TableCell>
+                    <TableCell>{order.prescriptionId || "N/A"}</TableCell>
+                    <TableCell>${order.totalAmount.toFixed(2)}</TableCell>
                     <TableCell>
                       <span
                         style={{
                           color:
-                            prescription.status === "Pending"
+                            order.status === "Pending"
                               ? "#f59e0b"
-                              : prescription.status === "Verified"
+                              : order.status === "Verified"
                               ? "#10b981"
                               : "#ef4444",
                           fontWeight: "bold",
                         }}
                       >
-                        {prescription.status}
+                        {order.status || "Pending"}
                       </span>
                     </TableCell>
+                    <TableCell>{new Date(order.createdAt).toLocaleDateString()}</TableCell>
                     <TableCell>
                       <Button
                         variant="outlined"
                         endIcon={<ArrowForward />}
-                        onClick={() => handleViewDetails(prescription.prescriptionId)}
+                        onClick={() => handleViewDetails(order.prescriptionId)}
                       >
                         View Full Details
                       </Button>
