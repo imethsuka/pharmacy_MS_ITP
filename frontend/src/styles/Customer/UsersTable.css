@@ -1,34 +1,67 @@
-.medicines-table {
+.users-table {
     width: 100%;
     border-collapse: separate;
     border-spacing: 0 8px;
     font-family: Arial, sans-serif;
   }
   
-  .medicines-table th,
-  .medicines-table td {
+  .users-table th,
+  .users-table td {
     padding: 12px;
     text-align: center;
     border: 1px solid #e0e0e0;
-  }
+  }/* Styling for the Users Table */
+.users-table {
+  width: 100%;
+  border-collapse: collapse; /* Ensures borders between table cells are combined */
+  margin-top: 20px; /* Add some space at the top */
+}
+
+/* Styling for table headers */
+.users-table th {
+  padding: 12px;
+  text-align: left;
+  background-color: #f2f2f2;
+  border: 1px solid #ddd; /* Border for the header cells */
+}
+
+/* Styling for table cells */
+.users-table td {
+  padding: 12px;
+  border: 1px solid #ddd; /* Border for the data cells */
+  text-align: left;
+}
+
+/* Add a border around the table */
+.users-table {
+  border: 2px solid #ddd; /* Border around the entire table */
+  border-radius: 8px; /* Optional: Rounded corners */
+  margin-top: 20px; /* Optional: Adds margin on top */
+}
+
+/* Add hover effect on rows */
+.users-table tr:hover {
+  background-color: #f1f1f1;
+}
+
   
-  .medicines-table th {
+  .users-table th {
     background-color: #f8f9fa;
     font-weight: bold;
     color: #333;
     border-radius: 8px;
   }
   
-  .medicines-table tbody tr {
+  .users-table tbody tr {
     background-color: #fff;
     transition: background-color 0.3s ease;
   }
   
-  .medicines-table tbody tr:hover {
+  .users-table tbody tr:hover {
     background-color: #f1f1f1;
   }
   
-  .medicines-table td {
+  .users-table td {
     border-radius: 8px;
   }
   

@@ -55,12 +55,7 @@ const CSidebar = () => {
           >
             Manage Users
           </Link>
-          <Link
-            to="/userlists"
-            className={isActive("/userlists") ? "active" : ""}
-          >
-            User Lists
-          </Link>
+          
           
         </nav>
         <p className="footer-text">Powered by ITP 2025</p>

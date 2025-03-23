@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
-import { FiInfo } from 'react-icons/fi'; // Info icon
-import { RiEdit2Line } from 'react-icons/ri'; // Edit icon
-import { HiOutlineTrash } from 'react-icons/hi'; // Delete icon
-import '../../styles/Customer/UsersTable.css'; // Import the CSS file
+import { AiOutlineEdit } from 'react-icons/ai'; // Edit icon
+import { BsInfoCircle } from 'react-icons/bs'; // Info icon
+import { HiOutlineTrash } from 'react-icons/hi'; // Trash (delete) icon
+import '../../styles/Customer/UsersTable.css'; // Import the CSS file for user table styles
 
 const UsersTable = ({ users }) => {
   return (
@@ -11,10 +11,12 @@ const UsersTable = ({ users }) => {
         <tr>
           <th>No</th>
           <th>Name</th>
-          <th className="hide-on-mobile">Email</th>
+          <th>Email</th>
+          <th className="hide-on-mobile">Password</th>
           <th className="hide-on-mobile">Gender</th>
-          <th className="hide-on-mobile">DOB</th>
+          <th className="hide-on-mobile">Date of Birth</th>
           <th className="hide-on-mobile">Address</th>
+          
           <th>Operations</th>
         </tr>
       </thead>
@@ -23,20 +25,22 @@ const UsersTable = ({ users }) => {
           <tr key={user._id}>
             <td>{index + 1}</td>
             <td>{user.name}</td>
-            <td className="hide-on-mobile">{user.email}</td>
+            <td>{user.email}</td>
+            <td className="hide-on-mobile">{user.password}</td>
             <td className="hide-on-mobile">{user.gender}</td>
             <td className="hide-on-mobile">{user.dob}</td>
             <td className="hide-on-mobile">{user.address}</td>
+            
             <td>
               <div className="operations">
                 <Link to={`/users/details/${user._id}`}>
-                  <FiInfo className="info-icon" />
+                  <BsInfoCircle className="info-icon" /> {/* Info icon for user details */}
                 </Link>
-                <Link to={`/users/edit/${user._id}`}>
-                  <RiEdit2Line className="edit-icon" />
+                <Link to={`/Customer/editUser/:id`}>
+                  <AiOutlineEdit className="edit-icon" /> {/* Edit icon for editing user */}
                 </Link>
                 <Link to={`/users/delete/${user._id}`}>
-                  <HiOutlineTrash className="delete-icon" />
+                  <HiOutlineTrash className="delete-icon" /> {/* Trash icon for deleting user */}
                 </Link>
               </div>
             </td>

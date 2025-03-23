@@ -1,28 +1,25 @@
 import express from "express";
-
-import  User  from '../models/user.model.js';
+import User from '../models/user.model.js'; // Corrected to import User model
 
 const router = express.Router();
 
-// Route to add a new Medicine
+// Route to add a new User
 router.post('/', async (request, response) => {
   try {
+    // Ensure all required fields are present
     if (
       !request.body.name ||
       !request.body.email ||
       !request.body.password ||
       !request.body.gender ||
       !request.body.dob ||
-      !request.body.address 
-     
-
+      !request.body.address
     ) {
       return response.status(400).send({
-
         message: 'Send all required fields: name, email, password, gender, dob, address'
-
       });
     }
+
     const newUser = {
       name: request.body.name,
       email: request.body.email,
@@ -30,7 +27,6 @@ router.post('/', async (request, response) => {
       gender: request.body.gender,
       dob: request.body.dob,
       address: request.body.address,
-      
     };
 
     const user = await User.create(newUser);
@@ -57,7 +53,7 @@ router.get('/', async (request, response) => {
   }
 });
 
-// Route to get a single Medicine by ID
+// Route to get a single User by ID
 router.get('/:id', async (request, response) => {
   try {
     const { id } = request.params;
@@ -79,38 +75,35 @@ router.get('/:id', async (request, response) => {
 router.put('/:id', async (request, response) => {
   try {
     if (
-        !request.body.name ||
-        !request.body.email ||
-        !request.body.password ||
-        !request.body.gender ||
-        !request.body.dob ||
-        !request.body.address 
-       
+      !request.body.name ||
+      !request.body.email ||
+      !request.body.password ||
+      !request.body.gender ||
+      !request.body.dob ||
+      !request.body.address
     ) {
       return response.status(400).send({
-
         message: 'Send all required fields: name, email, password, gender, dob, address'
-
       });
     }
 
-    
     const { id } = request.params;
 
-    const result = await Medicine.findByIdAndUpdate(id, request.body);
+    // Corrected the reference to User in the update route
+    const result = await User.findByIdAndUpdate(id, request.body, { new: true });
 
     if (!result) {
       return response.status(404).json({ message: 'User not found' });
     }
 
-    return response.status(200).send({ message: 'User updated successfully' });
+    return response.status(200).send({ message: 'User updated successfully', data: result });
   } catch (error) {
     console.log(error.message);
     response.status(500).send({ message: error.message });
   }
 });
 
-// Route to delete a Medicine
+// Route to delete a User
 router.delete('/:id', async (request, response) => {
   try {
     const { id } = request.params;
@@ -127,8 +120,5 @@ router.delete('/:id', async (request, response) => {
     response.status(500).send({ message: error.message });
   }
 });
-
-
-
 
 export default router;

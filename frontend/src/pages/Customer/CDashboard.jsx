@@ -1,33 +1,16 @@
 import React, { useState, useEffect } from "react";
+import { FaSearch, FaSignOutAlt } from "react-icons/fa";
+import { useNavigate } from "react-router-dom"; // Import useNavigate for navigation
+import axios from "axios";
+import { Link } from "react-router-dom";
+import { FiInfo } from "react-icons/fi";
+import { RiEdit2Line } from "react-icons/ri";
+import { HiOutlineTrash } from "react-icons/hi";
 import HeaderStripe from "../../components/HeaderStripe";
 import AddCSidebar from "../../components/Customer/CustomerSidebar";
-import "./CDashboard.css"; // Custom CSS for the dashboard
-import UsersTable from "../../components/Customer/UsersTable";
+import UserLists from "./UserLists"; // Import UserLists component
 
 const CMDashboardPage = () => {
-  const [counts, setCounts] = useState({
-    pending: 0,
-    rejected: 0,
-    verified: 0,
-  });
-
-  // Simulate fetching counts (replace with actual API call)
-  useEffect(() => {
-    const fetchCounts = async () => {
-      // Simulate API call with a delay
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-
-      // Sample data
-      setCounts({
-        pending: 12,
-        rejected: 5,
-        verified: 20,
-      });
-    };
-
-    fetchCounts();
-  }, []);
-
   return (
     <div className="dashboard-container">
       <HeaderStripe />
@@ -35,10 +18,8 @@ const CMDashboardPage = () => {
         <AddCSidebar />
         <div className="dashboard-main">
           <h1 style={{ marginBottom: "20px", color: "#1f2937" }}>Users</h1>
-        
-         
-            
-
+          {/* Instead of manually writing the table, use the UserLists component */}
+          <UserLists />
         </div>
       </div>
     </div>
