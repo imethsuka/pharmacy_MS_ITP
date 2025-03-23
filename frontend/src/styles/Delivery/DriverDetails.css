@@ -139,3 +139,19 @@
   color: white;
   padding-top: 20px;
 }
+/* Add this to your existing CSS file */
+.download-pdf-button {
+  background-color: #4CAF50; /* Green background */
+  color: white; /* White text */
+  border: none;
+  padding: 10px 20px;
+  margin-left: 10px; /* Space between buttons */
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.download-pdf-button:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
