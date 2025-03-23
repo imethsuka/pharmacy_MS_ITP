@@ -9,6 +9,7 @@ import ProductCard from "../components/ProductCard/ProductCard";
 import Footer from "../components/Footer";
 import Popup from "../components/Popup/MoreInfo";
 import Spinner from "../components/Spinner";
+import FileUpload from "../components/Prescription/FileUpload"; // Import FileUpload component
 import "../styles/Home.css";
 
 const Home = () => {
@@ -121,6 +122,11 @@ const Home = () => {
             imageUrl="./src/assets/HomePage_assets/Medical-equipment.jpg"
             title="Medical Equipment"
           />
+        </div>
+
+        {/* Add FileUpload component and center it */}
+        <div className="file-upload-wrapper">
+          <FileUpload />
         </div>
 
         {/* Product Listing Section */}
