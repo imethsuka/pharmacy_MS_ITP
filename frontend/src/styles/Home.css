@@ -108,9 +108,3 @@ html {
 .cart-button:hover {
   background-color: #0069d9;
 }
-
-.file-upload-wrapper {
-  display: flex;
-  justify-content: center;
-  margin: 20px 0;
-}
