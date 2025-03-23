@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import HeaderStripe from "../components/HeaderStripe";
 import NavBar from "../components/home/NavBar";
 import CircleCard from "../components/home/CircleCard";
@@ -6,25 +8,42 @@ import HeroSection from "../components/HeroSection";
 import ProductCard from "../components/ProductCard/ProductCard";
 import Footer from "../components/Footer";
 import Popup from "../components/Popup/MoreInfo";
+import Spinner from "../components/Spinner";
 import "../styles/Home.css";
 
 const Home = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [selectedMedicine, setSelectedMedicine] = useState(null);
   const [medicines, setMedicines] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
 
-  // Fetch medicines data from MongoDB
-  useEffect(() => {
-    const fetchMedicines = async () => {
-      try {
-        const response = await fetch("http://localhost:5555/medicines");
-        const data = await response.json();
-        setMedicines(data.data);
-      } catch (error) {
-        console.error("Error fetching medicines:", error);
+  // Fetch medicines data from MongoDB using proxy
+  const fetchMedicines = async () => {
+    setLoading(true);
+    try {
+      // Use the proxy path instead of direct URL
+      const response = await axios.get('/api/medicines');
+      setMedicines(response.data.data);
+      setLoading(false);
+    } catch (err) {
+      console.error("Error fetching medicines:", err);
+      
+      // Better error handling with specific messages
+      if (err.message && err.message.includes('Network Error')) {
+        setError('Connection error: Unable to connect to the server. The server might be down or there could be CORS issues.');
+      } else if (err.response) {
+        // Server responded with error
+        setError(`Server error: ${err.response.status} - ${err.response.data.message || 'Unknown error'}`);
+      } else {
+        setError('Failed to load products. Please try again later.');
       }
-    };
+      setLoading(false);
+    }
+  };
 
+  useEffect(() => {
     fetchMedicines();
   }, []);
 
@@ -38,6 +57,36 @@ const Home = () => {
   const handleClosePopup = () => {
     setShowPopup(false);
     setSelectedMedicine(null);
+  };
+  
+  // Handle product click to navigate to detail page
+  const handleProductClick = (productId) => {
+    navigate(`/order/product/${productId}`);
+  };
+  
+  // Handle Add to Cart
+  const handleAddToCart = (medicine) => {
+    // Get existing cart items from localStorage or initialize empty array
+    const existingCart = JSON.parse(localStorage.getItem('cart') || '[]');
+    
+    // Check if product already exists in cart
+    const existingItemIndex = existingCart.findIndex(item => item.id === medicine._id);
+    
+    if (existingItemIndex >= 0) {
+      // Update quantity if product already in cart
+      existingCart[existingItemIndex].quantity += 1;
+    } else {
+      // Add new product to cart
+      existingCart.push({
+        id: medicine._id,
+        name: medicine.name,
+        price: medicine.price,
+        quantity: 1
+      });
+    }
+    
+    // Save updated cart to localStorage
+    localStorage.setItem('cart', JSON.stringify(existingCart));
   };
 
   return (
@@ -74,18 +123,39 @@ const Home = () => {
           />
         </div>
 
-        <div className="product-card-container">
-          {medicines.map((medicine) => (
-            <ProductCard
-              key={medicine._id}
-              image={medicine.imageUrl}
-              name={medicine.name}
-              price={medicine.price}
-              requiresPrescription={medicine.requiresPrescription}
-              onAddToCart={() => handleAddToCart(medicine)}
-              onMoreInfo={() => handleMoreInfo(medicine)}
-            />
-          ))}
+        {/* Product Listing Section */}
+        <div className="product-listing-section">
+          <h2 className="section-title">Our Products</h2>
+          
+          {loading ? (
+            <div className="loading-container">
+              <Spinner />
+              <p>Loading products...</p>
+            </div>
+          ) : error ? (
+            <div className="error-container">
+              <p className="error-message">{error}</p>
+              <button onClick={fetchMedicines} className="retry-button">
+                Try Again
+              </button>
+            </div>
+          ) : (
+            <div className="product-grid">
+              {medicines.length > 0 ? (
+                medicines.map((medicine) => (
+                  <ProductCard
+                    key={medicine._id}
+                    product={medicine}
+                    onMoreInfo={() => handleMoreInfo(medicine)}
+                    onProductClick={() => handleProductClick(medicine._id)}
+                    onAddToCart={() => handleAddToCart(medicine)}
+                  />
+                ))
+              ) : (
+                <p className="no-products">No products available at the moment.</p>
+              )}
+            </div>
+          )}
         </div>
 
         <Footer />

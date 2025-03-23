@@ -1,14 +1,61 @@
 import React, { useState } from "react";
-import "./MoreInfo.css"; // Import Vanilla CSS styles
+import { useNavigate } from "react-router-dom"; // Add this import
+import "./MoreInfo.css";
 
 const Popup = ({ medicine, onClose }) => {
   const [quantity, setQuantity] = useState(1);
+  const [addedToCart, setAddedToCart] = useState(false);
+  const navigate = useNavigate(); // Add this hook
 
   if (!medicine) return null;
 
   const handleIncreaseQuantity = () => setQuantity((prev) => prev + 1);
   const handleDecreaseQuantity = () =>
     quantity > 1 && setQuantity((prev) => prev - 1);
+
+  // Add to cart handler
+  const handleAddToCart = () => {
+    // Get existing cart items from localStorage or initialize empty array
+    const existingCart = JSON.parse(localStorage.getItem("cart") || "[]");
+    
+    // Check if product already exists in cart
+    const existingItemIndex = existingCart.findIndex(item => item.id === medicine._id);
+    
+    if (existingItemIndex >= 0) {
+      // Update quantity if product already in cart
+      existingCart[existingItemIndex].quantity += quantity;
+    } else {
+      // Add new product to cart
+      existingCart.push({
+        id: medicine._id,
+        name: medicine.name,
+        price: medicine.price,
+        image: medicine.imageUrl,
+        quantity: quantity,
+        productId: medicine.productId || medicine._id,
+        category: medicine.category,
+        requiresPrescription: medicine.requiresPrescription
+      });
+    }
+    
+    // Save updated cart to localStorage
+    localStorage.setItem("cart", JSON.stringify(existingCart));
+    
+    // Give feedback to user
+    setAddedToCart(true);
+    
+    // Reset feedback after 2 seconds
+    setTimeout(() => {
+      setAddedToCart(false);
+      onClose(); // Optionally close the popup
+    }, 2000);
+  };
+
+  // Navigate to cart page
+  const goToCart = () => {
+    navigate("/order/cart");
+    onClose();
+  };
 
   return (
     <div className="popup-overlay">
@@ -56,9 +103,15 @@ const Popup = ({ medicine, onClose }) => {
                 +
               </button>
             </div>
-            <button className="add-to-cart-button">
-              Add to Cart ({quantity})
-            </button>
+            {addedToCart ? (
+              <div className="cart-success-message">
+                Item added to cart! <button onClick={goToCart} className="go-to-cart-btn">View Cart</button>
+              </div>
+            ) : (
+              <button className="add-to-cart-button" onClick={handleAddToCart}>
+                Add to Cart ({quantity})
+              </button>
+            )}
           </div>
         </div>
       </div>

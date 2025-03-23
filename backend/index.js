@@ -32,7 +32,7 @@ app.use(cookieParser()); // allows us to parse incoming cookies
 
 // Middleware for handling CORS POLICY
 const corsOptions = {
-  origin: 'http://localhost:5173', // Allow requests from this origin
+  origin: ['http://localhost:5173', 'http://localhost:5174'], // Allow requests from both ports
   credentials: true, // Allow credentials
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
@@ -67,6 +67,12 @@ app.use('/medicines', inventoryRoute);
 app.use('/prescriptions', prescriptionRoute); // Use prescriptionRoutes
 // =======
 app.use("/api/auth", authRoutes);
+
+// Import the order routes
+import orderRoute from './routes/orderRoute.js';
+
+// Add this line where you define your routes
+app.use('/api/orders', orderRoute);
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "/frontend/dist")));

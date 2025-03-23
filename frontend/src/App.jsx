@@ -7,6 +7,7 @@ import CreateBook from './pages/CreateBooks';
 import ShowBook from './pages/ShowBook';
 import EditBook from './pages/EditBook';
 import DeleteBook from './pages/DeleteBook';
+import CheckoutPage from './pages/Order/CheckoutPage';
 
 
 
@@ -97,6 +98,8 @@ const RedirectAuthenticatedUser = ({ children }) => {
 import Product from './pages/Order/Product';
 import ProductList from './pages/Order/ProductList';
 import Cart from './pages/Order/Cart';
+import OrderConfirmation from './pages/Order/OrderConfirmation';
+import OrderHistory from './pages/Order/OrderHistory';
 
 
 
@@ -140,6 +143,9 @@ const App = () => {
       <Route path='/order/product/:id' element={<Product />} />
       <Route path='/order/products' element={<ProductList />} />
       <Route path='/order/cart' element={<Cart />} />
+      <Route path='/order/confirmation/:orderId' element={<OrderConfirmation />} />
+      <Route path='/order/history' element={<OrderHistory />} />
+      <Route path='/order/checkout' element={<CheckoutPage />} />
 
       <Route path='/Prescription/pdashboard' element={<PDashboard />} />
       <Route path='/Prescription/prescriptions' element={<Prescriptions />} />
