@@ -114,12 +114,12 @@ const App = () => {
       <Route path='/signup' element={<RedirectAuthenticatedUser><SignUpPage /></RedirectAuthenticatedUser>} />
        <Route path='/Customer/userslists' element={<UsersLists />} /> 
     <Route path='/Customer/editUser/:id' element={<EditUser />} />
-    <Route path='/Customer/deleteUser/:id' element={<DeleteUser />} />
       <Route path='/forgot-password' element={<RedirectAuthenticatedUser><ForgotPasswordPage /></RedirectAuthenticatedUser>} />
       <Route path='/reset-password' element={<ResetPasswordPage />} />
       <Route path='*' element={<Navigate to='/' />} />
       <Route path='/CDashboard' element={<CDashboard />} />
-     
+      <Route path="/Customer/deleteUser/:id" element={<DeleteUser />} />
+
 
     </Routes>
   );

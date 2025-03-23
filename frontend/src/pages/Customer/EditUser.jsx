@@ -82,7 +82,7 @@ const EditUser = () => {
       .then(() => {
         setLoading(false);
         enqueueSnackbar('User Edited successfully', { variant: 'success' });
-        navigate('/');
+        navigate('/Customer/userslist');
       })
       .catch((error) => {
         setLoading(false);

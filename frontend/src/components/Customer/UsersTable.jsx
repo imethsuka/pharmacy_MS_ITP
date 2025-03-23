@@ -34,10 +34,10 @@ const UsersTable = ({ users }) => {
             <td>
               <div className="operations">
                
-                <Link to={`/Customer/editUser/:id`}>
+                <Link to={`/Customer/editUser/${user._id}`}>
                   <AiOutlineEdit className="edit-icon" /> {/* Edit icon for editing user */}
                 </Link>
-                <Link to={`/users/delete/${user._id}`}>
+                <Link to={`/Customer/deleteUser/${user._id}`}>
                   <HiOutlineTrash className="delete-icon" /> {/* Trash icon for deleting user */}
                 </Link>
               </div>
