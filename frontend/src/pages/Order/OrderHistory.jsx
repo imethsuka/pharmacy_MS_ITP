@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import HeaderStripe from "../../components/HeaderStripe";
 import Footer from "../../components/Footer";
 import Spinner from "../../components/Spinner";
 import { FiEye, FiArrowLeft, FiShoppingBag } from "react-icons/fi";
 import '../../styles/Order/OrderHistory.css';
+import { ordersApi } from '../../utils/api';
 
 const OrderHistory = () => {
   const [orders, setOrders] = useState([]);
@@ -16,9 +16,8 @@ const OrderHistory = () => {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const baseURL = import.meta.env.VITE_API_URL || 'http://localhost:5555';
-        const response = await axios.get(`${baseURL}/api/orders`);
-        
+        setLoading(true);
+        const response = await ordersApi.getOrders();
         setOrders(response.data);
         setLoading(false);
       } catch (err) {

@@ -5,6 +5,11 @@ import mongoose from 'mongoose';
 
 const router = express.Router();
 
+// Add this debug route at the top of your routes
+router.get('/test', (req, res) => {
+  return res.status(200).json({ message: 'Order routes are working!' });
+});
+
 // Create a new order
 router.post('/', async (req, res) => {
   try {
@@ -15,13 +20,18 @@ router.post('/', async (req, res) => {
       });
     }
 
+    // Check if any item requires a prescription
+    const requiresPrescription = req.body.items.some(item => item.requiresPrescription === true);
+    
     // Create a new order
     const newOrder = {
       items: req.body.items,
       totalAmount: req.body.totalAmount,
       shippingAddress: req.body.shippingAddress,
       prescriptionId: req.body.prescriptionId || null,
-      customerId: req.body.customerId || null
+      customerId: req.body.customerId || null,
+      // Set initial status based on prescription requirement
+      status: requiresPrescription ? 'Pending' : 'Processing'
     };
 
     // Update inventory (reduce stock)

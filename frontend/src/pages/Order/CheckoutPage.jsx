@@ -90,66 +90,88 @@ const CheckoutPage = () => {
         prescriptionId: localStorage.getItem('prescriptionId') || null
       };
   
-      // Submit order to backend
+      // Use a consistent API base URL - ensure VITE_API_URL is set in .env file
       const baseURL = import.meta.env.VITE_API_URL || 'http://localhost:5555';
+      console.log('API Base URL:', baseURL);
+      console.log('Submitting order to:', `${baseURL}/api/orders`);
       
-      console.log('Attempting to submit order to:', `${baseURL}/api/orders`);
-      
-      // Skip ping test and directly try to submit the order
-      // This is more reliable since the specific /api endpoint might not exist
+      // Test API connectivity first
       try {
-        const response = await axios.post(`${baseURL}/api/orders`, orderData, {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          withCredentials: true 
-        });
-        
-        if (response.data && response.data._id) {
-          // Clear cart
-          localStorage.removeItem('cart');
-          localStorage.removeItem('prescriptionUploaded');
-          localStorage.removeItem('prescriptionId');
-          
-          // Navigate to order confirmation page
-          navigate(`/order/confirmation/${response.data._id}`);
-        } else {
-          throw new Error('Failed to create order - incomplete response data');
-        }
-      } catch (error) {
-        console.error('Error creating order:', error);
-        
-        // Enhanced error detection and handling
-        if (error.message && error.message.includes('Server connection failed')) {
-          setError({
-            type: 'connection',
-            message: 'Backend Server Not Reachable',
-            details: error.message
-          });
-        } else if (error.response && error.response.status === 404) {
-          setError({
-            type: 'endpoint',
-            message: 'API Endpoint Not Found (404)',
-            details: 'The API endpoint /api/orders does not exist. Please check if the route is correctly defined in your backend.'
-          });
-        } else if (error.message && (error.message.includes('Network Error') || 
-            error.message.includes('CORS') || 
-            error.code === 'ERR_NETWORK')) {
-          setError({
-            type: 'cors',
-            message: 'CORS or Network Error',
-            details: 'This could be due to CORS configuration or the server might be running on a different port. Check that backend CORS settings include your frontend origin.'
-          });
-        } else {
-          setError({
-            type: 'general',
-            message: 'There was an error processing your order.',
-            details: error.message || 'Please try again later.'
-          });
-        }
-      } finally {
-        setIsProcessing(false);
+        const testResponse = await axios.get(`${baseURL}/api/test`);
+        console.log('API Test Response:', testResponse.data);
+      } catch (testError) {
+        console.error('API Test Failed:', testError);
       }
+
+      // ---- DIAGNOSTICS ----
+      console.log('Starting API diagnostics...');
+      
+      // Try different approaches to diagnose the issue
+      const approaches = [
+        {
+          name: 'Standard API endpoint',
+          url: `${baseURL}/api/orders`,
+          method: axios.post,
+          data: orderData
+        },
+        {
+          name: 'Direct endpoint test',
+          url: `${baseURL}/api/orders-direct`,
+          method: axios.post,
+          data: orderData
+        },
+        {
+          name: 'Test basic connectivity',
+          url: `${baseURL}/api/test`, // Changed from /test-direct to /api/test
+          method: axios.get
+        },
+        {
+          name: 'Orders route test',
+          url: `${baseURL}/api/orders/test`,
+          method: axios.get
+        }
+      ];
+      
+      for (const approach of approaches) {
+        try {
+          console.log(`Trying ${approach.name} at ${approach.url}...`);
+          const response = approach.data ? 
+            await approach.method(approach.url, approach.data) : 
+            await approach.method(approach.url);
+          console.log(`${approach.name} succeeded:`, response.data);
+          
+          // If this is the main order endpoint and it worked, use the result
+          if (approach.name === 'Standard API endpoint' && response.data._id) {
+            // Clear cart
+            localStorage.removeItem('cart');
+            localStorage.removeItem('prescriptionUploaded');
+            localStorage.removeItem('prescriptionId');
+            
+            // Navigate to order confirmation page
+            navigate(`/order/confirmation/${response.data._id}`);
+            return; // Exit early as we succeeded
+          }
+          
+          // If we succeeded with the direct endpoint approach
+          if (approach.name === 'Direct endpoint test' && response.data._id) {
+            console.log('Direct endpoint worked! Using alternative approach...');
+            // Clear cart
+            localStorage.removeItem('cart');
+            localStorage.removeItem('prescriptionUploaded');
+            localStorage.removeItem('prescriptionId');
+            
+            // Navigate to order confirmation page with the test order ID
+            navigate(`/order/confirmation/${response.data._id}`);
+            return; // Exit early as we succeeded
+          }
+        } catch (err) {
+          console.error(`${approach.name} failed:`, err);
+        }
+      }
+      
+      // If we reach here, all approaches failed
+      throw new Error('All API connection approaches failed');
+      
     } catch (error) {
       console.error('Error creating order:', error);
       

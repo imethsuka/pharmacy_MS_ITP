@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Test Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        button {
+            padding: 10px 15px;
+            margin: 5px;
+            cursor: pointer;
+        }
+        #results {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-top: 20px;
+            background-color: #f9f9f9;
+            min-height: 200px;
+        }
+        pre {
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <h1>API Test Page</h1>
+    <p>Click the buttons below to test different API endpoints</p>
+    
+    <div>
+        <button onclick="testEndpoint('/api/test')">Test API Endpoint</button>
+        <button onclick="testEndpoint('/test-direct')">Test Direct Endpoint</button>
+        <button onclick="testEndpoint('/api/orders/test')">Test Orders API</button>
+        <button onclick="testOrderCreation()">Test Order Creation</button>
+    </div>
+    
+    <div id="results">
+        <p>Results will appear here...</p>
+    </div>
+    
+    <script>
+        const resultsDiv = document.getElementById('results');
+        
+        async function testEndpoint(url) {
+            resultsDiv.innerHTML = `<p>Testing ${url}...</p>`;
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+                resultsDiv.innerHTML = `
+                    <h3>Success: ${url}</h3>
+                    <pre>${JSON.stringify(data, null, 2)}</pre>
+                `;
+            } catch (error) {
+                resultsDiv.innerHTML = `
+                    <h3>Error: ${url}</h3>
+                    <p>${error.message}</p>
+                `;
+            }
+        }
+        
+        async function testOrderCreation() {
+            resultsDiv.innerHTML = `<p>Testing order creation...</p>`;
+            const orderData = {
+                items: [
+                    { productId: 'test123', name: 'Test Product', price: 9.99, quantity: 2 }
+                ],
+                totalAmount: 19.98,
+                shippingAddress: {
+                    street: '123 Test St',
+                    city: 'Test City',
+                    state: 'Test State',
+                    zipCode: '12345',
+                    country: 'Sri Lanka'
+                }
+            };
+            
+            try {
+                const response = await fetch('/api/orders-direct', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(orderData)
+                });
+                const data = await response.json();
+                resultsDiv.innerHTML = `
+                    <h3>Success: Order Creation</h3>
+                    <pre>${JSON.stringify(data, null, 2)}</pre>
+                `;
+            } catch (error) {
+                resultsDiv.innerHTML = `
+                    <h3>Error: Order Creation</h3>
+                    <p>${error.message}</p>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>
