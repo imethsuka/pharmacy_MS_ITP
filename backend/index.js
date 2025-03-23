@@ -14,13 +14,13 @@ app.use(express.json());
 // Option 1: Allow All Origins with Default of cors(*)
 app.use(cors());
 // Option 2: Allow Custom Origins
-// app.use(
-//   cors({
-//     origin: 'http://localhost:3000',
-//     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-//     allowedHeaders: ['Content-Type'],
-//   })
-// );
+app.use(
+  cors({
+    origin: 'http://localhost:3000',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type'],
+  })
+);
 
 // Serve static files from the public folder
 app.use(express.static('public')); // Add this line to serve static files
