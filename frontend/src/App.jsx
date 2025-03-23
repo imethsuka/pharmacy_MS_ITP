@@ -31,6 +31,7 @@ import SignUpPage from "./pages/Customer/SignUpPage";
 import LoginPage from "./pages/Customer/LoginPage";
 import UsersLists from './pages/Customer/UserLists.jsx';
 import EditUser  from "./pages/Customer/EditUser"
+import DeleteUser from './pages/Customer/DeleteUser';
 import ForgotPasswordPage from "./pages/Customer/ForgotPasswordPage";
 import ResetPasswordPage from "./pages/Customer/ResetPasswordPage";
 import CusDashboard from './pages/Customer/DashboardCustomer';
@@ -113,6 +114,7 @@ const App = () => {
       <Route path='/signup' element={<RedirectAuthenticatedUser><SignUpPage /></RedirectAuthenticatedUser>} />
        <Route path='/Customer/userslists' element={<UsersLists />} /> 
     <Route path='/Customer/editUser/:id' element={<EditUser />} />
+    <Route path='/Customer/deleteUser/:id' element={<DeleteUser />} />
       <Route path='/forgot-password' element={<RedirectAuthenticatedUser><ForgotPasswordPage /></RedirectAuthenticatedUser>} />
       <Route path='/reset-password' element={<ResetPasswordPage />} />
       <Route path='*' element={<Navigate to='/' />} />

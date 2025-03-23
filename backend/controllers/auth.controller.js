@@ -33,7 +33,8 @@ export const signup = async (req, res) => {
         await user.save();
 
         // jwt
-        generateTokenAndSetCookie(user, res);
+        generateTokenAndSetCookie(user, res);  // Fix the order of parameters
+
 
         res.status(201).json({
             success: true,
@@ -61,7 +62,8 @@ export const login = async (req, res) => {
             return res.status(400).json({ success: false, message: "Invalid credentials" });
         }
 
-        generateTokenAndSetCookie(res, user._id);
+        generateTokenAndSetCookie(user, res);
+
 
         user.lastLogin = new Date();
         await user.save();

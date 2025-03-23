@@ -33,9 +33,7 @@ const UsersTable = ({ users }) => {
             
             <td>
               <div className="operations">
-                <Link to={`/users/details/${user._id}`}>
-                  <BsInfoCircle className="info-icon" /> {/* Info icon for user details */}
-                </Link>
+               
                 <Link to={`/Customer/editUser/:id`}>
                   <AiOutlineEdit className="edit-icon" /> {/* Edit icon for editing user */}
                 </Link>

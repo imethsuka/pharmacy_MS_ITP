@@ -1,6 +1,9 @@
-const express = require('express');
+import express from 'express';
+
 const app = express();
 const profileRoute = require('./routes/profile');
+
+
 
 // ...existing code...
 

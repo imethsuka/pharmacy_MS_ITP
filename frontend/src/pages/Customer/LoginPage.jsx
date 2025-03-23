@@ -28,6 +28,10 @@ const LoginPage = () => {
 
         if (email === "admin1@gmail.com" && password === "admin") {
             navigate("/customerdashboard");
+        } else if (email === "admin2@gmail.com" && password === "admin") {
+            navigate("/inventory/dashboard");
+        }else if (email === "admin3@gmail.com" && password === "admin") {
+            navigate("/prescription/dashboard");
         } else {
             navigate("/home");
         }
