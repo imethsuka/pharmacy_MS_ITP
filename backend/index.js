@@ -16,6 +16,7 @@ import prescriptionRoute from './routes/prescriptionRoute.js'; // Import prescri
 
 
 import driverRoute from './routes/driverRoute.js' 
+import feedbackRoute from './routes/feedbackRoute.js';
 
 import cors from 'cors';
 import cookieParser from "cookie-parser";
@@ -68,6 +69,7 @@ app.use('/prescriptions', prescriptionRoute); // Use prescriptionRoutes
 // =======
 app.use("/api/auth", authRoutes);
 
+
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "/frontend/dist")));
 
@@ -112,7 +114,7 @@ app.delete("/deleteUser/:id", (req, res) => {
 
 app.use('/drivers',driverRoute);
 
-
+app.use('/feedbacks',feedbackRoute);
 app.use('/medicines',inventoryRoute);
 
 

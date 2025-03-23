@@ -41,9 +41,7 @@ const DriverDetails = () => {
 
         <h1 className="Driver-Title">Delivery Driver Details</h1>
         <div className="Add-driver-button">
-          <button onClick={() => navigate("/Delivery/AddDriver")}>
-            Add Driver
-          </button>
+         
         </div>
         <div className="Driver-table">
         {loading ? (
@@ -88,6 +86,7 @@ const DriverDetails = () => {
                              >
                         Delete
                      </button>
+                     <button onClick={() => navigate(`/delivery/driverprofile/${driver._id}`)}>View</button>
 
                    </td>
 

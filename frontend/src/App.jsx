@@ -20,6 +20,8 @@ import DriverDetails from './pages/Delivery/DriverDetails';
 import AddDriver from './pages/Delivery/AddDriver';
 import EditDriver from './pages/Delivery/EditDriver';
 import DeleteDriver from './pages/Delivery/DeleteDriver';
+import DriverProfile from './pages/Delivery/DriverProfile';
+
 
 
 // Import Inventory Pages
@@ -176,6 +178,10 @@ const App = () => {
       <Route path='/delivery/adddriver' element={<AddDriver />} />
       <Route path='/delivery/editdriver/:id' element={<EditDriver />} />
       <Route path='/delivery/deletedriver/:id' element={<DeleteDriver />} />
+      <Route path='/delivery/driverprofile/:id' element={<DriverProfile />} />
+
+      
+
       
 
 
