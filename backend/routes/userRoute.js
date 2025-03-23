@@ -72,7 +72,7 @@ router.get('/:id', async (request, response) => {
 });
 
 // Route to update a User
-router.get('/:id', async (request, response) => {
+router.put('/:id', async (request, response) => {
   try {
     if (
       !request.body.name ||
@@ -104,21 +104,29 @@ router.get('/:id', async (request, response) => {
 });
 
 // Route to delete a User
-router.delete('/:id', async (request, response) => {
+// DELETE user by ID
+router.delete('/:id', async (req, res) => {
   try {
-    const { id } = request.params;
+    const userId = req.params.id.trim();
 
-    const result = await User.findByIdAndDelete(id);
-
-    if (!result) {
-      return response.status(404).json({ message: 'User not found' });
+    if (!mongoose.Types.ObjectId.isValid(userId)) {
+      return res.status(400).json({ message: "Invalid User ID format" });
     }
 
-    return response.status(200).send({ message: 'User deleted successfully' });
+    const user = await User.findByIdAndDelete(userId);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    res.json({ message: "User deleted successfully" });
   } catch (error) {
-    console.log(error.message);
-    response.status(500).send({ message: error.message });
+    console.error("Delete error:", error);
+    res.status(500).json({ message: "Server error", error });
   }
 });
+
+
+
+
 
 export default router;

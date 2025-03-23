@@ -118,7 +118,7 @@ const App = () => {
       <Route path='/reset-password' element={<ResetPasswordPage />} />
       <Route path='*' element={<Navigate to='/' />} />
       <Route path='/CDashboard' element={<CDashboard />} />
-      <Route path="/Customer/deleteUser/:id" element={<DeleteUser />} />
+      <Route path="/users/delete/:id" element={<DeleteUser />} />
 
 
     </Routes>

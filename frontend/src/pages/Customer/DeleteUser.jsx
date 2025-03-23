@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
-import '../../styles/Customer/DeleteUser.css'; // Import the CSS file
-import BackButton from '../../components/BackButton'; // Update the path according to where your BackButton is located
+import BackButton from '../../components/BackButton'; // Ensure this exists
+import '../../styles/Customer/DeleteUser.css'; 
 
 const DeleteUser = () => {
   const [loading, setLoading] = useState(false);
@@ -14,15 +14,15 @@ const DeleteUser = () => {
   const handleDeleteUser = () => {
     setLoading(true);
     axios
-      .delete(`http://localhost:5555/users/${id}`)
+      .delete(`http://localhost:5555/api/users/${id}`)
       .then(() => {
         setLoading(false);
-        enqueueSnackbar('User Deleted successfully', { variant: 'success' });
+        enqueueSnackbar('User deleted successfully', { variant: 'success' });
         navigate('/Customer/userslist');
       })
       .catch((error) => {
         setLoading(false);
-        enqueueSnackbar('Error', { variant: 'error' });
+        enqueueSnackbar('Error deleting user', { variant: 'error' });
         console.log(error);
       });
   };
@@ -31,12 +31,10 @@ const DeleteUser = () => {
     <div className="delete-user-container">
       <BackButton />
       <h1 className="delete-user-title">Delete User</h1>
-      {loading ? <Spinner /> : ''}
+      {loading ? <p>Loading...</p> : ''}
       <div className="delete-user-confirmation">
-        <h3 className="confirmation-message">Are You Sure You want to delete this user?</h3>
-        <button className="delete-button" onClick={handleDeleteUser}>
-          Yes, Delete it
-        </button>
+        <h3 className="confirmation-message">Are you sure you want to delete this user?</h3>
+        <button className="delete-button" onClick={handleDeleteUser}>Yes, Delete it</button>
       </div>
     </div>
   );

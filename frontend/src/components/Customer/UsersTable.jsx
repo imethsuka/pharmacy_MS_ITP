@@ -1,8 +1,7 @@
 import { Link } from 'react-router-dom';
-import { AiOutlineEdit } from 'react-icons/ai'; // Edit icon
-import { BsInfoCircle } from 'react-icons/bs'; // Info icon
-import { HiOutlineTrash } from 'react-icons/hi'; // Trash (delete) icon
-import '../../styles/Customer/UsersTable.css'; // Import the CSS file for user table styles
+import { AiOutlineEdit } from 'react-icons/ai';
+import { HiOutlineTrash } from 'react-icons/hi';
+import '../../styles/Customer/UsersTable.css';
 
 const UsersTable = ({ users }) => {
   return (
@@ -12,11 +11,9 @@ const UsersTable = ({ users }) => {
           <th>No</th>
           <th>Name</th>
           <th>Email</th>
-          <th className="hide-on-mobile">Password</th>
           <th className="hide-on-mobile">Gender</th>
           <th className="hide-on-mobile">Date of Birth</th>
           <th className="hide-on-mobile">Address</th>
-          
           <th>Operations</th>
         </tr>
       </thead>
@@ -26,19 +23,16 @@ const UsersTable = ({ users }) => {
             <td>{index + 1}</td>
             <td>{user.name}</td>
             <td>{user.email}</td>
-            <td className="hide-on-mobile">{user.password}</td>
             <td className="hide-on-mobile">{user.gender}</td>
             <td className="hide-on-mobile">{user.dob}</td>
             <td className="hide-on-mobile">{user.address}</td>
-            
             <td>
               <div className="operations">
-               
-                <Link to={`/Customer/editUser/${user._id}`}>
-                  <AiOutlineEdit className="edit-icon" /> {/* Edit icon for editing user */}
+                <Link to={`/users/edit/${user._id}`}>
+                  <AiOutlineEdit className="edit-icon" />
                 </Link>
-                <Link to={`/Customer/deleteUser/${user._id}`}>
-                  <HiOutlineTrash className="delete-icon" /> {/* Trash icon for deleting user */}
+                <Link to={`/users/delete/${user._id}`}>
+                  <HiOutlineTrash className="delete-icon" />
                 </Link>
               </div>
             </td>
