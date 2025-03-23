@@ -4,7 +4,6 @@ import mongoose from 'mongoose';
 import booksRoute from './routes/booksRoute.js';
 import orderRoute from './routes/orderRoute.js';
 import inventoryRoute from './routes/inventoryRoute.js';
-import orderRoute from './routes/orderRoute.js'
 import cors from 'cors';
 
 const app = express();
