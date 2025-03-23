@@ -3,24 +3,24 @@ import { PORT, mongoDBURL } from './config.js';
 import mongoose from 'mongoose';
 import booksRoute from './routes/booksRoute.js';
 import inventoryRoute from './routes/inventoryRoute.js';
+import orderRoute from './routes/orderRoute.js'
 import cors from 'cors';
 
 const app = express();
 
+// Middleware for handling CORS POLICY
+// Option 1: Allow All Origins with Default of cors(*)
+app.use(
+  cors({
+    origin: 'http://localhost:5173', // ✅ Allow only your frontend
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true, // ✅ Allow cookies/sessions
+  })
+);
 // Middleware for parsing request body
 app.use(express.json());
 
-// Middleware for handling CORS POLICY
-// Option 1: Allow All Origins with Default of cors(*)
-app.use(cors());
-// Option 2: Allow Custom Origins
-app.use(
-  cors({
-    origin: 'http://localhost:3000',
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type'],
-  })
-);
 
 // Serve static files from the public folder
 app.use(express.static('public')); // Add this line to serve static files
@@ -35,6 +35,7 @@ app.use('/uploads', express.static('uploads'));
 
 app.use('/books', booksRoute);
 app.use('/medicines',inventoryRoute);
+app.use('/api/orders', orderRoute)
 
 mongoose
   .connect(mongoDBURL)
