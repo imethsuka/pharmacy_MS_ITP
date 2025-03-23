@@ -8,9 +8,11 @@ import mongoose from 'mongoose';
 import booksRoute from './routes/booksRoute.js';
 import authRoutes from "./routes/auth.routes.js";
 import inventoryRoute from './routes/inventoryRoute.js';
+
 import prescriptionRoute from './routes/prescriptionRoute.js';
 import driverRoute from './routes/driverRoute.js';
 import orderRoute from './routes/orderRoute.js';
+
 import cors from 'cors';
 import cookieParser from "cookie-parser";
 import path from "path";
@@ -87,6 +89,7 @@ app.post('/api/orders-direct', (req, res) => {
 // Legacy non-API routes (consider migrating these to use /api prefix for consistency)
 app.use('/books', booksRoute);
 app.use('/medicines', inventoryRoute);
+
 app.use('/prescriptions', prescriptionRoute);
 app.use('/drivers', driverRoute);
 
@@ -113,6 +116,19 @@ app.get('/api/debug/routes', (req, res) => {
         }
       });
     }
+
+// <<<<<<< main
+app.use('/prescriptionuploadform', prescriptionRoute); // Use prescriptionRoutes
+// =======
+app.use('/test', testRoute);
+app.use("/api/auth", authRoutes);
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "/frontend/dist")));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
+
   });
   
   res.json(routes);
