@@ -20,27 +20,27 @@
 
   }
   
-  /* h2 {
+ .driver-heading {
     text-align: center;
     color: #333;
     margin-bottom: 20px;
   }
   
   
-  form {
+  .driver-form-title {
     display: flex;
     flex-direction: column;
   }
   
   
-  label {
+  .driver-label{
     font-weight: bold;
     margin-top: 10px;
     color: #555;
   }
   
   
-  input, select {
+  .driver-input,.driver-select {
     padding: 10px;
     margin-top: 5px;
     border: 1px solid #ccc;
@@ -49,12 +49,12 @@
     width: 100%;
   }
   
-  input:focus, select:focus {
+  .driver-input:focus,.driver-select:focus {
     border-color: #007bff;
     outline: none;
   }
   
-  button {
+  .driver-btn {
     margin-top: 15px;
     padding: 12px;
     background: #007bff;
@@ -66,11 +66,11 @@
     transition: 0.3s ease-in-out;
   }
   
-  button:hover {
+  .driver-btn:hover {
     background: #0056b3;
   }
    */
-  /* Responsive Design */
+  /* Responsive Design
   @media (max-width: 500px) {
     .Driver-form-container {
       width: 90%;

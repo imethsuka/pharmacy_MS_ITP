@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { BsArrowLeft } from 'react-icons/bs';
 
-const BackButton = ({ destination = '/inventory/MedicineLists' }) => {
+const BackButton = ({ destination = '#' }) => {
   const linkStyle = {
     backgroundColor: '#0369a1', // Equivalent to bg-sky-800
     color: 'white', // Equivalent to text-white

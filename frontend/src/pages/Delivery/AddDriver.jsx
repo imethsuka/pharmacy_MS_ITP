@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import "../../styles/Delivery/AddDriver.css";
 import { useNavigate } from 'react-router-dom';
-import DriverBackButton from "../../components/BackButton";
+import DriverBackButton from "../../components/Delivery/DriverBackButton";
 
 const AddDriver = () => {
   const [loading, setLoading] = useState(false);
@@ -71,16 +71,16 @@ const AddDriver = () => {
       <div className="Driver-form-container">
       <DriverBackButton/> 
 
-        <h2> Add Driver</h2>    
-        <form onSubmit={handleSubmit}>
-          <label>Driver Name:</label>
-          <input type="text" name="DName" value={formData.DName} onChange={handleChange} required />
+        <h2 className="driver-heading"> Add Driver</h2>    
+        <form  className="driver-form-title"onSubmit={handleSubmit}>
+          <label className="driver-label">Driver Name:</label>
+          <input className="driver-input" type="text" name="DName" value={formData.DName} onChange={handleChange} required />
 
-          <label>Vehicle Type:</label>
-          <input type="text" name="VehicleType" value={formData.VehicleType} onChange={handleChange} required />
+          <label className="driver-label">Vehicle Type:</label>
+          <input className="driver-input" type="text" name="VehicleType" value={formData.VehicleType} onChange={handleChange} required />
 
-          <label>Phone:</label>
-          <input
+          <label className="driver-label">Phone:</label>
+          <input className="driver-input" 
             type="tel"
             name="Phone"
             value={formData.Phone}
@@ -89,8 +89,8 @@ const AddDriver = () => {
             placeholder="Enter 10-digit phone number"
           />
 
-          <label>Email:</label>
-          <input
+          <label className="driver-label">Email:</label>
+          <input className="driver-input"
             type="email"
             name="Email"
             value={formData.Email}
@@ -99,16 +99,16 @@ const AddDriver = () => {
             placeholder="Enter a valid email address"
           />
 
-          <label>License Number:</label>
-          <input type="text" name="LicenseNumber" value={formData.LicenseNumber} onChange={handleChange} required />
+          <label className="driver-label">License Number:</label>
+          <input className="driver-input" type="text" name="LicenseNumber" value={formData.LicenseNumber} onChange={handleChange} required />
 
-          <label>Availability:</label>
-          <select name="Availability" value={formData.Availability} onChange={handleChange}>
+          <label  className="driver-label">Availability:</label>
+          <select className="driver-select" name="Availability" value={formData.Availability} onChange={handleChange}>
             <option value="Available">Available</option>
             <option value="Unavailable">Unavailable</option>
           </select>
 
-          <button type="submit" disabled={loading}>
+          <button className="driver-btn" type="submit" disabled={loading}>
             {loading ? "Submitting..." : "Submit"}
           </button>
         </form>
