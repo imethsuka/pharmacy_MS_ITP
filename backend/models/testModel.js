@@ -1,58 +1,37 @@
 import mongoose from 'mongoose';
+import autoIncrement from 'mongoose-auto-increment';;
+
+// Initialize mongoose-auto-increment
+autoIncrement.initialize(mongoose.connection);
 
 const testSchema = mongoose.Schema(
   {
-    name: {
-      type: String,
-      required: true,
-    },
-    userId: {
-      type: String,
-      required: false, // Optional, for guest users
-    },
-    email: {
-      type: String,
-      required: true,
-      validate: {
-        validator: function (v) {
-          return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
-        },
-        message: (props) => `${props.value} is not a valid email!`,
-      },
-    },
-    phone: {
-      type: String,
-      required: true,
-    },
-    prescriptionID: {
-      type: String,
-      required: true,
-      unique: true,
-    },
-    prescriptionUpDate: {
-      type: Date,
-      default: () => new Date(),
-    },
-    medicines: {
-      type: [String], // Array of medicine IDs (as strings)
-      required: true,
-    },
-    status: {
-      type: String,
-      enum: ['pending', 'approved', 'rejected'],
-      default: 'pending',
-    },
-    requiresPrescription: {
-      type: Boolean,
-      default: false, // Default to false, will be updated based on medicines
-    },
-    notes: {
-      type: String,
-    },
+    name: { type: String, required: true },
+    userId: { type: Number, required: false, unique: true },
+    email: { type: String, required: true },
+    phone: { type: String, required: true },
+    prescriptionID: { type: String, required: false },
+    prescriptionUpDate: { type: Date, default: () => new Date() },
+    medicines: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Medicine', required: true }],
+    status: { type: String, enum: ['pending', 'approved', 'rejected', 'checkout'], default: 'pending' },
+    notes: { type: String },
+    fileUrl: { type: String, required: false },
   },
-  {
-    timestamps: true,
-  }
+  { timestamps: true }
 );
+
+testSchema.plugin(autoIncrement.plugin, {
+  model: 'Test',
+  field: 'prescriptionID',
+  startAt: 1000,
+  incrementBy: 1,
+});
+
+testSchema.plugin(autoIncrement.plugin, {
+  model: 'Test',
+  field: 'userId',
+  startAt: 1,
+  incrementBy: 1,
+});
 
 export const Test = mongoose.model('Test', testSchema);
