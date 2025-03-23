@@ -64,40 +64,6 @@ app.get('/', (request, response) => {
 // Customer management routes
 app.use(bodyParser.json());
 
-// Create user route
-app.post("/createUser", (req, res) => {
-  UserModel.create(req.body)
-    .then(users => res.json(users))
-    .catch(err => res.json(err));
-});
-
-// Get user by ID route
-app.get("/getUser/:id", (req, res) => {
-  const id = req.params.id;
-  UserModel.findById({ _id: id })
-    .then(users => res.json(users))
-    .catch(err => res.json(err));
-});
-
-// Update user route
-app.put("/updateUser/:id", (req, res) => {
-  const id = req.params.id;
-  UserModel.findByIdAndUpdate({ _id: id }, 
-    {
-      name: req.body.name,
-      email: req.body.email
-    })
-    .then(users => res.json(users))
-    .catch(err => res.json(err));
-});
-
-// Delete user route
-app.delete("/deleteUser/:id", (req, res) => {
-  const id = req.params.id;
-  UserModel.findByIdAndDelete({ _id: id })
-    .then(users => res.json(users))
-    .catch(err => res.json(err));
-});
 
 // Connect to MongoDB and start server
 mongoose

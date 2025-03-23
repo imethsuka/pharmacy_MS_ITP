@@ -14,7 +14,7 @@ const DeleteUser = () => {
   const handleDeleteUser = () => {
     setLoading(true);
     axios
-      .delete(`http://localhost:5555/api/users/${id}`)
+      .delete(`http://localhost:5555/users/${id}`)
       .then(() => {
         setLoading(false);
         enqueueSnackbar('User deleted successfully', { variant: 'success' });

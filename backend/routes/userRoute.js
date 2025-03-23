@@ -1,12 +1,12 @@
-import express from "express";
-import User from '../models/user.model.js'; // Corrected to import User model
+import express from 'express';
+import User from '../models/user.model.js';
+import mongoose from 'mongoose';
 
 const router = express.Router();
 
 // Route to add a new User
 router.post('/', async (request, response) => {
   try {
-    // Ensure all required fields are present
     if (
       !request.body.name ||
       !request.body.email ||
@@ -42,11 +42,7 @@ router.post('/', async (request, response) => {
 router.get('/', async (request, response) => {
   try {
     const users = await User.find({});
-
-    return response.status(200).json({
-      count: users.length,
-      data: users,
-    });
+    return response.status(200).json({ count: users.length, data: users });
   } catch (error) {
     console.log(error.message);
     response.status(500).send({ message: error.message });
@@ -57,7 +53,6 @@ router.get('/', async (request, response) => {
 router.get('/:id', async (request, response) => {
   try {
     const { id } = request.params;
-
     const user = await User.findById(id);
 
     if (!user) {
@@ -89,7 +84,6 @@ router.put('/:id', async (request, response) => {
 
     const { id } = request.params;
 
-    // Corrected the reference to User in the update route
     const result = await User.findByIdAndUpdate(id, request.body, { new: true });
 
     if (!result) {
@@ -104,7 +98,6 @@ router.put('/:id', async (request, response) => {
 });
 
 // Route to delete a User
-// DELETE user by ID
 router.delete('/:id', async (req, res) => {
   try {
     const userId = req.params.id.trim();
@@ -115,18 +108,14 @@ router.delete('/:id', async (req, res) => {
 
     const user = await User.findByIdAndDelete(userId);
     if (!user) {
-      return res.status(404).json({ message: "User not found" });
+      return res.status(404).json({ message: 'User not found' });
     }
-
-    res.json({ message: "User deleted successfully" });
+    
+    return res.status(200).send({ message: 'User deleted successfully' });
   } catch (error) {
-    console.error("Delete error:", error);
-    res.status(500).json({ message: "Server error", error });
+    console.error(error);
+    return res.status(500).json({ message: 'Internal server error' });
   }
 });
-
-
-
-
 
 export default router;
