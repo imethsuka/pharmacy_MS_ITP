@@ -50,7 +50,7 @@ const MedicinesTable = ({ medicines, onMoreInfoClick }) => {
       "No",
       "Name",
       "Product ID",
-      "Barcode",
+      "Barcode Reader",
       "Category",
       "Price",
       "Stock",
@@ -193,6 +193,17 @@ const MedicinesTable = ({ medicines, onMoreInfoClick }) => {
                   <Link to={`/inventory/DeleteMedicine/${medicine._id}`}>
                     <HiOutlineTrash className="delete-icon" />
                   </Link>
+                  {/* <button style={{
+                        backgroundColor: "#0369a1", 
+                        color: "white", 
+                        padding: "0.5rem 1rem", 
+                        border: "none", 
+                        borderRadius: "0.5rem", 
+                        fontSize: "1rem", 
+                        fontWeight: "bold", 
+                        cursor: "pointer", 
+                        transition: "background-color 0.3s ease, transform 0.2s ease", 
+                      }}>save</button> */}
                 </div>
               </td>
             </tr>

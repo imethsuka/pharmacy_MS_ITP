@@ -52,6 +52,7 @@ const Sidebar = () => {
           <Link
             to="/Inventory/Dashboard"
             className={isActive("/Inventory/Dashboard") ? "active" : ""}
+            // Inline CSS for text color
           >
             <FaTachometerAlt size={20} />
             {!isCollapsed && <span>Dashboard</span>}
@@ -59,6 +60,7 @@ const Sidebar = () => {
           <Link
             to="/inventory/MedicineLists"
             className={isActive("/inventory/MedicineLists") ? "active" : ""}
+            style={{ color: "white" }} // Inline CSS for text color
           >
             <FaList size={20} />
             {!isCollapsed && <span>Medicines List</span>}
@@ -66,6 +68,7 @@ const Sidebar = () => {
           {/* <Link
             to="/inventory/MedicineGroups"
             className={isActive("/inventory/MedicineGroups") ? "active" : ""}
+            style={{ color: "white" }} // Inline CSS for text color
           >
             <FaLayerGroup size={20} />
             {!isCollapsed && <span>Medicines Group</span>}
@@ -73,6 +76,7 @@ const Sidebar = () => {
           <Link
             to="/inventory/reports"
             className={isActive("/inventory/reports") ? "active" : ""}
+            style={{ color: "white" }} // Inline CSS for text color
           >
             <FaChartLine size={20} />
             {!isCollapsed && <span>Reports</span>}
