@@ -43,6 +43,7 @@ import Verified from './pages/Prescription/Verified.jsx';
 import Rejected from './pages/Prescription/Rejected.jsx';
 import Pending from './pages/Prescription/Pending.jsx';
 import PrescriptionUploadForm from './pages/Prescription/PrescriptionUploadForm.jsx';
+import PrescriptionDetails from './pages/Prescription/PrescriptionDetails.jsx';
 
 
 //import Customer pages
@@ -149,10 +150,11 @@ const App = () => {
       <Route path='/order/checkout' element={<CheckoutPage />} />
 
       <Route path='/Prescription/pdashboard' element={<PDashboard />} />
-      <Route path='/Prescription/prescriptions' element={<Prescriptions />} />
+      <Route path='/Prescription/Prescriptions' element={<Prescriptions />} />
       <Route path='/Prescription/pending' element={<Pending />} />
       <Route path='/Prescription/verified' element={<Verified />} />
       <Route path='/Prescription/rejected' element={<Rejected />} />
+      <Route path='/Prescription/prescriptiondetails/:id' element={<PrescriptionDetails />} />
       <Route path='/Prescription/prescriptionuploadform' element={<PrescriptionUploadForm />} />
 
 

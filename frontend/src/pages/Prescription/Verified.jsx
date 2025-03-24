@@ -6,6 +6,6 @@ import AddPSidebar from "../../components/Prescription/PSidebar";
 import FilteredOrders from "../../components/Prescription/FilteredOrders";
 
 
-const Verified = () => <FilteredOrders statusFilter="approved" title="Verified  Orders" />;
+const Verified = () => <FilteredOrders statusFilter="approved" title="Approved  Orders" />;
 
 export default Verified;

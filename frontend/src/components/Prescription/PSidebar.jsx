@@ -65,7 +65,7 @@ const Sidebar = () => {
             to="/Prescription/Verified"
             className={isActive("/Prescription/Verified") ? "active" : ""}
           >
-            Verified Prescriptions
+            Approved Prescriptions
           </Link>
           <Link
             to="/Prescription/Rejected"

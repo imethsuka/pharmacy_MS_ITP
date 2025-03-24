@@ -41,7 +41,8 @@ const PDashboard = () => {
 
   // Handle "View Full Details" button click
   const handleViewDetails = (prescriptionId) => {
-    navigate(`/Prescription/Details/${prescriptionId}`);
+
+    navigate(`/Prescription/prescriptiondetails/${prescriptionId}`);
   };
 
   // PDF download logic
@@ -146,7 +147,7 @@ const PDashboard = () => {
                       <Button
                         variant="outlined"
                         endIcon={<ArrowForward />}
-                        onClick={() => handleViewDetails(order.prescriptionId)}
+                        onClick={() => handleViewDetails(order._id)}
                       >
                         View Full Details
                       </Button>

@@ -39,7 +39,8 @@ const FilteredOrders = ({ statusFilter, title }) => {
   }, [statusFilter]);
 
   const handleViewDetails = (prescriptionId) => {
-    navigate(`/Prescription/Details/${prescriptionId}`);
+    
+    navigate(`/Prescription/prescriptiondetails/${prescriptionId}`);
   };
 
   return (
@@ -77,7 +78,7 @@ const FilteredOrders = ({ statusFilter, title }) => {
                       <Button
                         variant="outlined"
                         endIcon={<ArrowForward />}
-                        onClick={() => handleViewDetails(order.prescriptionId)}
+                        onClick={() => handleViewDetails(order._id)}
                       >
                         View Full Details
                       </Button>
