@@ -1,6 +1,4 @@
-/* .DriverDetails-container{
-  position:fixed;
-} */
+/* 
 .Details-container {
   display: flex;
   flex-direction: column;
@@ -10,17 +8,12 @@
   padding: 165px;
   font-family: Arial, sans-serif;
   overflow: hidden;
-  /* position:relative; */
+  
 }
 
-/* Navigation and Sidebar */
-/* .Details-container > div {
-  width: 50%;
-  display: flex;
-  justify-content: space-between;
-} */
 
-/* Title Styling */
+
+
 .Delivery-Driver {
   margin: 20px 0;
   font-size: 24px;
@@ -29,7 +22,7 @@
   text-align: center;
 }
 
-/* Table Styling */
+
 .driverDetails-table {
   width: 50%;
   max-width: 1000px;
@@ -43,7 +36,7 @@
 
 }
 
-/* Table Header */
+
 .driverDetails-table th {
   background-color: #3498db;
   color: white;
@@ -52,19 +45,19 @@
   text-align: center;
 }
 
-/* Table Cells */
+
 .driverDetails-table td {
   padding: 12px;
   border: 1px solid #3498db;
   text-align: center;
 }
 
-/* Alternate Row Color */
+
 .driverDetails-table tr:nth-child(even) {
   background-color: #ebf5fb;
 }
 
-/* Availability Styling */
+
 .available {
   color: green;
   font-weight: bold;
@@ -75,7 +68,7 @@
   font-weight: bold;
 }
 
-/* Responsive Styling */
+
 @media (max-width: 768px) {
   .driverDetails-table {
     width: 100%;
@@ -88,4 +81,4 @@
   .Delivery-Driver {
     font-size: 20px;
   }
-}
+} */

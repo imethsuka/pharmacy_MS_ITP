@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "../../styles/Delivery/FeedbackForm.css";
+import NavBarV from '../../components/Delivery/NavBarV';
 
 const Feedback = () => {
   const [formData, setFormData] = useState({
@@ -36,6 +37,10 @@ const Feedback = () => {
 
   return (
     <div className="Feedback-delivery-dashboard">
+      <div className="Feedback-dashboard">
+       <NavBarV />
+  
+       </div>
       <div className="feedback-container">
         <h2>Feedback Form</h2>
         <form onSubmit={handleSubmit}>

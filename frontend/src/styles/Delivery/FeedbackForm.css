@@ -7,12 +7,12 @@
   background: linear-gradient(to right, #74ebd5, #acb6e5);
   font-family: "Poppins", sans-serif;
 }
-.navV{
+/* .navV{
   margin-right: 1600px;
   margin-top: -730px;
   position: fixed;
   z-index: 1;
-}
+} */
 .delivery-user-profile {
   text-align: center;
   margin-bottom: 250px;
@@ -34,7 +34,7 @@
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   text-align: center;
-  margin-top: -30px;
+  margin-top: 100px;
 }
 
 .feedback-container h2 {
@@ -82,4 +82,9 @@
 
 .feedback-container button:hover {
   background: linear-gradient(to right, #0056b3, #003d80);
+}
+.Feedback-dashboard{
+  margin-right:1600px;
+  margin-top: -740px;
+  position: fixed;
 }

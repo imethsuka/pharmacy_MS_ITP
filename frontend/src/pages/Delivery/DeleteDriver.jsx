@@ -39,7 +39,12 @@ const DeleteDriver = () => {
         <SideBarV />
       </div>
       <div className="delete-driver-container">
-        <DriverBackButton/>
+      <div>
+  <DriverBackButton destination='/Delivery/DriverDetails' />
+  <h1 className='text-3xl font-bold mb-4'>Driver Details</h1>
+ 
+</div>
+
         
         <h1 className="delete-driver-title">Delete Driver</h1>
         {/* {loading && <Spinner />} */}

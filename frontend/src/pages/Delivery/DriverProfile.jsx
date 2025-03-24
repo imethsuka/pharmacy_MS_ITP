@@ -4,6 +4,8 @@ import axios from "axios";
 import NavBarV from "../../components/Delivery/NavBarV";
 //import SideBarV from "../../components/Delivery/SideBarV";
 import "../../styles/Delivery/DriverProfile.css";
+import DriverBackButton from "../../components/BackButton";
+
 
 const DriverProfile = () => {
   const { id } = useParams(); // get the driver ID from URL
@@ -32,6 +34,9 @@ const DriverProfile = () => {
     <>
       <div className="driver-nav">
         <NavBarV />
+      </div>
+      <div className="profile-btn">
+        <DriverBackButton destination='/Delivery/DriverDetails' />
       </div>
       <div className="DriverProfile-container"><br/><br/><br/><br/>
         <h1 className="DriverProfile-title">Driver Profile</h1>

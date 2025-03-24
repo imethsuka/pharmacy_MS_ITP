@@ -113,9 +113,16 @@ const DriverDetails = () => {
               <tbody>
                 {drivers.map((driver, index) => (
                   <tr
-                    key={index}
-                    className="text-center border-b hover:bg-blue-100 transition duration-200"
-                  >
+                  key={index}
+                  style={{
+                    textAlign: 'center',
+                    borderBottom: '1px solid',
+                    transition: 'background-color 200ms',
+                    ':hover': {
+                      backgroundColor: '#ebf8ff', // Equivalent to bg-blue-100
+                    },
+                  }}
+                >
                     <td className="Driver-data">{index + 1}</td>
                     <td className="Driver-data">{driver.DName}</td>
                     <td className="Driver-data">{driver.Phone}</td>
@@ -129,7 +136,7 @@ const DriverDetails = () => {
                     </td>
                     <td className="Driver-data">
                       <button onClick={() => navigate(`/delivery/editdriver/${driver._id}`)}>Edit</button>
-                      <button onClick={() => navigate(`/delivery/deletedriver/${driver._id}`)}>Delete</button>
+                      <button  onClick={() => navigate(`/delivery/deletedriver/${driver._id}`)}>Delete</button>
                       <button onClick={() => navigate(`/delivery/driverprofile/${driver._id}`)}>View</button>
                     </td>
                   </tr>

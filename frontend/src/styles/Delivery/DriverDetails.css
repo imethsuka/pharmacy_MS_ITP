@@ -71,7 +71,7 @@
   text-align: center;
   border-bottom: 1px solid #e5e7eb;
   transition: background-color 0.2s ease;
-  size: 10px;
+  size: 5px;
 }
 
 .Driver-data:hover {
@@ -139,13 +139,13 @@
   color: white;
   padding-top: 20px;
 }
-/* Add this to your existing CSS file */
+
 .download-pdf-button {
-  background-color: #4CAF50; /* Green background */
-  color: white; /* White text */
+  background-color: #4CAF50; 
+  color: white;
   border: none;
   padding: 10px 20px;
-  margin-left: 10px; /* Space between buttons */
+  margin-left: 10px;
   border-radius: 5px;
   cursor: pointer;
   font-size: 14px;
@@ -153,5 +153,8 @@
 }
 
 .download-pdf-button:hover {
-  background-color: #45a049; /* Darker green on hover */
+  background-color: #45a049;
+}
+.dlt-button-dlt{
+  background-color: #52cde2;
 }

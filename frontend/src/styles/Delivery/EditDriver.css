@@ -69,4 +69,7 @@
     background-color: #a3c4f3;
     cursor: not-allowed;
   }
-  
+ .Edit-btn{
+  margin-top: -630px;
+  margin-left: 20px;
+ }
