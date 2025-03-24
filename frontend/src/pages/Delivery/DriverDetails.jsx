@@ -136,7 +136,7 @@ const DriverDetails = () => {
                     </td>
                     <td className="Driver-data">
                       <button onClick={() => navigate(`/delivery/editdriver/${driver._id}`)}>Edit</button>
-                      <button  onClick={() => navigate(`/delivery/deletedriver/${driver._id}`)}>Delete</button>
+                      <button className='dlt' style={{background:"Blue"}} onClick={() => navigate(`/delivery/deletedriver/${driver._id}`)}>Delete</button>
                       <button onClick={() => navigate(`/delivery/driverprofile/${driver._id}`)}>View</button>
                     </td>
                   </tr>
