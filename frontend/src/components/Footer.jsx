@@ -21,6 +21,7 @@ function Footer() {
         <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"><FaInstagram style={{ color: 'white' }} /></a>
         <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"><FaLinkedin style={{ color: 'white' }} /></a>
       </div>
+      <Link to="/order/history"><button>Order History</button></Link>
       <button className="feedback-btn">PROVIDE FEEDBACK</button>
       <h4 className="rights">@2025 ALL RIGHTS RESERVED</h4>
     </footer>
