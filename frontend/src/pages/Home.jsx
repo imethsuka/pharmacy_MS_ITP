@@ -9,6 +9,7 @@ import ProductCard from "../components/ProductCard/ProductCard";
 import Footer from "../components/Footer";
 import Popup from "../components/Popup/MoreInfo";
 import Spinner from "../components/Spinner";
+import BMI from "../components/Prescription/BMI"; // Import BMI component
 import "../styles/Home.css";
 
 const Home = () => {
@@ -156,6 +157,11 @@ const Home = () => {
               )}
             </div>
           )}
+        </div>
+
+        {/* Add BMI component here */}
+        <div className="bmi-section">
+          <BMI />
         </div>
 
         <Footer />

@@ -108,3 +108,9 @@ html {
 .cart-button:hover {
   background-color: #0069d9;
 }
+
+.bmi-section {
+  margin-top: 20px; /* Add margin on top */
+  display: flex;
+  justify-content: center; /* Center align horizontally */
+}
