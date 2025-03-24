@@ -1,37 +1,35 @@
 .dashboard-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row; /* Change from column to row to align sidebar and content properly */
   padding: 20px;
 }
 
 .dashboard-content {
   display: flex;
   flex: 1;
+  gap: 10px; /* Reduce spacing between sidebar and main content */
 }
 
 .dashboard-main {
   flex: 1;
-  padding: 20px;
-}
-
-.users-title {
-  font-size: 24px;
-  margin-bottom: 20px;
-  color: #1f2937;
+  padding: 10px; /* Reduce padding to utilize more space */
+  overflow-x: auto; /* Ensure table remains visible */
 }
 
 .users-table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 20px;
+  margin-top: 5px; /* Reduce margin */
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  overflow-x: auto; /* Make table scrollable if necessary */
 }
 
 .users-table th,
 .users-table td {
-  padding: 20px 25px;
+  padding: 8px 15px; /* Reduce padding to make rows more compact */
   text-align: left;
   border-bottom: 1px solid #f0f0f0;
+  white-space: nowrap; /* Prevent text from breaking */
 }
 
 .users-table th {
@@ -50,25 +48,19 @@
 
 .operations {
   display: flex;
-  gap: 10px;
+  gap: 5px; /* Reduce gap between action buttons */
 }
 
 .operation-link {
   color: #007bff;
   text-decoration: none;
   display: inline-block;
-  padding: 6px;
-  border-radius: 5px;
+  padding: 4px; /* Reduce padding */
+  border-radius: 3px;
 }
 
 .operation-link:hover {
   background-color: #e9ecef;
-}
-
-.info-icon,
-.edit-icon,
-.delete-icon {
-  font-size: 18px;
 }
 
 @media (max-width: 768px) {
@@ -77,6 +69,6 @@
   }
 
   .operations {
-    gap: 8px;
+    gap: 4px; /* Further reduce gap on mobile */
   }
 }
