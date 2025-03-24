@@ -6,14 +6,14 @@ import { Link } from "react-router-dom";
 import { FiInfo } from "react-icons/fi";
 import { RiEdit2Line } from "react-icons/ri";
 import { HiOutlineTrash } from "react-icons/hi";
-import HeaderStripe from "../../components/HeaderStripe";
+import HeaderStripe2 from "../../components/HeaderStripe2";
 import AddCSidebar from "../../components/Customer/CustomerSidebar";
 import UserLists from "./UserLists"; // Import UserLists component
 
 const CMDashboardPage = () => {
   return (
     <div className="dashboard-container">
-      <HeaderStripe />
+      <HeaderStripe2 />
       <div className="dashboard-content">
         <AddCSidebar />
         <div className="dashboard-main">
