@@ -63,13 +63,13 @@ const Sidebar = () => {
             <FaList size={20} />
             {!isCollapsed && <span>Medicines List</span>}
           </Link>
-          <Link
+          {/* <Link
             to="/inventory/MedicineGroups"
             className={isActive("/inventory/MedicineGroups") ? "active" : ""}
           >
             <FaLayerGroup size={20} />
             {!isCollapsed && <span>Medicines Group</span>}
-          </Link>
+          </Link> */}
           <Link
             to="/inventory/reports"
             className={isActive("/inventory/reports") ? "active" : ""}
