@@ -63,3 +63,16 @@ span {
   align-items: center;
   gap: 18px;
 }
+.sign-up-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.sign-up-button:hover {
+  background-color: #0056b3;
+}

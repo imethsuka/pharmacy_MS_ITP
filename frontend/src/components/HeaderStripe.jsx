@@ -26,7 +26,9 @@ const HeaderStripe = () => {
       {/* Cart and Sign-in */}
       <div className="actions">
         <CartIcon />
-        <Link to="/signup" className="sign-in-button">Sign Up</Link> {/* Use Link component */}
+        <Link to="/signup">
+          <button className="sign-up-button">Sign Up</button>
+        </Link>
       </div>
     </header>
   );
