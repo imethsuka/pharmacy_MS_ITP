@@ -52,7 +52,7 @@ router.get('/', async (request, response) => {
   }
 });
 
-// Route to get a single Medicine by ID
+// Route to get a single Driver by ID
 router.get('/:id', async (request, response) => {
   try {
     const { id } = request.params;
@@ -66,7 +66,7 @@ router.get('/:id', async (request, response) => {
   }
 });
 
-// Route to update a Medicine
+// Route to update a Driver
 router.put('/:id', async (request, response) => {
   try {
     if (
