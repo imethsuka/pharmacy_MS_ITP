@@ -25,6 +25,7 @@ const addMedicines = () => {
   const { enqueueSnackbar } = useSnackbar();
 
   const handleSaveMedicine = () => {
+
     const data = {
       name,
       productId,
@@ -119,6 +120,12 @@ const addMedicines = () => {
           <label className="form-label">Supplier Email</label>
           <input type="email" value={supplierEmail} onChange={(e) => setSupplierEmail(e.target.value)} className="form-input" />
         </div>
+{/* 
+        <div className="form-group">
+          <label className="form-label">Supplier contact number</label>
+          <input type="number" value={supplierEmail} onChange={(e) => setSupplierEmail(e.target.value)} className="form-input" />
+        </div> */}
+
         <div className="form-group">
           <label className="form-label">Image URL</label>
           <input type="text" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} className="form-input" />
