@@ -262,3 +262,70 @@
     font-size: 1.6rem;
   }
 }
+
+.back-to-products {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: transparent;
+  color: #0369a1;
+  border: none;
+  padding: 8px 16px;
+  margin-bottom: 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.back-to-products:hover {
+  color: #0284c7;
+}
+
+.cart-message {
+  background-color: #dcfce7;
+  color: #166534;
+  padding: 12px 20px;
+  margin-bottom: 20px;
+  border-radius: 6px;
+  text-align: center;
+  font-weight: 500;
+  animation: fadeOut 2s forwards;
+  animation-delay: 3s;
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+.retry-button,
+.back-button {
+  background-color: #0369a1;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  margin: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.retry-button:hover,
+.back-button:hover {
+  background-color: #0284c7;
+}
+
+.error-container {
+  text-align: center;
+  padding: 40px;
+  max-width: 600px;
+  margin: 40px auto;
+  background-color: #f8fafc;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.error-container h3 {
+  color: #dc2626;
+  margin-bottom: 16px;
+}

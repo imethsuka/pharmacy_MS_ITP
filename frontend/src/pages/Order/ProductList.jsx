@@ -15,13 +15,22 @@ const ProductList = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const baseURL = import.meta.env.VITE_API_URL || 'http://localhost:5555';
-        const response = await axios.get(`${baseURL}/medicines`);
+        // Use relative URL with /api prefix which will be handled by the proxy
+        const response = await axios.get('/api/medicines');
         setProducts(response.data.data);
         setLoading(false);
       } catch (err) {
         console.error('Error fetching products:', err);
-        setError('Failed to load products. Please try again later.');
+        
+        // Better error handling with specific messages
+        if (err.message && err.message.includes('Network Error')) {
+          setError('Connection error: Unable to connect to the server. The server might be down or there could be CORS issues.');
+        } else if (err.response) {
+          // Server responded with error
+          setError(`Server error: ${err.response.status} - ${err.response.data.message || 'Unknown error'}`);
+        } else {
+          setError('Failed to load products. Please try again later.');
+        }
         setLoading(false);
       }
     };
@@ -34,7 +43,32 @@ const ProductList = () => {
   };
 
   if (loading) return <div className="product-list-container"><Spinner /></div>;
-  if (error) return <div className="product-list-container error-message">{error}</div>;
+  if (error) return (
+    <div className="product-list-container">
+      <div className="error-container">
+        <h2>Connection Error</h2>
+        <p className="error-message">{error}</p>
+        <div className="error-suggestions">
+          <p>Possible solutions:</p>
+          <ul>
+            <li>Start your frontend on port 5173 instead of 5174</li>
+            <li>Make sure the backend server is running</li>
+            <li>Ask a developer to update the CORS configuration in the backend</li>
+          </ul>
+        </div>
+        <button 
+          className="retry-button"
+          onClick={() => {
+            setLoading(true);
+            setError('');
+            fetchProducts();
+          }}
+        >
+          Retry Connection
+        </button>
+      </div>
+    </div>
+  );
 
   return (
     <div>

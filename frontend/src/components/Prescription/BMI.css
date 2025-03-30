@@ -1,0 +1,95 @@
+.bmi-container {
+  max-width: 300px;
+  padding: 15px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.bmi-container:hover {
+  transform: translateY(-3px);
+}
+
+.bmi-container h1 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #2c3e50;
+}
+
+.input-group {
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.input-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #34495e;
+  margin-bottom: 5px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #d1d1d1;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  transition: border 0.3s ease;
+}
+
+.input-group input:focus {
+  border-color: #007bff;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.button-group button {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 5px;
+}
+
+.button-group button:hover {
+  background: linear-gradient(135deg, #0056b3, #004095);
+}
+
+.button-group button:last-child {
+  background: linear-gradient(135deg, #6c757d, #5a6268);
+}
+
+.button-group button:last-child:hover {
+  background: linear-gradient(135deg, #5a6268, #494f54);
+}
+
+.result {
+  margin-top: 15px;
+  padding: 10px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.result h2 {
+  font-size: 16px;
+  color: #2c3e50;
+}
+
+.result p {
+  font-size: 14px;
+  color: #555;
+}

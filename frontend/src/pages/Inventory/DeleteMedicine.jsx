@@ -37,7 +37,7 @@ const DeleteMedicine = () => {
       <h1 className="delete-medicine-title">Delete Medicine</h1>
         <h3 className="confirmation-medicine-message">Are You Sure You want to remove this medicine?</h3>
         <button className="delete-medicine-button" onClick={handleDeleteMedicine}>
-          Okay, Delete it.this book
+          Okay, Delete this medicine
         </button>
       </div>
     </div>
