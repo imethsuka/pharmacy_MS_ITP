@@ -69,12 +69,13 @@
 .Driver-data {
   padding: 0.9rem 1rem;
   text-align: center;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid #ffffff;
   transition: background-color 0.2s ease;
+  size: 5px;
 }
 
 .Driver-data:hover {
-  background-color: #eff6ff;
+  background-color: #ffffff;
 }
 
 .Driver-availability {
@@ -91,15 +92,18 @@
 
 /* Action buttons in each row */
 .Driver-data button {
-  margin: 0 4px;
-  padding: 0.4rem 0.8rem;
+  margin: 0 1px;
+  padding: 0.8rem 0.8rem;
   border: none;
   border-radius: 6px;
   cursor: pointer;
   font-weight: 500;
-  color: white;
+  color: rgb(255, 255, 255);
   transition: all 0.3s;
+  size: 10px;
 }
+
+
 
 .Driver-data button:first-child {
   background-color: #10b981;
@@ -135,3 +139,22 @@
   color: white;
   padding-top: 20px;
 }
+
+.download-pdf-button {
+  background-color: #4CAF50; 
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-left: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.download-pdf-button:hover {
+  background-color: #45a049;
+}
+/* .dlt-button-dlt{
+  background-color: #52cde2;
+} */

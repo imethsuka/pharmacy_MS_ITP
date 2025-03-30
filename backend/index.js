@@ -4,7 +4,17 @@ import mongoose from 'mongoose';
 import booksRoute from './routes/booksRoute.js';
 import orderRoute from './routes/orderRoute.js';
 import inventoryRoute from './routes/inventoryRoute.js';
+
+
+import prescriptionRoute from './routes/prescriptionRoute.js'; // Import prescriptionRoutes
+
 import cors from 'cors';
+import driverRoute from './routes/driverRoute.js' 
+import feedbackRoute from './routes/feedbackRoute.js';
+import cookieParser from "cookie-parser";
+import path from "path";
+import { connectDB } from "./db/connectDB.js";
+import route from "./routes/userRoute.js";
 
 const app = express();
 
@@ -58,6 +68,13 @@ mongoose
 
 
 
+app.use('/medicines', inventoryRoute);
+app.use('/prescriptions', prescriptionRoute); // Use prescriptionRoutes
+app.use("/api/auth", authRoutes);
+
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "/frontend/dist")));
 
 
 
@@ -65,6 +82,10 @@ mongoose
 
 
 
+
+
+app.use('/feedbacks',feedbackRoute);
+app.use('/medicines',inventoryRoute);
 
 
 

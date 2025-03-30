@@ -1,0 +1,66 @@
+.DriverProfile-container {
+  padding: 120px 0;
+  margin: 0 auto;
+  height: auto;
+  /* min-height: 60vh; */
+  background: linear-gradient(to bottom, #bfdbfe, #ffffff);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
+  
+}
+
+.DriverProfile-title {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: rgb(70, 43, 226);
+}
+
+.DriverProfile-card {
+  background-color: #9bc2ea;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 500px;
+  
+}
+
+.DriverProfile-card p {
+  font-size: 1.2rem;
+  margin: 0.75rem 0;
+  line-height: 1.5;
+  
+}
+
+.text-green {
+  color: green;
+  font-weight: bold;
+}
+
+.text-red {
+  color: red;
+  font-weight: bold;
+}
+
+.back-btn {
+  margin-top: 2rem;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.back-btn:hover {
+  background-color: #0056b3;
+}
+
+.driver-nav {
+  width: 100%;
+}

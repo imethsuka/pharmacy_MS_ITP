@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../../styles/Delivery/EditDriver.css";
 import { useNavigate, useParams } from 'react-router-dom';
+import DriverBackButton from "../../components/BackButton";
 
 const EditDriver = () => {
   const [loading, setLoading] = useState(false);
@@ -71,7 +72,11 @@ const EditDriver = () => {
 
   return (
     <div className="Edit-body">
+      <div>
+        
+      </div>
       <div className="Edit-form-container">
+      <DriverBackButton destination='/Delivery/DriverDetails' />
         <h2>Edit Delivery Driver Details</h2>
         <form onSubmit={handleSubmit}>
           <label>Driver Name:</label>
