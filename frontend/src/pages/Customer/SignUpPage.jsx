@@ -150,19 +150,43 @@ const SignUpPage = () => {
 								</div>
 							</div>
 							<div className="form-group">
-								<label htmlFor="gender">Gender</label>
-								<select
-									id="gender"
-									value={gender}
-									onChange={(e) => setGender(e.target.value)}
-									className="form-input"
-								>
-									<option value="">Select Gender</option>
-									<option value="male">Male</option>
-									<option value="female">Female</option>
-									<option value="other">Other</option>
-								</select>
+							<label>Gender:</label>
+							<div className="radio-group" style={{ display: "flex", gap: "15px", alignItems: "center" }}>
+								<label style={{ display: "flex", alignItems: "center", gap: "5px" }}>
+									<input
+										type="radio"
+										name="gender"
+										value="male"
+										checked={gender === "male"}
+										onChange={(e) => setGender(e.target.value)}
+									/>
+									Male
+								</label>
+								<label style={{ display: "flex", alignItems: "center", gap: "5px" }}>
+									<input
+										type="radio"
+										name="gender"
+										value="female"
+										checked={gender === "female"}
+										onChange={(e) => setGender(e.target.value)}
+									/>
+									Female
+								</label>
+								<label style={{ display: "flex", alignItems: "center", gap: "5px" }}>
+									<input
+										type="radio"
+										name="gender"
+										value="other"
+										checked={gender === "other"}
+										onChange={(e) => setGender(e.target.value)}
+									/>
+									Other
+								</label>
 							</div>
+						</div>
+
+
+
 							<div className="form-group">
 								<label htmlFor="dob">Date of Birth</label>
 								<Input

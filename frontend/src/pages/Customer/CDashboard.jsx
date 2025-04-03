@@ -18,6 +18,7 @@ const CMDashboardPage = () => {
         <AddCSidebar />
         <div className="dashboard-main">
           <h1 style={{ marginBottom: "20px", color: "#1f2937" }}>Users</h1>
+          <p className="dashboard-subtitle">A detailed list of all users.</p>
           {/* Instead of manually writing the table, use the UserLists component */}
           <UserLists />
         </div>

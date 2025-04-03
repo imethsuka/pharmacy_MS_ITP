@@ -10,6 +10,7 @@ import { ClipLoader } from 'react-spinners'; // Import the spinner component
 import '../../styles/Customer/EditUser.css'; // Import the CSS file
 
 
+
 const EditUser = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -66,13 +67,12 @@ const EditUser = () => {
     }
 
 
-    // Hash the password before sending to the backend
-  const hashedPassword = await bcrypt.hash(password, 10); // Hash with salt rounds
+
 
     const data = {
       name,
       email,
-      password: hashedPassword,
+      password,
       gender,
       dob,
       address,
@@ -84,7 +84,7 @@ const EditUser = () => {
       .then(() => {
         setLoading(false);
         enqueueSnackbar('User Edited successfully', { variant: 'success' });
-        navigate('/Customer/userslist');
+        navigate('//CDashboard');
       })
       .catch((error) => {
         setLoading(false);

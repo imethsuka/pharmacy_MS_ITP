@@ -46,13 +46,8 @@ const UserLists = () => {
         
         {/* Main Content */}
         
-          <div className="top-left">
-            <button className="add-user-btn" onClick={handleAddUser}>
-              Add User
-            </button>
-          </div>
-          <h2 className="dashboard-title">User Lists</h2>
-          <p className="dashboard-subtitle">A detailed list of all users.</p>
+          
+        
 
           <div className="userShow-container">
             <div className="userShow-content">

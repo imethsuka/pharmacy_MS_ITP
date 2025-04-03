@@ -18,7 +18,7 @@ const DeleteUser = () => {
       .then(() => {
         setLoading(false);
         enqueueSnackbar('User deleted successfully', { variant: 'success' });
-        navigate('/Customer/userslist');
+        navigate('/CDashboard');
       })
       .catch((error) => {
         setLoading(false);
