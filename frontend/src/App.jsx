@@ -36,7 +36,7 @@ import ForgotPasswordPage from "./pages/Customer/ForgotPasswordPage";
 import ResetPasswordPage from "./pages/Customer/ResetPasswordPage";
 import CusDashboard from './pages/Customer/DashboardCustomer';
 import CDashboard from './pages/Customer/CDashboard.jsx'
-
+import { useParams } from 'react-router-dom';
 
 import { Toaster } from "react-hot-toast";
 import { useAuthStore } from "./store/authStore";
@@ -119,7 +119,7 @@ const App = () => {
       <Route path='/reset-password' element={<ResetPasswordPage />} />
       <Route path='*' element={<Navigate to='/' />} />
       <Route path='/CDashboard' element={<CDashboard />} />
-      
+      <Route path="/reset-password/:token" element={<ResetPasswordPage />} />
 
 
     </Routes>

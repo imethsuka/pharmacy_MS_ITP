@@ -11,12 +11,16 @@ const ForgotPasswordPage = () => {
     const [isSubmitted, setIsSubmitted] = useState(false);
 
     const { isLoading, forgotPassword } = useAuthStore();
-
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await forgotPassword(email);
-        setIsSubmitted(true);
-    };
+        try {
+          await forgotPassword(email);
+          setIsSubmitted(true);
+        } catch (error) {
+          // Error is already handled by the store
+          console.error('Password reset error:', error);
+        }
+      };
 
     return (
         <div className="forgot-password-container">

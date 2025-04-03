@@ -68,19 +68,33 @@ export const useAuthStore = create((set) => ({
 			set({ error: null, isCheckingAuth: false, isAuthenticated: false });
 		}
 	},
-	forgotPassword: async (email) => {
-		set({ isLoading: true, error: null });
-		try {
-			const response = await axios.post(`${API_URL}/forgot-password`, { email });
-			set({ message: response.data.message, isLoading: false });
-		} catch (error) {
-			set({
-				isLoading: false,
-				error: error.response.data.message || "Error sending reset password email",
-			});
-			throw error;
-		}
-	},
+
+
+  forgotPassword: async (email) => {
+    set({ isLoading: true, error: null });
+    try {
+      const response = await axios.post(`${API_URL}/forgot-password`, 
+        { email },
+        {
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          withCredentials: false // Disable if not using cookies
+        }
+      );
+      
+      set({ 
+        message: response.data?.message || 'Reset link sent', 
+        isLoading: false 
+      });
+      return response.data;
+    } catch (error) {
+      const errorMsg = error.response?.data?.message || 
+                     'Failed to send reset link. Please try again.';
+      set({ error: errorMsg, isLoading: false });
+      throw error;
+    }
+  },
 	resetPassword: async (token, password) => {
 		set({ isLoading: true, error: null });
 		try {
@@ -93,5 +107,5 @@ export const useAuthStore = create((set) => ({
 			});
 			throw error;
 		}
-	},
+	}
 }));
