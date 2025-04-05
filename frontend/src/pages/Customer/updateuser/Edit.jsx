@@ -23,7 +23,7 @@ const Edit = () => {
  }
 
  useEffect(()=>{
-    axios.get(`http://localhost:8000/api/getone/${id}`)
+    axios.get(`http://localhost:5555/api/getone/${id}`)
     .then((response)=>{
         setUser(response.data)
     })

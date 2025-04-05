@@ -22,7 +22,7 @@ const Users = () => {
   }, []);
 
   const deleteUser = async(userId) =>{
-      await axios.delete(`http://localhost:8000/api/delete/${userId}`)
+      await axios.delete(`http://localhost:5555/api/delete/${userId}`)
       .then((respones)=>{
         setUsers((prevUser)=> prevUser.filter((user)=> user._id !== userId))
         toast.success(respones.data.msg, {position: 'top-right'})

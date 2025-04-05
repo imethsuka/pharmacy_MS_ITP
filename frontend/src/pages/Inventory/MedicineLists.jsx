@@ -7,7 +7,7 @@ import Sidebar from "../../components/Inventory/Sidebar";
 import MedicinesTable from "../../components/Inventory/MedicinesTable";
 import MedicineMoreInfo from "../../components/Inventory/MedicineMoreInfo"; // Import the popup component
 import Spinner from "../../components/Spinner";
-import logo from '../../../public/Sethsiri_Favicon.svg';
+import logo from '/Sethsiri_Favicon.svg';
 
 const MedicineLists = () => {
   const [medicines, setMedicines] = useState([]);

@@ -1,7 +1,7 @@
 import React from "react";
-import '../../Styles/Delivery/NavBarV.css'
-import logo from '../../../public/Sethsiri_Favicon.svg';
-
+import { Link } from "react-router-dom";
+import logo from '/Sethsiri_Favicon.svg';
+import "../../styles/Delivery/NavBarV.css";
 
 const NavBarV = () => {
   return (

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
-import { useAuthStore } from "../../store/authStore";
+import React, { useState, useContext } from 'react';
+import { AuthContext } from "../../context/AuthContext";
 import Input from "../../components/Customer/Input";
 import { ArrowLeft, Loader, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -10,7 +10,7 @@ const ForgotPasswordPage = () => {
     const [email, setEmail] = useState("");
     const [isSubmitted, setIsSubmitted] = useState(false);
 
-    const { isLoading, forgotPassword } = useAuthStore();
+    const { isLoading, forgotPassword } = useContext(AuthContext);
 
     const handleSubmit = async (e) => {
         e.preventDefault();

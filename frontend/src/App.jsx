@@ -1,5 +1,10 @@
-import React from 'react';
-import {Navigate, Routes, Route } from 'react-router-dom';
+import React, { useEffect, useContext } from 'react';
+import { Navigate, Routes, Route } from 'react-router-dom';
+import { Toaster } from "react-hot-toast";
+import { AuthContext } from "./context/AuthContext";
+import './App.css';
+
+// Home and Book pages
 import Home from './pages/Home';
 import HomeOld from './pages/HomeOld';
 import Categories from './pages/Categories';
@@ -7,14 +12,10 @@ import CreateBook from './pages/CreateBooks';
 import ShowBook from './pages/ShowBook';
 import EditBook from './pages/EditBook';
 import DeleteBook from './pages/DeleteBook';
-import CheckoutPage from './pages/Order/CheckoutPage';
-
-
-
 
 // Import Delivery Pages
 import DeliveryStatus from './pages/Delivery/DeliveryStatus';
-import FeedbackForm from './pages/Delivery/FeedbackForm'; 
+import FeedbackForm from './pages/Delivery/FeedbackForm';
 import DeliveryHistory from './pages/Delivery/DeliveryHistory';
 import DriverForm from './pages/Delivery/DriverForm';
 import DriverDetails from './pages/Delivery/DriverDetails';
@@ -23,8 +24,6 @@ import EditDriver from './pages/Delivery/EditDriver';
 import DeleteDriver from './pages/Delivery/DeleteDriver';
 import DriverProfile from './pages/Delivery/DriverProfile';
 
-
-
 // Import Inventory Pages
 import Dashboard from './pages/Inventory/Dashboard';
 import MedicineLists from './pages/Inventory/MedicineLists';
@@ -32,13 +31,13 @@ import MedicineGroups from './pages/Inventory/MedicineGroups';
 import Reports from './pages/Inventory/Reports';
 import Notifications from './pages/Inventory/Notifications';
 
-//medicines
+// Medicines
 import AddMedicines from './pages/Inventory/addMedicines';
 import ShowMedicines from './pages/Inventory/showMedicines';
 import EditMedicine from './pages/Inventory/EditMedicine';
 import DeleteMedicine from './pages/Inventory/DeleteMedicine';
 
-//Pharmasist
+// Pharmacist
 import PDashboard from './pages/Prescription/PDashboard.jsx';
 import Prescriptions from './pages/Prescription/Prescriptions.jsx';
 import Verified from './pages/Prescription/Verified.jsx';
@@ -47,157 +46,242 @@ import Pending from './pages/Prescription/Pending.jsx';
 import PrescriptionUploadForm from './pages/Prescription/PrescriptionUploadForm.jsx';
 import PrescriptionDetails from './pages/Prescription/PrescriptionDetails.jsx';
 
-
-//import Customer pages
+// Import Customer pages
 import SignUpPage from "./pages/Customer/SignUpPage";
 import LoginPage from "./pages/Customer/LoginPage";
-
 import DashboardPage from "./pages/Customer/DashboardPage";
 import ForgotPasswordPage from "./pages/Customer/ForgotPasswordPage";
 import ResetPasswordPage from "./pages/Customer/ResetPasswordPage";
-import CusDashboard from './pages/Customer/DashboardCustomer';
-
-
-import { Toaster } from "react-hot-toast";
-import { useAuthStore } from "./store/authStore";
-import { useEffect } from "react";
-
-import './App.css';
-import {RouterProvider, createBrowserRouter} from "react-router-dom";
+// Removing the problematic import:
+// import CusDashboard from './pages/Customer/DashboardCustomer';
 import Users from './pages/Customer/getuser/User';
 import Add from './pages/Customer/adduser/Add';
 import Edit from './pages/Customer/updateuser/Edit';
 
+// Admin User Management
+import UsersList from './pages/Admin/UsersList';
+import AddUser from './pages/Admin/AddUser';
+import EditUser from './pages/Admin/EditUser';
 
-//cutomer authentication
-// protect routes that require authentication
-const ProtectedRoute = ({ children }) => {
-  const { isAuthenticated, user } = useAuthStore();
-
-  if (!isAuthenticated) {
-      return <Navigate to='/login' replace />;
-  }
-
-  if (!user.isVerified) {
-      return <Navigate to='/verify-email' replace />;
-  }
-
-  return children;
-};
-
-// redirect authenticated users to the home page
-const RedirectAuthenticatedUser = ({ children }) => {
-  const { isAuthenticated, user } = useAuthStore();
-
-  if (isAuthenticated && user.isVerified) {
-      return <Navigate to='/' replace />;
-  }
-
-  return children;
-};
-
-
-//order
-
+// Order
 import Product from './pages/Order/Product';
 import ProductList from './pages/Order/ProductList';
+import CheckoutPage from './pages/Order/CheckoutPage';
 import Cart from './pages/Order/Cart';
 import OrderConfirmation from './pages/Order/OrderConfirmation';
 import OrderHistory from './pages/Order/OrderHistory';
 
-
+// Import Route Protection Components
+import { 
+  ProtectedRoute,
+  AdminRoute,
+  PharmacistRoute,
+  ManagerRoute,
+  DriverRoute,
+  CustomerRoute
+} from './components/RouteProtection';
 
 const App = () => {
-  return (
-
-    <>
+  // Check auth status on app load
+  const { checkAuth } = useContext(AuthContext);
   
+  useEffect(() => {
+    checkAuth();
+  }, [checkAuth]);
+  
+  return (
+    <>
+      <Toaster position="top-center" reverseOrder={false} />
 
-    <Routes>
+      <Routes>
+        {/* Public Routes */}
+        <Route path='/' element={<Home />} />
+        <Route path='/categories' element={<Categories />} />
+        <Route path='/signup' element={<SignUpPage />} />
+        <Route path='/login' element={<LoginPage />} />
+        <Route path='/forgot-password' element={<ForgotPasswordPage />} />
+        <Route path='/reset-password/:token' element={<ResetPasswordPage />} />
+        <Route path='/order/product/:id' element={<Product />} />
+        <Route path='/order/products' element={<ProductList />} />
+        <Route path='/inventory/medicines/details/:id' element={<ShowMedicines />} />
 
-      <Route path='/' element={<Home />} />
-      <Route path='/categories' element={<Categories />} />
-      <Route path='/books/create' element={<CreateBook />} />
+        {/* Admin Routes */}
+        <Route path='/admin/users' element={
+          <AdminRoute>
+            <UsersList />
+          </AdminRoute>
+        } />
+        <Route path='/admin/users/add' element={
+          <AdminRoute>
+            <AddUser />
+          </AdminRoute>
+        } />
+        <Route path='/admin/users/edit/:id' element={
+          <AdminRoute>
+            <EditUser />
+          </AdminRoute>
+        } />
 
+        {/* Inventory Pages - Manager Only */}
+        <Route path='/inventory/dashboard' element={
+          <ManagerRoute>
+            <Dashboard />
+          </ManagerRoute>
+        } />
+        <Route path='/inventory/MedicineLists' element={
+          <ManagerRoute>
+            <MedicineLists />
+          </ManagerRoute>
+        } />
+        <Route path='/inventory/medicine-groups' element={
+          <ManagerRoute>
+            <MedicineGroups />
+          </ManagerRoute>
+        } />
+        <Route path='/inventory/reports' element={
+          <ManagerRoute>
+            <Reports />
+          </ManagerRoute>
+        } />
+        <Route path='/inventory/notifications' element={
+          <ManagerRoute>
+            <Notifications />
+          </ManagerRoute>
+        } />
 
-      {/* <Route path='/books/create' element={<CreateBook />} />
+        {/* Medicine CRUD Routes - Manager Only */}
+        <Route path='/inventory/medicines/create' element={
+          <ManagerRoute>
+            <AddMedicines />
+          </ManagerRoute>
+        } />
+        <Route path='/inventory/medicines/details/:id' element={<ShowMedicines />} />
+        <Route path='/inventory/medicines/edit/:id' element={
+          <ManagerRoute>
+            <EditMedicine />
+          </ManagerRoute>
+        } />
+        <Route path='/inventory/medicines/delete/:id' element={
+          <ManagerRoute>
+            <DeleteMedicine />
+          </ManagerRoute>
+        } />
 
-      <Route path='/books/details/:id' element={<ShowBook />} />
-      <Route path='/books/edit/:id' element={<EditBook />} />
-      <Route path='/books/delete/:id' element={<DeleteBook />} /> */}
+        {/* Pharmacist Routes - Pharmacist Only */}
+        <Route path='/prescription/PDashboard' element={
+          <PharmacistRoute>
+            <PDashboard />
+          </PharmacistRoute>
+        } />
+        <Route path='/prescription/prescriptions' element={
+          <PharmacistRoute>
+            <Prescriptions />
+          </PharmacistRoute>
+        } />
+        <Route path='/prescription/verified' element={
+          <PharmacistRoute>
+            <Verified />
+          </PharmacistRoute>
+        } />
+        <Route path='/prescription/rejected' element={
+          <PharmacistRoute>
+            <Rejected />
+          </PharmacistRoute>
+        } />
+        <Route path='/prescription/pending' element={
+          <PharmacistRoute>
+            <Pending />
+          </PharmacistRoute>
+        } />
+        <Route path='/prescription/upload' element={
+          <ProtectedRoute>
+            <PrescriptionUploadForm />
+          </ProtectedRoute>
+        } />
+        <Route path='/prescription/prescriptiondetails/:id' element={
+          <PharmacistRoute>
+            <PrescriptionDetails />
+          </PharmacistRoute>
+        } />
 
-    
+        {/* Customer Routes */}
+        <Route path='/dashboard' element={
+          <ProtectedRoute>
+            <DashboardPage />
+          </ProtectedRoute>
+        } />
+        <Route path='/customer/users' element={<Users />} />
+        <Route path='/customer/add' element={<Add />} />
+        <Route path='/customer/edit/:id' element={<Edit />} />
 
-      {/* Inventory Pages */}
-      <Route path='/inventory/dashboard' element={<Dashboard />} />
+        {/* Delivery Routes - Driver Only */}
+        <Route path='/delivery/DeliveryStatus' element={
+          <DriverRoute>
+            <DeliveryStatus />
+          </DriverRoute>
+        } />
+        <Route path='/delivery/feedback' element={<FeedbackForm />} />
+        <Route path='/delivery/DeliveryHistory' element={
+          <DriverRoute>
+            <DeliveryHistory />
+          </DriverRoute>
+        } />
+        <Route path='/delivery/driver-form' element={<DriverForm />} />
+        <Route path='/delivery/DriverDetails' element={
+          <DriverRoute>
+            <DriverDetails />
+          </DriverRoute>
+        } />
+        <Route path='/delivery/add-driver' element={
+          <AdminRoute>
+            <AddDriver />
+          </AdminRoute>
+        } />
+        <Route path='/delivery/edit-driver/:id' element={
+          <AdminRoute>
+            <EditDriver />
+          </AdminRoute>
+        } />
+        <Route path='/delivery/delete-driver/:id' element={
+          <AdminRoute>
+            <DeleteDriver />
+          </AdminRoute>
+        } />
+        <Route path='/delivery/driver-profile/:id' element={
+          <DriverRoute>
+            <DriverProfile />
+          </DriverRoute>
+        } />
 
-      <Route path='/inventory/medicinelists' element={<MedicineLists />} />
-      
-      <Route path='/inventory/addMedicines' element={<AddMedicines />} />
-      <Route path='/inventory/showMedicines/:id' element={<ShowMedicines />} />
-      <Route path='/inventory/EditMedicine/:id'element={<EditMedicine />} />
-      <Route path='/inventory/DeleteMedicine/:id' element={<DeleteMedicine />} />
+        {/* Order Routes - Customer or Protected */}
+        <Route path='/order/cart' element={
+          <ProtectedRoute>
+            <Cart />
+          </ProtectedRoute>
+        } />
+        <Route path='/order/checkout' element={
+          <ProtectedRoute>
+            <CheckoutPage />
+          </ProtectedRoute>
+        } />
+        <Route path='/order/confirmation/:id' element={
+          <ProtectedRoute>
+            <OrderConfirmation />
+          </ProtectedRoute>
+        } />
+        <Route path='/order/history' element={
+          <ProtectedRoute>
+            <OrderHistory />
+          </ProtectedRoute>
+        } />
 
-      <Route path='/inventory/medicinegroups' element={<MedicineGroups />} />
-      <Route path='/inventory/reports' element={<Reports />} />
-      <Route path='/inventory/notifications' element={<Notifications />} />
-
-
-      {/* Order */}
-      <Route path='/order/product/:id' element={<Product />} />
-      <Route path='/order/products' element={<ProductList />} />
-      <Route path='/order/cart' element={<Cart />} />
-      <Route path='/order/confirmation/:orderId' element={<OrderConfirmation />} />
-      <Route path='/order/history' element={<OrderHistory />} />
-      <Route path='/order/checkout' element={<CheckoutPage />} />
-
-      <Route path='/Prescription/pdashboard' element={<PDashboard />} />
-      <Route path='/Prescription/Prescriptions' element={<Prescriptions />} />
-      <Route path='/Prescription/pending' element={<Pending />} />
-      <Route path='/Prescription/verified' element={<Verified />} />
-      <Route path='/Prescription/rejected' element={<Rejected />} />
-      <Route path='/Prescription/prescriptiondetails/:id' element={<PrescriptionDetails />} />
-      <Route path='/Prescription/prescriptionuploadform' element={<PrescriptionUploadForm />} />
-
-
-
-
-
-      {/* Customer Pages */}  
-      <Route path='/customerdashboard' element={<CusDashboard />} />
-      <Route path='/login' element={<RedirectAuthenticatedUser><LoginPage /></RedirectAuthenticatedUser>} />
-      <Route path='/signup' element={<RedirectAuthenticatedUser><SignUpPage /></RedirectAuthenticatedUser>} />
-        
-      <Route path='/dashboard' element={<ProtectedRoute><DashboardPage /></ProtectedRoute>} />
-      <Route path='/forgot-password' element={<RedirectAuthenticatedUser><ForgotPasswordPage /></RedirectAuthenticatedUser>} />
-      <Route path='/reset-password' element={<ResetPasswordPage />} />
-      <Route path='*' element={<Navigate to='/' />} />
-      <Route path="/users" element={<Users />} />
-      <Route path="/add" element={<Add/>} />
-      <Route path="/edit/:id" element={<Edit/>} />
-
-
-
-
-      {/* Delivery Pages */}
-      <Route path='/delivery/deliverystatus' element={<DeliveryStatus />} />
-      <Route path='/delivery/feedbackform' element={<FeedbackForm />} />
-      <Route path='/delivery/deliveryhistory' element={<DeliveryHistory />} />
-      <Route path='/delivery/driverform' element={<DriverForm />} /> 
-      <Route path='/delivery/driverdetails' element={<DriverDetails />} />
-      <Route path='/delivery/adddriver' element={<AddDriver />} />
-      <Route path='/delivery/editdriver/:id' element={<EditDriver />} />
-      <Route path='/delivery/deletedriver/:id' element={<DeleteDriver />} />
-      <Route path='/delivery/driverprofile/:id' element={<DriverProfile />} />
-
-      
-
-      
-
-
-    </Routes>
+        {/* Book Routes - keeping for legacy support */}
+        <Route path='/books/create' element={<CreateBook />} />
+        <Route path='/books/details/:id' element={<ShowBook />} />
+        <Route path='/books/edit/:id' element={<EditBook />} />
+        <Route path='/books/delete/:id' element={<DeleteBook />} />
+      </Routes>
     </>
-
   );
 };
 

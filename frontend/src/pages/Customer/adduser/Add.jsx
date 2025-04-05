@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useAuthStore } from '../../../store/authStore';
+import React, { useState, useContext } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
+import { AuthContext } from '../../../context/AuthContext';
 import "./add.css";
 
 const Add = () => {
 	const [name, setName] = useState('');
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
-	const { signup } = useAuthStore();
+	const { signup } = useContext(AuthContext);
 	const navigate = useNavigate();
 
 	const handleSubmit = async (e) => {

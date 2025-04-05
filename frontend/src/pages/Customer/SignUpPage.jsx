@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { motion } from "framer-motion";
 import Input from "../../components/Customer/Input";
 import { Lock, Mail, User, Eye, EyeOff } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
-import PasswordStrengthMeter from "../../components/Customer/PasswordStrengthMeter";
-import { useAuthStore } from "../../store/authStore";
+import { AuthContext } from "../../context/AuthContext";
 import { addUser } from "../../store/userStore"; // Import addUser function
 import "../../styles/Customer/SignUpPage.css";
 
@@ -17,12 +16,11 @@ const SignUpPage = () => {
 	const [dob, setDob] = useState("");
 	const [address, setAddress] = useState("");
 	const [passwordError, setPasswordError] = useState("");
-	const [dobError, setDobError] = useState("");
 	const [showPassword, setShowPassword] = useState(false);
 	const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 	const navigate = useNavigate();
 
-	const { signup, error, isLoading } = useAuthStore();
+	const { signup, error, isLoading } = useContext(AuthContext);
 
 	const handleSignUp = async (e) => {
 		e.preventDefault();
@@ -32,16 +30,9 @@ const SignUpPage = () => {
 			return;
 		}
 
-		const selectedDob = new Date(dob);
-		const currentDate = new Date();
-		if (selectedDob > currentDate) {
-			setDobError("Date of birth cannot be a future date");
-			return;
-		}
-
-		const age = new Date().getFullYear() - new Date(dob).getFullYear();
-		if (age < 18) {
-			setDobError("You must be at least 18 years old");
+		// Simplified password validation - only check if it's not empty
+		if (!password) {
+			setPasswordError("Password cannot be empty");
 			return;
 		}
 
@@ -51,21 +42,6 @@ const SignUpPage = () => {
 			navigate("/login");
 		} catch (error) {
 			console.log(error);
-		}
-	};
-
-	const handleDobChange = (e) => {
-		const selectedDob = e.target.value;
-		setDob(selectedDob);
-
-		const age = new Date().getFullYear() - new Date(selectedDob).getFullYear();
-		const currentDate = new Date();
-		if (new Date(selectedDob) > currentDate) {
-			setDobError("Date of birth cannot be a future date");
-		} else if (age < 18) {
-			setDobError("You must be at least 18 years old");
-		} else {
-			setDobError("");
 		}
 	};
 
@@ -116,7 +92,6 @@ const SignUpPage = () => {
 								<div className="password-input-wrapper">
 									<Input
 										id="password"
-										
 										type={showPassword ? "text" : "password"}
 										value={password}
 										onChange={(e) => setPassword(e.target.value)}
@@ -135,7 +110,6 @@ const SignUpPage = () => {
 								<div className="password-input-wrapper">
 									<Input
 										id="confirmPassword"
-										
 										type={showConfirmPassword ? "text" : "password"}
 										value={confirmPassword}
 										onChange={(e) => setConfirmPassword(e.target.value)}
@@ -169,10 +143,9 @@ const SignUpPage = () => {
 									id="dob"
 									type="date"
 									value={dob}
-									onChange={handleDobChange}
+									onChange={(e) => setDob(e.target.value)}
 									className="form-input"
 								/>
-								{dobError && <div className="error-text">{dobError}</div>}
 							</div>
 							<div className="form-group">
 								<label htmlFor="address">Address</label>
@@ -189,7 +162,6 @@ const SignUpPage = () => {
 									{passwordError}
 								</div>
 							)}
-							<PasswordStrengthMeter password={password} />
 							<motion.button
 								className="submit-button"
 								whileHover={{ scale: 1.02 }}

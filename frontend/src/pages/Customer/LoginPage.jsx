@@ -1,9 +1,9 @@
-import { useState } from "react";
+import React, { useState, useContext } from "react";
 import { motion } from "framer-motion";
-import { Mail, Lock, Loader, Eye, EyeOff } from "lucide-react";
-import { Link, useNavigate } from "react-router-dom";
 import Input from "../../components/Customer/Input";
-import { useAuthStore } from "../../store/authStore";
+import { Mail, Eye, EyeOff, LogIn, Lock, Loader } from "lucide-react";
+import { useNavigate, Link } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 import "../../styles/Customer/LoginPage.css";
 
 const LoginPage = () => {
@@ -12,7 +12,7 @@ const LoginPage = () => {
     const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
 
-    const { login, isLoading, error } = useAuthStore();
+    const { login, isLoading, error } = useContext(AuthContext);
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -24,12 +24,13 @@ const LoginPage = () => {
             return;
         }
 
-        await login(email, password);
-
-        if (email === "admin1@gmail.com" && password === "admin") {
-            navigate("/customerdashboard");
-        } else {
-            navigate("/home");
+        try {
+            await login(email, password);
+            // Redirect based on successful login
+            navigate("/");
+        } catch (error) {
+            // Error is already handled by the store
+            console.log("Login failed:", error);
         }
     };
 

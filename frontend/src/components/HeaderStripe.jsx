@@ -9,7 +9,7 @@ const HeaderStripe = () => {
     <header className="header-container">
       {/* Logo and Site Name */}
       <div className="logo-container">
-        <img src="../public/Sethsiri_Favicon.svg" alt="Logo" className="logo" />
+        <img src="/Sethsiri_Favicon.svg" alt="Logo" className="logo" />
         <span className="site-name">Sethsiri Pharmacy</span>
       </div>
 

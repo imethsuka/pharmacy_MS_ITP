@@ -1,9 +1,10 @@
+import React, { useContext } from "react";
 import { motion } from "framer-motion";
-import { useAuthStore } from "../../store/authStore";
+import { AuthContext } from "../../context/AuthContext";
 import { formatDate } from "../../utils/date";
 
 const DashboardPage = () => {
-	const { user, logout } = useAuthStore();
+	const { user, logout } = useContext(AuthContext);
 
 	const handleLogout = () => {
 		logout();

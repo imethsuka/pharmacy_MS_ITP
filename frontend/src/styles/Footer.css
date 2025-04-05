@@ -14,8 +14,10 @@ p {
 
   .Footer {
       padding: 20px;
-      background-color: #333;
-      color: #fff;
+      background-color: #2f4050;
+      color: white;
+      text-align: center;
+      margin-top: auto;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -30,25 +32,37 @@ p {
 
   .Footer .footer-links {
       display: flex;
-      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin: 10px 0;
   }
 
   .Footer .footer-links a {
-      color: #fff;
+      color: white;
       text-decoration: none;
-      font-size: 14px;
-      font-family: sans-serif;
-      transition: color 0.3s;
+      padding: 5px 10px;
+      border-radius: 4px;
+      transition: background-color 0.3s;
   }
 
   .Footer .footer-links a:hover {
-      color: #1e90ff;
+      background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .Footer .admin-link {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-weight: bold;
+      background-color: #1a2634;
   }
 
   .Footer .footer-icons {
       display: flex;
-      gap: 15px;
-      margin-top: 10px;
+      justify-content: center;
+      gap: 20px;
+      margin: 15px 0;
   }
 
   .Footer .footer-icons i {
@@ -61,27 +75,67 @@ p {
       color: #1e90ff;
   }
 
+  .Footer .footer-icons a {
+      font-size: 24px;
+  }
+
   .Footer .rights {
+      margin-top: 15px;
       font-size: 12px;
-      margin-top: 10px;
+      opacity: 0.8;
   }
 
   .Footer .feedback-btn {
-      font-size: 14px;
-      color: black;
-      background-color: white;
-      font-family: sans-serif;
-      border: 1px solid black;
+      background-color: #6f86d6;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 4px;
+      margin: 10px 0;
       cursor: pointer;
-      border-radius: 10px;
-      padding: 10px 20px;
-      margin-top: 10px;
-      transition: background-color 0.3s, color 0.3s;
+      transition: background-color 0.3s;
   }
 
   .Footer .feedback-btn:hover {
-      background-color: #1e90ff;
+      background-color: #5a73c7;
+  }
+
+  .Footer .feedback-btn a {
       color: white;
+      text-decoration: none;
+  }
+
+  .Footer .signout-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 15px 0;
+      padding: 10px;
+      background-color: rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+  }
+
+  .Footer .signout-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background-color: #e74c3c;
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s;
+      margin-bottom: 8px;
+  }
+
+  .Footer .signout-btn:hover {
+      background-color: #c0392b;
+  }
+
+  .Footer .user-info {
+      font-size: 14px;
+      color: #ddd;
   }
 
   .F-list td p {

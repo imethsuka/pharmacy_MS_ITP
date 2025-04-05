@@ -16,9 +16,7 @@
     "@emotion/styled": "^11.14.0",
     "@mui/icons-material": "^6.4.7",
     "@mui/material": "^6.4.7",
-
     "axios": "^1.4.0",
-    "autoprefixer": "^10.4.21",
     "fontawesome-free": "^1.0.4",
     "framer-motion": "^12.5.0",
     "jsbarcode": "^3.11.6",
@@ -39,10 +37,12 @@
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",
     "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.21",
     "eslint": "^8.44.0",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.1",
+    "postcss": "^8.5.3",
     "vite": "^4.4.0"
   }
 }

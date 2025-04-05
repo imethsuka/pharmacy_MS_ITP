@@ -7,6 +7,7 @@ import cors from 'cors';
 import booksRoute from './routes/booksRoute.js';
 import orderRoute from './routes/orderRoute.js';
 import inventoryRoute from './routes/inventoryRoute.js';
+import authRoutes from './routes/authRoutes.js'; // Import auth routes
 
 
 import prescriptionRoute from './routes/prescriptionRoute.js'; // Import prescriptionRoutes
@@ -14,10 +15,11 @@ import prescriptionRoute from './routes/prescriptionRoute.js'; // Import prescri
 
 import driverRoute from './routes/driverRoute.js' 
 import feedbackRoute from './routes/feedbackRoute.js';
-import route from "./routes/userRoute.js";
+import route from "./routes/userRoutes.js";
 import cookieParser from "cookie-parser";
-import path from "path";
-import { connectDB } from "./db/connectDB.js";
+import userRoutes from "./routes/userRoutes.js";
+// import path from "path";
+// import { connectDB } from "./db/connectDB.js";
 
 
 const app = express();
@@ -49,11 +51,12 @@ app.use('/uploads', express.static('uploads'));
 app.use('/orders', orderRoute);
 app.use('/books', booksRoute);
 app.use('/medicines',inventoryRoute);
-app.use('/orders', orderRoute)
+app.use('/orders', orderRoute);
 app.use('/prescriptions', prescriptionRoute);
-app.use('/users', route);
+app.use('/users', userRoutes);
 app.use('/drivers', driverRoute);
 app.use('/feedbacks', feedbackRoute);
+app.use('/api/auth', authRoutes); // Register auth routes
 app.use(cookieParser());
 
 

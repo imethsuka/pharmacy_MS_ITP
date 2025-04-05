@@ -1,6 +1,6 @@
-import { useState } from "react";
+import React, { useState, useContext } from 'react';
 import { motion } from "framer-motion";
-import { useAuthStore } from "../../store/authStore"; // Updated import path
+import { AuthContext } from "../../context/AuthContext"; // Updated import path
 import { useNavigate, useParams } from "react-router-dom";
 import Input from "../../components/Customer/Input"; // Updated import path
 import { Lock } from "lucide-react";
@@ -10,7 +10,7 @@ import "../../styles/Customer/ResetPasswordPage.css";
 const ResetPasswordPage = () => {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
-    const { resetPassword, error, isLoading, message } = useAuthStore();
+    const { resetPassword, error, isLoading, message } = useContext(AuthContext);
 
     const { token } = useParams();
     const navigate = useNavigate();

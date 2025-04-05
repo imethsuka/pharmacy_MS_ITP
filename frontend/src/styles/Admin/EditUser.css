@@ -1,0 +1,265 @@
+/* EditUser.css - Styling for the edit user form page */
+
+.edit-user-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.edit-user-header {
+  background: linear-gradient(to right, #4f46e5, #3b82f6);
+  color: white;
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.edit-user-header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.edit-user-title {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.edit-user-subtitle {
+  margin: 4px 0 0 0;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.back-to-users {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  color: #3b82f6;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  text-decoration: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.back-to-users:hover {
+  background-color: #f0f9ff;
+}
+
+.back-to-users svg {
+  margin-right: 6px;
+  width: 16px;
+  height: 16px;
+}
+
+.edit-form-card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  padding: 24px;
+  margin-bottom: 20px;
+}
+
+.edit-user-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.edit-form-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+@media (min-width: 640px) {
+  .edit-form-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .edit-form-full-width {
+    grid-column: span 2;
+  }
+}
+
+.edit-form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-form-group label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 6px;
+}
+
+.edit-required-mark {
+  color: #dc2626;
+  margin-left: 2px;
+}
+
+.edit-form-helper-text {
+  font-size: 12px;
+  color: #6b7280;
+  margin-top: 4px;
+}
+
+.edit-input-container {
+  position: relative;
+}
+
+.edit-input-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9ca3af;
+  width: 16px;
+  height: 16px;
+  pointer-events: none;
+}
+
+.edit-form-input, .edit-form-select {
+  width: 100%;
+  padding: 10px 12px 10px 36px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #1f2937;
+  background-color: #fff;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.edit-form-input:focus, .edit-form-select:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+}
+
+.edit-form-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%239ca3af'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+  padding-right: 40px;
+}
+
+.password-divider {
+  position: relative;
+  text-align: center;
+  margin: 20px 0;
+  grid-column: span 2;
+}
+
+.password-divider::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: #e5e7eb;
+  z-index: 0;
+}
+
+.password-divider-text {
+  position: relative;
+  display: inline-block;
+  padding: 0 12px;
+  background-color: white;
+  color: #6b7280;
+  font-size: 14px;
+  z-index: 1;
+}
+
+.edit-form-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.edit-cancel-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  color: #4b5563;
+  border: 1px solid #d1d5db;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.edit-cancel-button:hover {
+  background-color: #f9fafb;
+}
+
+.edit-submit-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to right, #3b82f6, #4f46e5);
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.edit-submit-button:hover {
+  opacity: 0.9;
+}
+
+.edit-submit-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.edit-submit-button svg {
+  margin-right: 6px;
+  width: 16px;
+  height: 16px;
+}
+
+.edit-spinner-icon {
+  animation: spin 1s infinite linear;
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+}
+
+.loading-spinner {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 4px solid #e5e7eb;
+  border-top-color: #3b82f6;
+  animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

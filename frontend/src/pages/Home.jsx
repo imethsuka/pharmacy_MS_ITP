@@ -9,8 +9,9 @@ import ProductCard from "../components/ProductCard/ProductCard";
 import Footer from "../components/Footer";
 import Popup from "../components/Popup/MoreInfo";
 import Spinner from "../components/Spinner";
-import BMI from "../components/Prescription/BMI"; // Import BMI component
-import "../styles/Home.css";
+import BMI from "../components/Prescription/BMI";
+// Import CSS module
+import styles from "../styles/Home.module.css";
 
 const Home = () => {
   const [showPopup, setShowPopup] = useState(false);
@@ -90,58 +91,81 @@ const Home = () => {
     localStorage.setItem('cart', JSON.stringify(existingCart));
   };
 
+  // Sample pharmacy health tips
+  const healthTips = [
+    {
+      title: "Medication Adherence",
+      content: "Taking your medications as prescribed is crucial for their effectiveness. Set reminders if you tend to forget."
+    },
+    {
+      title: "Proper Storage",
+      content: "Store medications in a cool, dry place away from direct sunlight. Some may require refrigeration - always check the label."
+    },
+    {
+      title: "Antibiotic Awareness",
+      content: "Always complete your full course of antibiotics, even if you feel better. This helps prevent antibiotic resistance."
+    },
+    {
+      title: "Drug Interactions",
+      content: "Always inform your pharmacist about all medications you're taking to avoid potentially harmful drug interactions."
+    }
+  ];
+
   return (
-    <div>
+    <div className={styles.pageContainer}>
       <HeaderStripe />
 
-      <div className="floating-navbar">
+      <div className={styles.floatingNavbar}>
         <NavBar />
       </div>
 
-      <div className="content-wrapper">
+      <div className={styles.contentWrapper}>
         <HeroSection />
 
-        <div className="circle-card-container">
-          <CircleCard
-            imageUrl="./src/assets/HomePage_assets/Women-Face-Care.webp"
-            title="Skin care"
-          />
-          <CircleCard
-            imageUrl="./src/assets/HomePage_assets/vitamins-pills-190716.jpg"
-            title="Vitamin"
-          />
-          <CircleCard
-            imageUrl="./src/assets/HomePage_assets/medicine-pills.jpg"
-            title="Drugs"
-          />
-          <CircleCard
-            imageUrl="./src/assets/HomePage_assets/Mother-Baby-Care.webp"
-            title="Baby Care"
-          />
-          <CircleCard
-            imageUrl="./src/assets/HomePage_assets/Medical-equipment.jpg"
-            title="Medical Equipment"
-          />
-        </div>
+        <section className={styles.categoriesSection}>
+          <h2 className={styles.sectionTitle}>Health Categories</h2>
+          <div className={styles.circleCardContainer}>
+            <CircleCard
+              imageUrl="./src/assets/HomePage_assets/Women-Face-Care.webp"
+              title="Skin care"
+            />
+            <CircleCard
+              imageUrl="./src/assets/HomePage_assets/vitamins-pills-190716.jpg"
+              title="Vitamin"
+            />
+            <CircleCard
+              imageUrl="./src/assets/HomePage_assets/medicine-pills.jpg"
+              title="Drugs"
+            />
+            <CircleCard
+              imageUrl="./src/assets/HomePage_assets/Mother-Baby-Care.webp"
+              title="Baby Care"
+            />
+            <CircleCard
+              imageUrl="./src/assets/HomePage_assets/Medical-equipment.jpg"
+              title="Medical Equipment"
+            />
+          </div>
+        </section>
 
         {/* Product Listing Section */}
-        <div className="product-listing-section">
-          <h2 className="section-title">Our Products</h2>
+        <section className={styles.productSection}>
+          <h2 className={styles.sectionTitle}>Our Products</h2>
           
           {loading ? (
-            <div className="loading-container">
+            <div className={styles.loadingContainer}>
               <Spinner />
-              <p>Loading products...</p>
+              <p className={styles.loadingText}>Loading products...</p>
             </div>
           ) : error ? (
-            <div className="error-container">
-              <p className="error-message">{error}</p>
-              <button onClick={fetchMedicines} className="retry-button">
+            <div className={styles.errorContainer}>
+              <p className={styles.errorMessage}>{error}</p>
+              <button onClick={fetchMedicines} className={styles.retryButton}>
                 Try Again
               </button>
             </div>
           ) : (
-            <div className="product-grid">
+            <div className={styles.productGrid}>
               {medicines.length > 0 ? (
                 medicines.map((medicine) => (
                   <ProductCard
@@ -153,15 +177,31 @@ const Home = () => {
                   />
                 ))
               ) : (
-                <p className="no-products">No products available at the moment.</p>
+                <p className={styles.noProducts}>No products available at the moment.</p>
               )}
             </div>
           )}
-        </div>
+        </section>
+
+        {/* Health Tips Section */}
+        <section className={styles.healthTipsSection}>
+          <h2 className={styles.sectionTitle}>Pharmacy Health Tips</h2>
+          <div className={styles.tipsGrid}>
+            {healthTips.map((tip, index) => (
+              <div key={index} className={styles.tipCard}>
+                <h3 className={styles.tipTitle}>{tip.title}</h3>
+                <p className={styles.tipContent}>{tip.content}</p>
+              </div>
+            ))}
+          </div>
+        </section>
 
         {/* Add BMI component here */}
-        <div className="bmi-section">
-          <BMI />
+        <div className={styles.bmiSection}>
+          <h2 className={styles.sectionTitle}>BMI Calculator</h2>
+          <div className={styles.bmiSectionInner}>
+            <BMI />
+          </div>
         </div>
 
         <Footer />
