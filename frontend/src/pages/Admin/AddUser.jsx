@@ -4,6 +4,9 @@ import { toast } from 'react-hot-toast';
 import axios from 'axios';
 import '../../styles/Admin/AddUser.css';
 
+// API base URL - default to localhost if not specified
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5555';
+
 const AddUser = () => {
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
@@ -66,7 +69,7 @@ const AddUser = () => {
                 }
             };
 
-            const response = await axios.post('/api/auth/register', {
+            const response = await axios.post(`${API_BASE_URL}/api/auth/register`, {
                 name: formData.name || formData.email.split('@')[0],
                 email: formData.email,
                 password: formData.password,
