@@ -16,13 +16,8 @@ export const AuthProvider = ({ children }) => {
     const [message, setMessage] = useState(null);
     const navigate = useNavigate();
 
-    // Check if user is logged in on app load
-    useEffect(() => {
-        checkAuth();
-    }, []);
-
-    // Check authentication status
-    const checkAuth = async () => {
+    // Check authentication status - memoized to prevent infinite loops
+    const checkAuth = useCallback(async () => {
         setIsCheckingAuth(true);
         setError(null);
         try {
@@ -37,7 +32,12 @@ export const AuthProvider = ({ children }) => {
             setError(null);
             setIsCheckingAuth(false);
         }
-    };
+    }, []); // Empty dependency array since it doesn't depend on any state/props
+
+    // Check if user is logged in on app load
+    useEffect(() => {
+        checkAuth();
+    }, [checkAuth]);
 
     // Memoize fetchUserProfile to prevent infinite loops
     const fetchUserProfile = useCallback(async () => {
