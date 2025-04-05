@@ -1,28 +1,30 @@
 /* NavBar Container */
 .navbar {
-    position: absolute; /* Or 'fixed' if you want it to stay at the top */
-    top: 10px; /* Adjust as needed */
+    position: fixed;
+    bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
-    background-color: rgba(245, 245, 245, 0.95); /* Light gray with slight transparency */
-    padding: 10px 20px;
+    width: auto;
+    max-width: 90%;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 12px 25px;
     display: flex;
     justify-content: center;
-    border-radius: 50px;
+    border-radius: 30px;
     z-index: 1000;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    backdrop-filter: blur(10px); /* Adds a glassmorphism effect */
-    border: 1px solid rgba(0, 0, 0, 0.1); /* Subtle border for definition */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 /* Nav List */
 .nav-list {
     list-style: none;
     display: flex;
-    gap: 20px; /* Space between items */
+    gap: 25px;
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', sans-serif; /* Modern font */
+    font-family: 'Segoe UI', sans-serif;
 }
 
 /* Nav Item */
@@ -30,42 +32,99 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: transform 0.2s ease;
+}
+
+.nav-item:hover {
+    transform: translateY(-5px);
 }
 
 /* Nav Link (Inactive State) */
 .nav-link {
     text-decoration: none;
-    color: #333333; /* Dark gray for readability */
+    color: #333333;
     padding: 10px 20px;
-    border-radius: 30px;
+    border-radius: 20px;
     transition: all 0.3s ease;
-    background-color: transparent; /* No background by default */
-    font-weight: 500; /* Medium weight for modern look */
+    background-color: transparent;
+    font-weight: 500;
+    position: relative;
 }
 
 /* Nav Link Hover State */
 .nav-link:hover {
-    background-color: rgba(0, 0, 0, 0.05); /* Light gray on hover */
-    color: #000000; /* Slightly darker text on hover */
+    background-color: rgba(0, 123, 255, 0.1);
+    color: #007bff;
 }
 
 /* Nav Link Active State */
 .nav-link.active {
-    background-color: #007bff; /* Vibrant purple for active state */
-    color: #ffffff; /* White text for contrast */
-    box-shadow: 0px 5px 15px rgba(108, 92, 231, 0.3); /* Subtle shadow for depth */
+    background-color: #007bff;
+    color: #ffffff;
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
 }
 
 /* Optional: Add a smooth underline effect for inactive links */
 .nav-link:not(.active)::after {
     content: '';
     display: block;
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
     width: 0;
-    height: 2px;
-    background: #000000; /* Matching the active state color */
+    height: 3px;
+    background: #007bff;
     transition: width 0.3s ease;
+    border-radius: 3px;
 }
 
 .nav-link:not(.active):hover::after {
-    width: 100%;
+    width: 30px;
+}
+
+/* Add reflection effect like macOS dock */
+.navbar::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 5%;
+    width: 90%;
+    height: 15px;
+    background: radial-gradient(ellipse at top, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 10px 15px;
+        bottom: 15px;
+    }
+    
+    .nav-list {
+        gap: 15px;
+    }
+    
+    .nav-link {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 8px 12px;
+        bottom: 10px;
+    }
+    
+    .nav-list {
+        gap: 10px;
+    }
+    
+    .nav-link {
+        padding: 6px 12px;
+        font-size: 0.85rem;
+    }
 }

@@ -1,0 +1,277 @@
+/* HeaderStripe.module.css - Modern header styling */
+
+.headerContainer {
+  width: 100%;
+  max-width: 100vw;
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: white;
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 1002; /* Higher z-index to stay above navbar */
+  box-sizing: border-box;
+  overflow-x: hidden;
+  flex-wrap: nowrap;
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.logoLink {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+}
+
+.logo {
+  height: 40px;
+  width: auto;
+  margin-right: 0.75rem;
+}
+
+.siteName {
+  font-weight: 700;
+  font-size: 1.4rem;
+  letter-spacing: 0.5px;
+}
+
+.searchSection {
+  flex-grow: 1;
+  max-width: 600px;
+  margin: 0 2rem;
+  display: flex;
+  height: 40px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.categoryDropdown {
+  background-color: #f0f8ff;
+  color: #007bff;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  padding: 0 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  height: 100%;
+  font-size: 0.9rem;
+  border: 1px solid #e0e0e0;
+  border-left: none;
+  outline: none;
+  transition: background-color 0.2s;
+}
+
+.categoryDropdown:hover, .categoryDropdown:focus {
+  background-color: #e6f0ff;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
+  min-width: 0;
+}
+
+.signInButton {
+  background-color: white;
+  color: #007bff;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem 1.25rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.signInButton:hover {
+  background-color: #f0f8ff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Profile section */
+.profileContainer {
+  position: relative;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.profileButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.profileButton:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.profileIcon {
+  font-size: 1.4rem;
+}
+
+.userName {
+  max-width: 100px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.profileDropdown {
+  position: fixed;
+  top: calc(var(--header-height, 60px) + 10px);
+  right: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  min-width: 180px;
+  z-index: 1005;
+  overflow: visible;
+  animation: dropdownFadeIn 0.2s ease-out;
+}
+
+@keyframes dropdownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dropdownItem {
+  display: block;
+  padding: 0.75rem 1rem;
+  color: #334155;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.dropdownItem:hover {
+  background-color: #f0f8ff;
+  color: #007bff;
+}
+
+.signOutButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  border-top: 1px solid #e2e8f0;
+  padding: 0.75rem 1rem;
+  color: #ef4444;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s;
+}
+
+.signOutButton:hover {
+  background-color: #fef2f2;
+}
+
+/* Responsive design */
+@media (max-width: 860px) {
+  .headerContainer {
+    padding: 1rem;
+  }
+  
+  .searchSection {
+    max-width: 350px;
+    margin: 0 1rem;
+  }
+  
+  .siteName {
+    font-size: 1.1rem;
+  }
+  
+  .actions {
+    gap: 0.75rem;
+  }
+
+  .userName {
+    max-width: 80px;
+  }
+}
+
+@media (max-width: 720px) {
+  .headerContainer {
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 0.75rem;
+  }
+  
+  .searchSection {
+    order: 3;
+    max-width: 100%;
+    width: 100%;
+    margin: 0.5rem 0 0;
+  }
+  
+  .siteName {
+    font-size: 1rem;
+  }
+
+  .profileButton {
+    padding: 0.4rem 0.75rem;
+  }
+
+  .userName {
+    max-width: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .profileButton {
+    padding: 0.4rem 0.5rem;
+  }
+  
+  .profileIcon {
+    font-size: 1.2rem;
+  }
+
+  .userName {
+    display: none;
+  }
+  
+  .actions {
+    gap: 0.5rem;
+  }
+  
+  .signInButton {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  .logo {
+    height: 30px;
+  }
+}

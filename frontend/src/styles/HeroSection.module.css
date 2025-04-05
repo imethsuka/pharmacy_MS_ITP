@@ -1,35 +1,55 @@
-/* HeroSection.module.css - Modern Pharmacy Hero Section Styling */
+/* HeroSection.module.css - Modern full-width hero section */
 
 .hero {
   position: relative;
+  width: 100%;
   height: 600px;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.3)), url('/src/assets/medicineImage.png');
+  background-image: url('/src/assets/image.png');
   background-size: cover;
   background-position: center;
-  color: white;
   display: flex;
   align-items: center;
-  border-radius: 0 0 20px 20px;
   overflow: hidden;
-  margin-bottom: 2rem;
+}
+
+.heroOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.7) 100%);
+  z-index: 1;
 }
 
 .heroContent {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.heroTextContainer {
   max-width: 650px;
-  margin-left: 8%;
-  animation: fadeIn 1.2s ease-out;
+  color: white;
+  margin-left: auto;
+  padding-right: 3rem;
 }
 
 .heroTitle {
-  font-size: 3rem;
-  font-weight: 700;
-  margin-bottom: 1.5rem;
-  line-height: 1.2;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  line-height: 1.1;
 }
 
 .highlight {
-  color: #4ade80;
+  color: #007bff;
   position: relative;
   display: inline-block;
 }
@@ -37,102 +57,154 @@
 .highlight::after {
   content: '';
   position: absolute;
-  bottom: 5px;
+  bottom: 0;
   left: 0;
   width: 100%;
-  height: 8px;
-  background-color: rgba(74, 222, 128, 0.3);
-  z-index: -1;
-  border-radius: 4px;
+  height: 6px;
+  background-color: #007bff;
+  border-radius: 3px;
+  opacity: 0.4;
+}
+
+.heroSubtitle {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
 }
 
 .heroBenefits {
   list-style: none;
   padding: 0;
-  margin: 1.5rem 0 2rem;
+  margin: 0 0 2.5rem 0;
 }
 
 .benefitItem {
-  margin-bottom: 0.75rem;
-  font-size: 1.125rem;
   display: flex;
   align-items: center;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  margin-bottom: 0.75rem;
+  font-size: 1.1rem;
 }
 
 .checkmark {
-  color: #4ade80;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background-color: rgba(0, 123, 255, 0.2);
+  border-radius: 50%;
+  color: #007bff;
+  margin-right: 1rem;
   font-weight: bold;
-  margin-right: 0.75rem;
-  font-size: 1.25rem;
+}
+
+.ctaContainer {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .ctaButton {
-  display: inline-block;
-  background: linear-gradient(to right, #0d9488, #14b8a6);
+  background-color: #007bff;
   color: white;
-  padding: 0.875rem 2rem;
-  border-radius: 50px;
-  font-weight: 600;
-  font-size: 1.125rem;
   text-decoration: none;
-  transition: transform 0.3s, box-shadow 0.3s;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  display: inline-block;
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
 }
 
 .ctaButton:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 7px 14px rgba(0, 0, 0, 0.15);
+  background-color: #0056b3;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 123, 255, 0.4);
 }
 
-.ctaButton:active {
-  transform: translateY(-1px);
+.secondaryCta {
+  background-color: transparent;
+  color: white;
+  text-decoration: none;
+  padding: 0.94rem 2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  display: inline-block;
+  border: 2px solid rgba(255, 255, 255, 0.6);
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.secondaryCta:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: white;
+  transform: translateY(-2px);
 }
 
 /* Responsive design */
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   .hero {
     height: 500px;
   }
   
-  .heroContent {
-    margin-left: 5%;
-    max-width: 90%;
-  }
-  
   .heroTitle {
-    font-size: 2.25rem;
+    font-size: 2.8rem;
   }
   
-  .benefitItem {
-    font-size: 1rem;
+  .heroTextContainer {
+    padding-right: 1.5rem;
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .hero {
     height: 450px;
   }
   
   .heroTitle {
-    font-size: 1.75rem;
+    font-size: 2.2rem;
   }
   
-  .ctaButton {
-    padding: 0.75rem 1.5rem;
+  .heroSubtitle {
+    font-size: 1.1rem;
+  }
+  
+  .benefitItem {
     font-size: 1rem;
+  }
+  
+  .ctaButton, .secondaryCta {
+    padding: 0.85rem 1.5rem;
+    font-size: 1rem;
+  }
+  
+  .heroTextContainer {
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero {
+    height: auto;
+    min-height: 500px;
+  }
+  
+  .heroContent {
+    padding: 3rem 1.5rem;
+    justify-content: center;
+  }
+  
+  .heroTitle {
+    font-size: 2rem;
+  }
+  
+  .heroTextContainer {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  
+  .heroOverlay {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7));
   }
 }

@@ -1,0 +1,186 @@
+/* Footer.module.css - Modern footer styling */
+
+.footer {
+  width: 100%;
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+  color: #e2e8f0;
+  padding: 0;
+  margin-top: 4rem;
+}
+
+.footerContent {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+  gap: 2rem;
+}
+
+.footerSection {
+  flex: 1;
+  min-width: 250px;
+}
+
+.footerTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: white;
+  position: relative;
+  padding-bottom: 0.75rem;
+}
+
+.footerTitle::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 40px;
+  height: 3px;
+  background: linear-gradient(to right, #14b8a6, #0d9488);
+  border-radius: 2px;
+}
+
+.footerAbout {
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  color: #cbd5e1;
+}
+
+.footerSocial {
+  display: flex;
+  gap: 1rem;
+}
+
+.socialIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.socialIcon:hover {
+  background-color: #0d9488;
+  transform: translateY(-3px);
+}
+
+.footerLinks {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footerLinks li {
+  margin-bottom: 0.75rem;
+}
+
+.footerLink {
+  color: #cbd5e1;
+  text-decoration: none;
+  display: block;
+  transition: all 0.2s;
+  padding: 0.3rem 0;
+}
+
+.footerLink:hover {
+  color: #14b8a6;
+  transform: translateX(5px);
+}
+
+.contactList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contactItem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  color: #cbd5e1;
+}
+
+.contactIcon {
+  margin-right: 0.75rem;
+  color: #14b8a6;
+  min-width: 20px;
+}
+
+.staffLinks {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.staffLink {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #cbd5e1;
+  text-decoration: none;
+  padding: 0.5rem 0;
+  transition: all 0.2s;
+}
+
+.staffLink:hover {
+  color: #14b8a6;
+}
+
+.signOutBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: rgba(239, 68, 68, 0.1);
+  color: #f87171;
+  border: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 6px;
+  margin-top: 1.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: 500;
+}
+
+.signOutBtn:hover {
+  background-color: rgba(239, 68, 68, 0.2);
+}
+
+.footerBottom {
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.copyright {
+  color: #94a3b8;
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+/* Responsive design */
+@media (max-width: 992px) {
+  .footerContent {
+    gap: 3rem;
+  }
+  
+  .footerSection {
+    flex-basis: calc(50% - 3rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .footerContent {
+    flex-direction: column;
+    padding: 2rem 1.5rem;
+  }
+  
+  .footerSection {
+    width: 100%;
+  }
+}

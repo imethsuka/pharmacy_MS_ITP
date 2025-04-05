@@ -1,7 +1,7 @@
 import React from "react";
-import { HiOutlineChevronRight } from "react-icons/hi";
+import { HiOutlineChevronRight, HiShoppingCart, HiInformationCircle } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
-import "./ProductCard.css";
+import styles from "./ProductCard.module.css";
 
 const ProductCard = ({ product, image, name, price, requiresPrescription, onAddToCart, onMoreInfo, _id, productId, category, catergory }) => {
   const navigate = useNavigate();
@@ -53,28 +53,48 @@ const ProductCard = ({ product, image, name, price, requiresPrescription, onAddT
     onMoreInfo(productData);
   };
 
+  const handleAddToCartClick = (e) => {
+    e.stopPropagation();
+    if (onAddToCart) {
+      onAddToCart(productData);
+    }
+  };
+
   // Safely access product properties (handles both new and legacy prop styles)
   const displayImage = isLegacyProps ? image : productData?.imageUrl;
   const displayName = isLegacyProps ? name : productData?.name;
   const displayPrice = isLegacyProps ? price : productData?.price;
 
   return (
-    <div className="product-card">
-      <div className="product-image" onClick={handleCardClick}>
-        <img src={displayImage} alt={displayName} />
+    <div className={styles.productCard}>
+      <div className={styles.productImageContainer} onClick={handleCardClick}>
+        <img src={displayImage} alt={displayName} className={styles.productImage} />
         {productData?.requiresPrescription && (
-          <span className="prescription-badge">Rx</span>
+          <span className={styles.prescriptionBadge}>Rx</span>
         )}
       </div>
 
-      <div className="product-details">
-        <h3 className="product-name" onClick={handleCardClick}>{displayName}</h3>
+      <div className={styles.productDetails}>
+        <h3 className={styles.productName} onClick={handleCardClick}>{displayName}</h3>
         
-        <div className="product-bottom">
-          <span className="product-price">Rs. {displayPrice}</span>
-          <div className="product-actions">
-            <button className="more-info" onClick={handleMoreInfoClick}>
-              Details <HiOutlineChevronRight size={18} />
+        <div className={styles.productMeta}>
+          <span className={styles.productCategory}>
+            {productData?.category || "Medicine"}
+          </span>
+          {productData?.inStock !== false && (
+            <span className={styles.inStock}>In Stock</span>
+          )}
+        </div>
+        
+        <div className={styles.productBottom}>
+          <span className={styles.productPrice}>Rs. {displayPrice}</span>
+          <div className={styles.productActions}>
+            <button className={styles.addToCartBtn} onClick={handleAddToCartClick}>
+              <HiShoppingCart />
+              <span>Add</span>
+            </button>
+            <button className={styles.moreInfoBtn} onClick={handleMoreInfoClick}>
+              <HiInformationCircle />
             </button>
           </div>
         </div>

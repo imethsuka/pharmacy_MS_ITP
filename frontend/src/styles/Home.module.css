@@ -1,5 +1,18 @@
 /* Home.module.css - Modern Pharmacy Home Styling */
 
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+html {
+  overflow-x: hidden;
+  width: 100%;
+}
+
 .pageContainer {
   min-height: 100vh;
   display: flex;
@@ -7,34 +20,47 @@
   background-color: #f8fafc;
   color: #334155;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  /* overflow-x: hidden; Prevent horizontal scrolling */
+  box-sizing: border-box;
 }
 
 .contentWrapper {
   flex: 1;
-  max-width: 1440px;
-  margin: 0 auto;
   width: 100%;
-  padding: 0 1rem;
+  max-width: 100%;
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  box-sizing: border-box;
 }
 
 .floatingNavbar {
   position: sticky;
   top: 0;
-  z-index: 1000;
+  z-index: 1001; /* Lower than header but higher than other content */
   background-color: white;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
   border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 /* Category section styling */
 .categoriesSection {
   margin: 3rem 0;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .sectionTitle {
   font-size: 1.75rem;
   font-weight: 600;
-  color: #0f766e;
+  color: #007bff;
   margin-bottom: 1.5rem;
   text-align: center;
   position: relative;
@@ -49,7 +75,7 @@
   transform: translateX(-50%);
   width: 60px;
   height: 3px;
-  background: linear-gradient(to right, #0d9488, #14b8a6);
+  background: linear-gradient(to right, #0056b3, #007bff);
   border-radius: 3px;
 }
 
@@ -68,12 +94,13 @@
   background-color: white;
   border-radius: 16px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.03);
+  overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 .productGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(4, 1fr); /* Always show 4 cards per row */
+  gap: 1.5rem;
 }
 
 /* Loading and error states */
@@ -102,7 +129,7 @@
 }
 
 .retryButton {
-  background-color: #0d9488;
+  background-color: #007bff;
   color: white;
   padding: 0.5rem 1.5rem;
   border: none;
@@ -113,7 +140,7 @@
 }
 
 .retryButton:hover {
-  background-color: #0f766e;
+  background-color: #0056b3;
 }
 
 .noProducts {
@@ -127,7 +154,7 @@
 .bmiSection {
   margin: 3rem 0;
   padding: 2rem;
-  background: linear-gradient(145deg, #e0f2fe, #f0fdfa);
+  background: linear-gradient(145deg, #e0f2fe, #f0f8ff);
   border-radius: 16px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.03);
 }
@@ -156,7 +183,7 @@
   padding: 1.5rem;
   border-radius: 12px;
   background-color: #f8fafc;
-  border-left: 4px solid #0d9488;
+  border-left: 4px solid #007bff;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -169,7 +196,7 @@
   font-weight: 600;
   font-size: 1.125rem;
   margin-bottom: 0.75rem;
-  color: #0f766e;
+  color: #007bff;
 }
 
 .tipContent {
@@ -178,6 +205,18 @@
 }
 
 /* Responsive design */
+@media (max-width: 1200px) {
+  .productGrid {
+    grid-template-columns: repeat(3, 1fr); /* 3 cards per row on medium screens */
+  }
+}
+
+@media (max-width: 992px) {
+  .productGrid {
+    grid-template-columns: repeat(2, 1fr); /* 2 cards per row on small screens */
+  }
+}
+
 @media (max-width: 768px) {
   .circleCardContainer {
     gap: 1rem;
@@ -204,6 +243,6 @@
   }
   
   .productGrid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* 1 card per row on very small screens */
   }
 }
