@@ -1,131 +1,207 @@
 /* Sidebar */
 .sidebar {
-    width: 250px;
-    background-color: #1f2937;
-    color: #ffffff;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  width: 250px;
+  background-color: #1f2937;
+  color: #ffffff;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 100;
+}
+
+.sidebar.collapsed {
+  width: 80px;
+  padding: 20px 10px;
+}
+
+/* Sidebar Toggle Button */
+.sidebar-toggle {
+  position: absolute;
+  top: 20px;
+  right: -15px;
+  background-color: #1f2937;
+  border: 1px solid #374151;
+  border-radius: 50%;
+  padding: 8px;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.sidebar-toggle:hover {
+  background-color: #14b8a6;
+  transform: scale(1.1);
+}
+
+/* Sidebar Content */
+.sidebar-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 30px;
+}
+
+/* Profile Section */
+.profile-section {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #374151;
+}
+
+.profile-pic {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #374151;
+}
+
+.profile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-icon {
+  color: #d1d5db;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.profile-name {
+  font-weight: 600;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.profile-role {
+  font-size: 0.8rem;
+  color: #14b8a6;
+  margin: 0;
+}
+
+/* Sidebar Navigation */
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+.sidebar-nav a {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  color: #d1d5db;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.sidebar-nav a span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sidebar-nav a:hover {
+  background-color: #374151;
+  color: #ffffff;
+}
+
+.sidebar-nav .active {
+  background-color: #14b8a6;
+  color: #ffffff;
+}
+
+.sidebar-nav .active:hover {
+  background-color: #0d9488;
+}
+
+/* For collapsed sidebar */
+.sidebar.collapsed .sidebar-nav a {
+  justify-content: center;
+  padding: 12px 0;
+}
+
+.sidebar.collapsed .sidebar-nav a.active {
+  background-color: transparent;
+}
+
+.sidebar.collapsed .sidebar-nav a.active svg {
+  color: #14b8a6;
+}
+
+.sidebar.collapsed .profile-section {
+  justify-content: center;
+}
+
+/* Notification Badge */
+.notification-badge {
+  background-color: #ef4444;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 10px;
+  font-size: 0.7rem;
+  margin-left: auto;
+}
+
+/* Footer Text */
+.footer-text {
+  font-size: 0.75rem;
+  color: #6b7280;
+  margin-top: auto;
+  text-align: center;
+  padding-top: 20px;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
     height: 100vh;
-    transition: width 0.3s ease;
-    position: relative;
+    transform: translateX(-100%);
   }
   
   .sidebar.collapsed {
-    width: 60px; /* Collapsed width */
+    transform: translateX(0);
+    width: 70px;
   }
   
-  /* Sidebar Toggle Button */
   .sidebar-toggle {
-    position: absolute;
-    top: 20px;
-    right: -20px;
-    background-color: #1f2937;
-    border: 1px solid #374151;
-    border-radius: 50%;
-    padding: 8px;
-    cursor: pointer;
-    z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .sidebar-toggle:hover {
-    background-color: #374151;
-  }
-  
-  /* Sidebar Content */
-  .sidebar-content {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  
-  /* Profile Section */
-  .profile-section {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  .profile-pic {
-    width: 50px;
-    height: 50px;
-    background-color: #374151;
-    border-radius: 50%;
-  }
-  
-  .profile-name {
-    font-weight: bold;
-  }
-  
-  .profile-role {
-    font-size: 0.9rem;
-    color: #10b981;
-  }
-  
-  /* Sidebar Navigation */
-  .sidebar-nav {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  .sidebar-nav a {
-    display: flex;
-    align-items: center;
-    gap: 10px; /* Space between icon and text */
-    padding: 10px;
-    border-radius: 5px;
-    text-decoration: none;
-    color: white;
-  }
-  
-  .sidebar-nav a:hover {
-    background-color: #374151;
-  }
-  
-  .sidebar-nav .active {
+    right: -40px;
     background-color: #14b8a6;
+    border-color: #14b8a6;
   }
-  
-  /* Adjust active link styles for collapsed sidebar */
-  .sidebar.collapsed .sidebar-nav a.active {
-    background-color: transparent; /* Remove background color when collapsed */
-    padding: 10px; /* Adjust padding to match collapsed state */
-    justify-content: center; /* Center the icon when collapsed */
-  }
-  
-  /* Ensure the active link icon is visible when collapsed */
-  .sidebar.collapsed .sidebar-nav a.active svg {
-    color: #14b8a6; /* Keep the icon color for active state */
-  }
-  
-  /* Adjust hover styles for collapsed sidebar */
-  .sidebar.collapsed .sidebar-nav a:hover {
-    background-color: transparent; /* Remove background color on hover when collapsed */
-  }
-  
-  .sidebar.collapsed .sidebar-nav a:hover svg {
-    color: #14b8a6; /* Change icon color on hover when collapsed */
-  }
-  
-  /* Notification Badge */
-  .notification-badge {
-    background-color: red;
-    color: white;
-    padding: 2px 8px;
-    border-radius: 10px;
-    font-size: 0.8rem;
-    margin-left: 5px;
-  }
-  
-  /* Footer Text */
-  .footer-text {
-    font-size: 0.8rem;
-    color: gray;
-    margin-top: auto;
-  }
+}
+
+/* Hide scrollbar for cleaner look */
+.sidebar-nav::-webkit-scrollbar {
+  width: 0px;
+}
+
+/* For Firefox */
+.sidebar-nav {
+  scrollbar-width: none;
+}

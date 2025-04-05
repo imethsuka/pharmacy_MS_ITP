@@ -1,44 +1,20 @@
-import React, { useEffect, useState } from "react";
-import { FaSearch, FaSignOutAlt } from "react-icons/fa";
-import "../../styles/Inventory/Reports.css"; // Import the external CSS file
+import React from "react";
+import "../../styles/Inventory/Reports.css";
 import Sidebar from "../../components/Inventory/Sidebar";
-
-
-import logo from '/Sethsiri_Favicon.svg';
+import HeaderStripe from "../../components/HeaderStripe";
 
 const Reports = () => {
   return (
-    <>
-      {/* Top Bar */}
-      <div className="top-bar">
-        <div className="brand-section">
-          <img src={logo} alt="Sethsiri Logo" width="80" />
-          <h2 className="brand-title">Sethsiri Pharmacy</h2>
-        </div>
-        <div className="centered-search-box">
-          <div className="search-box">
-            <FaSearch className="search-icon" />
-            <input type="text" placeholder="Search" />
-          </div>
-        </div>
-        <div className="right-side">
-          <button className="signout-btn">
-            <FaSignOutAlt /> Sign Out
-          </button>
-        </div>
-      </div>
-
-      <div className="dashboard-container">
-        {/* Sidebar */}
+    <div className="dashboard-container">
+      <HeaderStripe />
+      <div className="dashboard-content">
         <Sidebar />
-
-        {/* Main Content */}
         <main className="main-content">
           <h2 className="dashboard-title">Reports</h2>
           <p className="dashboard-subtitle">A detailed list of all reports.</p>
         </main>
       </div>
-    </>
+    </div>
   );
 };
 
