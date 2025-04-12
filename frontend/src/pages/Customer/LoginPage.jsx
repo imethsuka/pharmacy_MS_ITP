@@ -24,16 +24,24 @@ const LoginPage = () => {
             return;
         }
 
-        await login(email, password);
+        console.log("Attempting login with:", { email, password });
 
-        if (email === "admin1@gmail.com" && password === "admin") {
-            navigate("/customerdashboard");
-        } else if (email === "admin2@gmail.com" && password === "admin") {
-            navigate("/inventory/dashboard");
-        }else if (email === "admin3@gmail.com" && password === "admin") {
-            navigate("/prescription/dashboard");
-        } else {
-            navigate("/home");
+        try {
+            await login(email, password);
+            console.log("Login successful");
+
+            if (email === "admin1@gmail.com" && password === "admin") {
+                navigate("/customerdashboard");
+            } else if (email === "admin2@gmail.com" && password === "admin") {
+                navigate("/inventory/dashboard");
+            } else if (email === "admin3@gmail.com" && password === "admin") {
+                navigate("/prescription/dashboard");
+            } else {
+                navigate("/home");
+            }
+        } catch (error) {
+            console.error("Login error:", error);
+            console.error("Error response:", error.response?.data);
         }
     };
 

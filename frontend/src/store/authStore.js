@@ -13,15 +13,15 @@ export const useAuthStore = create((set) => ({
 	isCheckingAuth: true,
 	message: null,
 
-	signup: async (email, password, name,gender,dob,address) => {
+	signup: async (email, password, name, gender, dob, address) => {
 		set({ isLoading: true, error: null });
 		try {
-		  const response = await axios.post(`${API_URL}/signup`, { email, password, name,gender,dob,address });
-		  set({ user: response.data.user, isAuthenticated: true, isLoading: false });
+			const response = await axios.post(`${API_URL}/signup`, { email, password, name, gender, dob, address });
+			set({ user: response.data.user, isAuthenticated: true, isLoading: false });
 		} catch (error) {
-		  set({ error: error.response?.data?.message || "Error signing up", isLoading: false });
+			set({ error: error.response?.data?.message || "Error signing up", isLoading: false });
 		}
-	  },
+	},
 	login: async (email, password) => {
 		set({ isLoading: true, error: null });
 		try {
@@ -48,6 +48,23 @@ export const useAuthStore = create((set) => ({
 			throw error;
 		}
 	},
+
+	updateProfile: async (formData) => {
+		set({ isLoading: true, error: null });
+		try {
+			const response = await axios.put(`${API_URL}/profile/update`, formData, {
+				headers: {
+					'Content-Type': 'multipart/form-data',
+				},
+			});
+			set({ user: response.data.user, isLoading: false });
+			return response.data;
+		} catch (error) {
+			set({ error: error.response?.data?.message || "Error updating profile", isLoading: false });
+			throw error;
+		}
+	},
+
 	verifyEmail: async (code) => {
 		set({ isLoading: true, error: null });
 		try {
@@ -59,6 +76,7 @@ export const useAuthStore = create((set) => ({
 			throw error;
 		}
 	},
+
 	checkAuth: async () => {
 		set({ isCheckingAuth: true, error: null });
 		try {
@@ -69,32 +87,31 @@ export const useAuthStore = create((set) => ({
 		}
 	},
 
+	forgotPassword: async (email) => {
+		set({ isLoading: true, error: null });
+		try {
+			const response = await axios.post(`${API_URL}/forgot-password`,
+				{ email },
+				{
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					withCredentials: false
+				}
+			);
+			set({
+				message: response.data?.message || 'Reset link sent',
+				isLoading: false
+			});
+			return response.data;
+		} catch (error) {
+			const errorMsg = error.response?.data?.message ||
+				'Failed to send reset link. Please try again.';
+			set({ error: errorMsg, isLoading: false });
+			throw error;
+		}
+	},
 
-  forgotPassword: async (email) => {
-    set({ isLoading: true, error: null });
-    try {
-      const response = await axios.post(`${API_URL}/forgot-password`, 
-        { email },
-        {
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          withCredentials: false // Disable if not using cookies
-        }
-      );
-      
-      set({ 
-        message: response.data?.message || 'Reset link sent', 
-        isLoading: false 
-      });
-      return response.data;
-    } catch (error) {
-      const errorMsg = error.response?.data?.message || 
-                     'Failed to send reset link. Please try again.';
-      set({ error: errorMsg, isLoading: false });
-      throw error;
-    }
-  },
 	resetPassword: async (token, password) => {
 		set({ isLoading: true, error: null });
 		try {

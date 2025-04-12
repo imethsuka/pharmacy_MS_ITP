@@ -2,9 +2,13 @@ import React from "react";
 import SearchBar from "./SearchBar";
 import CartIcon from "./CartIcon";
 import { Link } from "react-router-dom"; // Import Link from react-router-dom
+import ProfileDropdown from "./ProfileDropdown";
+import { useAuthStore } from "../store/authStore";
 import "../styles/HeaderStripe.css";
 
 const HeaderStripe = () => {
+  const { isAuthenticated } = useAuthStore();
+
   return (
     <header className="header-container">
       {/* Logo and Site Name */}
@@ -23,12 +27,16 @@ const HeaderStripe = () => {
         </select>
       </div>
 
-      {/* Cart and Sign-in */}
+      {/* Cart and Sign-in/Profile */}
       <div className="actions">
         <CartIcon />
-        <Link to="/signup">
-          <button className="sign-up-button">Sign Up</button>
-        </Link>
+        {isAuthenticated ? (
+          <ProfileDropdown />
+        ) : (
+          <Link to="/signup">
+            <button className="sign-up-button">Sign Up</button>
+          </Link>
+        )}
       </div>
     </header>
   );
