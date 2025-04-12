@@ -7,7 +7,7 @@ import "./EditProfile.css";
 
 const EditProfile = () => {
     const navigate = useNavigate();
-    const { user, updateProfile } = useAuthStore();
+    const { user, updateProfile, isLoading } = useAuthStore();
     const [formData, setFormData] = useState({
         name: "",
         email: "",
@@ -17,6 +17,7 @@ const EditProfile = () => {
         profilePicture: null
     });
     const [previewImage, setPreviewImage] = useState(null);
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     useEffect(() => {
         if (user) {
@@ -58,6 +59,8 @@ const EditProfile = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setIsSubmitting(true);
+
         try {
             const formDataToSend = new FormData();
             formDataToSend.append('name', formData.name);
@@ -65,15 +68,26 @@ const EditProfile = () => {
             formDataToSend.append('gender', formData.gender);
             formDataToSend.append('dob', formData.dob);
             formDataToSend.append('address', formData.address);
+            
             if (formData.profilePicture instanceof File) {
                 formDataToSend.append('profilePicture', formData.profilePicture);
             }
 
-            await updateProfile(formDataToSend);
-            toast.success("Profile updated successfully");
-            navigate("/customerdashboard");
+            const response = await updateProfile(formDataToSend);
+            
+            if (response.success) {
+                toast.success(response.message || "Profile updated successfully");
+                setTimeout(() => {
+                    navigate("/customerdashboard");
+                }, 2000);
+            } else {
+                toast.error(response.message || "Error updating profile");
+            }
         } catch (error) {
-            toast.error(error.response?.data?.message || "Error updating profile");
+            console.error("Error updating profile:", error);
+            toast.error("Error updating profile. Please try again.");
+        } finally {
+            setIsSubmitting(false);
         }
     };
 
@@ -167,14 +181,16 @@ const EditProfile = () => {
                             type="button"
                             onClick={() => navigate("/customerdashboard")}
                             className="cancel-button"
+                            disabled={isSubmitting}
                         >
                             Cancel
                         </button>
                         <button
                             type="submit"
                             className="submit-button"
+                            disabled={isSubmitting}
                         >
-                            Update Profile
+                            {isSubmitting ? "Updating..." : "Update Profile"}
                         </button>
                     </div>
                 </form>

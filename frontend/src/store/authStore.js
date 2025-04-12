@@ -41,11 +41,21 @@ export const useAuthStore = create((set) => ({
 	logout: async () => {
 		set({ isLoading: true, error: null });
 		try {
-			await axios.post(`${API_URL}/logout`);
-			set({ user: null, isAuthenticated: false, error: null, isLoading: false });
+			await axios.post(`${API_URL}/logout`, {}, {
+				withCredentials: true
+			});
+			set({ 
+				user: null, 
+				isAuthenticated: false, 
+				error: null, 
+				isLoading: false,
+				message: null
+			});
+			localStorage.removeItem('token');
+			return { success: true, message: "Logged out successfully" };
 		} catch (error) {
 			set({ error: "Error logging out", isLoading: false });
-			throw error;
+			return { success: false, message: error.response?.data?.message || "Error logging out" };
 		}
 	},
 	verifyEmail: async (code) => {
@@ -111,7 +121,7 @@ export const useAuthStore = create((set) => ({
 	updateProfile: async (formData) => {
 		set({ isLoading: true, error: null });
 		try {
-			const response = await axios.put(`${API_URL}/profile/update`, formData, {
+			const response = await axios.put(`${API_URL}/update-profile`, formData, {
 				headers: {
 					'Content-Type': 'multipart/form-data'
 				}

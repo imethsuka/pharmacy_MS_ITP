@@ -198,7 +198,7 @@ export const updateProfile = async (req, res) => {
         // Find the user
         const user = await User.findById(userId);
         if (!user) {
-            return res.status(404).json({ message: "User not found" });
+            return res.status(404).json({ success: false, message: "User not found" });
         }
 
         // Update user fields
@@ -223,6 +223,7 @@ export const updateProfile = async (req, res) => {
         await user.save();
 
         res.status(200).json({
+            success: true,
             message: "Profile updated successfully",
             user: {
                 _id: user._id,
@@ -236,7 +237,11 @@ export const updateProfile = async (req, res) => {
         });
     } catch (error) {
         console.error("Error updating profile:", error);
-        res.status(500).json({ message: "Error updating profile", error: error.message });
+        res.status(500).json({ 
+            success: false, 
+            message: "Error updating profile", 
+            error: error.message 
+        });
     }
 };
 

@@ -1,16 +1,23 @@
 import React, { useState } from 'react';
 import { FaUserCircle, FaEdit, FaSignOutAlt } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
+import { useAuthStore } from '../store/authStore';
 import '../styles/ProfileDropdown.css';
 
 const ProfileDropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
+  const { logout } = useAuthStore();
 
-  const handleLogout = () => {
-    localStorage.removeItem('authToken');
-    localStorage.removeItem('user');
-    navigate('/');
+  const handleLogout = async () => {
+    try {
+      const result = await logout();
+      if (result.success) {
+        navigate('/login');
+      }
+    } catch (error) {
+      console.error('Logout error:', error);
+    }
   };
 
   const handleEditProfile = () => {

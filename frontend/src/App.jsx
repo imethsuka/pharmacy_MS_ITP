@@ -44,20 +44,15 @@ import { useEffect } from "react";
 
 import './App.css';
 import {RouterProvider, createBrowserRouter} from "react-router-dom";
-
-
+import EditProfile from "./pages/Customer/EditProfile";
 
 //cutomer authentication
 // protect routes that require authentication
 const ProtectedRoute = ({ children }) => {
-  const { isAuthenticated, user } = useAuthStore();
+  const { isAuthenticated } = useAuthStore();
 
   if (!isAuthenticated) {
       return <Navigate to='/login' replace />;
-  }
-
-  if (!user.isVerified) {
-      return <Navigate to='/verify-email' replace />;
   }
 
   return children;
@@ -77,6 +72,12 @@ const RedirectAuthenticatedUser = ({ children }) => {
 
 
 const App = () => {
+  const { checkAuth } = useAuthStore();
+
+  useEffect(() => {
+    checkAuth();
+  }, [checkAuth]);
+
   return (
     <Routes>
       <Route path='/' element={<Home />} />
@@ -117,6 +118,7 @@ const App = () => {
     <Route path="/Customer/deleteUser/:id" element={<DeleteUser />} />
       <Route path='/forgot-password' element={<RedirectAuthenticatedUser><ForgotPasswordPage /></RedirectAuthenticatedUser>} />
       <Route path='/reset-password' element={<ResetPasswordPage />} />
+      <Route path='/edit-profile' element={<ProtectedRoute><EditProfile /></ProtectedRoute>} />
       <Route path='*' element={<Navigate to='/' />} />
       <Route path='/CDashboard' element={<CDashboard />} />
       <Route path="/reset-password/:token" element={<ResetPasswordPage />} />
