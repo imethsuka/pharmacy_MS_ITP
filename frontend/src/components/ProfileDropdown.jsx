@@ -13,7 +13,7 @@ const ProfileDropdown = () => {
     try {
       const result = await logout();
       if (result.success) {
-        navigate('/login');
+        navigate('/');
       }
     } catch (error) {
       console.error('Logout error:', error);

@@ -78,7 +78,7 @@ const EditProfile = () => {
             if (response.success) {
                 toast.success(response.message || "Profile updated successfully");
                 setTimeout(() => {
-                    navigate("/customerdashboard");
+                    navigate("/");
                 }, 2000);
             } else {
                 toast.error(response.message || "Error updating profile");
