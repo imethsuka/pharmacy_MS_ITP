@@ -4,6 +4,7 @@ import nodemailer from "nodemailer";
 import generateTokenAndSetCookie from "../utils/generateTokenAndSetCookie.js";
 import User from "../models/user.model.js";
 import sendMail from "../helpers/sendMail.js";
+import cloudinary from "cloudinary";
 // Configure Nodemailer transporter
 const transporter = nodemailer.createTransport({
     service: "gmail",
@@ -189,9 +190,55 @@ export const resetPassword = async (req, res) => {
     }
 };
 
-     
-  
-  
+export const updateProfile = async (req, res) => {
+    try {
+        const { name, email, gender, dob, address } = req.body;
+        const userId = req.user._id;
+
+        // Find the user
+        const user = await User.findById(userId);
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        // Update user fields
+        user.name = name || user.name;
+        user.email = email || user.email;
+        user.gender = gender || user.gender;
+        user.dob = dob || user.dob;
+        user.address = address || user.address;
+
+        // Handle profile picture if uploaded
+        if (req.file) {
+            // Upload to Cloudinary
+            const result = await cloudinary.uploader.upload(req.file.path, {
+                folder: 'profile_pictures',
+                width: 150,
+                height: 150,
+                crop: 'fill'
+            });
+            user.profilePicture = result.secure_url;
+        }
+
+        await user.save();
+
+        res.status(200).json({
+            message: "Profile updated successfully",
+            user: {
+                _id: user._id,
+                name: user.name,
+                email: user.email,
+                gender: user.gender,
+                dob: user.dob,
+                address: user.address,
+                profilePicture: user.profilePicture
+            }
+        });
+    } catch (error) {
+        console.error("Error updating profile:", error);
+        res.status(500).json({ message: "Error updating profile", error: error.message });
+    }
+};
 
 export const checkAuth = async (req, res) => {
     try {
@@ -204,5 +251,24 @@ export const checkAuth = async (req, res) => {
     } catch (error) {
         console.log("Error in checkAuth ", error);
         res.status(400).json({ success: false, message: error.message });
+    }
+};
+
+export const verifyEmail = async (req, res) => {
+    const { token } = req.params;
+    try {
+        const user = await User.findOne({ emailVerificationToken: token });
+        if (!user) {
+            return res.status(400).json({ success: false, message: "Invalid verification token" });
+        }
+
+        user.isEmailVerified = true;
+        user.emailVerificationToken = undefined;
+        await user.save();
+
+        res.status(200).json({ success: true, message: "Email verified successfully" });
+    } catch (error) {
+        console.error("Error in verifyEmail: ", error);
+        res.status(500).json({ success: false, message: "Email verification failed" });
     }
 };

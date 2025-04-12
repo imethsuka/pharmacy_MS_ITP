@@ -1,53 +1,56 @@
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
-import { useAuthStore } from '../../store/authStore';
-import { FaUserCircle, FaCamera } from 'react-icons/fa';
-import '../../styles/Customer/EditProfile.css';
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuthStore } from "../../store/authStore";
+import { toast } from "react-hot-toast";
+import axios from "axios";
+import "./EditProfile.css";
 
 const EditProfile = () => {
     const navigate = useNavigate();
     const { user, updateProfile } = useAuthStore();
     const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        gender: '',
-        dob: '',
-        address: '',
+        name: "",
+        email: "",
+        gender: "",
+        dob: "",
+        address: "",
+        profilePicture: null
     });
-    const [profilePicture, setProfilePicture] = useState(null);
-    const [previewUrl, setPreviewUrl] = useState(null);
-    const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState(null);
+    const [previewImage, setPreviewImage] = useState(null);
 
     useEffect(() => {
         if (user) {
             setFormData({
-                name: user.name || '',
-                email: user.email || '',
-                gender: user.gender || '',
-                dob: user.dob ? new Date(user.dob).toISOString().split('T')[0] : '',
-                address: user.address || '',
+                name: user.name || "",
+                email: user.email || "",
+                gender: user.gender || "",
+                dob: user.dob ? new Date(user.dob).toISOString().split('T')[0] : "",
+                address: user.address || "",
+                profilePicture: user.profilePicture || null
             });
-            setPreviewUrl(user.profilePicture || null);
+            setPreviewImage(user.profilePicture);
         }
     }, [user]);
 
-    const handleInputChange = (e) => {
+    const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData(prev => ({
+        setFormData((prev) => ({
             ...prev,
-            [name]: value
+            [name]: value,
         }));
     };
 
     const handleImageChange = (e) => {
         const file = e.target.files[0];
         if (file) {
-            setProfilePicture(file);
+            setFormData((prev) => ({
+                ...prev,
+                profilePicture: file
+            }));
+            // Create preview URL
             const reader = new FileReader();
             reader.onloadend = () => {
-                setPreviewUrl(reader.result);
+                setPreviewImage(reader.result);
             };
             reader.readAsDataURL(file);
         }
@@ -55,91 +58,80 @@ const EditProfile = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setIsLoading(true);
-        setError(null);
-
         try {
             const formDataToSend = new FormData();
-            Object.keys(formData).forEach(key => {
-                formDataToSend.append(key, formData[key]);
-            });
-            if (profilePicture) {
-                formDataToSend.append('profilePicture', profilePicture);
+            formDataToSend.append('name', formData.name);
+            formDataToSend.append('email', formData.email);
+            formDataToSend.append('gender', formData.gender);
+            formDataToSend.append('dob', formData.dob);
+            formDataToSend.append('address', formData.address);
+            if (formData.profilePicture instanceof File) {
+                formDataToSend.append('profilePicture', formData.profilePicture);
             }
 
             await updateProfile(formDataToSend);
-            navigate('/profile');
+            toast.success("Profile updated successfully");
+            navigate("/customerdashboard");
         } catch (error) {
-            setError(error.message || 'Failed to update profile');
-        } finally {
-            setIsLoading(false);
+            toast.error(error.response?.data?.message || "Error updating profile");
         }
     };
 
     return (
         <div className="edit-profile-container">
-            <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="edit-profile-box"
-            >
-                <div className="edit-profile-header">
-                    <h2>Edit Profile</h2>
-                </div>
-
-                <form onSubmit={handleSubmit} className="edit-profile-form">
-                    <div className="profile-picture-section">
+            <div className="edit-profile-form">
+                <h2 className="edit-profile-title">Edit Profile</h2>
+                <form onSubmit={handleSubmit}>
+                    <div className="form-group">
+                        <label className="form-label">Profile Picture</label>
                         <div className="profile-picture-container">
-                            {previewUrl ? (
-                                <img src={previewUrl} alt="Profile" className="profile-picture" />
-                            ) : (
-                                <FaUserCircle className="default-profile-picture" />
-                            )}
-                            <label className="change-picture-label">
-                                <FaCamera className="camera-icon" />
-                                <input
-                                    type="file"
-                                    accept="image/*"
-                                    onChange={handleImageChange}
-                                    className="file-input"
+                            {previewImage && (
+                                <img
+                                    src={previewImage}
+                                    alt="Profile preview"
+                                    className="profile-picture-preview"
                                 />
-                            </label>
+                            )}
+                            <input
+                                type="file"
+                                accept="image/*"
+                                onChange={handleImageChange}
+                                className="file-input"
+                            />
                         </div>
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="name">Name</label>
+                        <label className="form-label">Name</label>
                         <input
                             type="text"
-                            id="name"
                             name="name"
                             value={formData.name}
-                            onChange={handleInputChange}
+                            onChange={handleChange}
+                            className="form-input"
                             required
                         />
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="email">Email</label>
+                        <label className="form-label">Email</label>
                         <input
                             type="email"
-                            id="email"
                             name="email"
                             value={formData.email}
-                            onChange={handleInputChange}
+                            onChange={handleChange}
+                            className="form-input"
                             required
-                            disabled
                         />
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="gender">Gender</label>
+                        <label className="form-label">Gender</label>
                         <select
-                            id="gender"
                             name="gender"
                             value={formData.gender}
-                            onChange={handleInputChange}
+                            onChange={handleChange}
+                            className="form-input"
                         >
                             <option value="">Select Gender</option>
                             <option value="male">Male</option>
@@ -149,40 +141,44 @@ const EditProfile = () => {
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="dob">Date of Birth</label>
+                        <label className="form-label">Date of Birth</label>
                         <input
                             type="date"
-                            id="dob"
                             name="dob"
                             value={formData.dob}
-                            onChange={handleInputChange}
+                            onChange={handleChange}
+                            className="form-input"
                         />
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="address">Address</label>
+                        <label className="form-label">Address</label>
                         <textarea
-                            id="address"
                             name="address"
                             value={formData.address}
-                            onChange={handleInputChange}
+                            onChange={handleChange}
                             rows="3"
+                            className="form-textarea"
                         />
                     </div>
 
-                    {error && <div className="error-message">{error}</div>}
-
-                    <motion.button
-                        type="submit"
-                        className="submit-button"
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                        disabled={isLoading}
-                    >
-                        {isLoading ? 'Saving...' : 'Save Changes'}
-                    </motion.button>
+                    <div className="button-group">
+                        <button
+                            type="button"
+                            onClick={() => navigate("/customerdashboard")}
+                            className="cancel-button"
+                        >
+                            Cancel
+                        </button>
+                        <button
+                            type="submit"
+                            className="submit-button"
+                        >
+                            Update Profile
+                        </button>
+                    </div>
                 </form>
-            </motion.div>
+            </div>
         </div>
     );
 };
