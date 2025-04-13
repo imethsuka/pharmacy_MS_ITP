@@ -1,18 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import HeaderStripe from "../components/HeaderStripe";
 import NavBar from "../components/home/NavBar";
 import Footer from "../components/Footer";
+import styles from "../styles/Home.module.css";
 
 const Categories = () => {
   return (
-    <div>
+    <div className={styles.pageContainer}>
       <HeaderStripe />
 
-      <div className="floating-navbar">
+      <div className={styles.fixedHeader}>
         <NavBar />
       </div>
 
-      <div className="content-wrapper">
+      <div className={styles.contentWrapper}>
+        {/* Categories content will go here */}
         <Footer />
       </div>
     </div>
