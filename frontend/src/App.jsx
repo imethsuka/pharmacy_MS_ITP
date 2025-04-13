@@ -6,7 +6,6 @@ import './App.css';
 
 // Home page
 import Home from './pages/Home';
-import HomeOld from './pages/HomeOld';
 import Categories from './pages/Categories';
 
 // Import Delivery Pages
