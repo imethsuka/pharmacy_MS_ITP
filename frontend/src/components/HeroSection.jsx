@@ -9,7 +9,8 @@ const HeroSection = () => {
       <div className={styles.heroContent}>
         <div className={styles.heroTextContainer}>
           <h1 className={styles.heroTitle}>
-            Your Health Is Our <span className={styles.highlight}>Priority</span>
+            Your Health Is Our{" "}
+            <span className={styles.highlight}>Priority</span>
           </h1>
           <p className={styles.heroSubtitle}>
             Quality medicines and healthcare products delivered to your doorstep
@@ -29,9 +30,6 @@ const HeroSection = () => {
             </li>
           </ul>
           <div className={styles.ctaContainer}>
-            <Link to="/order" className={styles.ctaButton}>
-              Shop Medicines
-            </Link>
             <Link to="/prescription/upload" className={styles.secondaryCta}>
               Upload Prescription
             </Link>

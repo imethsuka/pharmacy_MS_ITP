@@ -1,15 +1,15 @@
-/* HeaderStripe.module.css - Modern header styling */
+/* HeaderStripe.module.css - Modern header styling with CSS variables */
 
 .headerContainer {
   width: 100%;
   max-width: 100vw;
-  background: linear-gradient(135deg, #007bff, #0056b3);
-  color: white;
+  background: var(--header-bg);
+  color: var(--header-text);
   padding: 1rem 1.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-sm);
   position: relative;
   z-index: 1002; /* Higher z-index to stay above navbar */
   box-sizing: border-box;
@@ -27,7 +27,7 @@
   display: flex;
   align-items: center;
   text-decoration: none;
-  color: white;
+  color: var(--primary-700);
 }
 
 .logo {
@@ -40,6 +40,7 @@
   font-weight: 700;
   font-size: 1.4rem;
   letter-spacing: 0.5px;
+  color: var(--primary-700);
 }
 
 .searchSection {
@@ -48,30 +49,30 @@
   margin: 0 2rem;
   display: flex;
   height: 40px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-  border-radius: 4px;
+  box-shadow: var(--shadow-sm);
+  border-radius: var(--radius-md);
   overflow: hidden;
   box-sizing: border-box;
 }
 
 .categoryDropdown {
-  background-color: #f0f8ff;
-  color: #007bff;
+  background-color: var(--neutral-50);
+  color: var(--primary-600);
   border: none;
-  border-radius: 0 4px 4px 0;
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
   padding: 0 1rem;
   font-weight: 500;
   cursor: pointer;
   height: 100%;
   font-size: 0.9rem;
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--neutral-100);
   border-left: none;
   outline: none;
   transition: background-color 0.2s;
 }
 
 .categoryDropdown:hover, .categoryDropdown:focus {
-  background-color: #e6f0ff;
+  background-color: var(--primary-100);
 }
 
 .actions {
@@ -83,22 +84,24 @@
 }
 
 .signInButton {
-  background-color: white;
-  color: #007bff;
+  background-color: var(--secondary-500);
+  color: white;
   border: none;
-  border-radius: 4px;
-  padding: 0.5rem 1.25rem;
+  border-radius: var(--radius-md);
+  padding: 0.6rem 1.5rem;
   font-weight: 600;
   transition: all 0.2s ease;
   text-decoration: none;
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  box-shadow: var(--shadow-md);
 }
 
 .signInButton:hover {
-  background-color: #f0f8ff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background-color: var(--secondary-400);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
 }
 
 /* Profile section */
@@ -112,11 +115,11 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  background-color: rgba(255, 255, 255, 0.2);
-  border: none;
-  border-radius: 4px;
-  padding: 0.5rem 1rem;
+  background-color: var(--primary-500);
   color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 0.5rem 1rem;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s;
@@ -124,10 +127,13 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  box-shadow: var(--shadow-sm);
 }
 
 .profileButton:hover {
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: var(--primary-600);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 .profileIcon {
@@ -146,15 +152,15 @@
   top: calc(var(--header-height, 60px) + 10px);
   right: 20px;
   background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  min-width: 180px;
-  z-index: 1005;
-  overflow: visible;
-  animation: dropdownFadeIn 0.2s ease-out;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  width: 200px;
+  z-index: 1003;
+  overflow: hidden;
+  animation: fadeIn 0.2s ease;
 }
 
-@keyframes dropdownFadeIn {
+@keyframes fadeIn {
   from {
     opacity: 0;
     transform: translateY(-10px);
@@ -168,14 +174,15 @@
 .dropdownItem {
   display: block;
   padding: 0.75rem 1rem;
-  color: #334155;
+  color: var(--text-primary);
   text-decoration: none;
+  font-size: 0.95rem;
   transition: background-color 0.2s;
 }
 
 .dropdownItem:hover {
-  background-color: #f0f8ff;
-  color: #007bff;
+  background-color: var(--neutral-50);
+  color: var(--primary-600);
 }
 
 .signOutButton {
@@ -186,9 +193,9 @@
   text-align: left;
   background: none;
   border: none;
-  border-top: 1px solid #e2e8f0;
+  border-top: 1px solid var(--neutral-100);
   padding: 0.75rem 1rem;
-  color: #ef4444;
+  color: var(--error);
   cursor: pointer;
   font-size: 0.9rem;
   transition: background-color 0.2s;

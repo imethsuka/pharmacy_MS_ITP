@@ -1,4 +1,5 @@
-/* NavBar Container */
+/* NavBar.module.css - Converted from NavBar.css */
+
 .navbar {
     position: fixed;
     bottom: 20px;
@@ -12,13 +13,12 @@
     justify-content: center;
     border-radius: 30px;
     z-index: 1000;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    box-shadow: var(--shadow-md);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-/* Nav List */
-.nav-list {
+.navList {
     list-style: none;
     display: flex;
     gap: 25px;
@@ -27,22 +27,20 @@
     font-family: 'Segoe UI', sans-serif;
 }
 
-/* Nav Item */
-.nav-item {
+.navItem {
     display: flex;
     align-items: center;
     justify-content: center;
     transition: transform 0.2s ease;
 }
 
-.nav-item:hover {
+.navItem:hover {
     transform: translateY(-5px);
 }
 
-/* Nav Link (Inactive State) */
-.nav-link {
+.navLink {
     text-decoration: none;
-    color: #333333;
+    color: var(--text-primary);
     padding: 10px 20px;
     border-radius: 20px;
     transition: all 0.3s ease;
@@ -51,21 +49,19 @@
     position: relative;
 }
 
-/* Nav Link Hover State */
-.nav-link:hover {
-    background-color: rgba(0, 123, 255, 0.1);
-    color: #007bff;
+.navLink:hover {
+    background-color: var(--primary-light);
+    color: var(--primary);
 }
 
-/* Nav Link Active State */
-.nav-link.active {
-    background-color: #007bff;
-    color: #ffffff;
-    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+.active {
+    background-color: var(--primary);
+    color: var(--text-light);
+    box-shadow: 0 5px 15px rgba(0, 166, 142, 0.3);
 }
 
 /* Optional: Add a smooth underline effect for inactive links */
-.nav-link:not(.active)::after {
+.navLink:not(.active)::after {
     content: '';
     display: block;
     position: absolute;
@@ -74,12 +70,12 @@
     transform: translateX(-50%);
     width: 0;
     height: 3px;
-    background: #007bff;
+    background: var(--primary);
     transition: width 0.3s ease;
     border-radius: 3px;
 }
 
-.nav-link:not(.active):hover::after {
+.navLink:not(.active):hover::after {
     width: 30px;
 }
 
@@ -103,11 +99,11 @@
         bottom: 15px;
     }
     
-    .nav-list {
+    .navList {
         gap: 15px;
     }
     
-    .nav-link {
+    .navLink {
         padding: 8px 15px;
         font-size: 0.9rem;
     }
@@ -119,11 +115,11 @@
         bottom: 10px;
     }
     
-    .nav-list {
+    .navList {
         gap: 10px;
     }
     
-    .nav-link {
+    .navLink {
         padding: 6px 12px;
         font-size: 0.85rem;
     }

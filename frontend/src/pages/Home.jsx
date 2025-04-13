@@ -115,7 +115,7 @@ const Home = () => {
     <div className={styles.pageContainer}>
       <HeaderStripe />
 
-      <div className={styles.floatingNavbar}>
+      <div className={styles.fixedHeader}>
         <NavBar />
       </div>
 
@@ -123,7 +123,7 @@ const Home = () => {
         <HeroSection />
 
         <section className={styles.categoriesSection}>
-          <h2 className={styles.sectionTitle}>Health Categories</h2>
+          {/* <h2 className={styles.sectionTitle}>Health Categories</h2> */}
           <div className={styles.circleCardContainer}>
             <CircleCard
               imageUrl="./src/assets/HomePage_assets/Women-Face-Care.webp"

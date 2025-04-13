@@ -38,7 +38,7 @@
   bottom: 0;
   width: 40px;
   height: 3px;
-  background: linear-gradient(to right, #14b8a6, #0d9488);
+  background: linear-gradient(to right, #12b09f, #0e8a7c);
   border-radius: 2px;
 }
 
@@ -66,7 +66,7 @@
 }
 
 .socialIcon:hover {
-  background-color: #0d9488;
+  background-color: #12b09f;
   transform: translateY(-3px);
 }
 
@@ -89,7 +89,7 @@
 }
 
 .footerLink:hover {
-  color: #14b8a6;
+  color: #12b09f;
   transform: translateX(5px);
 }
 
@@ -108,7 +108,7 @@
 
 .contactIcon {
   margin-right: 0.75rem;
-  color: #14b8a6;
+  color: #12b09f;
   min-width: 20px;
 }
 
@@ -129,7 +129,7 @@
 }
 
 .staffLink:hover {
-  color: #14b8a6;
+  color: #12b09f;
 }
 
 .signOutBtn {

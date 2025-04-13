@@ -1,33 +1,33 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import '../../styles/NavBar.css';
+import styles from '../../styles/NavBar.module.css';
 
 const NavBar = () => {
     const location = useLocation();
 
     return (
-        <nav className="navbar">
-            <ul className="nav-list">
-                <li className="nav-item">
+        <nav className={styles.navbar}>
+            <ul className={styles.navList}>
+                <li className={styles.navItem}>
                     <a 
                         href="/" 
-                        className={`nav-link ${location.pathname === '/' ? 'active' : ''}`}
+                        className={`${styles.navLink} ${location.pathname === '/' ? styles.active : ''}`}
                     >
                         Home
                     </a>
                 </li>
-                <li className="nav-item">
+                <li className={styles.navItem}>
                     <a 
                         href="/Categories" 
-                        className={`nav-link ${location.pathname === '/Categories' ? 'active' : ''}`}
+                        className={`${styles.navLink} ${location.pathname === '/Categories' ? styles.active : ''}`}
                     >
                         Categories
                     </a>
                 </li>
-                <li className="nav-item">
+                <li className={styles.navItem}>
                     <a 
                         href="#contact" 
-                        className={`nav-link ${location.pathname === '#contact' ? 'active' : ''}`}
+                        className={`${styles.navLink} ${location.pathname === '#contact' ? styles.active : ''}`}
                     >
                         About Us
                     </a>

@@ -1,11 +1,10 @@
 .cart-icon {
     cursor: pointer;
-    color: #666;
+    color: var(--text-secondary);
     font-size: 22px;
     transition: color 0.3s ease;
   }
   
   .cart-icon:hover {
-    color: #007bff;
+    color: var(--primary);
   }
-  

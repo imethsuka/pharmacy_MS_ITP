@@ -1,4 +1,4 @@
-/* Home.module.css - Modern Pharmacy Home Styling */
+/* Home.module.css - Modern Pharmacy Home Styling with CSS variables */
 
 body {
   margin: 0;
@@ -17,14 +17,23 @@ html {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: #f8fafc;
-  color: #334155;
+  background-color: var(--body-bg);
+  color: var(--text-primary);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   width: 100%;
   margin: 0;
   padding: 0;
-  /* overflow-x: hidden; Prevent horizontal scrolling */
   box-sizing: border-box;
+  position: relative; /* Add this to establish positioning context */
+}
+
+/* Updated fixed header structure */
+.fixedHeader {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1002;
+  background-color: white;
 }
 
 .contentWrapper {
@@ -33,14 +42,16 @@ html {
   max-width: 100%;
   padding: 0;
   margin: 0;
-  overflow-x: hidden; /* Prevent horizontal scrolling */
+  overflow-x: hidden;
   box-sizing: border-box;
+  padding-top: 0; /* Remove any top padding if present */
 }
 
+/* Updated floating navbar to ensure it sticks to the top */
 .floatingNavbar {
   position: sticky;
   top: 0;
-  z-index: 1001; /* Lower than header but higher than other content */
+  z-index: 1001;
   background-color: white;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
   border-bottom: 1px solid rgba(226, 232, 240, 0.8);
@@ -51,16 +62,16 @@ html {
 
 /* Category section styling */
 .categoriesSection {
-  margin: 3rem 0;
-  width: 100%;
-  max-width: 100%;
+  margin: 4rem auto 3rem;
+  width: 90%;
+  max-width: 1400px;
   box-sizing: border-box;
 }
 
 .sectionTitle {
   font-size: 1.75rem;
   font-weight: 600;
-  color: #007bff;
+  color: var(--primary-600);
   margin-bottom: 1.5rem;
   text-align: center;
   position: relative;
@@ -75,32 +86,35 @@ html {
   transform: translateX(-50%);
   width: 60px;
   height: 3px;
-  background: linear-gradient(to right, #0056b3, #007bff);
+  background: linear-gradient(to right, var(--primary-500), var(--primary-700));
   border-radius: 3px;
 }
 
 .circleCardContainer {
   display: flex;
   justify-content: center;
-  gap: 2rem;
+  gap: 2.5rem;
   flex-wrap: wrap;
   padding: 1.5rem 0;
 }
 
 /* Product listing section */
 .productSection {
-  margin: 4rem 0;
-  padding: 2rem;
+  margin: 4rem auto;
+  padding: 2.5rem;
   background-color: white;
-  border-radius: 16px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.03);
-  overflow-x: hidden; /* Prevent horizontal scrolling */
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  overflow-x: hidden;
+  width: 90%;
+  max-width: 1400px;
 }
 
 .productGrid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* Always show 4 cards per row */
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 1.5rem;
+  margin-top: 2rem;
 }
 
 /* Loading and error states */
@@ -114,7 +128,7 @@ html {
 
 .loadingText {
   margin-top: 1rem;
-  color: #64748b;
+  color: var(--text-tertiary);
   font-size: 0.875rem;
 }
 
@@ -124,39 +138,41 @@ html {
 }
 
 .errorMessage {
-  color: #dc2626;
+  color: var(--error);
   margin-bottom: 1rem;
 }
 
 .retryButton {
-  background-color: #007bff;
+  background-color: var(--primary-500);
   color: white;
   padding: 0.5rem 1.5rem;
   border: none;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   font-weight: 500;
   cursor: pointer;
   transition: background-color 0.2s;
 }
 
 .retryButton:hover {
-  background-color: #0056b3;
+  background-color: var(--primary-600);
 }
 
 .noProducts {
   text-align: center;
-  color: #64748b;
+  color: var(--text-tertiary);
   padding: 2rem;
   grid-column: 1 / -1;
 }
 
 /* BMI Calculator section */
 .bmiSection {
-  margin: 3rem 0;
-  padding: 2rem;
-  background: linear-gradient(145deg, #e0f2fe, #f0f8ff);
-  border-radius: 16px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.03);
+  margin: 3rem auto;
+  padding: 2.5rem;
+  width: 90%;
+  max-width: 1400px;
+  background: linear-gradient(145deg, var(--primary-100), var(--neutral-50));
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
 }
 
 .bmiSectionInner {
@@ -166,64 +182,72 @@ html {
 
 /* Health Tips Section */
 .healthTipsSection {
-  margin: 3rem 0;
-  padding: 2rem;
+  margin: 3rem auto;
+  padding: 2.5rem;
   background-color: white;
-  border-radius: 16px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.03);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  width: 90%;
+  max-width: 1400px;
 }
 
 .tipsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 1.5rem;
+  margin-top: 2rem;
 }
 
 .tipCard {
   padding: 1.5rem;
-  border-radius: 12px;
-  background-color: #f8fafc;
-  border-left: 4px solid #007bff;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: var(--radius-md);
+  background-color: var(--neutral-50);
+  border-left: 4px solid var(--primary-500);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .tipCard:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--shadow-md);
 }
 
 .tipTitle {
+  font-size: 1.1rem;
   font-weight: 600;
-  font-size: 1.125rem;
   margin-bottom: 0.75rem;
-  color: #007bff;
+  color: var(--primary-600);
 }
 
 .tipContent {
-  color: #334155;
+  color: var(--text-secondary);
   line-height: 1.6;
 }
 
-/* Responsive design */
-@media (max-width: 1200px) {
-  .productGrid {
-    grid-template-columns: repeat(3, 1fr); /* 3 cards per row on medium screens */
-  }
-}
-
-@media (max-width: 992px) {
-  .productGrid {
-    grid-template-columns: repeat(2, 1fr); /* 2 cards per row on small screens */
-  }
-}
-
+/* Responsive adjustments */
 @media (max-width: 768px) {
-  .circleCardContainer {
-    gap: 1rem;
+  .categoriesSection, 
+  .productSection, 
+  .bmiSection, 
+  .healthTipsSection {
+    width: 95%;
+    padding: 1.5rem;
   }
   
   .productGrid {
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  
+  .circleCardContainer {
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .productGrid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 0.75rem;
   }
   
   .sectionTitle {
@@ -232,17 +256,5 @@ html {
   
   .tipsGrid {
     grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 480px) {
-  .productSection,
-  .bmiSection,
-  .healthTipsSection {
-    padding: 1.5rem 1rem;
-  }
-  
-  .productGrid {
-    grid-template-columns: 1fr; /* 1 card per row on very small screens */
   }
 }

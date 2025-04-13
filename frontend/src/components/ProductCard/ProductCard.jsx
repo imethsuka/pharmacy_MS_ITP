@@ -1,5 +1,5 @@
 import React from "react";
-import { HiOutlineChevronRight, HiShoppingCart, HiInformationCircle } from "react-icons/hi";
+import { HiOutlineChevronRight, HiShoppingCart, HiOutlineInformationCircle } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
 import styles from "./ProductCard.module.css";
 
@@ -20,8 +20,16 @@ const ProductCard = ({ product, image, name, price, requiresPrescription, onAddT
     requiresPrescription
   } : product;
 
-  // Handle navigation to product detail page
+  // Handle entire card click for showing popup
   const handleCardClick = () => {
+    if (onMoreInfo) {
+      onMoreInfo(productData);
+    }
+  };
+
+  // Handle navigation to product detail page
+  const handleNavigateToProduct = (e) => {
+    e.stopPropagation(); // Prevent triggering the card click
     // Try multiple ID properties with fallbacks
     let id;
     
@@ -44,15 +52,6 @@ const ProductCard = ({ product, image, name, price, requiresPrescription, onAddT
     }
   };
 
-  const handleMoreInfoClick = (e) => {
-    e.stopPropagation();
-    if (isLegacyProps && onMoreInfo) {
-      onMoreInfo(e);
-      return;
-    }
-    onMoreInfo(productData);
-  };
-
   const handleAddToCartClick = (e) => {
     e.stopPropagation();
     if (onAddToCart) {
@@ -67,7 +66,7 @@ const ProductCard = ({ product, image, name, price, requiresPrescription, onAddT
 
   return (
     <div className={styles.productCard}>
-      <div className={styles.productImageContainer} onClick={handleCardClick}>
+      <div className={styles.productImageContainer}>
         <img src={displayImage} alt={displayName} className={styles.productImage} />
         {productData?.requiresPrescription && (
           <span className={styles.prescriptionBadge}>Rx</span>
@@ -86,15 +85,19 @@ const ProductCard = ({ product, image, name, price, requiresPrescription, onAddT
           )}
         </div>
         
+        {/* Add "more info >>" link */}
+        <div className={styles.moreInfo}>
+          <a onClick={handleNavigateToProduct} className={styles.moreInfoLink}>
+            more info <HiOutlineChevronRight style={{ marginLeft: '3px' }} />
+          </a>
+        </div>
+        
         <div className={styles.productBottom}>
           <span className={styles.productPrice}>Rs. {displayPrice}</span>
           <div className={styles.productActions}>
             <button className={styles.addToCartBtn} onClick={handleAddToCartClick}>
               <HiShoppingCart />
-              <span>Add</span>
-            </button>
-            <button className={styles.moreInfoBtn} onClick={handleMoreInfoClick}>
-              <HiInformationCircle />
+              <span>Add to Cart</span>
             </button>
           </div>
         </div>
