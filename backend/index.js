@@ -10,6 +10,7 @@ import booksRoute from './routes/booksRoute.js';
 import authRoutes from "./routes/auth.routes.js";
 import inventoryRoute from './routes/inventoryRoute.js';
 import prescriptionRoutes from './routes/prescriptionRoutes.js'; // Import prescriptionRoutes
+import reorderRoute from './routes/reorderRoute.js'; // Import reorderRoute
 
 import driverRoute from './routes/driverRoute.js' 
 
@@ -103,7 +104,7 @@ app.delete("/deleteUser/:id", (req, res) => {
 // >>>>>>> G_Branch_Beta
 
 app.use('/drivers',driverRoute);
-
+app.use('/api/reorders', reorderRoute); // Use reorderRoute
 
 mongoose
   .connect(mongoDBURL)

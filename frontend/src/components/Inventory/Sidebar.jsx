@@ -1,29 +1,49 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   FaUserCircle,
   FaBars,
-  FaTachometerAlt, // Dashboard icon
-  FaList, // Medicines List icon
-  FaLayerGroup, // Medicines Group icon
-  FaChartLine, // Reports icon
-  FaBell, // Notifications icon
+  FaTachometerAlt,
+  FaList,
+  FaChartLine,
+  FaBell,
+  FaLayerGroup,
 } from "react-icons/fa";
 import { Link, useLocation } from "react-router-dom";
+import axios from "axios";
 import "../../styles/Inventory/Sidebar.css";
+import NotificationBadge from "./NotificationBadge";
 
 const Sidebar = () => {
-  const location = useLocation(); // Get the current location
-  const [isCollapsed, setIsCollapsed] = useState(false); // State for collapse
+  const location = useLocation();
+  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [pendingReorders, setPendingReorders] = useState(0);
 
-  // Function to check if a link is active
-  const isActive = (path) => {
-    return location.pathname === path;
-  };
+  const isActive = (path) => location.pathname === path;
 
-  // Toggle sidebar collapse
   const toggleCollapse = () => {
     setIsCollapsed(!isCollapsed);
   };
+
+  useEffect(() => {
+    const fetchPendingReorders = async () => {
+      try {
+        const response = await axios.get("http://localhost:5555/api/reorders");
+        const pendingCount = response.data.filter(
+          (reorder) => reorder.status === "pending"
+        ).length;
+        setPendingReorders(pendingCount);
+      } catch (error) {
+        console.error("Error fetching reorder notifications:", error);
+      }
+    };
+
+    fetchPendingReorders();
+    
+    // Set up an interval to check regularly
+    const interval = setInterval(fetchPendingReorders, 60000); // Check every minute
+    
+    return () => clearInterval(interval); // Clean up on unmount
+  }, []);
 
   return (
     <aside className={`sidebar ${isCollapsed ? "collapsed" : ""}`}>
@@ -41,7 +61,7 @@ const Sidebar = () => {
           </div>
           {!isCollapsed && (
             <div>
-              <p className="profile-name">Dehemi</p>
+              <p className="profile-name">Admin</p>
               <p className="profile-role">Inventory Manager</p>
             </div>
           )}
@@ -52,7 +72,6 @@ const Sidebar = () => {
           <Link
             to="/Inventory/Dashboard"
             className={isActive("/Inventory/Dashboard") ? "active" : ""}
-            // Inline CSS for text color
           >
             <FaTachometerAlt size={20} />
             {!isCollapsed && <span>Dashboard</span>}
@@ -60,23 +79,13 @@ const Sidebar = () => {
           <Link
             to="/inventory/MedicineLists"
             className={isActive("/inventory/MedicineLists") ? "active" : ""}
-            style={{ color: "white" }} // Inline CSS for text color
           >
             <FaList size={20} />
             {!isCollapsed && <span>Medicines List</span>}
           </Link>
-          {/* <Link
-            to="/inventory/MedicineGroups"
-            className={isActive("/inventory/MedicineGroups") ? "active" : ""}
-            style={{ color: "white" }} // Inline CSS for text color
-          >
-            <FaLayerGroup size={20} />
-            {!isCollapsed && <span>Medicines Group</span>}
-          </Link> */}
           <Link
             to="/inventory/reports"
             className={isActive("/inventory/reports") ? "active" : ""}
-            style={{ color: "white" }} // Inline CSS for text color
           >
             <FaChartLine size={20} />
             {!isCollapsed && <span>Reports</span>}
@@ -85,16 +94,22 @@ const Sidebar = () => {
             to="/inventory/notifications"
             className={isActive("/inventory/notifications") ? "active" : ""}
           >
-            <FaBell size={20} />
-            {!isCollapsed && <span>Notifications</span>}
-            {!isCollapsed && <span className="notification-badge">1</span>}
+            {!isCollapsed ? (
+              <>
+                <FaBell size={20} />
+                <span>Notifications</span>
+                {pendingReorders > 0 && (
+                  <span className="notification-badge">{pendingReorders}</span>
+                )}
+              </>
+            ) : (
+              <NotificationBadge count={pendingReorders} />
+            )}
           </Link>
         </nav>
 
         {/* Footer */}
-        {!isCollapsed && (
-          <p className="footer-text">Powered by ITP 2025</p>
-        )}
+        {!isCollapsed && <p className="footer-text">Powered by ITP 2025</p>}
       </div>
     </aside>
   );

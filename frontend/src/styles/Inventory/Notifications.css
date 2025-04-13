@@ -85,4 +85,194 @@ body, html {
 .Notifications-subtitle {
     color: gray;
 }
-  
+
+.notifications-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.notifications-content {
+  display: flex;
+  flex: 1;
+  padding-top: 60px; /* To account for header stripe */
+}
+
+.notifications-main {
+  flex: 1;
+  padding: 20px;
+  margin-left: 250px; /* Width of the sidebar */
+  transition: margin-left 0.3s ease;
+}
+
+.sidebar.collapsed + .notifications-main {
+  margin-left: 80px;
+}
+
+.notifications-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.notifications-header h1 {
+  font-size: 24px;
+  color: #333;
+}
+
+.check-stock-button {
+  background-color: #0369a1;
+  color: white;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.check-stock-button:hover {
+  background-color: #0284c7;
+}
+
+.reorders-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.reorder-card {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.reorder-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.reorder-header h3 {
+  font-size: 18px;
+  margin: 0;
+}
+
+.status-badge {
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.status-badge.pending {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.status-badge.completed {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.status-badge.cancelled {
+  background-color: #fee2e2;
+  color: #b91c1c;
+}
+
+.reorder-details {
+  margin-bottom: 15px;
+}
+
+.reorder-details p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.reorder-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.complete-button {
+  background-color: #10b981;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.complete-button:hover {
+  background-color: #059669;
+}
+
+.cancel-button {
+  background-color: #f43f5e;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cancel-button:hover {
+  background-color: #e11d48;
+}
+
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  padding: 40px 0;
+}
+
+.no-reorders {
+  text-align: center;
+  color: #6b7280;
+  font-size: 16px;
+  padding: 40px 0;
+}
+
+.error-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #fef2f2;
+  border: 1px solid #fee2e2;
+  border-radius: 8px;
+  padding: 30px;
+  margin: 30px auto;
+  max-width: 500px;
+  text-align: center;
+}
+
+.error-message {
+  color: #b91c1c;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.retry-button {
+  background-color: #0369a1;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.retry-button:hover {
+  background-color: #0284c7;
+}
+
