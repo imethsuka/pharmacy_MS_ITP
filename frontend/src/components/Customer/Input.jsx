@@ -1,14 +1,14 @@
 import React from "react";
-import "../../styles/Customer/Input.css";  // Assuming you create a new CSS file for styles
+import styles from "../../styles/Customer/LoginPage.module.css";
 
 const Input = ({ id, icon: Icon, ...props }) => {
     return (
-        <div className="input-container">
-            {Icon && <Icon className="input-icon" />}
+        <div className={styles["input-container"]}>
+            {Icon && <Icon className={styles["input-icon"]} />}
             <input
                 id={id}
                 {...props}
-                className={`input-field ${props.className}`}
+                className={`${styles["input-field"]} ${props.className}`}
             />
         </div>
     );

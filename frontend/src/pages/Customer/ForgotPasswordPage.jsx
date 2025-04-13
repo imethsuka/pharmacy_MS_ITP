@@ -1,10 +1,9 @@
 import { motion } from "framer-motion";
 import React, { useState, useContext } from 'react';
 import { AuthContext } from "../../context/AuthContext";
-import Input from "../../components/Customer/Input";
 import { ArrowLeft, Loader, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
-import "../../styles/Customer/ForgotPasswordPage.css"; // Import the custom CSS file
+import "../../styles/Customer/ForgotPasswordPage.css";
 
 const ForgotPasswordPage = () => {
     const [email, setEmail] = useState("");
@@ -16,6 +15,16 @@ const ForgotPasswordPage = () => {
         e.preventDefault();
         await forgotPassword(email);
         setIsSubmitted(true);
+    };
+
+    // Input component inline implementation
+    const Input = ({ icon: Icon, ...props }) => {
+        return (
+            <div className="input-field-container">
+                {Icon && <Icon className="input-icon" />}
+                <input {...props} className="input-field" />
+            </div>
+        );
     };
 
     return (
@@ -34,17 +43,14 @@ const ForgotPasswordPage = () => {
                             <p className="form-description">
                                 Enter your email address and we'll send you a link to reset your password.
                             </p>
-                            <div className="input-field-container">
-                                <Input
-                                    icon={Mail}
-                                    type="email"
-                                    placeholder="Email Address"
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                    required
-                                    className="input-field"
-                                />
-                            </div>
+                            <Input
+                                icon={Mail}
+                                type="email"
+                                placeholder="Email Address"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                required
+                            />
                             <motion.button
                                 whileHover={{ scale: 1.02 }}
                                 whileTap={{ scale: 0.98 }}

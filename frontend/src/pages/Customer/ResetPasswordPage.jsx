@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { motion } from "framer-motion";
 import { AuthContext } from "../../context/AuthContext"; // Updated import path
 import { useNavigate, useParams } from "react-router-dom";
-import Input from "../../components/Customer/Input"; // Updated import path
+// import Input from "../../components/Customer/Input"; 
 import { Lock } from "lucide-react";
 import toast from "react-hot-toast";
 import "../../styles/Customer/ResetPasswordPage.css";

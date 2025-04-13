@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import HeaderStripe from "../../components/HeaderStripe";
+import AdminHeaderStripe from "../../components/AdminHeaderStripe";
 import Sidebar from "../../components/Inventory/Sidebar"; // Import the Inventory Sidebar
 import {
   Card,
@@ -41,7 +41,7 @@ const DashboardPage = () => {
 
   return (
     <div className="dashboard-container">
-      <HeaderStripe />
+      <AdminHeaderStripe />
       <div className="dashboard-content">
         <Sidebar /> {/* Use the Inventory Sidebar */}
         <div className="dashboard-main">

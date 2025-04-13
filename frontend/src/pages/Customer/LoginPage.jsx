@@ -1,10 +1,9 @@
 import React, { useState, useContext } from "react";
 import { motion } from "framer-motion";
-import Input from "../../components/Customer/Input";
-import { Mail, Eye, EyeOff, LogIn, Lock, Loader } from "lucide-react";
+import { Mail, Eye, EyeOff, Lock, Loader, ArrowLeft } from "lucide-react";
 import { useNavigate, Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
-import "../../styles/Customer/LoginPage.css";
+import styles from "../../styles/Customer/LoginPage.module.css";
 
 const LoginPage = () => {
     const [email, setEmail] = useState("");
@@ -26,31 +25,47 @@ const LoginPage = () => {
 
         try {
             await login(email, password);
-            // Redirect based on successful login
             navigate("/");
         } catch (error) {
-            // Error is already handled by the store
             console.log("Login failed:", error);
         }
     };
 
+    // Input component inline implementation
+    const Input = ({ id, icon: Icon, ...props }) => {
+        return (
+            <div className={styles["input-container"]}>
+                {Icon && <Icon className={styles["input-icon"]} />}
+                <input
+                    id={id}
+                    {...props}
+                    className={`${styles["input-field"]} ${props.className || ""}`}
+                />
+            </div>
+        );
+    };
+
     return (
-        <div className="login-container">
+        <div className={styles["login-container"]}>
+            <Link to="/" className={styles["back-home"]}>
+                <ArrowLeft size={20} />
+                Back to Home
+            </Link>
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className='login-box'
+                className={styles["login-box"]}
             >
-                <div className='login-content'>
-                    <div className='login-header'>
-                        <h2 className='login-title'>
+                <div className={styles["login-content"]}>
+                    <div className={styles["login-header"]}>
+                        <h2 className={styles["login-title"]}>
                             Welcome Back
                         </h2>
                     </div>
                     <form onSubmit={handleLogin}>
-                        <div className='form-group'>
-                            <label htmlFor='email' className='form-label'>
+                        <div className={styles["form-group"]}>
+                            <label htmlFor='email' className={styles["form-label"]}>
                                 Email Address
                             </label>
                             <Input
@@ -59,53 +74,56 @@ const LoginPage = () => {
                                 type='email'
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
-                                className='input-field'
+                                placeholder="Enter your email"
                             />
                         </div>
-                        <div className='form-group'>
-                            <label htmlFor='password' className='form-label'>
+                        <div className={styles["form-group"]}>
+                            <label htmlFor='password' className={styles["form-label"]}>
                                 Password
                             </label>
-                            <div className='password-container'>
+                            <div className={styles["password-container"]}>
                                 <Input
                                     id='password'
                                     icon={Lock}
                                     type={showPassword ? 'text' : 'password'}
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
-                                    className='input-field'
+                                    placeholder="Enter your password"
                                 />
                                 <div
-                                    className='password-toggle'
+                                    className={styles["password-toggle"]}
                                     onClick={() => setShowPassword(!showPassword)}
                                 >
-                                    {showPassword ? <EyeOff className='icon' /> : <Eye className='icon' />}
+                                    {showPassword ? 
+                                        <EyeOff className={styles.icon} /> : 
+                                        <Eye className={styles.icon} />
+                                    }
                                 </div>
                             </div>
                         </div>
 
-                        <div className='forgot-password'>
-                            <Link to='/forgot-password' className='forgot-password-link'>
+                        <div className={styles["forgot-password"]}>
+                            <Link to='/forgot-password' className={styles["forgot-password-link"]}>
                                 Forgot password?
                             </Link>
                         </div>
-                        {error && <p className='error-message'>{error}</p>}
+                        {error && <p className={styles["error-message"]}>{error}</p>}
 
                         <motion.button
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
-                            className='submit-button'
+                            className={styles["submit-button"]}
                             type='submit'
                             disabled={isLoading}
                         >
-                            {isLoading ? <Loader className='loading-icon' /> : "Login"}
+                            {isLoading ? <Loader className={styles["loading-icon"]} /> : "Login"}
                         </motion.button>
                     </form>
                 </div>
-                <div className='signup-link-container'>
-                    <p className='signup-text'>
+                <div className={styles["signup-link-container"]}>
+                    <p className={styles["signup-text"]}>
                         Don't have an account?{" "}
-                        <Link to='/signup' className='signup-link'>
+                        <Link to='/signup' className={styles["signup-link"]}>
                             Sign up
                         </Link>
                     </p>
