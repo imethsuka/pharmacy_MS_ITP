@@ -1,8 +1,8 @@
 import React from "react";
-import "../styles/SignInButton.css";
+import styles from "../styles/SignInButton.module.css";
 
 const SignInButton = () => {
-  return <button className="sign-in-button">Sign in</button>;
+  return <button className={styles.signInButton}>Sign in</button>;
 };
 
 export default SignInButton;

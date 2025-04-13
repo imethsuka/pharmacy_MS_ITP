@@ -1,0 +1,20 @@
+.signInButton {
+  background-color: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
+  padding: 8px 16px;
+  border: none;
+  border-radius: var(--radius-md);
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+.signInButton:hover {
+  background-color: var(--primary-dark);
+  box-shadow: var(--shadow-md);
+}
+
+.signInButton:active {
+  transform: translateY(1px);
+}

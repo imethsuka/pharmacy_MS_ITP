@@ -27,7 +27,7 @@
   display: flex;
   align-items: center;
   text-decoration: none;
-  color: var(--primary-700);
+  color: var(--primary-dark);
 }
 
 .logo {
@@ -40,7 +40,7 @@
   font-weight: 700;
   font-size: 1.4rem;
   letter-spacing: 0.5px;
-  color: var(--primary-700);
+  color: var(--primary-dark);
 }
 
 .searchSection {
@@ -56,8 +56,8 @@
 }
 
 .categoryDropdown {
-  background-color: var(--neutral-50);
-  color: var(--primary-600);
+  background-color: var(--neutral-bg);
+  color: var(--neutral-dark);
   border: none;
   border-radius: 0 var(--radius-md) var(--radius-md) 0;
   padding: 0 1rem;
@@ -65,14 +65,15 @@
   cursor: pointer;
   height: 100%;
   font-size: 0.9rem;
-  border: 1px solid var(--neutral-100);
+  border: 1px solid var(--neutral-light);
   border-left: none;
   outline: none;
   transition: background-color 0.2s;
 }
 
 .categoryDropdown:hover, .categoryDropdown:focus {
-  background-color: var(--primary-100);
+  background-color: var(--primary-light);
+  color: var(--primary-dark);
 }
 
 .actions {
@@ -84,8 +85,8 @@
 }
 
 .signInButton {
-  background-color: var(--secondary-500);
-  color: white;
+  background-color: var(--secondary);
+  color: var(--btn-secondary-text);
   border: none;
   border-radius: var(--radius-md);
   padding: 0.6rem 1.5rem;
@@ -99,7 +100,7 @@
 }
 
 .signInButton:hover {
-  background-color: var(--secondary-400);
+  background-color: #cc5240; /* Slightly darker shade of secondary */
   transform: translateY(-2px);
   box-shadow: var(--shadow-lg);
 }
@@ -115,7 +116,7 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  background-color: var(--primary-500);
+  background-color: var(--primary);
   color: white;
   border: none;
   border-radius: var(--radius-md);
@@ -131,7 +132,7 @@
 }
 
 .profileButton:hover {
-  background-color: var(--primary-600);
+  background-color: var(--primary-dark);
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
 }
@@ -181,8 +182,8 @@
 }
 
 .dropdownItem:hover {
-  background-color: var(--neutral-50);
-  color: var(--primary-600);
+  background-color: var(--primary-light);
+  color: var(--primary-dark);
 }
 
 .signOutButton {
