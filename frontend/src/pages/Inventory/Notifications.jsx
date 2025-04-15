@@ -122,6 +122,60 @@ const Notifications = () => {
     }
   };
 
+  // Handle clearing all notifications
+  const handleClearAllNotifications = async () => {
+    if (reorders.length === 0) {
+      enqueueSnackbar('No notifications to clear', { variant: 'info' });
+      return;
+    }
+
+    try {
+      setLoading(true);
+      const response = await axios.put('http://localhost:5555/api/reorders/clear-all');
+      
+      // Clear the notifications from the state
+      setReorders([]);
+      
+      enqueueSnackbar(`${response.data.count || 'All'} notifications cleared`, { variant: 'success' });
+    } catch (error) {
+      console.error('Error clearing all notifications:', error);
+      
+      if (error.response) {
+        const message = error.response.data.message || 'Failed to clear notifications';
+        enqueueSnackbar(`Error: ${message}`, { variant: 'error' });
+      } else if (error.request) {
+        enqueueSnackbar('Network error while clearing notifications', { variant: 'error' });
+      } else {
+        enqueueSnackbar('Failed to clear notifications', { variant: 'error' });
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Handle clearing a single notification
+  const handleClearNotification = async (id) => {
+    try {
+      await axios.put(`http://localhost:5555/api/reorders/${id}/clear`);
+      
+      // Remove the cleared notification from the state
+      setReorders(prevReorders => prevReorders.filter(reorder => reorder._id !== id));
+      
+      enqueueSnackbar('Notification cleared', { variant: 'success' });
+    } catch (error) {
+      console.error('Error clearing notification:', error);
+      
+      if (error.response) {
+        const message = error.response.data.message || 'Failed to clear notification';
+        enqueueSnackbar(`Error: ${message}`, { variant: 'error' });
+      } else if (error.request) {
+        enqueueSnackbar('Network error while clearing notification', { variant: 'error' });
+      } else {
+        enqueueSnackbar('Failed to clear notification', { variant: 'error' });
+      }
+    }
+  };
+
   const handleRetry = () => {
     enqueueSnackbar('Retrying...', { variant: 'info' });
     fetchReorders();
@@ -135,9 +189,14 @@ const Notifications = () => {
         <div className="notifications-main">
           <div className="notifications-header">
             <h1>Reorder Notifications</h1>
-            <button className="check-stock-button" onClick={triggerStockCheck}>
-              Check Stock Levels Now
-            </button>
+            <div className="notifications-actions">
+              <button className="clear-all-button" onClick={handleClearAllNotifications}>
+                Clear All
+              </button>
+              <button className="check-stock-button" onClick={triggerStockCheck}>
+                Check Stock Levels Now
+              </button>
+            </div>
           </div>
 
           {loading ? (
@@ -160,9 +219,18 @@ const Notifications = () => {
                   <div key={reorder._id} className="reorder-card">
                     <div className="reorder-header">
                       <h3>{reorder.medicineName}</h3>
-                      <span className={getStatusBadgeClass(reorder.status)}>
-                        {reorder.status.charAt(0).toUpperCase() + reorder.status.slice(1)}
-                      </span>
+                      <div className="header-actions">
+                        <span className={getStatusBadgeClass(reorder.status)}>
+                          {reorder.status.charAt(0).toUpperCase() + reorder.status.slice(1)}
+                        </span>
+                        <button 
+                          className="clear-button"
+                          onClick={() => handleClearNotification(reorder._id)}
+                          title="Clear notification"
+                        >
+                          Clear
+                        </button>
+                      </div>
                     </div>
                     <div className="reorder-details">
                       <p><strong>Product ID:</strong> {reorder.productId}</p>
@@ -182,7 +250,7 @@ const Notifications = () => {
                           className="complete-button"
                           onClick={() => handleStatusUpdate(reorder._id, 'completed')}
                         >
-                          Mark as Completed
+                          Place Reorder
                         </button>
                         <button 
                           className="cancel-button"

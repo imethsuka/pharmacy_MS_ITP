@@ -142,3 +142,43 @@ export const updateReorderStatus = async (req, res) => {
     res.status(500).json({ message: 'Error updating reorder status' });
   }
 };
+
+// Clear a reorder notification
+export const clearReorderNotification = async (req, res) => {
+  try {
+    const { id } = req.params;
+    
+    const reorder = await Reorder.findById(id);
+    
+    if (!reorder) {
+      return res.status(404).json({ message: 'Reorder notification not found' });
+    }
+    
+    // Remove the reorder instead of just marking it as cleared
+    // This will completely delete it from the database
+    await Reorder.findByIdAndDelete(id);
+    
+    res.status(200).json({ 
+      message: 'Notification cleared successfully'
+    });
+  } catch (error) {
+    console.error('Error clearing notification:', error);
+    res.status(500).json({ message: 'Error clearing notification' });
+  }
+};
+
+// Clear all reorder notifications
+export const clearAllReorderNotifications = async (req, res) => {
+  try {
+    // Delete all reorders instead of just marking them as cleared
+    const result = await Reorder.deleteMany({});
+    
+    res.status(200).json({ 
+      message: 'All notifications cleared successfully',
+      count: result.deletedCount
+    });
+  } catch (error) {
+    console.error('Error clearing all notifications:', error);
+    res.status(500).json({ message: 'Error clearing all notifications' });
+  }
+};

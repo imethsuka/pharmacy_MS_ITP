@@ -1,5 +1,11 @@
 import express from 'express';
-import { checkStockLevels, getAllReorders, updateReorderStatus } from '../controllers/reorderController.js';
+import { 
+  checkStockLevels, 
+  getAllReorders, 
+  updateReorderStatus,
+  clearReorderNotification,
+  clearAllReorderNotifications 
+} from '../controllers/reorderController.js';
 
 const router = express.Router();
 
@@ -11,5 +17,11 @@ router.get('/', getAllReorders);
 
 // Update reorder status
 router.put('/:id', updateReorderStatus);
+
+// Clear a single notification
+router.put('/:id/clear', clearReorderNotification);
+
+// Clear all notifications
+router.put('/clear-all', clearAllReorderNotifications);
 
 export default router;
