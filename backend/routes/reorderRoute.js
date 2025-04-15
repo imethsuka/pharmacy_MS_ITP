@@ -23,7 +23,7 @@ router.put('/:id', updateReorderStatus);
 router.put('/:id/clear', clearReorderNotification);
 
 // Clear all notifications
-router.put('/clear-all', clearAllReorderNotifications);
+router.delete('/clear-all', clearAllReorderNotifications);
 
 // Send order to supplier via email
 router.put('/:id/send-order', sendOrderToSupplier);

@@ -185,7 +185,7 @@ const Notifications = () => {
 
     try {
       setLoading(true);
-      const response = await axios.put('http://localhost:5555/api/reorders/clear-all');
+      const response = await axios.delete('http://localhost:5555/api/reorders/clear-all');
       
       // Clear the notifications from the state
       setReorders([]);
