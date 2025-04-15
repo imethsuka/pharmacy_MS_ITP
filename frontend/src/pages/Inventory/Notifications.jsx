@@ -11,10 +11,39 @@ const Notifications = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const { enqueueSnackbar } = useSnackbar();
+  const [showPopup, setShowPopup] = useState(false);
+  const [selectedReorder, setSelectedReorder] = useState(null);
+  const [pharmacyDetails] = useState({
+    name: "Sethsiri Pharmacy",
+    address: "123 Health Street, Colombo 07",
+    contactNumber: "+94 11 234 5678"
+  });
+  const [orderData, setOrderData] = useState({
+    supplierEmail: '',
+    note: '',
+    medicineName: '',
+    dosage: '',
+    brand: '',
+    quantity: 0
+  });
 
   useEffect(() => {
     fetchReorders();
   }, []);
+
+  // Set the order data when a reorder is selected
+  useEffect(() => {
+    if (selectedReorder) {
+      setOrderData({
+        supplierEmail: selectedReorder.supplierEmail || '',
+        note: '',
+        medicineName: selectedReorder.medicineName || '',
+        dosage: '', // Will need to fetch this data if available
+        brand: '', // Will need to fetch this data if available
+        quantity: selectedReorder.quantityRequested || 0
+      });
+    }
+  }, [selectedReorder]);
 
   const fetchReorders = () => {
     setLoading(true);
@@ -181,6 +210,60 @@ const Notifications = () => {
     fetchReorders();
   };
 
+  // Handle showing the order popup
+  const handleShowOrderPopup = (reorder) => {
+    setSelectedReorder(reorder);
+    setShowPopup(true);
+  };
+
+  // Handle closing the popup
+  const handleClosePopup = () => {
+    setShowPopup(false);
+    setSelectedReorder(null);
+  };
+
+  // Handle form input changes
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setOrderData({
+      ...orderData,
+      [name]: value
+    });
+  };
+
+  // Handle sending the order
+  const handleSendOrder = async () => {
+    try {
+      setLoading(true);
+      // First, update the reorder status to completed
+      await axios.put(`http://localhost:5555/api/reorders/${selectedReorder._id}`, { 
+        status: 'completed',
+        note: orderData.note,
+        supplierEmail: orderData.supplierEmail,
+        dosage: orderData.dosage,
+        brand: orderData.brand,
+        quantity: orderData.quantity
+      });
+      
+      enqueueSnackbar('Order placed successfully', { variant: 'success' });
+      setShowPopup(false);
+      fetchReorders(); // Refresh the list
+    } catch (error) {
+      console.error('Error placing order:', error);
+      
+      if (error.response) {
+        const message = error.response.data.message || 'Failed to place order';
+        enqueueSnackbar(`Error: ${message}`, { variant: 'error' });
+      } else if (error.request) {
+        enqueueSnackbar('Network error while placing order', { variant: 'error' });
+      } else {
+        enqueueSnackbar('Failed to place order', { variant: 'error' });
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="notifications-container">
       <HeaderStripe />
@@ -248,7 +331,7 @@ const Notifications = () => {
                       <div className="reorder-actions">
                         <button 
                           className="complete-button"
-                          onClick={() => handleStatusUpdate(reorder._id, 'completed')}
+                          onClick={() => handleShowOrderPopup(reorder)}
                         >
                           Place Reorder
                         </button>
@@ -263,6 +346,101 @@ const Notifications = () => {
                   </div>
                 ))
               )}
+            </div>
+          )}
+
+          {/* Order Popup */}
+          {showPopup && selectedReorder && (
+            <div className="order-popup-overlay">
+              <div className="order-popup">
+                <button className="close-popup-button" onClick={handleClosePopup}>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </button>
+                
+                <h2>Place Order</h2>
+                
+                <div className="order-popup-content">
+                  <div className="order-section">
+                    <h3>Medicine Details</h3>
+                    <div className="form-group">
+                      <label>Medicine Name</label>
+                      <input 
+                        type="text" 
+                        name="medicineName" 
+                        value={orderData.medicineName} 
+                        onChange={handleInputChange}
+                        disabled
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label>Dosage</label>
+                      <input 
+                        type="text" 
+                        name="dosage" 
+                        value={orderData.dosage} 
+                        onChange={handleInputChange}
+                        placeholder="Enter dosage"
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label>Brand</label>
+                      <input 
+                        type="text" 
+                        name="brand" 
+                        value={orderData.brand} 
+                        onChange={handleInputChange}
+                        placeholder="Enter brand"
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label>Quantity</label>
+                      <input 
+                        type="number" 
+                        name="quantity" 
+                        value={orderData.quantity} 
+                        onChange={handleInputChange}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label>Supplier Email</label>
+                      <input 
+                        type="email" 
+                        name="supplierEmail" 
+                        value={orderData.supplierEmail} 
+                        onChange={handleInputChange}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label>Special Note</label>
+                      <textarea 
+                        name="note" 
+                        value={orderData.note} 
+                        onChange={handleInputChange}
+                        placeholder="Add any special instructions here..."
+                        rows="3"
+                      ></textarea>
+                    </div>
+                  </div>
+                  
+                  <div className="order-section">
+                    <h3>Pharmacy Information</h3>
+                    <div className="pharmacy-info">
+                      <p><strong>Name:</strong> {pharmacyDetails.name}</p>
+                      <p><strong>Address:</strong> {pharmacyDetails.address}</p>
+                      <p><strong>Contact:</strong> {pharmacyDetails.contactNumber}</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="order-popup-actions">
+                  <button className="send-order-button" onClick={handleSendOrder} disabled={loading}>
+                    {loading ? 'Sending...' : 'Send'}
+                  </button>
+                </div>
+              </div>
             </div>
           )}
         </div>
