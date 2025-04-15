@@ -25,15 +25,16 @@ console.log('Email credentials check:', {
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   host: 'smtp.gmail.com',
-  port: 587,
-  secure: false,
+  port: 465,  // Using port 465 for SSL
+  secure: true,  // Using SSL
   auth: {
     user: emailUser || 'dehemibasnayake201@gmail.com', // Fallback to hard-coded email if env variable not loaded
     pass: emailPassword || 'ndqspaojrhoekcej'  // Fallback to hard-coded password if env variable not loaded
   },
   tls: {
     rejectUnauthorized: false
-  }
+  },
+  debug: true // Add debugging to provide more information
 });
 
 // Verify transporter connection on server start
@@ -75,9 +76,9 @@ export const checkStockLevels = async (req, res) => {
 
           await newReorder.save();
           reorderRequests.push(newReorder);
-
-          // Send email to supplier
-          await sendReorderEmail(newReorder, medicine);
+          
+          // We no longer automatically send emails here
+          // Emails will only be sent when the user clicks the Send button
         }
       }
     }
@@ -310,6 +311,12 @@ export const sendOrderToSupplier = async (req, res) => {
         subject: `Order Request for ${reorder.medicineName}`,
         html: emailContent
       };
+      
+      console.log('Attempting to send email with options:', {
+        from: mailOptions.from,
+        to: mailOptions.to,
+        subject: mailOptions.subject
+      });
       
       const info = await transporter.sendMail(mailOptions);
       console.log('Order email sent successfully:', info.response);

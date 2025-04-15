@@ -260,6 +260,7 @@ const Notifications = () => {
   const handleSendOrder = async () => {
     // Validate email before sending
     if (!validateEmail(orderData.supplierEmail)) {
+      setEmailError('Please enter a valid supplier email');
       enqueueSnackbar('Please enter a valid supplier email', { variant: 'error' });
       return;
     }
@@ -285,9 +286,9 @@ const Notifications = () => {
       });
       
       if (response.data.emailSent) {
-        enqueueSnackbar('Order placed and email sent to supplier', { variant: 'success' });
+        enqueueSnackbar('Order placed and email sent to supplier successfully', { variant: 'success' });
       } else {
-        enqueueSnackbar('Order placed but failed to send email to supplier', { variant: 'warning' });
+        enqueueSnackbar('Order placed but failed to send email to supplier. Please try again later.', { variant: 'warning' });
       }
       
       setShowPopup(false);
@@ -299,9 +300,9 @@ const Notifications = () => {
         const message = error.response.data.message || 'Failed to place order';
         enqueueSnackbar(`Error: ${message}`, { variant: 'error' });
       } else if (error.request) {
-        enqueueSnackbar('Network error while placing order', { variant: 'error' });
+        enqueueSnackbar('Network error while placing order. Please check your internet connection.', { variant: 'error' });
       } else {
-        enqueueSnackbar('Failed to place order', { variant: 'error' });
+        enqueueSnackbar('Failed to place order. Please try again later.', { variant: 'error' });
       }
     } finally {
       setLoading(false);
