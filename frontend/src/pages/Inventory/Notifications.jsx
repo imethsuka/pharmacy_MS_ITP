@@ -13,6 +13,7 @@ const Notifications = () => {
   const { enqueueSnackbar } = useSnackbar();
   const [showPopup, setShowPopup] = useState(false);
   const [selectedReorder, setSelectedReorder] = useState(null);
+  const [emailError, setEmailError] = useState('');
   const [pharmacyDetails] = useState({
     name: "Sethsiri Pharmacy",
     address: "123 Health Street, Colombo 07",
@@ -26,6 +27,9 @@ const Notifications = () => {
     brand: '',
     quantity: 0
   });
+
+  // Email validation regex
+  const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
 
   useEffect(() => {
     fetchReorders();
@@ -42,8 +46,29 @@ const Notifications = () => {
         brand: '', // Will need to fetch this data if available
         quantity: selectedReorder.quantityRequested || 0
       });
+      // Clear any previous email validation errors
+      setEmailError('');
     }
   }, [selectedReorder]);
+
+  // Validate email whenever supplierEmail changes
+  useEffect(() => {
+    validateEmail(orderData.supplierEmail);
+  }, [orderData.supplierEmail]);
+
+  // Email validation function
+  const validateEmail = (email) => {
+    if (!email) {
+      setEmailError('Supplier email is required');
+      return false;
+    } else if (!emailRegex.test(email)) {
+      setEmailError('Please enter a valid email address');
+      return false;
+    } else {
+      setEmailError('');
+      return true;
+    }
+  };
 
   const fetchReorders = () => {
     setLoading(true);
@@ -233,19 +258,38 @@ const Notifications = () => {
 
   // Handle sending the order
   const handleSendOrder = async () => {
+    // Validate email before sending
+    if (!validateEmail(orderData.supplierEmail)) {
+      enqueueSnackbar('Please enter a valid supplier email', { variant: 'error' });
+      return;
+    }
+    
+    // Validate required fields
+    if (!orderData.quantity) {
+      enqueueSnackbar('Please enter a quantity', { variant: 'error' });
+      return;
+    }
+
     try {
       setLoading(true);
-      // First, update the reorder status to completed
-      await axios.put(`http://localhost:5555/api/reorders/${selectedReorder._id}`, { 
+      
+      // Send the reorder request with all details to trigger email sending
+      const response = await axios.put(`http://localhost:5555/api/reorders/${selectedReorder._id}/send-order`, { 
         status: 'completed',
         note: orderData.note,
         supplierEmail: orderData.supplierEmail,
         dosage: orderData.dosage,
         brand: orderData.brand,
-        quantity: orderData.quantity
+        quantity: orderData.quantity,
+        pharmacyDetails: pharmacyDetails
       });
       
-      enqueueSnackbar('Order placed successfully', { variant: 'success' });
+      if (response.data.emailSent) {
+        enqueueSnackbar('Order placed and email sent to supplier', { variant: 'success' });
+      } else {
+        enqueueSnackbar('Order placed but failed to send email to supplier', { variant: 'warning' });
+      }
+      
       setShowPopup(false);
       fetchReorders(); // Refresh the list
     } catch (error) {
@@ -412,6 +456,7 @@ const Notifications = () => {
                         value={orderData.supplierEmail} 
                         onChange={handleInputChange}
                       />
+                      {emailError && <p className="error-message">{emailError}</p>}
                     </div>
                     <div className="form-group">
                       <label>Special Note</label>

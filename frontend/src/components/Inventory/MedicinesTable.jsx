@@ -1,14 +1,34 @@
 import { Link } from "react-router-dom";
-import { FiInfo } from "react-icons/fi";
+import { FiInfo, FiCheckCircle } from "react-icons/fi";
 import { RiEdit2Line } from "react-icons/ri";
 import { HiOutlineTrash } from "react-icons/hi";
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable"; // Correct import
 import "../../styles/Inventory/MedicinesTable.css";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import JsBarcode from "jsbarcode";
+import axios from "axios";
 
 const MedicinesTable = ({ medicines, onMoreInfoClick }) => {
+  const [reorderedMedicines, setReorderedMedicines] = useState([]);
+
+  // Fetch medicines with reorder emails sent
+  useEffect(() => {
+    const fetchReorderStatus = async () => {
+      try {
+        const response = await axios.get('/api/reorders');
+        // Filter reorders where email has been sent
+        const emailSentReorders = response.data.filter(reorder => reorder.emailSent);
+        // Extract medicine IDs
+        const medicinesWithEmailSent = emailSentReorders.map(reorder => reorder.medicineId);
+        setReorderedMedicines(medicinesWithEmailSent);
+      } catch (error) {
+        console.error('Error fetching reorder status:', error);
+      }
+    };
+
+    fetchReorderStatus();
+  }, []);
 
   useEffect(() => {
     medicines.forEach((medicine) => {
@@ -175,7 +195,12 @@ const MedicinesTable = ({ medicines, onMoreInfoClick }) => {
               </td>
               <td className="hide-on-mobile">{medicine.category}</td>
               <td className="hide-on-mobile price">Rs. {medicine.price}</td>
-              <td className="hide-on-mobile stock">{medicine.stock}</td>
+              <td className="hide-on-mobile stock">
+                {reorderedMedicines.includes(medicine._id) && (
+                  <FiCheckCircle className="check-icon" style={{ color: "green", marginRight: "5px" }} />
+                )}
+                {medicine.stock}
+              </td>
               <td className="hide-on-mobile">{medicine.reorderLevel}</td>
               <td className="hide-on-mobile">{medicine.batchExpiry}</td>
               <td className="hide-on-mobile">

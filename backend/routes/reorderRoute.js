@@ -4,7 +4,8 @@ import {
   getAllReorders, 
   updateReorderStatus,
   clearReorderNotification,
-  clearAllReorderNotifications 
+  clearAllReorderNotifications,
+  sendOrderToSupplier
 } from '../controllers/reorderController.js';
 
 const router = express.Router();
@@ -23,5 +24,8 @@ router.put('/:id/clear', clearReorderNotification);
 
 // Clear all notifications
 router.put('/clear-all', clearAllReorderNotifications);
+
+// Send order to supplier via email
+router.put('/:id/send-order', sendOrderToSupplier);
 
 export default router;

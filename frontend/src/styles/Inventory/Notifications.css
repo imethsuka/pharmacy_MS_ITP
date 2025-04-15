@@ -477,3 +477,11 @@ body, html {
   cursor: not-allowed;
 }
 
+/* Add the error message styling */
+.error-message {
+  color: #ef4444;
+  font-size: 12px;
+  margin-top: 4px;
+  font-weight: 500;
+}
+
