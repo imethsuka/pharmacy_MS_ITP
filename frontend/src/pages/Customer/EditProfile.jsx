@@ -179,7 +179,7 @@ const EditProfile = () => {
                     <div className="button-group">
                         <button
                             type="button"
-                            onClick={() => navigate("/customerdashboard")}
+                            onClick={() => navigate("/")}
                             className="cancel-button"
                             disabled={isSubmitting}
                         >
