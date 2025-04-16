@@ -32,6 +32,10 @@ export const useAuthStore = create((set) => ({
 				error: null,
 				isLoading: false,
 			});
+			// Store token in localStorage
+			if (response.data.token) {
+				localStorage.setItem('token', response.data.token);
+			}
 		} catch (error) {
 			set({ error: error.response?.data?.message || "Error logging in", isLoading: false });
 			throw error;
@@ -121,9 +125,11 @@ export const useAuthStore = create((set) => ({
 	updateProfile: async (formData) => {
 		set({ isLoading: true, error: null });
 		try {
-			const response = await axios.put(`${API_URL}/update-profile`, formData, {
+			const token = localStorage.getItem('token');
+			const response = await axios.put(`${API_URL}/profile/update`, formData, {
 				headers: {
-					'Content-Type': 'multipart/form-data'
+					'Content-Type': 'multipart/form-data',
+					'Authorization': `Bearer ${token}`
 				}
 			});
 			set({ user: response.data.user, isLoading: false });

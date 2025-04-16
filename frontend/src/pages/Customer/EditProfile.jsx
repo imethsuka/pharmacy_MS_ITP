@@ -77,15 +77,13 @@ const EditProfile = () => {
             
             if (response.success) {
                 toast.success(response.message || "Profile updated successfully");
-                setTimeout(() => {
-                    navigate("/");
-                }, 2000);
+                navigate("/dashboard");
             } else {
                 toast.error(response.message || "Error updating profile");
             }
         } catch (error) {
             console.error("Error updating profile:", error);
-            toast.error("Error updating profile. Please try again.");
+            toast.error(error.response?.data?.message || "Error updating profile. Please try again.");
         } finally {
             setIsSubmitting(false);
         }

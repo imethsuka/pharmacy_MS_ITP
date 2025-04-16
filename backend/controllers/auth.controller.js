@@ -5,6 +5,7 @@ import generateTokenAndSetCookie from "../utils/generateTokenAndSetCookie.js";
 import User from "../models/user.model.js";
 import sendMail from "../helpers/sendMail.js";
 import cloudinary from "cloudinary";
+import jwt from "jsonwebtoken";
 // Configure Nodemailer transporter
 const transporter = nodemailer.createTransport({
     service: "gmail",
@@ -88,8 +89,8 @@ export const login = async (req, res) => {
             return res.status(400).json({ success: false, message: "Invalid credentials" });
         }
 
-        generateTokenAndSetCookie(user, res);
-
+        // Generate token
+        const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: "7d" });
 
         user.lastLogin = new Date();
         await user.save();
@@ -97,6 +98,7 @@ export const login = async (req, res) => {
         res.status(200).json({
             success: true,
             message: "Logged in successfully",
+            token,
             user: {
                 ...user._doc,
                 password: undefined,
